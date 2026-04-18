@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economía I - Parcial 1 | UCES 2026</title>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+/* ===== THEME ===== */
+:root,[data-theme="light"]{
+  --bg:#f0f2f5;--card:#fff;--nav-bg:rgba(255,255,255,.88);--text:#1a1a2e;--text2:#555;--muted:#888;
+  --accent:#4f46e5;--accent-l:#e0e7ff;--accent-d:#3730a3;
+  --red:#ef4444;--blue:#3b82f6;--purple:#8b5cf6;--amber:#f59e0b;--green:#22c55e;--cyan:#06b6d4;
+  --border:#e2e8f0;--shadow:0 4px 6px -1px rgba(0,0,0,.07);--shadow-lg:0 10px 25px -5px rgba(0,0,0,.1);
+  --danger-bg:#fef2f2;--success-bg:#f0fdf4;--info-bg:#eff6ff;--warn-bg:#fffbeb;
+  --ex-bg:linear-gradient(135deg,#fef3c7,#fde68a33);--ex-border:#f59e0b;
+  --graph-bg:#fafbff;--graph-line:#4f46e5;--graph-line2:#ec4899;--graph-axis:#475569;
+}
+[data-theme="dark"]{
+  --bg:#0f172a;--card:#1e293b;--nav-bg:rgba(15,23,42,.92);--text:#e2e8f0;--text2:#94a3b8;--muted:#64748b;
+  --accent:#818cf8;--accent-l:#312e81;--accent-d:#a5b4fc;--border:#334155;
+  --shadow:0 4px 6px -1px rgba(0,0,0,.3);--shadow-lg:0 10px 25px -5px rgba(0,0,0,.4);
+  --danger-bg:#450a0a;--success-bg:#052e16;--info-bg:#172554;--warn-bg:#451a03;
+  --ex-bg:linear-gradient(135deg,#451a0322,#78350f22);--ex-border:#d97706;
+  --graph-bg:#1e293b;--graph-line:#a5b4fc;--graph-line2:#f472b6;--graph-axis:#cbd5e1;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;transition:background .3s,color .3s}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+
+/* NAV */
+.topnav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px}
+.topnav .logo{font-weight:700;font-size:1.1em;color:var(--accent);display:flex;align-items:center;gap:6px}
+.topnav .nav-links{display:flex;gap:4px;flex-wrap:wrap}
+.topnav .nav-links a{color:var(--text2);text-decoration:none;font-size:.8em;font-weight:500;padding:4px 10px;border-radius:6px;transition:.2s}
+.topnav .nav-links a:hover{background:var(--accent-l);color:var(--accent)}
+.topnav .controls{display:flex;gap:6px;align-items:center}
+.topnav .controls button{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:5px 10px;cursor:pointer;font-size:1em;transition:.2s;color:var(--text);display:flex;align-items:center}
+.topnav .controls button:hover{transform:scale(1.05);box-shadow:var(--shadow)}
+.progress-bar{position:fixed;top:56px;left:0;right:0;height:3px;z-index:999;background:var(--border)}
+.progress-bar .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--cyan),var(--purple));transition:width .1s}
+
+.content{max-width:960px;margin:76px auto 60px;padding:0 16px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#4f46e5,#7c3aed,#ec4899);border-radius:20px;padding:50px 40px;text-align:center;color:#fff;margin-bottom:30px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 60%);animation:glow 6s ease-in-out infinite}
+@keyframes glow{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-20px)}}
+.hero h1{font-size:2.2em;font-weight:700;position:relative;border:none;color:#fff;margin-bottom:6px}
+.hero p{opacity:.9;position:relative;font-size:1em}
+.hero .badge{display:inline-block;background:rgba(255,255,255,.18);backdrop-filter:blur(10px);padding:5px 14px;border-radius:20px;font-size:.83em;margin-top:10px;position:relative}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;box-shadow:var(--shadow);transition:.2s}
+.stat-card:hover{transform:translateY(-2px)}
+.stat-card .num{font-size:1.8em;font-weight:700;color:var(--accent)}
+.stat-card .label{font-size:.82em;color:var(--muted);margin-top:2px}
+
+/* SECTIONS */
+.section{background:var(--card);border:1px solid var(--border);border-radius:16px;margin-bottom:16px;box-shadow:var(--shadow);overflow:hidden;transition:.3s}
+.section:hover{box-shadow:var(--shadow-lg)}
+.section-header{padding:14px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;transition:.2s}
+.section-header:hover{background:var(--accent-l)}
+.section-header h2{font-size:1.15em;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:8px;margin:0;padding:0;background:none;border:none}
+.section-header .chevron{transition:transform .3s;color:var(--muted)}
+.section-header.active .chevron{transform:rotate(180deg)}
+.section-body{padding:0 20px 20px;display:none;animation:fadeIn .3s}
+.section-body.open{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.section-body h3{font-size:1.1em;color:var(--accent);margin:22px 0 8px;padding-bottom:5px;border-bottom:2px dashed var(--border)}
+.section-body h4{font-size:.95em;color:var(--text2);margin:14px 0 6px;font-weight:600}
+.section-body p{margin:6px 0}
+.section-body ul,.section-body ol{padding-left:22px;margin:6px 0}
+.section-body li{margin:4px 0}
+
+/* Unit hero */
+.unit-hero{background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff;padding:18px 22px;border-radius:14px;margin:32px 0 14px;box-shadow:var(--shadow-lg)}
+.unit-hero h2{color:#fff;background:none;border:none;padding:0;margin:0 0 3px;font-size:1.45em;font-weight:700}
+.unit-hero p{opacity:.95;margin:0;font-size:.92em}
+
+/* CARDS */
+.card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:12px 0;transition:.2s}
+.card:hover{border-color:var(--accent)}
+.formula-box{background:linear-gradient(135deg,var(--info-bg),var(--card));border:2px solid var(--blue);border-radius:12px;padding:16px 20px;margin:14px 0;text-align:center;font-size:1.02em;font-family:'JetBrains Mono',monospace}
+.formula-box .fk{color:var(--accent-d);font-weight:600;margin-bottom:4px;font-family:'Space Grotesk',sans-serif;font-size:.92em}
+
+/* ALERTS */
+.alert{padding:12px 16px;border-radius:10px;margin:12px 0;border-left:4px solid}
+.alert .at{font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:5px}
+.alert-danger{background:var(--danger-bg);border-color:var(--red)}.alert-danger .at{color:var(--red)}
+.alert-success{background:var(--success-bg);border-color:var(--green)}.alert-success .at{color:#16a34a}
+.alert-info{background:var(--info-bg);border-color:var(--blue)}.alert-info .at{color:var(--blue)}
+.alert-warn{background:var(--warn-bg);border-color:var(--amber)}.alert-warn .at{color:#d97706}
+
+.example-box{background:linear-gradient(135deg,#f5f3ff,#ede9fe33);border:1px solid #c4b5fd;border-left:4px solid var(--purple);border-radius:10px;padding:12px 16px;margin:12px 0}
+.example-box .et{font-weight:700;color:var(--purple);margin-bottom:4px}
+[data-theme="dark"] .example-box{background:linear-gradient(135deg,#2e1065,#1e1b4b33);border-color:#7c3aed}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9em;border-radius:10px;overflow:hidden}
+th{background:var(--accent);color:#fff;padding:9px 12px;text-align:left;font-weight:600}
+td{padding:8px 12px;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--bg)}
+tr:hover td{background:var(--accent-l)}
+
+/* GRAPHS */
+.graph-wrap{background:var(--graph-bg);border:1px solid var(--border);border-radius:12px;padding:14px;margin:14px 0;text-align:center}
+.graph-wrap svg{max-width:100%;height:auto}
+.graph-wrap .gcap{font-size:.85em;color:var(--muted);margin-top:6px;font-style:italic}
+
+/* FORMULA SHEET */
+.formula-sheet{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin:16px 0}
+.formula-card{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:16px;text-align:center;transition:.2s}
+.formula-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.formula-card h4{color:var(--accent);margin-bottom:8px;font-size:1em}
+.formula-card .f-eq{font-family:'JetBrains Mono',monospace;font-size:1.05em;padding:8px;background:var(--bg);border-radius:8px;margin:6px 0;color:var(--text)}
+.formula-card .f-desc{font-size:.82em;color:var(--muted);margin-top:4px}
+
+/* VALIDATOR */
+.parcial-hero{background:linear-gradient(135deg,#4f46e5,#8b5cf6,#ec4899);color:#fff;padding:22px 24px;border-radius:16px;margin:32px 0 14px;text-align:center;box-shadow:var(--shadow-lg)}
+.parcial-hero h2{color:#fff;background:none;border:none;padding:0;margin:0 0 4px;font-size:1.5em;font-weight:700}
+.parcial-hero p{opacity:.95;margin:0;font-size:.92em}
+.parcial-hero .badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);padding:4px 12px;border-radius:20px;font-size:.78em;margin-top:8px}
+.parcial-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 16px;background:var(--card);padding:12px;border-radius:12px;border:1px solid var(--border)}
+.parcial-stats .ps-item{text-align:center}
+.parcial-stats .ps-num{font-size:1.5em;font-weight:700;color:var(--accent)}
+.parcial-stats .ps-lab{font-size:.78em;color:var(--muted)}
+.q-group{margin:14px 0}
+.q-group-t{font-weight:600;color:var(--accent);font-size:1.05em;margin:18px 0 8px;padding-bottom:4px;border-bottom:2px dashed var(--border);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.q-group-t .pts{font-size:.82em;color:var(--muted);font-weight:500;background:var(--bg);padding:2px 8px;border-radius:10px}
+.q{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:10px;padding:12px 14px;margin:8px 0;transition:.25s}
+.q.done{border-left-color:var(--green);background:linear-gradient(90deg,var(--success-bg) 0%,var(--card) 40%)}
+.q.bad{border-left-color:var(--red)}
+.q-stem{margin-bottom:8px;color:var(--text);line-height:1.55}
+.q-in{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:6px}
+.q-label{font-weight:600;color:var(--accent);font-size:.9em;font-family:'JetBrains Mono',monospace}
+.q-in input.vld,.q-in select.vld{background:var(--bg);border:2px solid var(--border);border-radius:8px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:.92em;color:var(--text);min-width:90px;max-width:200px;transition:.2s}
+.q-in input.vld:focus,.q-in select.vld:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-l)}
+.q-in input.vld.ok,.q-in select.vld.ok{border-color:var(--green);background:var(--success-bg)}
+.q-in input.vld.bad,.q-in select.vld.bad{border-color:var(--red);background:var(--danger-bg)}
+.q-btn{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-weight:600;cursor:pointer;font-size:.88em;transition:.2s;display:inline-flex;align-items:center;gap:4px}
+.q-btn:hover{background:var(--accent-d);transform:translateY(-1px);box-shadow:var(--shadow)}
+.q-fb{font-weight:700;font-size:.92em;margin-left:4px;min-width:100px}
+.q-fb.ok{color:#16a34a}
+.q-fb.bad{color:var(--red)}
+.q-sol{margin-top:10px;padding:8px 12px;background:var(--info-bg);border-radius:8px;border-left:3px solid var(--blue);font-size:.88em}
+.q-sol summary{cursor:pointer;color:var(--blue);font-weight:600;user-select:none;font-size:.88em}
+.q-sol[open] summary{margin-bottom:6px}
+.q-sol p{margin:4px 0;color:var(--text2)}
+.q-reset{background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:8px;padding:4px 10px;font-size:.8em;cursor:pointer;margin-left:auto;transition:.2s}
+.q-reset:hover{background:var(--danger-bg);color:var(--red);border-color:var(--red)}
+.q-tip{display:inline-block;font-size:.78em;color:var(--muted);margin-left:4px;font-style:italic}
+
+/* QUIZ mini */
+.quiz-block{background:linear-gradient(135deg,#ecfeff,#e0f2fe33);border:1px solid #a5f3fc;border-left:4px solid var(--cyan);border-radius:12px;padding:14px 18px;margin:16px 0}
+[data-theme="dark"] .quiz-block{background:linear-gradient(135deg,#164e6322,#0c4a6e22);border-color:#0891b2}
+.quiz-block .qh{font-weight:700;color:var(--cyan);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.quiz-block .qh-ct{font-size:.82em;color:var(--muted);margin-left:auto;font-weight:500}
+
+/* ===== INTERACTIVE WIDGETS ===== */
+.calc-widget{background:linear-gradient(135deg,var(--accent-l),var(--card));border:2px solid var(--accent);border-radius:14px;padding:18px;margin:16px 0;box-shadow:var(--shadow)}
+.calc-widget h4{color:var(--accent-d);margin:0 0 12px;display:flex;align-items:center;gap:6px;font-size:1.05em}
+.calc-widget .inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:10px 0}
+.calc-widget .input-g{display:flex;flex-direction:column;gap:4px}
+.calc-widget label{font-size:.82em;color:var(--text2);font-weight:600}
+.calc-widget input[type="number"]{background:var(--card);border:2px solid var(--border);border-radius:8px;padding:8px 10px;font-family:'JetBrains Mono',monospace;font-size:.95em;color:var(--text);width:100%}
+.calc-widget input[type="number"]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-l)}
+.calc-widget input[type="range"]{width:100%;accent-color:var(--accent);cursor:pointer}
+.calc-widget .result{background:var(--card);border:2px solid var(--green);border-radius:10px;padding:12px 14px;margin-top:12px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:1.05em;color:var(--text)}
+.calc-widget .result strong{color:var(--green);font-size:1.3em}
+.calc-widget .result .rtag{display:inline-block;background:var(--green);color:#fff;padding:2px 8px;border-radius:10px;font-size:.8em;margin-left:6px;font-family:'Space Grotesk',sans-serif}
+.calc-widget .result .rtag.red{background:var(--red)}
+.calc-widget .result .rtag.amber{background:var(--amber)}
+
+/* Drag-drop */
+.dnd-wrap{background:var(--card);border:2px dashed var(--accent);border-radius:14px;padding:16px;margin:16px 0}
+.dnd-items{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;min-height:50px;padding:8px;background:var(--bg);border-radius:10px}
+.dnd-item{background:var(--accent);color:#fff;padding:8px 12px;border-radius:20px;font-size:.88em;cursor:grab;user-select:none;touch-action:none;transition:.2s;font-weight:500}
+.dnd-item:active{cursor:grabbing;transform:scale(.95)}
+.dnd-item.dragging{opacity:.4}
+.dnd-bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:10px}
+.dnd-bin{background:var(--bg);border:2px dashed var(--muted);border-radius:10px;padding:10px;min-height:100px;transition:.2s}
+.dnd-bin.hover{border-color:var(--accent);background:var(--accent-l)}
+.dnd-bin h5{font-size:.88em;color:var(--accent);margin:0 0 6px;font-weight:700}
+.dnd-bin .bitems{display:flex;flex-wrap:wrap;gap:6px;min-height:40px}
+.dnd-bin .bitem{background:var(--card);border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:16px;font-size:.82em}
+.dnd-bin .bitem.ok{background:var(--success-bg);border-color:var(--green);color:#16a34a}
+.dnd-bin .bitem.bad{background:var(--danger-bg);border-color:var(--red);color:var(--red)}
+.dnd-check{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-weight:600;cursor:pointer;margin-top:10px;transition:.2s;display:inline-flex;align-items:center;gap:6px;font-size:.9em}
+.dnd-check:hover{background:var(--accent-d)}
+
+/* Flashcard */
+.flashcard-deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0}
+.flashcard{perspective:1000px;height:140px;cursor:pointer}
+.flashcard-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flashcard.flipped .flashcard-inner{transform:rotateY(180deg)}
+.flashcard-front,.flashcard-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;box-shadow:var(--shadow)}
+.flashcard-front{background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff;font-weight:600;font-size:1em}
+.flashcard-back{background:var(--card);border:2px solid var(--accent);transform:rotateY(180deg);font-family:'JetBrains Mono',monospace;font-size:.95em;color:var(--text)}
+.flashcard .fc-hint{position:absolute;bottom:6px;right:10px;font-size:.7em;opacity:.6}
+
+/* Excel */
+.excel-card{background:linear-gradient(135deg,#dcfce7,#bbf7d033);border:2px solid #16a34a;border-radius:12px;padding:14px 16px;margin:14px 0}
+[data-theme="dark"] .excel-card{background:linear-gradient(135deg,#052e1644,#14532d22);border-color:#22c55e}
+.excel-card h4{color:#16a34a;margin:0 0 6px;display:flex;align-items:center;gap:6px;font-size:.98em}
+.excel-formula{font-family:'JetBrains Mono',monospace;background:var(--card);padding:8px 10px;border-radius:6px;border:1px solid var(--border);color:var(--text);margin:6px 0;font-size:.9em;overflow-x:auto;white-space:nowrap}
+.excel-formula::before{content:'=';color:var(--green);font-weight:700;margin-right:2px}
+.excel-desc{font-size:.85em;color:var(--text2);margin-top:4px}
+
+/* Videos */
+.video-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:14px 0}
+.video-card{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--card);transition:.2s}
+.video-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.video-card iframe{width:100%;aspect-ratio:16/9;border:none;display:block}
+.video-card .vc-info{padding:10px 12px;font-size:.82em;color:var(--text2)}
+.video-card .vc-info strong{color:var(--text);display:block;font-size:.95em;margin-bottom:2px}
+.video-card a.video-link{display:block;padding:14px;background:linear-gradient(135deg,#fee2e2,#fecaca33);border-left:4px solid #dc2626;color:var(--text);text-decoration:none;transition:.2s}
+.video-card a.video-link:hover{background:linear-gradient(135deg,#fecaca,#fca5a544)}
+.video-card a.video-link strong{color:#dc2626;display:block;font-size:.95em;margin-bottom:4px}
+
+/* RESPONSIVE — ACCESIBILIDAD TACTIL */
+@media(max-width:768px){
+  .hero{padding:28px 16px;border-radius:14px}
+  .hero h1{font-size:1.5em}
+  .topnav .nav-links{display:none}
+  .topnav{padding:0 10px;height:52px}
+  .content{padding:0 8px;margin-top:70px}
+  .section-body{padding:0 14px 14px}
+  .section-header{padding:14px 14px}
+  .section-header h2{font-size:1em}
+  .formula-sheet{grid-template-columns:1fr}
+  .q-in{gap:8px}
+  .q-in input.vld,.q-in select.vld{min-width:100%;max-width:100%;flex:1 1 100%;padding:10px 12px;font-size:.95em}
+  .q-btn{padding:10px 16px;font-size:.9em;flex:1 1 auto;min-height:40px;justify-content:center}
+  .q-fb{flex:1 1 100%;text-align:center;margin:4px 0 0}
+  .q-reset{margin:4px 0 0 auto;padding:8px 14px;min-height:36px}
+  .parcial-stats{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .stat-card{padding:12px}
+  .stat-card .num{font-size:1.4em}
+  .unit-hero{padding:16px}
+  .unit-hero h2{font-size:1.2em}
+  .calc-widget .inputs{grid-template-columns:1fr 1fr}
+  .dnd-bins{grid-template-columns:1fr}
+  .dnd-item{padding:10px 14px;font-size:.95em;min-height:40px;display:inline-flex;align-items:center}
+  .flashcard{height:120px}
+  .flashcard-front,.flashcard-back{padding:10px;font-size:.9em}
+  table{font-size:.82em}
+  th,td{padding:6px 8px}
+  .video-row{grid-template-columns:1fr}
+  .graph-wrap{padding:10px}
+  details summary{padding:8px 0;min-height:32px}
+  .section-body h3{font-size:1em}
+  body{line-height:1.6}
+}
+@media(max-width:480px){
+  .hero h1{font-size:1.3em}
+  .hero p{font-size:.88em}
+  .section-header h2{font-size:.92em}
+  .stats-row{gap:8px}
+  .stat-card .label{font-size:.7em}
+  .formula-box{padding:12px 14px;font-size:.9em}
+  .q{padding:10px 12px}
+  .q-stem{font-size:.92em}
+}
+@media print{.topnav,.progress-bar,.controls,.topnav .nav-links,.dnd-wrap,.video-row,.calc-widget,.flashcard-deck{display:none!important}.content{margin-top:0}.section-body{display:block!important}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="logo"><i data-lucide="trending-up" style="width:20px;height:20px"></i> Economía I</div>
+  <div class="nav-links">
+    <a href="#u1">U1</a><a href="#u2">U2</a><a href="#formulas">Fórmulas</a><a href="#excel" style="color:#16a34a;font-weight:700">Excel</a><a href="#interactivo" style="color:#db2777;font-weight:700">Juegos</a><a href="#parciales" style="color:var(--purple);font-weight:700">Parciales</a>
+  </div>
+  <div class="controls">
+    <button onclick="toggleAll()" title="Abrir/cerrar todo"><i data-lucide="layout-list" style="width:16px;height:16px"></i></button>
+    <button onclick="toggleTheme()" id="themeBtn" title="Tema"><i data-lucide="moon" style="width:16px;height:16px"></i></button>
+  </div>
+</nav>
+<div class="progress-bar"><div class="fill" id="progressFill"></div></div>
+
+<div class="content">
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Fundamentos de Economía I</h1>
+  <p>Primer Parcial · UCES 2026 · Lic. Marketing</p>
+  <div class="badge">Unidad 1 · Unidad 2 (hasta Elasticidad) · Prof. Lagraña</div>
+</div>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat-card"><div class="num" id="stTemas">0/12</div><div class="label">Temas abiertos</div></div>
+  <div class="stat-card"><div class="num" id="stVF">0</div><div class="label">Respuestas OK</div></div>
+  <div class="stat-card"><div class="num" id="stParciales">0/3</div><div class="label">Parciales aprobados</div></div>
+  <div class="stat-card"><div class="num" id="stFormulas">13</div><div class="label">Fórmulas clave</div></div>
+</div>
+
+<!-- ============================================= -->
+<!-- UNIDAD 1 -->
+<!-- ============================================= -->
+<div class="unit-hero" id="u1">
+  <h2>Unidad 1 · Introducción a la Economía</h2>
+  <p>Concepto, necesidades, bienes, sistemas, FPP, modelos, PIB, OA/DA</p>
+</div>
+
+<!-- 1.1 Concepto y escasez -->
+<div class="section" data-topic="t1">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="book-open" style="width:18px;height:18px"></i> 1.1 · Concepto de Economía · Escasez</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <p><strong>Economía</strong> (del griego <em>oikonomia</em>: oikos = casa, nomos = ley). Se ocupa de cómo se administran los recursos escasos para producir bienes y distribuirlos entre los miembros de la sociedad. También llamada "ciencia de la elección".</p>
+
+    <div class="alert alert-info">
+      <div class="at"><i data-lucide="lightbulb" style="width:16px;height:16px"></i> Problema económico central</div>
+      Las necesidades son <strong>ilimitadas</strong> y los recursos son <strong>limitados</strong> → escasez. La escasez no es tecnológica sino una disparidad entre deseos y medios.
+    </div>
+
+    <h3>Necesidades</h3>
+    <p>Sensación de carencia de algo + deseo de satisfacerla. Características:</p>
+    <ul>
+      <li><strong>Ilimitadas</strong>: nunca dejamos de tenerlas</li>
+      <li><strong>Recurrentes</strong>: vuelven a aparecer (comer, vestir)</li>
+      <li><strong>Creadas artificialmente</strong>: por publicidad</li>
+      <li><strong>Complementarias</strong>: una genera la necesidad de otras</li>
+    </ul>
+    <h4>Clasificación:</h4>
+    <ul>
+      <li><strong>Por urgencia</strong>: primarias (esenciales) / secundarias</li>
+      <li><strong>Por asiduidad</strong>: regulares / ocasionales</li>
+      <li><strong>Por tiempo</strong>: presentes / futuras</li>
+      <li><strong>Por sujeto</strong>: individuales / colectivas (Estado)</li>
+    </ul>
+
+    <h3>Bienes económicos</h3>
+    <p>Aptos para satisfacer una necesidad. Requisitos: <strong>(1)</strong> satisfacer necesidad, <strong>(2)</strong> ser escaso, <strong>(3)</strong> ser accesible.</p>
+
+    <h4>Clasificación de bienes:</h4>
+    <table>
+      <tr><th>Criterio</th><th>Categorías</th></tr>
+      <tr><td>Naturaleza</td><td>Materiales (bienes) / Inmateriales (servicios)</td></tr>
+      <tr><td>Abundancia/escasez</td><td>Libres / Económicos / Raros (no reproducibles)</td></tr>
+      <tr><td>Destino</td><td>Directos (consumo) / Indirectos (producción)</td></tr>
+      <tr><td>Duración</td><td>No durables (1 uso) / Durables (múltiples usos)</td></tr>
+      <tr><td>Disponibilidad</td><td>Presentes / Futuros</td></tr>
+      <tr><td>Propiedad</td><td>Privados / Públicos</td></tr>
+      <tr><td>Ingreso del consumidor</td><td>Normales (↑ingreso → ↑demanda) / Inferiores (↑ingreso → ↓demanda)</td></tr>
+    </table>
+
+    <div class="example-box">
+      <div class="et"><i data-lucide="package" style="width:16px;height:16px; display:inline"></i> Ejemplo</div>
+      <strong>Pan de panadería</strong>: material, económico, directo, no durable, presente, privado, normal (aunque puede ser inferior si sube mucho el ingreso).
+    </div>
+
+    <h3>Interrogantes básicos de la economía</h3>
+    <table>
+      <tr><th>¿QUÉ PRODUCIR?</th><td>Qué se consume · Votos monetarios</td></tr>
+      <tr><th>¿CÓMO?</th><td>Tecnología · Factores</td></tr>
+      <tr><th>¿PARA QUIÉN?</th><td>Retribuciones · Quién "puede"</td></tr>
+    </table>
+
+    <!-- QUIZ 1.1 -->
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 1.1 <span class="qh-ct">Verdadero/Falso + conceptos</span></div>
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>1.</strong> La escasez es un problema tecnológico, no una disparidad entre deseos humanos y medios disponibles.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>FALSO.</strong> La escasez NO es tecnológica: es la disparidad entre deseos ilimitados y recursos limitados. Incluso con alta tecnología habría escasez.</p></details>
+      </div>
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>2.</strong> Un bien libre es aquel que se obtiene sin esfuerzo alguno (ej: aire, luz solar).</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>VERDADERO.</strong> Los bienes libres existen en abundancia relativa y la naturaleza los brinda gratuitamente.</p></details>
+      </div>
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>3.</strong> Los bienes inferiores son aquellos cuya demanda AUMENTA cuando aumenta el ingreso del consumidor.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>FALSO.</strong> Es al revés: los bienes inferiores <em>reducen</em> su demanda cuando aumenta el ingreso. Los bienes <em>normales</em> son los que aumentan con el ingreso.</p></details>
+      </div>
+      <div class="q" data-val="tx" data-ans="escasez">
+        <div class="q-stem"><strong>4.</strong> Completar: El problema central de la economía surge de la ______ de los recursos frente a necesidades ilimitadas.</div>
+        <div class="q-in"><span class="q-label">Palabra:</span><input class="vld" type="text" placeholder="una palabra"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Escasez.</strong> Los recursos son limitados mientras las necesidades humanas son prácticamente ilimitadas.</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.2 Sistemas económicos -->
+<div class="section" data-topic="t2">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="building-2" style="width:18px;height:18px"></i> 1.2 · Sistemas Económicos · Política Económica</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <p>Un <strong>sistema económico</strong> es la forma en que una sociedad organiza la administración de sus recursos (tierra, trabajo, capital).</p>
+
+    <h3>Los tres modelos de sistemas económicos</h3>
+    <div class="card">
+      <h4><i data-lucide="dollar-sign" style="width:14px;height:14px;display:inline;color:var(--green)"></i> 1. Capitalismo / Economía de mercado</h4>
+      <ul>
+        <li>Propiedad <strong>privada</strong> de los medios de producción</li>
+        <li>Precios fijados por la oferta y demanda (libre mercado)</li>
+        <li>Gobierno interfiere poco (solo regula)</li>
+        <li>Ejemplo: <strong>Estados Unidos</strong></li>
+        <li>Riesgo: monopolios por acumulación excesiva de poder</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4><i data-lucide="flag" style="width:14px;height:14px;display:inline;color:var(--red)"></i> 2. Planificación centralizada</h4>
+      <ul>
+        <li>Estado controla la asignación de recursos y distribución</li>
+        <li>Precios fijados por <strong>decreto</strong> (no mercado)</li>
+        <li>¿Qué, cómo, cuánto? → criterios políticos</li>
+        <li>Ejemplo histórico: <strong>URSS y países comunistas</strong></li>
+        <li>Limitación: poco flexible, vulnerable a crisis de escasez</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4><i data-lucide="shuffle" style="width:14px;height:14px;display:inline;color:var(--purple)"></i> 3. Economía mixta</h4>
+      <ul>
+        <li>Combina planificación estatal + economía de mercado</li>
+        <li>Privados hacen la mayor parte; Estado controla lo estratégico (energía, petróleo)</li>
+        <li>Fuerte regulación mediante leyes y política fiscal</li>
+        <li>La mayoría de los países modernos (incluyendo <strong>Argentina</strong>)</li>
+      </ul>
+    </div>
+
+    <h3>Política económica</h3>
+    <p>Acciones y decisiones del gobierno para controlar la economía, brindar estabilidad y crecimiento.</p>
+
+    <h4>Objetivos a CORTO plazo (coyunturales):</h4>
+    <ul>
+      <li><strong>Pleno empleo</strong> (demanda de trabajo = oferta)</li>
+      <li><strong>Estabilidad de precios</strong> (controlar inflación)</li>
+      <li><strong>Mejora de la balanza de pagos</strong></li>
+    </ul>
+    <h4>Objetivos a LARGO plazo (estructurales):</h4>
+    <ul>
+      <li>Expansión de la producción</li>
+      <li>Distribución de la renta y la riqueza</li>
+      <li>Protección a regiones/industrias, reducción de jornada laboral</li>
+    </ul>
+
+    <h3>Tipos de política económica</h3>
+    <table>
+      <tr><th>Tipo</th><th>Qué controla</th><th>Expansiva</th><th>Restrictiva</th></tr>
+      <tr><td><strong>Fiscal</strong></td><td>Gasto público e impuestos</td><td>↑ gasto + ↓ impuestos</td><td>↓ gasto + ↑ impuestos</td></tr>
+      <tr><td><strong>Monetaria</strong></td><td>Masa monetaria y tasa de interés</td><td>↑ oferta monetaria</td><td>↓ oferta monetaria</td></tr>
+    </table>
+
+    <div class="alert alert-warn">
+      <div class="at"><i data-lucide="alert-triangle" style="width:16px;height:16px"></i> No confundir</div>
+      <strong>Política económica</strong> = acciones del gobierno para gestionar la economía.<br>
+      <strong>Economía política</strong> = disciplina que estudia cómo los gobiernos influyen en producción/distribución (interdisciplinar: sociología + política + economía).
+    </div>
+
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 1.2 <span class="qh-ct">Sistemas y política</span></div>
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>1.</strong> En una economía de planificación centralizada, los precios se fijan por decreto y no por oferta y demanda.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>VERDADERO.</strong> En planificación central el Estado fija precios mediante decretos; en capitalismo los fija el mercado.</p></details>
+      </div>
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>2.</strong> Una política fiscal expansiva consiste en reducir el gasto público y subir los impuestos.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>FALSO.</strong> Expansiva = AUMENTAR gasto público + REDUCIR impuestos. Lo que se describe es una política fiscal restrictiva.</p></details>
+      </div>
+      <div class="q" data-val="sel" data-ans="monetaria">
+        <div class="q-stem"><strong>3.</strong> ¿Qué tipo de política controla la masa monetaria y la tasa de interés?</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="fiscal">Política fiscal</option><option value="monetaria">Política monetaria</option><option value="comercial">Política comercial</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Política monetaria.</strong> Controla masa monetaria y tasas de interés para garantizar estabilidad de precios. La fiscal controla gasto e impuestos.</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.3 Elementos FPP -->
+<div class="section" data-topic="t3">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="layers" style="width:18px;height:18px"></i> 1.3 · Elementos del Sistema · Flujo Circular · FPP</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <h3>Agentes económicos</h3>
+    <ul>
+      <li><strong>Consumidores / Familias</strong>: compran bienes y servicios, aportan trabajo</li>
+      <li><strong>Empresas</strong>: producen y distribuyen bienes y servicios</li>
+      <li><strong>Estado</strong>: regula, produce, recauda impuestos, ofrece servicios públicos</li>
+    </ul>
+
+    <h3>Factores productivos</h3>
+    <table>
+      <tr><th>Factor</th><th>Qué es</th><th>Retribución</th></tr>
+      <tr><td><strong>Tierra</strong></td><td>Espacio + materias primas (recursos naturales)</td><td>Renta</td></tr>
+      <tr><td><strong>Trabajo</strong></td><td>Esfuerzo físico/intelectual humano</td><td>Salario</td></tr>
+      <tr><td><strong>Capital</strong></td><td>Maquinaria + fondos para producir</td><td>Interés</td></tr>
+      <tr><td><strong>Tecnología</strong></td><td>Conocimiento aplicado</td><td>Regalías</td></tr>
+      <tr><td><strong>Capacidad empresarial</strong></td><td>Organizar los demás factores</td><td>Beneficios</td></tr>
+    </table>
+
+    <h3>Sectores de la economía</h3>
+    <ul>
+      <li><strong>Primario</strong>: extracción (agricultura, ganadería, pesca, minería)</li>
+      <li><strong>Secundario</strong>: industrial (transformación de materias primas)</li>
+      <li><strong>Terciario</strong>: servicios (comercio, salud, educación, transporte)</li>
+    </ul>
+
+    <h3>Flujo circular de la economía</h3>
+    <div class="graph-wrap">
+      <svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--graph-line)"/>
+          </marker>
+          <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--graph-line2)"/>
+          </marker>
+        </defs>
+        <rect x="40" y="130" width="130" height="60" rx="10" fill="var(--accent-l)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="105" y="165" text-anchor="middle" font-size="14" fill="var(--text)" font-weight="600">FAMILIAS</text>
+        <rect x="330" y="130" width="130" height="60" rx="10" fill="var(--accent-l)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="395" y="165" text-anchor="middle" font-size="14" fill="var(--text)" font-weight="600">EMPRESAS</text>
+        <rect x="200" y="20" width="100" height="45" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+        <text x="250" y="48" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Mdo. Bienes</text>
+        <rect x="200" y="255" width="100" height="45" rx="10" fill="#fce7f3" stroke="#db2777" stroke-width="2"/>
+        <text x="250" y="283" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Mdo. Factores</text>
+        <path d="M 170 145 Q 245 70 330 145" stroke="var(--graph-line)" fill="none" stroke-width="2" marker-end="url(#ah1)"/>
+        <text x="250" y="100" text-anchor="middle" font-size="10" fill="var(--graph-line)">$ Gasto → Bienes</text>
+        <path d="M 330 175 Q 245 100 170 175" stroke="var(--graph-line)" fill="none" stroke-width="2" marker-end="url(#ah1)" stroke-dasharray="4 2"/>
+        <text x="250" y="130" text-anchor="middle" font-size="10" fill="var(--graph-line)">Bienes y Servicios</text>
+        <path d="M 330 185 Q 245 260 170 185" stroke="var(--graph-line2)" fill="none" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="250" y="235" text-anchor="middle" font-size="10" fill="var(--graph-line2)">Salarios, rentas, intereses</text>
+        <path d="M 170 155 Q 245 230 330 155" stroke="var(--graph-line2)" fill="none" stroke-width="2" marker-end="url(#ah2)" stroke-dasharray="4 2"/>
+        <text x="250" y="210" text-anchor="middle" font-size="10" fill="var(--graph-line2)">Trabajo, tierra, capital</text>
+      </svg>
+      <div class="gcap">Flujo real (trazos cortados) y flujo nominal/monetario (líneas llenas)</div>
+    </div>
+
+    <h3>Frontera de Posibilidades de Producción (FPP)</h3>
+    <p>Representa las combinaciones <strong>máximas</strong> de dos bienes que una economía puede producir con sus recursos y tecnología dados.</p>
+
+    <div class="graph-wrap">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="250" x2="370" y2="250" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="50" y1="250" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <path d="M 50 40 Q 60 80 100 140 Q 160 200 230 230 Q 290 245 340 250" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
+        <circle cx="50" cy="40" r="4" fill="var(--graph-line)"/><text x="30" y="35" font-size="11" fill="var(--text)">A</text>
+        <circle cx="100" cy="140" r="4" fill="var(--graph-line)"/><text x="80" y="135" font-size="11" fill="var(--text)">B</text>
+        <circle cx="170" cy="195" r="4" fill="var(--graph-line)"/><text x="150" y="190" font-size="11" fill="var(--text)">C</text>
+        <circle cx="240" cy="232" r="4" fill="var(--graph-line)"/><text x="225" y="252" font-size="11" fill="var(--text)">D</text>
+        <circle cx="340" cy="250" r="4" fill="var(--graph-line)"/><text x="345" y="268" font-size="11" fill="var(--text)">E</text>
+        <circle cx="150" cy="230" r="5" fill="var(--amber)"/><text x="160" y="228" font-size="11" fill="var(--text)">F (ineficiente)</text>
+        <circle cx="300" cy="80" r="5" fill="var(--red)"/><text x="215" y="75" font-size="11" fill="var(--text)">G (inalcanzable)</text>
+        <text x="200" y="285" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Bien X (ej: computadoras)</text>
+        <text x="30" y="150" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 30 150)">Bien Y (ej: celulares)</text>
+      </svg>
+      <div class="gcap">FPP cóncava: costo de oportunidad creciente. Puntos sobre la curva (A-E) = eficiencia; F = recursos ociosos; G = inalcanzable.</div>
+    </div>
+
+    <div class="alert alert-info">
+      <div class="at"><i data-lucide="zap" style="width:16px;height:16px"></i> Costo de oportunidad</div>
+      Es aquello a lo que se <strong>renuncia</strong> para obtener otra cosa. En la FPP: cuánto de un bien dejás de producir al producir más del otro.
+    </div>
+
+    <h4>Desplazamiento de la FPP</h4>
+    <ul>
+      <li><strong>Hacia afuera</strong> (derecha): aumento de capacidad productiva (avances tecnológicos, más recursos, educación/capital humano)</li>
+      <li><strong>Hacia adentro</strong> (izquierda): disminución (catástrofe, guerra, pérdida de factores)</li>
+    </ul>
+
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 1.3 <span class="qh-ct">FPP y costos de oportunidad</span></div>
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>1.</strong> Un punto por debajo de la FPP indica que los recursos están siendo utilizados de forma ineficiente.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>VERDADERO.</strong> Los puntos interiores indican recursos ociosos o uso ineficiente. Los puntos sobre la curva indican eficiencia; los puntos fuera son inalcanzables.</p></details>
+      </div>
+      <div class="q" data-val="num" data-ans="2" data-tol="0.01">
+        <div class="q-stem"><strong>2.</strong> Si al pasar de B(10,90) a C(20,70) de una FPP se renuncia a ropa para producir más comida: ¿cuál es el costo de oportunidad de UNA unidad extra de comida? (expresar en unidades de ropa)</div>
+        <div class="q-in"><span class="q-label">Resp:</span><input class="vld" type="number" step="0.01" placeholder="unidades"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>ΔComida = 20−10 = 10 unidades. ΔRopa = 70−90 = −20 unidades (pérdida).<br>Costo op. = 20 ÷ 10 = <strong>2 unidades de ropa por 1 comida</strong>.</p></details>
+      </div>
+      <div class="q" data-val="sel" data-ans="tecnologia">
+        <div class="q-stem"><strong>3.</strong> ¿Cuál de estos eventos desplazaría la FPP hacia AFUERA (expansión)?</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="tecnologia">Un avance tecnológico significativo</option><option value="terremoto">Un terremoto destructivo</option><option value="desempleo">Aumento del desempleo</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>Avances tecnológicos expanden la capacidad productiva → FPP se desplaza a la derecha. Un terremoto o catástrofe la contrae; el desempleo representa un punto interior (ineficiencia).</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.4 Modelos, Ramas, Positiva vs Normativa -->
+<div class="section" data-topic="t4">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="git-branch" style="width:18px;height:18px"></i> 1.4 · Modelos · Ramas · Positiva vs Normativa</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <h3>Teorías y modelos económicos</h3>
+    <p>Un <strong>modelo</strong> es una simplificación de la realidad que, mediante supuestos y argumentos, explica fenómenos económicos. Las teorías no se evalúan por el realismo de sus supuestos sino por la <strong>validez de sus predicciones</strong>.</p>
+
+    <div class="alert alert-info">
+      <div class="at"><i data-lucide="filter" style="width:16px;height:16px"></i> Ceteris paribus</div>
+      "Todo lo demás constante". Supuesto usado para analizar el efecto de UNA variable aislando las demás.
+    </div>
+
+    <h4>Categorías de modelos:</h4>
+    <ul>
+      <li><strong>Macroeconómicos</strong>: fenómenos a nivel general (inflación, PBI, empleo)</li>
+      <li><strong>Microeconómicos</strong>: mercados específicos o agentes individuales (precio del pan)</li>
+    </ul>
+
+    <h3>Ramas de la economía</h3>
+    <div class="card">
+      <h4>Economía POSITIVA (descripción + teoría)</h4>
+      <p>Busca explicaciones <strong>objetivas</strong>. Se ocupa de lo que ES o podría ser.</p>
+      <ul>
+        <li><strong>Economía descriptiva</strong>: observación sistemática</li>
+        <li><strong>Teoría económica</strong>: principios, leyes, modelos
+          <ul>
+            <li><em>Microeconomía</em>: agentes y mercados individuales</li>
+            <li><em>Macroeconomía</em>: PBI, consumo agregado, inflación, déficit fiscal</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Economía NORMATIVA (política económica)</h4>
+      <p>Proposiciones sobre lo que DEBERÍA ser. Responde a criterios éticos/políticos: juicios de valor.</p>
+    </div>
+
+    <div class="example-box">
+      <div class="et"><i data-lucide="scale" style="width:16px;height:16px;display:inline"></i> Distinguir afirmaciones</div>
+      <p><strong>Positiva</strong>: "Si el Estado grava con impuesto el consumo de telas, disminuirá la demanda."</p>
+      <p><strong>Normativa</strong>: "La Argentina debería tener plena libertad de comercio sin restricciones."</p>
+    </div>
+
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 1.4</div>
+      <div class="q" data-val="sel" data-ans="normativa">
+        <div class="q-stem"><strong>1.</strong> "El gobierno debería aumentar el salario mínimo para mejorar la distribución del ingreso". Esta afirmación es:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="positiva">Economía positiva</option><option value="normativa">Economía normativa</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Normativa.</strong> La palabra "debería" indica un juicio de valor sobre lo que corresponde hacer, típico de la economía normativa.</p></details>
+      </div>
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>2.</strong> La microeconomía estudia variables agregadas como el PBI nacional o la inflación general.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>FALSO.</strong> Eso es macroeconomía. La microeconomía estudia agentes y mercados individuales (ej: mercado del trigo).</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1.5 PIB, Ingreso Nacional, OA/DA -->
+<div class="section" data-topic="t5">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="bar-chart-3" style="width:18px;height:18px"></i> 1.5 · PIB · Ingreso Nacional · Oferta y Demanda Agregada</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <h3>Ingreso Nacional</h3>
+    <p>Suma de todos los ingresos individuales derivados de los servicios productivos en un período: salarios + beneficios + intereses + rentas.</p>
+    <div class="formula-box">
+      <div class="fk">Fórmula Ingreso Nacional</div>
+      Ingreso Nacional = PIB + RRN − RRE
+    </div>
+    <p style="font-size:.88em;color:var(--muted)">Donde: RRN = Rentas residentes nacionales en el extranjero; RRE = Rentas residentes extranjeros en el país</p>
+
+    <h3>Producto Interno Bruto (PIB)</h3>
+    <p>Valor monetario de todos los bienes y servicios <strong>finales</strong> producidos por un territorio en un período (se calcula anualmente o trimestralmente).</p>
+
+    <div class="alert alert-warn">
+      <div class="at"><i data-lucide="info" style="width:16px;height:16px"></i> PIB vs Ingreso Nacional</div>
+      <ul>
+        <li><strong>PIB</strong>: considera los límites del <em>país</em> (independientemente de la nacionalidad)</li>
+        <li><strong>Ingreso Nacional</strong>: considera la <em>nacionalidad</em> (independientemente de dónde se trabaje)</li>
+      </ul>
+    </div>
+
+    <h3>Demanda Agregada (DA)</h3>
+    <div class="formula-box">
+      <div class="fk">Fórmula Demanda Agregada</div>
+      DA = C + I + G + (X − M)
+    </div>
+
+    <div class="calc-widget">
+      <h4><i data-lucide="calculator" style="width:18px;height:18px"></i> Calculadora interactiva de DA</h4>
+      <div class="inputs">
+        <div class="input-g"><label>Consumo (C)</label><input type="number" id="daC" value="500"></div>
+        <div class="input-g"><label>Inversión (I)</label><input type="number" id="daI" value="120"></div>
+        <div class="input-g"><label>Gasto público (G)</label><input type="number" id="daG" value="200"></div>
+        <div class="input-g"><label>Exportaciones (X)</label><input type="number" id="daX" value="80"></div>
+        <div class="input-g"><label>Importaciones (M)</label><input type="number" id="daM" value="60"></div>
+      </div>
+      <div class="result" id="daResult">DA = <strong>840</strong></div>
+    </div>
+
+    <div class="excel-card">
+      <h4><i data-lucide="file-spreadsheet" style="width:16px;height:16px"></i> Cómo hacerlo en Excel</h4>
+      <p style="font-size:.88em;margin:4px 0 8px">Si tenés C en A1, I en B1, G en C1, X en D1 y M en E1:</p>
+      <div class="excel-formula">A1+B1+C1+(D1-E1)</div>
+      <p class="excel-desc">Con referencias absolutas si lo copiás: <code>=$A$1+$B$1+$C$1+($D$1-$E$1)</code>.</p>
+    </div>
+    <ul>
+      <li><strong>C</strong> = Consumo de las familias</li>
+      <li><strong>I</strong> = Inversión de las empresas</li>
+      <li><strong>G</strong> = Gasto público del Estado</li>
+      <li><strong>X − M</strong> = Exportaciones netas (exportaciones menos importaciones)</li>
+    </ul>
+    <p>La curva de DA tiene <strong>pendiente negativa</strong>: a menor nivel general de precios, mayor cantidad demandada.</p>
+
+    <h3>Oferta Agregada (OA)</h3>
+    <p>Relación entre el nivel general de precios y la producción total. Tiene <strong>pendiente positiva</strong>: a mayor producción, mayores costos unitarios (contratación adicional, factores escasos) → sube el nivel de precios.</p>
+
+    <h3>Equilibrio macroeconómico</h3>
+    <div class="graph-wrap">
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="280" x2="370" y2="280" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="50" y1="280" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="50" y1="50" x2="370" y2="270" stroke="var(--graph-line2)" stroke-width="3"/>
+        <text x="340" y="265" font-size="11" fill="var(--graph-line2)" font-weight="600">DA</text>
+        <path d="M 70 270 Q 180 200 300 100 Q 340 65 360 50" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
+        <text x="340" y="90" font-size="11" fill="var(--graph-line)" font-weight="600">OA</text>
+        <circle cx="200" cy="170" r="6" fill="var(--amber)"/>
+        <text x="210" y="165" font-size="12" fill="var(--text)" font-weight="700">E</text>
+        <line x1="50" y1="170" x2="200" y2="170" stroke="var(--muted)" stroke-dasharray="3 3"/>
+        <line x1="200" y1="170" x2="200" y2="280" stroke="var(--muted)" stroke-dasharray="3 3"/>
+        <text x="25" y="175" font-size="11" fill="var(--text)">Pe</text>
+        <text x="195" y="297" font-size="11" fill="var(--text)">Ye</text>
+        <text x="200" y="315" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">PIB real (Y)</text>
+        <text x="25" y="155" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 25 155)">Nivel de precios (P)</text>
+      </svg>
+      <div class="gcap">Equilibrio macroeconómico: punto E donde DA = OA determina Pe (precio) e Ye (producción)</div>
+    </div>
+
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 1.5</div>
+      <div class="q" data-val="num" data-ans="840">
+        <div class="q-stem"><strong>1.</strong> Calcular la DA con: C=500, I=120, G=200, X=80, M=60.</div>
+        <div class="q-in"><span class="q-label">DA =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>DA = C + I + G + (X−M) = 500 + 120 + 200 + (80−60) = 500 + 120 + 200 + 20 = <strong>840</strong></p></details>
+      </div>
+      <div class="q" data-val="num" data-ans="820">
+        <div class="q-stem"><strong>2.</strong> Si PIB = 840, RRN = 30, RRE = 50, calcular Ingreso Nacional.</div>
+        <div class="q-in"><span class="q-label">IN =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>IN = PIB + RRN − RRE = 840 + 30 − 50 = <strong>820</strong></p></details>
+      </div>
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>3.</strong> El PIB mide el valor producido <em>dentro del territorio</em> sin importar la nacionalidad de los factores de producción.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>VERDADERO.</strong> El PIB es territorial. El Ingreso Nacional o PNB mide por nacionalidad del factor.</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- UNIDAD 2 -->
+<!-- ============================================= -->
+<div class="unit-hero" id="u2">
+  <h2>Unidad 2 · La Conducta del Consumidor</h2>
+  <p>Curvas de indiferencia, presupuesto, utilidad, demanda y elasticidad</p>
+</div>
+
+<!-- 2.1 Curvas de indiferencia -->
+<div class="section" data-topic="t6">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="waves" style="width:18px;height:18px"></i> 2.1 · Curvas de Indiferencia · Mapa · TMS</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <p>El <strong>consumidor</strong> adquiere bienes para satisfacer sus necesidades. Supuestos del análisis:</p>
+    <ul>
+      <li><strong>Preferencias</strong>: coherentes y representables matemáticamente</li>
+      <li><strong>Maximización de utilidad</strong>: busca su máxima satisfacción</li>
+      <li><strong>Restricción presupuestaria</strong>: ingreso y precios limitan las opciones</li>
+    </ul>
+
+    <h3>Curva de Indiferencia</h3>
+    <p>Conjunto de combinaciones de dos bienes que le reportan al consumidor <strong>el mismo nivel de utilidad</strong> (le es indiferente cuál elegir).</p>
+
+    <div class="graph-wrap">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="260" x2="370" y2="260" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="50" y1="260" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <path d="M 70 50 Q 85 130 150 180 Q 250 230 360 250" stroke="var(--graph-line)" fill="none" stroke-width="2.5"/>
+        <text x="320" y="245" font-size="11" fill="var(--graph-line)">I₁</text>
+        <path d="M 80 90 Q 105 160 180 210 Q 280 250 370 265" stroke="var(--purple)" fill="none" stroke-width="2.5" opacity=".4"/>
+        <path d="M 95 130 Q 130 190 220 235 Q 290 265 370 275" stroke="var(--purple)" fill="none" stroke-width="2.5" opacity=".3"/>
+        <text x="220" y="20" font-size="11" fill="var(--text)" font-style="italic">I₃ &gt; I₂ &gt; I₁</text>
+        <circle cx="90" cy="100" r="4" fill="var(--red)"/><text x="60" y="105" font-size="11" fill="var(--text)">a</text>
+        <circle cx="130" cy="170" r="4" fill="var(--red)"/><text x="110" y="190" font-size="11" fill="var(--text)">b</text>
+        <circle cx="200" cy="215" r="4" fill="var(--red)"/><text x="195" y="235" font-size="11" fill="var(--text)">c</text>
+        <circle cx="290" cy="245" r="4" fill="var(--red)"/><text x="290" y="258" font-size="11" fill="var(--text)">d</text>
+        <text x="200" y="290" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Jugo</text>
+        <text x="25" y="150" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 25 150)">Helado</text>
+      </svg>
+      <div class="gcap">Mapa de curvas de indiferencia. Las más alejadas del origen representan mayor utilidad.</div>
+    </div>
+
+    <h3>Características</h3>
+    <ul>
+      <li><strong>Convexas</strong> hacia el origen (pendiente decrece al moverse a la derecha)</li>
+      <li><strong>No se cortan</strong> (implicaría contradicción)</li>
+      <li>Hay infinitas curvas en un mapa</li>
+      <li>Cuanto más alejada del origen → mayor utilidad (supuesto de insaciabilidad)</li>
+    </ul>
+
+    <h3>Tasa Marginal de Sustitución (TMS)</h3>
+    <p>Cantidad de un bien a que el consumidor está dispuesto a renunciar para obtener <strong>una unidad adicional</strong> del otro, manteniendo la utilidad constante. Es el costo de oportunidad en el consumo.</p>
+    <div class="formula-box">
+      <div class="fk">TMS de Y por X</div>
+      TMS<sub>xy</sub> = −(Y₁ − Y₀) / (X₁ − X₀) = UMg<sub>x</sub> / UMg<sub>y</sub> = P<sub>x</sub> / P<sub>y</sub>
+    </div>
+
+    <div class="alert alert-info">
+      <div class="at"><i data-lucide="trending-down" style="width:16px;height:16px"></i> Ley del decrecimiento de la TMS</div>
+      A medida que se consume más de un bien, se está dispuesto a renunciar a menos del otro → justifica la <strong>forma convexa</strong> de la curva.
+    </div>
+
+    <h3>Efecto sustitución y efecto ingreso</h3>
+    <ul>
+      <li><strong>Efecto sustitución</strong>: al subir el precio de un bien, se reemplaza por otro más barato para mantener la satisfacción</li>
+      <li><strong>Efecto ingreso</strong>: al subir el precio, disminuye el ingreso real → menos capacidad de compra de TODOS los bienes</li>
+    </ul>
+
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 2.1</div>
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>1.</strong> Dos curvas de indiferencia pueden cortarse en un punto cuando dos combinaciones reportan la misma utilidad.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>FALSO.</strong> Las curvas de indiferencia NUNCA se cortan entre sí: si lo hicieran, representaría una contradicción en las preferencias.</p></details>
+      </div>
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>2.</strong> Cuanto más alejada del origen se encuentre una curva de indiferencia, mayor es el nivel de utilidad que representa.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>VERDADERO.</strong> Supuesto de insaciabilidad: más cantidad de bienes = mayor utilidad.</p></details>
+      </div>
+      <div class="q" data-val="sel" data-ans="sustitucion">
+        <div class="q-stem"><strong>3.</strong> Cuando sube el precio del tren y la gente empieza a usar más el colectivo porque es relativamente más barato, estamos ante un efecto:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="sustitucion">Efecto sustitución</option><option value="ingreso">Efecto ingreso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Sustitución.</strong> Se reemplaza un bien más caro por otro más barato. El efecto ingreso se refiere a la reducción en el poder adquisitivo real.</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2.2 Recta presupuestaria -->
+<div class="section" data-topic="t7">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="wallet" style="width:18px;height:18px"></i> 2.2 · Recta Presupuestaria · Equilibrio del Consumidor</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <h3>Recta de balance / presupuestaria</h3>
+    <p>Muestra las combinaciones <strong>máximas</strong> de dos bienes que el consumidor puede comprar, dados sus ingresos (Y) y los precios (P).</p>
+
+    <div class="formula-box">
+      <div class="fk">Ecuación de la recta presupuestaria</div>
+      Y = P<sub>j</sub> · Q<sub>j</sub> + P<sub>h</sub> · Q<sub>h</sub>
+    </div>
+
+    <div class="example-box">
+      <div class="et"><i data-lucide="calculator" style="width:16px;height:16px;display:inline"></i> Ejemplo numérico</div>
+      <p>Ingreso = $100, Precio jugo = $10, Precio helado = $20.</p>
+      <p>Si gasta todo en jugo: 100/10 = <strong>10 jugos</strong>. Si gasta todo en helado: 100/20 = <strong>5 helados</strong>.<br>
+      Combinaciones intermedias: (0,5), (4,3), (6,2), (8,1), (10,0).</p>
+    </div>
+
+    <h3>Desplazamientos de la recta presupuestaria</h3>
+    <table>
+      <tr><th>Cambio</th><th>Efecto</th></tr>
+      <tr><td>Aumenta el ingreso (precios ctes.)</td><td>Desplazamiento <strong>paralelo</strong> a la derecha</td></tr>
+      <tr><td>Disminuye el ingreso</td><td>Desplazamiento <strong>paralelo</strong> a la izquierda</td></tr>
+      <tr><td>Precios de ambos bienes varían en la misma proporción</td><td>Desplazamiento paralelo</td></tr>
+      <tr><td>Baja el precio de UN bien</td><td><strong>Gira</strong> sobre el eje del otro bien (aumenta el poder de compra de ese bien)</td></tr>
+    </table>
+
+    <h3>Equilibrio del Consumidor</h3>
+    <p>Combinación donde el consumidor <strong>maximiza su utilidad</strong> dada su restricción presupuestaria. Gráficamente: punto de <strong>tangencia</strong> entre la recta presupuestaria y la curva de indiferencia más alta accesible.</p>
+
+    <div class="graph-wrap">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="260" x2="370" y2="260" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="50" y1="260" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="50" y1="60" x2="320" y2="260" stroke="var(--red)" stroke-width="2.5"/>
+        <text x="260" y="55" font-size="11" fill="var(--red)" font-weight="600">Recta presupuestaria</text>
+        <path d="M 70 50 Q 85 130 150 180 Q 250 230 360 250" stroke="var(--graph-line)" fill="none" stroke-width="2" opacity=".4"/>
+        <path d="M 80 90 Q 120 145 185 175 Q 260 220 370 250" stroke="var(--graph-line)" fill="none" stroke-width="2.5"/>
+        <text x="350" y="230" font-size="11" fill="var(--graph-line)">I₂</text>
+        <path d="M 90 180 Q 160 215 250 240 Q 320 255 370 268" stroke="var(--graph-line)" fill="none" stroke-width="2" opacity=".4"/>
+        <text x="355" y="250" font-size="11" fill="var(--graph-line)" opacity=".6">I₁</text>
+        <circle cx="185" cy="175" r="6" fill="var(--amber)"/>
+        <text x="195" y="170" font-size="13" fill="var(--text)" font-weight="700">E</text>
+        <text x="200" y="290" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Jugo</text>
+        <text x="25" y="150" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 25 150)">Helado</text>
+      </svg>
+      <div class="gcap">Equilibrio en E: máxima utilidad alcanzable (I₂) dado el presupuesto</div>
+    </div>
+
+    <h3>Condición de equilibrio</h3>
+    <div class="formula-box">
+      <div class="fk">Ley de igualdad de las UMg ponderadas</div>
+      TMS = P<sub>x</sub>/P<sub>y</sub> &nbsp; → &nbsp; UMg<sub>x</sub>/P<sub>x</sub> = UMg<sub>y</sub>/P<sub>y</sub>
+    </div>
+
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 2.2</div>
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>1.</strong> Un aumento del ingreso desplaza la recta presupuestaria paralelamente hacia la derecha (sin cambiar su pendiente).</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>VERDADERO.</strong> El cambio en ingreso (manteniendo precios) desplaza paralelo porque la pendiente (cociente de precios) no cambia.</p></details>
+      </div>
+      <div class="q" data-val="num" data-ans="8">
+        <div class="q-stem"><strong>2.</strong> Con ingreso=$200, P<sub>café</sub>=$25 y P<sub>té</sub>=$10: si el consumidor gasta todo en café, ¿cuántos puede comprar?</div>
+        <div class="q-in"><span class="q-label">Q =</span><input class="vld" type="number" placeholder="unidades"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>Q<sub>max</sub> = Y/P = 200/25 = <strong>8 cafés</strong></p></details>
+      </div>
+      <div class="q" data-val="sel" data-ans="tangencia">
+        <div class="q-stem"><strong>3.</strong> Gráficamente, el equilibrio del consumidor se encuentra en el punto de ______ entre la recta presupuestaria y la curva de indiferencia.</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="corte">corte</option><option value="tangencia">tangencia</option><option value="origen">origen</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Tangencia.</strong> En el punto donde la recta presupuestaria es tangente a la curva de indiferencia más alta alcanzable, se maximiza la utilidad.</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2.3 Utilidad total y marginal -->
+<div class="section" data-topic="t8">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="trending-up" style="width:18px;height:18px"></i> 2.3 · Utilidad Total y Marginal</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <p><strong>Utilidad</strong>: sentimiento subjetivo de placer o satisfacción al consumir un bien. Los consumidores maximizan su utilidad.</p>
+
+    <h3>Utilidad Total (UT)</h3>
+    <p>Satisfacción total al consumir una cierta cantidad del bien. Aumenta al consumir más, pero a un <strong>ritmo decreciente</strong>.</p>
+
+    <h3>Utilidad Marginal (UMg)</h3>
+    <p>Satisfacción <strong>adicional</strong> al consumir <strong>una unidad más</strong> del bien.</p>
+    <div class="formula-box">
+      <div class="fk">Fórmula Utilidad Marginal</div>
+      UMg = ΔUT / ΔQ
+    </div>
+
+    <div class="alert alert-info">
+      <div class="at"><i data-lucide="trending-down" style="width:16px;height:16px"></i> Ley de la Utilidad Marginal Decreciente</div>
+      Cuanto más se consume de un bien, <strong>menos satisfacción adicional</strong> reporta cada nueva unidad. Por eso los consumidores diversifican sus compras.
+    </div>
+
+    <div class="example-box">
+      <div class="et"><i data-lucide="ice-cream" style="width:16px;height:16px;display:inline"></i> Ejemplo: consumo de helado</div>
+      <table style="font-size:.85em">
+        <tr><th>Kilos</th><th>UT</th><th>UMg</th></tr>
+        <tr><td>0</td><td>0</td><td>—</td></tr>
+        <tr><td>1</td><td>100</td><td>100</td></tr>
+        <tr><td>2</td><td>180</td><td>80</td></tr>
+        <tr><td>3</td><td>240</td><td>60</td></tr>
+        <tr><td>4</td><td>280</td><td>40</td></tr>
+        <tr><td>5</td><td>300</td><td>20</td></tr>
+      </table>
+      <p>UT crece, pero UMg decrece: el 5to kilo solo añade 20 útiles.</p>
+    </div>
+
+    <div class="graph-wrap">
+      <svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <line x1="40" y1="210" x2="230" y2="210" stroke="var(--graph-axis)" stroke-width="2"/>
+          <line x1="40" y1="210" x2="40" y2="20" stroke="var(--graph-axis)" stroke-width="2"/>
+          <path d="M 40 210 Q 90 80 160 35 Q 200 25 225 22" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
+          <text x="135" y="15" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">UT (creciente y cóncava)</text>
+          <text x="135" y="240" text-anchor="middle" font-size="11" fill="var(--text)">Q consumido</text>
+        </g>
+        <g transform="translate(260,0)">
+          <line x1="40" y1="210" x2="230" y2="210" stroke="var(--graph-axis)" stroke-width="2"/>
+          <line x1="40" y1="210" x2="40" y2="20" stroke="var(--graph-axis)" stroke-width="2"/>
+          <line x1="40" y1="30" x2="225" y2="200" stroke="var(--graph-line2)" stroke-width="3"/>
+          <text x="135" y="15" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">UMg (decreciente)</text>
+          <text x="135" y="240" text-anchor="middle" font-size="11" fill="var(--text)">Q consumido</text>
+        </g>
+      </svg>
+      <div class="gcap">UT crece pero cada vez más lento; UMg es decreciente por la ley de utilidad marginal decreciente</div>
+    </div>
+
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 2.3</div>
+      <div class="q" data-val="num" data-ans="30">
+        <div class="q-stem"><strong>1.</strong> Si la UT al consumir 3 alfajores es 150 y al consumir 4 es 180, ¿cuál es la UMg del 4to alfajor?</div>
+        <div class="q-in"><span class="q-label">UMg =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>UMg = ΔUT/ΔQ = (180−150)/(4−3) = 30/1 = <strong>30</strong></p></details>
+      </div>
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>2.</strong> Según la ley de utilidad marginal decreciente, la UTILIDAD TOTAL decrece al consumir más unidades.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>FALSO.</strong> La UT sigue CRECIENDO (pero a ritmo decreciente). Lo que decrece es la Utilidad <em>Marginal</em>.</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2.4 Demanda -->
+<div class="section" data-topic="t9">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="shopping-cart" style="width:18px;height:18px"></i> 2.4 · Demanda · Curva · Desplazamientos · Excedente del Consumidor</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <h3>Demanda</h3>
+    <p><strong>Demandar</strong> = estar dispuesto a comprar (intención + capacidad). La <strong>cantidad demandada</strong> es la cantidad que los compradores quieren y pueden adquirir.</p>
+
+    <div class="alert alert-info">
+      <div class="at"><i data-lucide="scale" style="width:16px;height:16px"></i> Ley de la Demanda</div>
+      Relación <strong>inversa</strong> entre precio y cantidad demandada: ↑P → ↓Q; ↓P → ↑Q (ceteris paribus).
+    </div>
+
+    <h3>Función de demanda</h3>
+    <div class="formula-box">
+      <div class="fk">Función de demanda</div>
+      Q<sub>A</sub> = D (P<sub>A</sub>, Y, P<sub>B</sub>, G, N)
+    </div>
+    <p style="font-size:.88em">Donde: P<sub>A</sub> = precio del bien, Y = ingreso, P<sub>B</sub> = precios de otros bienes, G = gustos, N = tamaño del mercado</p>
+
+    <h3>Curva de demanda</h3>
+    <div class="graph-wrap">
+      <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="240" x2="370" y2="240" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="50" y1="240" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="70" y1="50" x2="340" y2="230" stroke="var(--graph-line)" stroke-width="3"/>
+        <text x="345" y="235" font-size="11" fill="var(--graph-line)" font-weight="600">D</text>
+        <circle cx="150" cy="105" r="4" fill="var(--amber)"/>
+        <line x1="50" y1="105" x2="150" y2="105" stroke="var(--muted)" stroke-dasharray="3 3"/>
+        <line x1="150" y1="240" x2="150" y2="105" stroke="var(--muted)" stroke-dasharray="3 3"/>
+        <text x="25" y="110" font-size="11" fill="var(--text)">P₁</text>
+        <text x="145" y="258" font-size="11" fill="var(--text)">Q₁</text>
+        <text x="200" y="275" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Cantidad (Q)</text>
+        <text x="25" y="140" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 25 140)">Precio (P)</text>
+      </svg>
+      <div class="gcap">Curva de demanda de pendiente negativa (ley de demanda)</div>
+    </div>
+
+    <h3>Movimiento vs Desplazamiento</h3>
+    <table>
+      <tr><th>Cambio en...</th><th>Origina...</th></tr>
+      <tr><td>Precio del propio bien</td><td><strong>Movimiento A LO LARGO</strong> de la curva</td></tr>
+      <tr><td>Ingreso, precios relacionados, gustos, tamaño de mercado, número de compradores</td><td><strong>DESPLAZAMIENTO</strong> de la curva (aumenta → a la derecha; disminuye → a la izquierda)</td></tr>
+    </table>
+
+    <h3>Excedente del consumidor</h3>
+    <p>Diferencia entre lo que el consumidor <strong>estaría dispuesto a pagar</strong> (utilidad total) y lo que <strong>efectivamente paga</strong> en el mercado.</p>
+
+    <div class="graph-wrap">
+      <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="240" x2="370" y2="240" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="50" y1="240" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <polygon points="50,50 50,170 200,170" fill="var(--accent-l)" stroke="none" opacity=".6"/>
+        <text x="110" y="130" font-size="11" fill="var(--accent-d)" font-weight="700">Excedente</text>
+        <text x="110" y="145" font-size="11" fill="var(--accent-d)" font-weight="700">del consumidor</text>
+        <line x1="70" y1="50" x2="340" y2="230" stroke="var(--graph-line)" stroke-width="3"/>
+        <line x1="50" y1="170" x2="340" y2="170" stroke="var(--red)" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="345" y="175" font-size="11" fill="var(--red)" font-weight="600">P₀</text>
+        <text x="345" y="235" font-size="11" fill="var(--graph-line)" font-weight="600">D</text>
+        <text x="200" y="272" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Cantidad</text>
+        <text x="25" y="140" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 25 140)">Precio</text>
+      </svg>
+      <div class="gcap">Área entre la curva de demanda y el precio de mercado = excedente del consumidor</div>
+    </div>
+
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 2.4</div>
+      <div class="q" data-val="sel" data-ans="desplazamiento">
+        <div class="q-stem"><strong>1.</strong> Cuando aumentan los gustos de los consumidores por un bien, la curva de demanda:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="movimiento">tiene un movimiento a lo largo de ella</option><option value="desplazamiento">se desplaza (hacia la derecha)</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Se desplaza a la derecha.</strong> Los cambios en variables distintas al precio (gustos, ingreso, etc.) DESPLAZAN la curva. Solo los cambios en el precio originan un movimiento a lo largo.</p></details>
+      </div>
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>2.</strong> El excedente del consumidor surge porque el consumidor paga menos en el mercado de lo que estaría dispuesto a pagar por el bien.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>VERDADERO.</strong> El excedente es la diferencia entre la disposición a pagar y lo efectivamente pagado.</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2.5 Elasticidad precio -->
+<div class="section" data-topic="t10">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="activity" style="width:18px;height:18px"></i> 2.5 · Elasticidad-Precio de la Demanda · Categorías</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <p>La <strong>elasticidad</strong> mide la sensibilidad de la cantidad demandada ante cambios en el precio (o en otra variable). Permite cuantificar cuánto "reacciona" la demanda.</p>
+
+    <div class="formula-box">
+      <div class="fk">Elasticidad-precio de la demanda</div>
+      E<sub>p</sub> = (ΔQ/Q) / (ΔP/P) = <span style="font-size:.9em">% var. cantidad / % var. precio</span>
+    </div>
+
+    <div class="alert alert-warn">
+      <div class="at"><i data-lucide="info" style="width:16px;height:16px"></i> Signo</div>
+      Como la pendiente de la demanda es negativa, E<sub>p</sub> sale negativa. Por convención se usa su <strong>valor absoluto</strong>.
+    </div>
+
+    <h3>Las 5 categorías de elasticidad</h3>
+    <div class="formula-sheet">
+      <div class="formula-card">
+        <h4>a) Elástica</h4>
+        <div class="f-eq">|E<sub>p</sub>| &gt; 1</div>
+        <div class="f-desc">↓P 1% → ↑Q &gt; 1% (la cantidad responde más que el precio)</div>
+      </div>
+      <div class="formula-card">
+        <h4>b) Elasticidad unitaria</h4>
+        <div class="f-eq">|E<sub>p</sub>| = 1</div>
+        <div class="f-desc">↓P 1% → ↑Q 1% exactamente</div>
+      </div>
+      <div class="formula-card">
+        <h4>c) Inelástica</h4>
+        <div class="f-eq">|E<sub>p</sub>| &lt; 1</div>
+        <div class="f-desc">↓P 1% → ↑Q &lt; 1% (poco sensible)</div>
+      </div>
+      <div class="formula-card" style="border-color:var(--red)">
+        <h4>d) Perfectamente inelástica (rígida)</h4>
+        <div class="f-eq">|E<sub>p</sub>| = 0</div>
+        <div class="f-desc">ΔP no cambia Q. Curva vertical. Ej: sal, insulina</div>
+      </div>
+      <div class="formula-card" style="border-color:var(--green)">
+        <h4>e) Perfectamente elástica</h4>
+        <div class="f-eq">|E<sub>p</sub>| = ∞</div>
+        <div class="f-desc">Curva horizontal. Cualquier cambio en P colapsa Q</div>
+      </div>
+    </div>
+
+    <div class="graph-wrap">
+      <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+        <!-- inelastica perfecta -->
+        <g transform="translate(0,10)">
+          <line x1="40" y1="180" x2="150" y2="180" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="40" y1="180" x2="40" y2="30" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="95" y1="35" x2="95" y2="180" stroke="var(--red)" stroke-width="3"/>
+          <text x="95" y="200" text-anchor="middle" font-size="10" fill="var(--text)">Ep=0</text>
+          <text x="95" y="215" text-anchor="middle" font-size="9" fill="var(--muted)">Rígida</text>
+        </g>
+        <!-- inelastica -->
+        <g transform="translate(155,10)">
+          <line x1="40" y1="180" x2="150" y2="180" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="40" y1="180" x2="40" y2="30" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="60" y1="35" x2="140" y2="180" stroke="var(--amber)" stroke-width="3"/>
+          <text x="95" y="200" text-anchor="middle" font-size="10" fill="var(--text)">Ep&lt;1</text>
+          <text x="95" y="215" text-anchor="middle" font-size="9" fill="var(--muted)">Inelástica</text>
+        </g>
+        <!-- unitaria -->
+        <g transform="translate(310,10)">
+          <line x1="40" y1="180" x2="150" y2="180" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="40" y1="180" x2="40" y2="30" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <path d="M 50 40 Q 70 80 140 175" stroke="var(--purple)" fill="none" stroke-width="3"/>
+          <text x="95" y="200" text-anchor="middle" font-size="10" fill="var(--text)">Ep=1</text>
+          <text x="95" y="215" text-anchor="middle" font-size="9" fill="var(--muted)">Unitaria</text>
+        </g>
+        <!-- elastica -->
+        <g transform="translate(465,10)">
+          <line x1="40" y1="180" x2="150" y2="180" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="40" y1="180" x2="40" y2="30" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="45" y1="40" x2="145" y2="100" stroke="var(--cyan)" stroke-width="3"/>
+          <text x="95" y="200" text-anchor="middle" font-size="10" fill="var(--text)">Ep&gt;1</text>
+          <text x="95" y="215" text-anchor="middle" font-size="9" fill="var(--muted)">Elástica</text>
+        </g>
+      </svg>
+      <div class="gcap">Casos extremos y categorías intermedias de elasticidad-precio</div>
+    </div>
+
+    <h3>Factores condicionantes de la elasticidad</h3>
+    <ol>
+      <li><strong>Tipo de necesidad</strong>: bienes de primera necesidad → inelásticos; bienes de lujo → elásticos</li>
+      <li><strong>Disponibilidad de sustitutos</strong>: más sustitutos → más elástica</li>
+      <li><strong>Proporción del ingreso gastada</strong>: mayor proporción → más elástica</li>
+      <li><strong>Período considerado</strong>: a mayor plazo, mayor elasticidad (tiempo para adaptar consumo)</li>
+    </ol>
+
+    <h3>Elasticidad en arco (punto medio)</h3>
+    <div class="formula-box">
+      <div class="fk">Método del punto medio</div>
+      E<sub>p</sub> = (ΔQ/ΔP) · (P₁+P₂) / (Q₁+Q₂)
+    </div>
+    <p style="font-size:.88em">Resuelve la indeterminación: daría distinto si parto de A o de B.</p>
+
+    <h3>Elasticidad y el Ingreso Total</h3>
+    <div class="formula-box">
+      <div class="fk">Ingreso Total</div>
+      IT = P · Q
+    </div>
+    <table>
+      <tr><th>Si E<sub>p</sub> es...</th><th>Al bajar el precio, el IT...</th><th>Por qué</th></tr>
+      <tr><td>&gt; 1 (elástica)</td><td>↑ <strong>aumenta</strong></td><td>Q crece más que P baja</td></tr>
+      <tr><td>= 1 (unitaria)</td><td>↔ <strong>no cambia</strong></td><td>MÁXIMO ingreso</td></tr>
+      <tr><td>&lt; 1 (inelástica)</td><td>↓ <strong>disminuye</strong></td><td>Q crece menos que P baja</td></tr>
+    </table>
+
+    <div class="alert alert-success">
+      <div class="at"><i data-lucide="target" style="width:16px;height:16px"></i> Maximización del ingreso</div>
+      El IT se <strong>maximiza</strong> cuando la elasticidad es <strong>unitaria</strong> (E<sub>p</sub> = 1).
+    </div>
+
+    <div class="calc-widget">
+      <h4><i data-lucide="sliders-horizontal" style="width:18px;height:18px"></i> Simulador de elasticidad-precio</h4>
+      <div class="inputs">
+        <div class="input-g">
+          <label>% Variación del precio (ΔP/P): <span id="elPLab">10</span>%</label>
+          <input type="range" id="elP" min="-50" max="50" value="10" step="1">
+        </div>
+        <div class="input-g">
+          <label>% Variación de la cantidad (ΔQ/Q): <span id="elQLab">-20</span>%</label>
+          <input type="range" id="elQ" min="-80" max="80" value="-20" step="1">
+        </div>
+      </div>
+      <div class="result" id="elResult">|Ep| = <strong>2.00</strong> <span class="rtag">Elástica</span></div>
+      <p style="font-size:.82em;color:var(--text2);text-align:center;margin-top:8px">Movete los sliders y mirá cómo cambia la clasificación.</p>
+    </div>
+
+    <div class="excel-card">
+      <h4><i data-lucide="file-spreadsheet" style="width:16px;height:16px"></i> Elasticidad-precio en Excel</h4>
+      <p style="font-size:.88em;margin:4px 0 8px">Con P₁ en A1, P₂ en B1, Q₁ en C1, Q₂ en D1:</p>
+      <div class="excel-formula">ABS((D1-C1)/(B1-A1)) * ((A1+B1)/(C1+D1))</div>
+      <p class="excel-desc">Fórmula de elasticidad en arco (punto medio). ABS devuelve el valor absoluto para trabajar siempre positivo.</p>
+      <div class="excel-formula">IF(G1&gt;1,"Elástica",IF(G1=1,"Unitaria","Inelástica"))</div>
+      <p class="excel-desc">Si en G1 tenés |Ep|, esta fórmula clasifica automáticamente.</p>
+    </div>
+
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 2.5 (elasticidad-precio)</div>
+      <div class="q" data-val="num" data-ans="2" data-tol="0.05">
+        <div class="q-stem"><strong>1.</strong> Si el precio baja 5% y la cantidad demandada sube 10%, ¿cuánto vale la elasticidad-precio (valor absoluto)?</div>
+        <div class="q-in"><span class="q-label">|Ep| =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>|Ep| = 10% / 5% = <strong>2</strong>. La demanda es <em>elástica</em> (&gt;1).</p></details>
+      </div>
+      <div class="q" data-val="sel" data-ans="inelastica">
+        <div class="q-stem"><strong>2.</strong> La demanda de insulina (para diabéticos) es un ejemplo clásico de elasticidad:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="elastica">elástica</option><option value="unitaria">unitaria</option><option value="inelastica">perfectamente inelástica (rígida)</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Perfectamente inelástica.</strong> Es un bien de primera necesidad sin sustitutos: los pacientes compran la cantidad requerida sea cual sea el precio.</p></details>
+      </div>
+      <div class="q" data-val="sel" data-ans="aumenta">
+        <div class="q-stem"><strong>3.</strong> Si la demanda es ELÁSTICA y una empresa baja el precio de su producto, el ingreso total:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="aumenta">aumenta</option><option value="disminuye">disminuye</option><option value="igual">queda igual</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Aumenta.</strong> Con Ep&gt;1, el aumento porcentual de Q supera a la baja porcentual de P, por lo que P·Q crece.</p></details>
+      </div>
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>4.</strong> A largo plazo la demanda tiende a ser más elástica que a corto plazo.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>VERDADERO.</strong> A largo plazo los consumidores tienen tiempo para adaptar su conducta (encontrar sustitutos, cambiar tecnología).</p></details>
+      </div>
+      <div class="q" data-val="sel" data-ans="unitaria">
+        <div class="q-stem"><strong>5.</strong> ¿Cuál es la elasticidad que MAXIMIZA el ingreso total (IT)?</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="elastica">|Ep| &gt; 1</option><option value="unitaria">|Ep| = 1</option><option value="inelastica">|Ep| &lt; 1</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Unitaria (|Ep|=1).</strong> En el punto medio de la curva de demanda lineal se maximiza P·Q.</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2.6 Elasticidad cruzada, ingreso, Engel -->
+<div class="section" data-topic="t11">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="split" style="width:18px;height:18px"></i> 2.6 · Elasticidad Cruzada · Elasticidad Ingreso · Curva de Engel</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <h3>Elasticidad cruzada</h3>
+    <p>Mide cuánto reacciona la cantidad demandada de un bien <strong>i</strong> ante cambios en el precio de un bien <strong>j</strong>.</p>
+    <div class="formula-box">
+      <div class="fk">Elasticidad cruzada</div>
+      E<sub>ij</sub> = (ΔQ<sub>i</sub>/Q<sub>i</sub>) / (ΔP<sub>j</sub>/P<sub>j</sub>)
+    </div>
+
+    <table>
+      <tr><th>Signo de E<sub>ij</sub></th><th>Relación</th><th>Ejemplo</th></tr>
+      <tr><td>E<sub>ij</sub> &gt; 0 (positiva)</td><td><strong>Sustitutos</strong></td><td>Café ↑ precio → té ↑ demanda</td></tr>
+      <tr><td>E<sub>ij</sub> &lt; 0 (negativa)</td><td><strong>Complementarios</strong></td><td>Nafta ↑ precio → autos ↓ demanda</td></tr>
+      <tr><td>E<sub>ij</sub> = 0 (nula)</td><td><strong>Independientes</strong></td><td>No hay relación</td></tr>
+    </table>
+
+    <h3>Elasticidad-ingreso</h3>
+    <div class="formula-box">
+      <div class="fk">Elasticidad-ingreso</div>
+      E<sub>Y</sub> = (ΔQ/Q) / (ΔY/Y)
+    </div>
+
+    <table>
+      <tr><th>Signo y valor de E<sub>Y</sub></th><th>Clasificación</th></tr>
+      <tr><td>E<sub>Y</sub> &gt; 0</td><td><strong>Bien normal</strong> (sube la demanda con el ingreso)</td></tr>
+      <tr><td>E<sub>Y</sub> &lt; 0</td><td><strong>Bien inferior</strong> (baja la demanda con el ingreso)</td></tr>
+      <tr><td>E<sub>Y</sub> &gt; 1</td><td><strong>Bien de lujo</strong> (normal de elasticidad alta)</td></tr>
+      <tr><td>0 &lt; E<sub>Y</sub> &lt; 1</td><td><strong>Bien de primera necesidad</strong></td></tr>
+    </table>
+
+    <h3>Curva de Engel</h3>
+    <p>Muestra cómo varía la demanda de un bien al cambiar el ingreso (precios de otros bienes ctes.).</p>
+    <div class="graph-wrap">
+      <svg viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <line x1="40" y1="220" x2="230" y2="220" stroke="var(--graph-axis)" stroke-width="2"/>
+          <line x1="40" y1="220" x2="40" y2="20" stroke="var(--graph-axis)" stroke-width="2"/>
+          <line x1="55" y1="200" x2="220" y2="40" stroke="var(--green)" stroke-width="3"/>
+          <text x="135" y="15" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Bien normal</text>
+          <text x="135" y="245" text-anchor="middle" font-size="10" fill="var(--text)">Consumo</text>
+          <text x="25" y="120" text-anchor="middle" font-size="10" fill="var(--text)" transform="rotate(-90 25 120)">Ingreso</text>
+        </g>
+        <g transform="translate(260,0)">
+          <line x1="40" y1="220" x2="230" y2="220" stroke="var(--graph-axis)" stroke-width="2"/>
+          <line x1="40" y1="220" x2="40" y2="20" stroke="var(--graph-axis)" stroke-width="2"/>
+          <line x1="55" y1="40" x2="220" y2="200" stroke="var(--red)" stroke-width="3"/>
+          <text x="135" y="15" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Bien inferior</text>
+          <text x="135" y="245" text-anchor="middle" font-size="10" fill="var(--text)">Consumo</text>
+          <text x="25" y="120" text-anchor="middle" font-size="10" fill="var(--text)" transform="rotate(-90 25 120)">Ingreso</text>
+        </g>
+      </svg>
+      <div class="gcap">Curva de Engel con pendiente positiva (normal) o negativa (inferior)</div>
+    </div>
+
+    <div class="quiz-block">
+      <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 2.6</div>
+      <div class="q" data-val="sel" data-ans="sustitutos">
+        <div class="q-stem"><strong>1.</strong> La elasticidad cruzada entre Coca-Cola y Pepsi sería POSITIVA. Eso indica que son bienes:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="sustitutos">sustitutos</option><option value="complementarios">complementarios</option><option value="independientes">independientes</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Sustitutos.</strong> Si sube el precio de Coca, sube la demanda de Pepsi (signo +). Complementarios tendrían signo negativo (nafta-autos).</p></details>
+      </div>
+      <div class="q" data-val="sel" data-ans="lujo">
+        <div class="q-stem"><strong>2.</strong> Un bien cuya elasticidad-ingreso es 1.8 es clasificado como:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="inferior">inferior</option><option value="necesidad">primera necesidad</option><option value="lujo">de lujo</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>De lujo.</strong> EY &gt; 1 indica que la demanda crece más que proporcionalmente al ingreso (típico de bienes de lujo).</p></details>
+      </div>
+      <div class="q" data-val="num" data-ans="-0.5" data-tol="0.05">
+        <div class="q-stem"><strong>3.</strong> Si al subir el precio de la nafta 10%, la demanda de autos baja 5%, ¿cuál es la elasticidad cruzada entre autos y nafta? (con signo)</div>
+        <div class="q-in"><span class="q-label">E =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>E = (−5%) / (+10%) = <strong>−0.5</strong>. Signo negativo → son complementarios (nafta y autos).</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- FORMULA SHEET -->
+<!-- ============================================= -->
+<div class="unit-hero" id="formulas" style="background:linear-gradient(135deg,#0891b2,#0d9488)">
+  <h2><i data-lucide="function-square" style="width:20px;height:20px;display:inline"></i> Fórmulas Clave</h2>
+  <p>Todas las fórmulas que entran en el parcial, listas para memorizar</p>
+</div>
+<div class="formula-sheet">
+  <div class="formula-card">
+    <h4>Demanda Agregada</h4>
+    <div class="f-eq">DA = C + I + G + (X − M)</div>
+    <div class="f-desc">Consumo + Inversión + Gasto público + Exportaciones netas</div>
+  </div>
+  <div class="formula-card">
+    <h4>Ingreso Nacional</h4>
+    <div class="f-eq">IN = PIB + RRN − RRE</div>
+    <div class="f-desc">PIB + Rentas nac. en exterior − Rentas ext. en el país</div>
+  </div>
+  <div class="formula-card">
+    <h4>Costo de oportunidad (FPP)</h4>
+    <div class="f-eq">CO = ΔBien Y / ΔBien X</div>
+    <div class="f-desc">Unidades de Y a las que se renuncia por 1 más de X</div>
+  </div>
+  <div class="formula-card">
+    <h4>Recta presupuestaria</h4>
+    <div class="f-eq">Y = P<sub>x</sub>·Q<sub>x</sub> + P<sub>y</sub>·Q<sub>y</sub></div>
+    <div class="f-desc">Ingreso total gastado en dos bienes</div>
+  </div>
+  <div class="formula-card">
+    <h4>Tasa Marginal de Sustitución</h4>
+    <div class="f-eq">TMS<sub>xy</sub> = UMg<sub>x</sub>/UMg<sub>y</sub> = P<sub>x</sub>/P<sub>y</sub></div>
+    <div class="f-desc">Pendiente de la curva de indiferencia</div>
+  </div>
+  <div class="formula-card">
+    <h4>Equilibrio del consumidor</h4>
+    <div class="f-eq">UMg<sub>x</sub>/P<sub>x</sub> = UMg<sub>y</sub>/P<sub>y</sub></div>
+    <div class="f-desc">Ley de igualdad de UMg ponderadas</div>
+  </div>
+  <div class="formula-card">
+    <h4>Utilidad Marginal</h4>
+    <div class="f-eq">UMg = ΔUT / ΔQ</div>
+    <div class="f-desc">Satisfacción adicional por unidad extra</div>
+  </div>
+  <div class="formula-card">
+    <h4>Elasticidad-precio</h4>
+    <div class="f-eq">E<sub>p</sub> = (ΔQ/Q) ÷ (ΔP/P)</div>
+    <div class="f-desc">|Ep|&gt;1 elástica · =1 unitaria · &lt;1 inelástica</div>
+  </div>
+  <div class="formula-card">
+    <h4>Elasticidad en el arco</h4>
+    <div class="f-eq">E<sub>p</sub> = (ΔQ/ΔP) · (P₁+P₂)/(Q₁+Q₂)</div>
+    <div class="f-desc">Método del punto medio</div>
+  </div>
+  <div class="formula-card">
+    <h4>Elasticidad en el punto</h4>
+    <div class="f-eq">E<sub>p</sub> = (ΔQ/ΔP) · (P/Q)</div>
+    <div class="f-desc">Elasticidad en una coordenada específica</div>
+  </div>
+  <div class="formula-card">
+    <h4>Ingreso Total</h4>
+    <div class="f-eq">IT = P · Q</div>
+    <div class="f-desc">Máximo cuando |Ep| = 1</div>
+  </div>
+  <div class="formula-card">
+    <h4>Elasticidad cruzada</h4>
+    <div class="f-eq">E<sub>ij</sub> = (ΔQ<sub>i</sub>/Q<sub>i</sub>) ÷ (ΔP<sub>j</sub>/P<sub>j</sub>)</div>
+    <div class="f-desc">&gt;0 sustitutos · &lt;0 complementarios · =0 independientes</div>
+  </div>
+  <div class="formula-card">
+    <h4>Elasticidad-ingreso</h4>
+    <div class="f-eq">E<sub>Y</sub> = (ΔQ/Q) ÷ (ΔY/Y)</div>
+    <div class="f-desc">&gt;0 normal · &lt;0 inferior · &gt;1 lujo</div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- EXCEL + VIDEOS -->
+<!-- ============================================= -->
+<div class="unit-hero" id="excel" style="background:linear-gradient(135deg,#15803d,#16a34a,#22c55e)">
+  <h2><i data-lucide="file-spreadsheet" style="width:20px;height:20px;display:inline"></i> Excel · Fórmulas + Tutoriales</h2>
+  <p>Todas las fórmulas listas para copiar/pegar en Excel o Google Sheets</p>
+</div>
+
+<div class="section" data-topic="t12">
+  <div class="section-header active" onclick="toggleSection(this)">
+    <h2><i data-lucide="table" style="width:18px;height:18px"></i> Fórmulas Excel del parcial</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body open">
+
+    <div class="excel-card">
+      <h4>Demanda Agregada</h4>
+      <div class="excel-formula">A1+B1+C1+(D1-E1)</div>
+      <p class="excel-desc">Donde A1=C, B1=I, C1=G, D1=X, E1=M</p>
+    </div>
+
+    <div class="excel-card">
+      <h4>Ingreso Nacional</h4>
+      <div class="excel-formula">A1+B1-C1</div>
+      <p class="excel-desc">Donde A1=PIB, B1=RRN, C1=RRE</p>
+    </div>
+
+    <div class="excel-card">
+      <h4>Utilidad Marginal</h4>
+      <div class="excel-formula">(B2-B1)/(A2-A1)</div>
+      <p class="excel-desc">Donde A=cantidad consumida y B=utilidad total. Arrastrar hacia abajo para cada unidad.</p>
+    </div>
+
+    <div class="excel-card">
+      <h4>Elasticidad-precio (en el punto)</h4>
+      <div class="excel-formula">ABS(((C2-C1)/C1) / ((B2-B1)/B1))</div>
+      <p class="excel-desc">Donde B=precio y C=cantidad. ABS para trabajar en positivo.</p>
+    </div>
+
+    <div class="excel-card">
+      <h4>Elasticidad-precio (en arco / punto medio)</h4>
+      <div class="excel-formula">ABS((C2-C1)/(B2-B1)) * ((B1+B2)/(C1+C2))</div>
+      <p class="excel-desc">Usa promedio entre los dos puntos. Evita indeterminación A→B vs B→A.</p>
+    </div>
+
+    <div class="excel-card">
+      <h4>Ingreso Total</h4>
+      <div class="excel-formula">A1*B1</div>
+      <p class="excel-desc">Donde A1=precio y B1=cantidad. Para maximizar: probar distintos precios y ver dónde IT es máximo.</p>
+    </div>
+
+    <div class="excel-card">
+      <h4>Elasticidad cruzada</h4>
+      <div class="excel-formula">((D2-D1)/D1) / ((B2-B1)/B1)</div>
+      <p class="excel-desc">Sin ABS (el signo importa): B=precio bien j, D=cantidad bien i. Resultado positivo = sustitutos; negativo = complementarios.</p>
+    </div>
+
+    <div class="excel-card">
+      <h4>Elasticidad-ingreso</h4>
+      <div class="excel-formula">((C2-C1)/C1) / ((B2-B1)/B1)</div>
+      <p class="excel-desc">B=ingreso, C=cantidad. Positivo=normal; Negativo=inferior; &gt;1=lujo.</p>
+    </div>
+
+    <div class="excel-card">
+      <h4>Clasificador automático (IF anidado)</h4>
+      <div class="excel-formula">IF(ABS(A1)&gt;1,"Elástica",IF(ABS(A1)=1,"Unitaria","Inelástica"))</div>
+      <p class="excel-desc">Poné |Ep| en A1 y esta fórmula clasifica la demanda automáticamente.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="section" data-topic="t13">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="youtube" style="width:18px;height:18px"></i> Videos explicativos</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <p style="margin-bottom:10px">Tutoriales recomendados para reforzar los conceptos:</p>
+    <div class="video-row">
+      <div class="video-card">
+        <a class="video-link" href="https://www.youtube.com/results?search_query=frontera+posibilidades+produccion+FPP+economia" target="_blank" rel="noopener">
+          <strong>▶ FPP y Costo de Oportunidad</strong>
+          <span>Buscar en YouTube: "FPP economía explicación"</span>
+        </a>
+      </div>
+      <div class="video-card">
+        <a class="video-link" href="https://www.youtube.com/results?search_query=demanda+agregada+oferta+agregada+economia" target="_blank" rel="noopener">
+          <strong>▶ Demanda y Oferta Agregada</strong>
+          <span>Buscar: "demanda agregada macroeconomía"</span>
+        </a>
+      </div>
+      <div class="video-card">
+        <a class="video-link" href="https://www.youtube.com/results?search_query=curvas+de+indiferencia+microeconomia" target="_blank" rel="noopener">
+          <strong>▶ Curvas de indiferencia</strong>
+          <span>Buscar: "curvas de indiferencia ejemplos"</span>
+        </a>
+      </div>
+      <div class="video-card">
+        <a class="video-link" href="https://www.youtube.com/results?search_query=elasticidad+precio+demanda+ejercicios" target="_blank" rel="noopener">
+          <strong>▶ Elasticidad-precio</strong>
+          <span>Buscar: "elasticidad precio demanda ejercicios resueltos"</span>
+        </a>
+      </div>
+      <div class="video-card">
+        <a class="video-link" href="https://www.youtube.com/results?search_query=utilidad+total+marginal+microeconomia" target="_blank" rel="noopener">
+          <strong>▶ Utilidad total vs marginal</strong>
+          <span>Buscar: "utilidad marginal decreciente"</span>
+        </a>
+      </div>
+      <div class="video-card">
+        <a class="video-link" href="https://www.youtube.com/results?search_query=calcular+elasticidad+excel" target="_blank" rel="noopener">
+          <strong>▶ Calcular elasticidad en Excel</strong>
+          <span>Buscar: "elasticidad excel tutorial"</span>
+        </a>
+      </div>
+    </div>
+    <p style="font-size:.82em;color:var(--muted);margin-top:10px;font-style:italic">Los enlaces abren YouTube con una búsqueda pre-cargada. Elegí el que mejor te funcione para tu estilo de aprendizaje.</p>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- WIDGETS INTERACTIVOS -->
+<!-- ============================================= -->
+<div class="unit-hero" id="interactivo" style="background:linear-gradient(135deg,#db2777,#ec4899,#f472b6)">
+  <h2><i data-lucide="gamepad-2" style="width:20px;height:20px;display:inline"></i> Juegos de repaso</h2>
+  <p>Memotest de fórmulas y drag-drop de clasificación</p>
+</div>
+
+<div class="section" data-topic="t14">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="layers-2" style="width:18px;height:18px"></i> Memotest: fórmulas (tocá para girar)</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <p style="margin-bottom:12px">Tocá cada tarjeta para ver la fórmula del otro lado. Practicá a recordarla sin mirar.</p>
+    <div class="flashcard-deck">
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">¿Cómo se calcula la Demanda Agregada?<span class="fc-hint">tocá</span></div>
+          <div class="flashcard-back">DA = C + I + G + (X − M)</div>
+        </div>
+      </div>
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Fórmula del Ingreso Nacional<span class="fc-hint">tocá</span></div>
+          <div class="flashcard-back">IN = PIB + RRN − RRE</div>
+        </div>
+      </div>
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Elasticidad-precio de la demanda<span class="fc-hint">tocá</span></div>
+          <div class="flashcard-back">Ep = %ΔQ / %ΔP</div>
+        </div>
+      </div>
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Elasticidad en el arco (punto medio)<span class="fc-hint">tocá</span></div>
+          <div class="flashcard-back">Ep = (ΔQ/ΔP) · (P₁+P₂)/(Q₁+Q₂)</div>
+        </div>
+      </div>
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Equilibrio del consumidor<span class="fc-hint">tocá</span></div>
+          <div class="flashcard-back">UMgx/Px = UMgy/Py</div>
+        </div>
+      </div>
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Tasa Marginal de Sustitución<span class="fc-hint">tocá</span></div>
+          <div class="flashcard-back">TMS = UMgx/UMgy = Px/Py</div>
+        </div>
+      </div>
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Utilidad Marginal<span class="fc-hint">tocá</span></div>
+          <div class="flashcard-back">UMg = ΔUT / ΔQ</div>
+        </div>
+      </div>
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Recta presupuestaria<span class="fc-hint">tocá</span></div>
+          <div class="flashcard-back">Y = Px·Qx + Py·Qy</div>
+        </div>
+      </div>
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">Ingreso Total<span class="fc-hint">tocá</span></div>
+          <div class="flashcard-back">IT = P · Q<br><span style="font-size:.8em;color:var(--muted)">Máx en Ep=1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" data-topic="t15">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="move" style="width:18px;height:18px"></i> Drag-drop: clasificá bienes por tipo de ingreso</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <div class="dnd-wrap" id="dnd1">
+      <p style="font-size:.88em;margin-bottom:8px">Arrastrá cada bien al recipiente correcto. Pensá en cómo reaccionaría su demanda al aumentar el ingreso del consumidor.</p>
+      <div class="dnd-items" id="dnd1Pool">
+        <div class="dnd-item" draggable="true" data-bin="normal">Ropa de marca reconocida</div>
+        <div class="dnd-item" draggable="true" data-bin="lujo">Auto deportivo de alta gama</div>
+        <div class="dnd-item" draggable="true" data-bin="inferior">Pan de molde barato</div>
+        <div class="dnd-item" draggable="true" data-bin="lujo">Vacaciones en el Caribe</div>
+        <div class="dnd-item" draggable="true" data-bin="normal">Cortes de carne habituales</div>
+        <div class="dnd-item" draggable="true" data-bin="inferior">Transporte público (colectivo)</div>
+        <div class="dnd-item" draggable="true" data-bin="lujo">Perfume importado</div>
+        <div class="dnd-item" draggable="true" data-bin="normal">Zapatillas comunes</div>
+      </div>
+      <div class="dnd-bins">
+        <div class="dnd-bin" data-bin="inferior"><h5>📉 Bien inferior (Ey &lt; 0)</h5><div class="bitems"></div></div>
+        <div class="dnd-bin" data-bin="normal"><h5>📊 Bien normal (0 &lt; Ey &lt; 1)</h5><div class="bitems"></div></div>
+        <div class="dnd-bin" data-bin="lujo">💎 <h5>Bien de lujo (Ey &gt; 1)</h5><div class="bitems"></div></div>
+      </div>
+      <button class="dnd-check" onclick="checkDnd('dnd1')"><i data-lucide="check" style="width:14px;height:14px"></i> Validar</button>
+      <button class="dnd-check" style="background:var(--muted)" onclick="resetDnd('dnd1')"><i data-lucide="rotate-ccw" style="width:14px;height:14px"></i> Reiniciar</button>
+      <div id="dnd1Fb" style="margin-top:10px;font-weight:600"></div>
+    </div>
+
+    <div class="dnd-wrap" id="dnd2">
+      <p style="font-size:.88em;margin-bottom:8px">Arrastrá cada afirmación al tipo de economía correcto.</p>
+      <div class="dnd-items" id="dnd2Pool">
+        <div class="dnd-item" draggable="true" data-bin="positiva">"Si sube el precio del pan, baja su demanda"</div>
+        <div class="dnd-item" draggable="true" data-bin="normativa">"El Estado debería subir el salario mínimo"</div>
+        <div class="dnd-item" draggable="true" data-bin="positiva">"Argentina tuvo inflación del 120% el año pasado"</div>
+        <div class="dnd-item" draggable="true" data-bin="normativa">"Hay que reducir los impuestos a las PyMEs"</div>
+        <div class="dnd-item" draggable="true" data-bin="positiva">"Una sequía reduciría la producción agrícola"</div>
+        <div class="dnd-item" draggable="true" data-bin="normativa">"El comercio internacional debería ser libre"</div>
+      </div>
+      <div class="dnd-bins">
+        <div class="dnd-bin" data-bin="positiva"><h5>🔬 Economía Positiva (lo que ES)</h5><div class="bitems"></div></div>
+        <div class="dnd-bin" data-bin="normativa"><h5>⚖️ Economía Normativa (lo que DEBERÍA)</h5><div class="bitems"></div></div>
+      </div>
+      <button class="dnd-check" onclick="checkDnd('dnd2')"><i data-lucide="check" style="width:14px;height:14px"></i> Validar</button>
+      <button class="dnd-check" style="background:var(--muted)" onclick="resetDnd('dnd2')"><i data-lucide="rotate-ccw" style="width:14px;height:14px"></i> Reiniciar</button>
+      <div id="dnd2Fb" style="margin-top:10px;font-weight:600"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- PARCIALES -->
+<!-- ============================================= -->
+<div class="parcial-hero" id="parciales">
+  <h2><i data-lucide="file-check" style="width:22px;height:22px;display:inline"></i> 3 Parciales Simulados</h2>
+  <p>Tres exámenes integradores con validación automática</p>
+  <div class="badge">V/F con justificación · Cálculos · Selección múltiple</div>
+</div>
+
+<div class="parcial-stats" id="parcialStats">
+  <div class="ps-item"><div class="ps-num" id="psTotal">0/0</div><div class="ps-lab">Respondidas</div></div>
+  <div class="ps-item"><div class="ps-num" id="psOk">0</div><div class="ps-lab">Correctas</div></div>
+  <div class="ps-item"><div class="ps-num" id="psPct">0%</div><div class="ps-lab">% Acierto</div></div>
+</div>
+
+<!-- PARCIAL 1 -->
+<div class="section" data-topic="p1">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="graduation-cap" style="width:18px;height:18px"></i> Parcial 1 · Conceptos base + FPP</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+
+    <div class="q-group">
+      <div class="q-group-t"><span>Sección A · Verdadero o Falso</span><span class="pts">5 pts</span></div>
+
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>1.</strong> La escasez se debe únicamente a limitaciones tecnológicas de la producción.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Es disparidad entre necesidades ilimitadas y recursos limitados, no un problema tecnológico.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>2.</strong> En la economía mixta, el Estado controla recursos estratégicos mientras que los privados se encargan de la mayor parte de la actividad.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Combina mercado con intervención estatal en sectores estratégicos (energía, petróleo).</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>3.</strong> "El Estado debería aumentar el salario mínimo" es un enunciado de economía positiva.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. "Debería" implica juicio de valor → normativa, no positiva.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>4.</strong> Un punto ubicado por fuera de la FPP representa combinaciones inalcanzables con los recursos y tecnología actuales.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Fuera = inalcanzable; sobre = eficiente; dentro = recursos ociosos.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>5.</strong> El flujo circular incluye un flujo real (bienes y factores) y un flujo nominal (dinero).</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Son los dos flujos opuestos que describen el funcionamiento del sistema económico.</p></details>
+      </div>
+    </div>
+
+    <div class="q-group">
+      <div class="q-group-t"><span>Sección B · Cálculos</span><span class="pts">5 pts</span></div>
+
+      <div class="q" data-val="num" data-ans="620">
+        <div class="q-stem"><strong>6.</strong> Calcular la Demanda Agregada con: Consumo = 400, Inversión = 100, Gasto público = 150, Exportaciones = 50, Importaciones = 80.</div>
+        <div class="q-in"><span class="q-label">DA =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>DA = 400 + 100 + 150 + (50−80) = 650 − 30 = <strong>620</strong></p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="1050">
+        <div class="q-stem"><strong>7.</strong> Si el PIB es 1000, RRN = 80 y RRE = 30, calcular el Ingreso Nacional.</div>
+        <div class="q-in"><span class="q-label">IN =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>IN = PIB + RRN − RRE = 1000 + 80 − 30 = <strong>1050</strong></p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="3" data-tol="0.05">
+        <div class="q-stem"><strong>8.</strong> Una FPP tiene puntos A(0,30) y B(5,15). ¿Cuál es el costo de oportunidad promedio de 1 unidad del bien X en unidades de Y?</div>
+        <div class="q-in"><span class="q-label">CO =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>ΔX = 5, ΔY = 15 − 30 = −15. CO = 15 / 5 = <strong>3 unidades de Y por 1 de X</strong>.</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="710">
+        <div class="q-stem"><strong>9.</strong> Usando los valores del ejercicio 6, si la Inversión sube en 90 (nuevo I = 190), ¿cuál es la nueva DA?</div>
+        <div class="q-in"><span class="q-label">DA' =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>DA' = 400 + 190 + 150 + (50−80) = 740 − 30 = <strong>710</strong>. DA subió en 90 por el aumento de I.</p></details>
+      </div>
+
+      <div class="q" data-val="sel" data-ans="lujo">
+        <div class="q-stem"><strong>10.</strong> Un reloj de colección de $5000, cuya demanda baja mucho si sube su precio, se clasificaría como:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="necesidad">primera necesidad</option><option value="lujo">de lujo (demanda elástica)</option><option value="inferior">inferior</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>De lujo. Los bienes de lujo tienen demanda elástica: los consumidores pueden abstenerse al subir el precio.</p></details>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PARCIAL 2 -->
+<div class="section" data-topic="p2">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="graduation-cap" style="width:18px;height:18px"></i> Parcial 2 · Consumidor y Demanda</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+
+    <div class="q-group">
+      <div class="q-group-t"><span>Sección A · V/F con justificación</span><span class="pts">6 pts</span></div>
+
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>1.</strong> Dos curvas de indiferencia pueden cortarse si representan el mismo nivel de utilidad.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Las curvas de indiferencia NUNCA se cortan; si lo hicieran sería una contradicción lógica en las preferencias.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>2.</strong> La ley de utilidad marginal decreciente dice que cada unidad adicional consumida aporta MENOS satisfacción que la anterior.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Es lo que justifica la forma convexa de las curvas de indiferencia y la diversificación del consumo.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>3.</strong> Un aumento en el precio del bien X origina un desplazamiento de la curva de demanda de X.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Cambios en el propio precio originan MOVIMIENTOS a lo largo de la curva, no desplazamientos.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>4.</strong> Si baja el precio del bien X y la recta presupuestaria gira sobre el eje de Y, el consumidor puede comprar más X sin renunciar a Y.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. El giro expande el poder de compra de X (el eje de Y se mantiene fijo).</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>5.</strong> El excedente del consumidor es la diferencia entre el ingreso total del consumidor y el gasto en el bien.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Es la diferencia entre lo que estaría dispuesto a pagar (utilidad total) y lo que efectivamente paga en el mercado.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>6.</strong> El efecto ingreso y el efecto sustitución juntos explican por qué la curva de demanda tiene pendiente negativa.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Al subir el precio: 1) se sustituye por otros bienes (sustitución); 2) el ingreso real cae (ingreso). Ambos reducen Q.</p></details>
+      </div>
+    </div>
+
+    <div class="q-group">
+      <div class="q-group-t"><span>Sección B · Cálculos</span><span class="pts">4 pts</span></div>
+
+      <div class="q" data-val="num" data-ans="50">
+        <div class="q-stem"><strong>7.</strong> Con ingreso = $500, P<sub>hamburguesa</sub> = $10, P<sub>pizza</sub> = $20. ¿Cuántas hamburguesas puede comprar si gasta todo en hamburguesas?</div>
+        <div class="q-in"><span class="q-label">Q<sub>h</sub> =</span><input class="vld" type="number" placeholder="unidades"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>Q = Y / P = 500/10 = <strong>50 hamburguesas</strong>.</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="25">
+        <div class="q-stem"><strong>8.</strong> La UT para 2 alfajores es 50 y para 3 alfajores es 75. Calcular la UMg del 3er alfajor.</div>
+        <div class="q-in"><span class="q-label">UMg =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>UMg = (75 − 50) / (3 − 2) = <strong>25</strong>.</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="3" data-tol="0.05">
+        <div class="q-stem"><strong>9.</strong> Si cuando el ingreso sube 20%, la demanda de un bien sube 60%: ¿cuál es la elasticidad-ingreso y cómo se clasifica?</div>
+        <div class="q-in"><span class="q-label">E<sub>Y</sub> =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>E<sub>Y</sub> = 60% / 20% = <strong>3</strong>. Como es &gt; 1, es un <em>bien de lujo</em>.</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="240">
+        <div class="q-stem"><strong>10.</strong> En el mercado de un bien se venden 40 unidades a $6 c/u. ¿Cuál es el ingreso total (IT)?</div>
+        <div class="q-in"><span class="q-label">IT =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>IT = P · Q = 6 · 40 = <strong>$240</strong>.</p></details>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PARCIAL 3 -->
+<div class="section" data-topic="p3">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="award" style="width:18px;height:18px"></i> Parcial 3 · Integrador (elasticidad + microeconomía)</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+
+    <div class="q-group">
+      <div class="q-group-t"><span>Sección A · V/F con justificación</span><span class="pts">5 pts</span></div>
+
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>1.</strong> La demanda de un bien con muchos sustitutos suele ser más elástica que la de un bien sin sustitutos.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Es uno de los factores condicionantes de la elasticidad-precio.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>2.</strong> Si la demanda de un bien es INELÁSTICA, una baja del precio hace que el ingreso total AUMENTE.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Con demanda inelástica, al bajar P el IT DISMINUYE porque Q no crece lo suficiente para compensar.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>3.</strong> La curva de Engel de un bien inferior tiene pendiente negativa.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Al aumentar el ingreso, el consumo de bienes inferiores DISMINUYE → pendiente negativa.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="f">
+        <div class="q-stem"><strong>4.</strong> Si la elasticidad cruzada entre dos bienes es −0.8, significa que son sustitutos.</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Signo negativo → COMPLEMENTARIOS. Los sustitutos tienen elasticidad cruzada POSITIVA.</p></details>
+      </div>
+
+      <div class="q" data-val="vf" data-ans="v">
+        <div class="q-stem"><strong>5.</strong> El ingreso total de una empresa se maximiza cuando la elasticidad-precio de la demanda es unitaria (|Ep|=1).</div>
+        <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. En ese punto cualquier cambio en P no modifica el IT → es el máximo.</p></details>
+      </div>
+    </div>
+
+    <div class="q-group">
+      <div class="q-group-t"><span>Sección B · Ejercicios numéricos</span><span class="pts">8 pts</span></div>
+
+      <div class="q" data-val="num" data-ans="0.5" data-tol="0.05">
+        <div class="q-stem"><strong>6.</strong> El precio de un producto sube 40% y la cantidad demandada baja 20%. Calcular |Ep| y clasificar la demanda.</div>
+        <div class="q-in"><span class="q-label">|Ep| =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>|Ep| = 20% / 40% = <strong>0.5</strong>. Como es &lt; 1 → demanda <em>inelástica</em>.</p></details>
+      </div>
+
+      <div class="q" data-val="sel" data-ans="aumenta">
+        <div class="q-stem"><strong>7.</strong> Continuando con el ejercicio 6: al SUBIR el precio (con demanda inelástica), el ingreso total:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="aumenta">aumenta</option><option value="disminuye">disminuye</option><option value="igual">no cambia</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Aumenta.</strong> Con demanda inelástica, P e IT varían en el MISMO sentido. Si sube P, Q cae menos que proporcionalmente → el efecto precio domina y IT sube.</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="1.14" data-tol="0.05">
+        <div class="q-stem"><strong>8.</strong> Entre puntos A(P=10, Q=100) y B(P=6, Q=180), calcular la elasticidad en el ARCO (punto medio).</div>
+        <div class="q-in"><span class="q-label">|Ep| =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>ΔQ = 80, |ΔP| = 4.<br>|Ep| = (ΔQ/ΔP) · (P₁+P₂)/(Q₁+Q₂) = (80/4) · (16/280) = 20 · 0.0571 ≈ <strong>1.14</strong>. Demanda elástica.</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="1500">
+        <div class="q-stem"><strong>9.</strong> Un cine vende 300 entradas a $5 c/u. Calcular el ingreso total (IT).</div>
+        <div class="q-in"><span class="q-label">IT =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>IT = 300 × 5 = <strong>$1.500</strong>.</p></details>
+      </div>
+
+      <div class="q" data-val="sel" data-ans="complementarios">
+        <div class="q-stem"><strong>10.</strong> Si cuando sube el precio de las impresoras, baja la demanda de cartuchos de tinta, estos bienes son:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="sustitutos">sustitutos</option><option value="complementarios">complementarios</option><option value="independientes">independientes</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Complementarios.</strong> Se usan juntos: sube el precio de uno → baja la demanda del otro (elasticidad cruzada negativa).</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="0.8" data-tol="0.05">
+        <div class="q-stem"><strong>11.</strong> Si sube el ingreso 10% y la demanda de un bien sube 8%, calcular E<sub>Y</sub> y clasificar.</div>
+        <div class="q-in"><span class="q-label">E<sub>Y</sub> =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>E<sub>Y</sub> = 8% / 10% = <strong>0.8</strong>. Como es positiva y &lt; 1 → <em>bien normal de primera necesidad</em>.</p></details>
+      </div>
+
+      <div class="q" data-val="sel" data-ans="tangencia">
+        <div class="q-stem"><strong>12.</strong> El equilibrio del consumidor se encuentra donde la pendiente de la curva de indiferencia iguala a la pendiente de la recta presupuestaria, es decir, en el punto de:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="corte">corte</option><option value="tangencia">tangencia</option><option value="inflexion">inflexión</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Tangencia.</strong> En ese punto TMS = P<sub>x</sub>/P<sub>y</sub>, maximizando la utilidad sujeta a la restricción presupuestaria.</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="12">
+        <div class="q-stem"><strong>13.</strong> Un consumidor está dispuesto a pagar $10 por la 1ra unidad, $8 por la 2da, $6 por la 3ra y $4 por la 4ta. Si el precio de mercado es $4 y compra 4 unidades, calcular el excedente del consumidor.</div>
+        <div class="q-in"><span class="q-label">EC =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>Disposición total a pagar: 10+8+6+4 = 28.<br>Total pagado: 4 × $4 = 16.<br>EC = 28 − 16 = <strong>$12</strong>.</p></details>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end content -->
+
+<!-- ============================================= -->
+<!-- JAVASCRIPT -->
+<!-- ============================================= -->
+<script>
+// Init Lucide
+if (window.lucide) lucide.createIcons();
+
+// Theme toggle
+function toggleTheme(){
+  const html = document.documentElement;
+  const cur = html.getAttribute('data-theme');
+  const nxt = cur === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', nxt);
+  localStorage.setItem('econTheme', nxt);
+  const btn = document.querySelector('#themeBtn i');
+  if(btn){ btn.setAttribute('data-lucide', nxt === 'dark' ? 'sun' : 'moon'); lucide.createIcons(); }
+}
+(function initTheme(){
+  const saved = localStorage.getItem('econTheme');
+  if(saved){
+    document.documentElement.setAttribute('data-theme', saved);
+    const btn = document.querySelector('#themeBtn i');
+    if(btn){ btn.setAttribute('data-lucide', saved === 'dark' ? 'sun' : 'moon'); setTimeout(()=>lucide.createIcons(),50); }
+  }
+})();
+
+// Section toggle
+function toggleSection(h){
+  h.classList.toggle('active');
+  const body = h.nextElementSibling;
+  body.classList.toggle('open');
+  updateStats();
+}
+function toggleAll(){
+  const hdrs = document.querySelectorAll('.section-header');
+  const anyClosed = [...hdrs].some(h => !h.classList.contains('active'));
+  hdrs.forEach(h => {
+    const body = h.nextElementSibling;
+    if(anyClosed){ h.classList.add('active'); body.classList.add('open'); }
+    else { h.classList.remove('active'); body.classList.remove('open'); }
+  });
+  updateStats();
+}
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop || document.body.scrollTop);
+  const max = (h.scrollHeight - h.clientHeight) || 1;
+  document.getElementById('progressFill').style.width = (scrolled / max * 100) + '%';
+});
+
+// Validator logic
+function checkQ(btn){
+  const q = btn.closest('.q');
+  const valType = q.dataset.val;
+  const expected = (q.dataset.ans || '').trim().toLowerCase();
+  const tol = parseFloat(q.dataset.tol || '0');
+  const inp = q.querySelector('.vld');
+  const fb = q.querySelector('.q-fb');
+  let raw = (inp.value || '').trim();
+  let userNorm = raw.toLowerCase();
+  let ok = false;
+
+  if(valType === 'num'){
+    const u = parseFloat(raw.replace(',', '.'));
+    const e = parseFloat(expected);
+    if(!isNaN(u) && !isNaN(e)){
+      ok = Math.abs(u - e) <= (tol > 0 ? tol : 0.01);
+    }
+  } else if(valType === 'tx'){
+    // normalize: lowercase, strip accents, trim
+    const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+    ok = norm(raw) === norm(expected);
+  } else {
+    ok = userNorm === expected;
+  }
+
+  if(!raw){ fb.textContent = '⚠ Respuesta vacía'; fb.className = 'q-fb bad'; return; }
+
+  inp.classList.remove('ok','bad');
+  q.classList.remove('done','bad');
+  if(ok){
+    inp.classList.add('ok'); q.classList.add('done');
+    fb.textContent = '✔ ¡Correcto!'; fb.className = 'q-fb ok';
+  } else {
+    inp.classList.add('bad'); q.classList.add('bad');
+    fb.textContent = '✗ Revisá la solución'; fb.className = 'q-fb bad';
+  }
+  updateStats();
+}
+function resetQ(btn){
+  const q = btn.closest('.q');
+  q.classList.remove('done','bad');
+  q.querySelector('.vld').value = '';
+  q.querySelector('.vld').classList.remove('ok','bad');
+  const fb = q.querySelector('.q-fb'); fb.textContent = ''; fb.className = 'q-fb';
+  updateStats();
+}
+
+// Stats tracking
+function updateStats(){
+  // Temas abiertos
+  const hdrs = document.querySelectorAll('.section[data-topic] .section-header');
+  const openedT = [...hdrs].filter(h => h.classList.contains('active')).length;
+  document.getElementById('stTemas').textContent = `${openedT}/${hdrs.length}`;
+
+  // V/F correctos (all .q with .done)
+  const all = document.querySelectorAll('.q');
+  const okAll = document.querySelectorAll('.q.done');
+  document.getElementById('stVF').textContent = okAll.length;
+
+  // Parciales: contar secciones p1,p2,p3: aprobado si >=60% OK
+  const parciales = ['p1','p2','p3'];
+  let aprobados = 0;
+  parciales.forEach(p => {
+    const sec = document.querySelector(`.section[data-topic="${p}"]`);
+    if(!sec) return;
+    const qs = sec.querySelectorAll('.q');
+    const oks = sec.querySelectorAll('.q.done');
+    if(qs.length > 0 && oks.length / qs.length >= 0.6) aprobados++;
+  });
+  document.getElementById('stParciales').textContent = `${aprobados}/3`;
+
+  // Parcial stats
+  let pT=0, pOk=0;
+  parciales.forEach(p => {
+    const sec = document.querySelector(`.section[data-topic="${p}"]`);
+    if(!sec) return;
+    pT += sec.querySelectorAll('.q').length;
+    pOk += sec.querySelectorAll('.q.done').length;
+  });
+  const ans = document.querySelectorAll('.section[data-topic^="p"] .q.done, .section[data-topic^="p"] .q.bad').length;
+  document.getElementById('psTotal').textContent = `${ans}/${pT}`;
+  document.getElementById('psOk').textContent = pOk;
+  document.getElementById('psPct').textContent = pT ? Math.round(pOk/pT*100) + '%' : '0%';
+}
+
+// ====== CALCULADORA DA ======
+function calcDA(){
+  const c = parseFloat(document.getElementById('daC').value) || 0;
+  const i = parseFloat(document.getElementById('daI').value) || 0;
+  const g = parseFloat(document.getElementById('daG').value) || 0;
+  const x = parseFloat(document.getElementById('daX').value) || 0;
+  const m = parseFloat(document.getElementById('daM').value) || 0;
+  const da = c + i + g + (x - m);
+  document.getElementById('daResult').innerHTML = `DA = <strong>${da.toLocaleString('es-AR')}</strong>`;
+}
+['daC','daI','daG','daX','daM'].forEach(id => {
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('input', calcDA);
+});
+
+// ====== SIMULADOR ELASTICIDAD ======
+function calcElast(){
+  const dp = parseFloat(document.getElementById('elP').value);
+  const dq = parseFloat(document.getElementById('elQ').value);
+  document.getElementById('elPLab').textContent = dp;
+  document.getElementById('elQLab').textContent = dq;
+  const res = document.getElementById('elResult');
+  if(dp === 0){
+    res.innerHTML = '|Ep| = <strong>∞</strong> <span class="rtag">Indefinida</span>';
+    return;
+  }
+  const ep = Math.abs(dq / dp);
+  let cat='', cls='';
+  if(ep === 0){cat='Perfectamente inelástica'; cls='red';}
+  else if(ep < 1){cat='Inelástica'; cls='amber';}
+  else if(ep === 1){cat='Unitaria'; cls='';}
+  else if(ep < 50){cat='Elástica'; cls='';}
+  else {cat='Perfectamente elástica'; cls='';}
+  res.innerHTML = `|Ep| = <strong>${ep.toFixed(2)}</strong> <span class="rtag ${cls}">${cat}</span>`;
+}
+['elP','elQ'].forEach(id => {
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('input', calcElast);
+});
+
+// ====== DRAG & DROP ======
+let dragged = null;
+document.querySelectorAll('.dnd-item').forEach(el => {
+  el.addEventListener('dragstart', e => {
+    dragged = el;
+    el.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  el.addEventListener('dragend', () => el.classList.remove('dragging'));
+  // Touch support
+  el.addEventListener('touchstart', e => {
+    dragged = el;
+    el.classList.add('dragging');
+  }, {passive:true});
+});
+document.querySelectorAll('.dnd-bin').forEach(bin => {
+  bin.addEventListener('dragover', e => { e.preventDefault(); bin.classList.add('hover'); });
+  bin.addEventListener('dragleave', () => bin.classList.remove('hover'));
+  bin.addEventListener('drop', e => {
+    e.preventDefault();
+    bin.classList.remove('hover');
+    if(!dragged) return;
+    const items = bin.querySelector('.bitems');
+    const it = document.createElement('span');
+    it.className = 'bitem';
+    it.textContent = dragged.textContent;
+    it.dataset.bin = dragged.dataset.bin;
+    it.onclick = function(){ this.remove(); };
+    items.appendChild(it);
+    dragged.remove();
+    dragged = null;
+  });
+  // Touch support for tablets: tap to drop
+  bin.addEventListener('click', e => {
+    if(e.target.closest('.bitem') || e.target.closest('.dnd-check')) return;
+    if(!dragged || !dragged.classList.contains('dragging')) return;
+    const items = bin.querySelector('.bitems');
+    const it = document.createElement('span');
+    it.className = 'bitem';
+    it.textContent = dragged.textContent;
+    it.dataset.bin = dragged.dataset.bin;
+    it.onclick = function(){ this.remove(); };
+    items.appendChild(it);
+    dragged.remove();
+    dragged = null;
+  });
+});
+// Tap on item (tablet) to "pick up"
+document.querySelectorAll('.dnd-items .dnd-item').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.dnd-item').forEach(i => i.classList.remove('dragging'));
+    el.classList.add('dragging');
+    dragged = el;
+  });
+});
+function checkDnd(id){
+  const wrap = document.getElementById(id);
+  const bins = wrap.querySelectorAll('.dnd-bin');
+  let ok = 0, bad = 0;
+  bins.forEach(bin => {
+    const expected = bin.dataset.bin;
+    bin.querySelectorAll('.bitem').forEach(it => {
+      it.classList.remove('ok','bad');
+      if(it.dataset.bin === expected){ it.classList.add('ok'); ok++; }
+      else { it.classList.add('bad'); bad++; }
+    });
+  });
+  const fb = document.getElementById(id+'Fb');
+  const total = ok + bad;
+  const pool = wrap.querySelector('.dnd-items').children.length;
+  if(pool > 0){
+    fb.innerHTML = `<span style="color:var(--amber)">⚠ Aún hay ${pool} items sin clasificar.</span>`;
+  } else if(bad === 0){
+    fb.innerHTML = `<span style="color:#16a34a">✔ ¡Perfecto! ${ok}/${total} correctos.</span>`;
+  } else {
+    fb.innerHTML = `<span style="color:var(--red)">✗ ${ok} correctos de ${total}. Los rojos están mal ubicados — tocalos para sacarlos y probar de nuevo.</span>`;
+  }
+}
+function resetDnd(id){
+  location.reload();
+}
+
+// Open first unit on load
+window.addEventListener('DOMContentLoaded', () => {
+  updateStats();
+  setTimeout(()=>lucide.createIcons(),100);
+  // Auto-open first section of each unit for better UX
+  const firstSections = document.querySelectorAll('.unit-hero + .section .section-header');
+  // Do not auto-open to let user choose; already handled above
+});
+</script>
+
+</body>
+</html>
