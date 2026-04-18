@@ -282,7 +282,7 @@ tr:hover td{background:var(--accent-l)}
 <nav class="topnav">
   <div class="logo"><i data-lucide="trending-up" style="width:20px;height:20px"></i> Economía I</div>
   <div class="nav-links">
-    <a href="#t0" style="color:#0891b2">Glosario</a><a href="#u1">U1</a><a href="#u2">U2</a><a href="#formulas">Fórmulas</a><a href="#excel" style="color:#16a34a">Excel</a><a href="#interactivo" style="color:#db2777;font-weight:700">Juegos</a><a href="#parciales" style="color:var(--purple);font-weight:700">Parciales</a>
+    <a href="#t0" style="color:#0891b2">Glosario</a><a href="#u1">U1</a><a href="#u2">U2</a><a href="#guia-u2" style="color:#ea580c;font-weight:700">Guía U2</a><a href="#formulas">Fórmulas</a><a href="#excel" style="color:#16a34a">Excel</a><a href="#interactivo" style="color:#db2777">Juegos</a><a href="#parciales" style="color:var(--purple);font-weight:700">Parciales</a>
   </div>
   <div class="controls">
     <button onclick="toggleAll()" title="Abrir/cerrar todo"><i data-lucide="layout-list" style="width:16px;height:16px"></i></button>
@@ -1685,6 +1685,274 @@ tr:hover td{background:var(--accent-l)}
         <div class="q-stem"><strong>3.</strong> Si al subir el precio de la nafta 10%, la demanda de autos baja 5%, ¿cuál es la elasticidad cruzada entre autos y nafta? (con signo)</div>
         <div class="q-in"><span class="q-label">E =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
         <details class="q-sol"><summary>Ver solución</summary><p>E = (−5%) / (+10%) = <strong>−0.5</strong>. Signo negativo → son complementarios (nafta y autos).</p></details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- GUÍA PRÁCTICA U2 · EJERCICIOS CON RESPUESTAS -->
+<!-- ============================================= -->
+<div class="unit-hero" id="guia-u2" style="background:linear-gradient(135deg,#ea580c,#f97316,#fb923c)">
+  <h2><i data-lucide="clipboard-check" style="width:20px;height:20px;display:inline"></i> Guía Práctica U2 · Ejercicios con respuestas</h2>
+  <p>Ejercicios 1 a 7 de la guía de clase (Excel + PDF subidos por la profesora)</p>
+</div>
+
+<!-- Actividad 1: Recta presupuestaria -->
+<div class="section" data-topic="g1">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="wallet" style="width:18px;height:18px"></i> Actividad 1 · Recta presupuestaria (hamburguesa + streaming)</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-info">
+      <div class="at"><i data-lucide="info" style="width:16px;height:16px"></i> Datos del ejercicio</div>
+      <ul style="margin:4px 0 0 20px">
+        <li>Presupuesto (Y) = <strong>$120.000</strong></li>
+        <li>Precio hamburguesa (P<sub>H</sub>) = <strong>$12.000</strong></li>
+        <li>Precio streaming (P<sub>S</sub>) = <strong>$6.000</strong></li>
+      </ul>
+    </div>
+
+    <div class="q" data-val="tx" data-ans="120000=12000H+6000S">
+      <div class="q-stem"><strong>a)</strong> Escribí la ecuación de la recta presupuestaria (usar formato exacto, por ej: <code>120000=12000H+6000S</code>)</div>
+      <div class="q-in"><span class="q-label">Ecuación:</span><input class="vld" type="text" placeholder="120000=12000H+6000S"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p>Y = P<sub>H</sub>·H + P<sub>S</sub>·S → <strong>120.000 = 12.000H + 6.000S</strong></p></details>
+    </div>
+
+    <div class="q" data-val="num" data-ans="10">
+      <div class="q-stem"><strong>b)</strong> ¿Cuántas hamburguesas puede comprar si gasta TODO el presupuesto en hamburguesas?</div>
+      <div class="q-in"><span class="q-label">H =</span><input class="vld" type="number" placeholder="unidades"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p>H<sub>max</sub> = 120.000 / 12.000 = <strong>10 hamburguesas</strong>.</p></details>
+    </div>
+
+    <div class="q" data-val="num" data-ans="20">
+      <div class="q-stem"><strong>c)</strong> ¿Cuántos streamings puede comprar si gasta TODO el presupuesto en streaming?</div>
+      <div class="q-in"><span class="q-label">S =</span><input class="vld" type="number" placeholder="unidades"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p>S<sub>max</sub> = 120.000 / 6.000 = <strong>20 streamings</strong>.</p></details>
+    </div>
+
+    <div class="q" data-val="num" data-ans="10">
+      <div class="q-stem"><strong>d)</strong> Si compra 5 hamburguesas (gasto = $60.000), le quedan $60.000. ¿Cuántos streamings puede comprar con ese resto?</div>
+      <div class="q-in"><span class="q-label">S =</span><input class="vld" type="number" placeholder="unidades"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p>$60.000 / $6.000 = <strong>10 streamings</strong>. Así que el punto (5H, 10S) está sobre la recta de balance.</p></details>
+    </div>
+  </div>
+</div>
+
+<!-- Actividad 2: TMS café/medialuna -->
+<div class="section" data-topic="g2">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="coffee" style="width:18px;height:18px"></i> Actividad 2 · TMS y curva de indiferencia (café y medialuna)</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-info">
+      <div class="at"><i data-lucide="table" style="width:16px;height:16px"></i> Tabla de la curva de indiferencia</div>
+      <table style="font-size:.88em">
+        <tr><th>Punto</th><th>Café (X)</th><th>Medialuna (Y)</th></tr>
+        <tr><td>A</td><td>1</td><td>8</td></tr>
+        <tr><td>B</td><td>2</td><td>6</td></tr>
+        <tr><td>C</td><td>3</td><td>5</td></tr>
+        <tr><td>D</td><td>4</td><td>4</td></tr>
+      </table>
+    </div>
+
+    <div class="q" data-val="num" data-ans="-2" data-tol="0.05">
+      <div class="q-stem"><strong>a)</strong> Calculá la TMS entre A y B (con signo). Fórmula: TMS = −ΔY/ΔX.</div>
+      <div class="q-in"><span class="q-label">TMS(A-B) =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p>De A a B: ΔX = 2−1 = 1; ΔY = 6−8 = −2. TMS = ΔY/ΔX = −2/1 = <strong>−2</strong>.</p></details>
+    </div>
+
+    <div class="q" data-val="sel" data-ans="correcto">
+      <div class="q-stem"><strong>b)</strong> La TMS = −2 significa que el consumidor está dispuesto a:</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="correcto">Sacrificar 2 medialunas a cambio de 1 café adicional</option><option value="inverso">Sacrificar 2 cafés a cambio de 1 medialuna adicional</option><option value="ninguno">No sacrificar ninguno de los dos</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p>TMS = −2 significa que el consumidor está dispuesto a <strong>sacrificar 2 unidades de medialunas a cambio de 1 unidad adicional de café</strong>, manteniendo el mismo nivel de utilidad (cita textual de la respuesta de clase).</p></details>
+    </div>
+
+    <div class="q" data-val="sel" data-ans="decreciente">
+      <div class="q-stem"><strong>c)</strong> ¿Por qué la curva de indiferencia es convexa al origen?</div>
+      <div class="q-in"><select class="vld" style="min-width:260px"><option value="">-- elegir --</option><option value="decreciente">Porque la TMS es decreciente — cada vez el consumidor sacrifica menos; prefiere combinaciones balanceadas</option><option value="creciente">Porque la TMS es creciente y el consumidor quiere concentrarse en un solo bien</option><option value="constante">Porque la TMS es constante a lo largo de toda la curva</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>TMS decreciente.</strong> Mirá en la tabla: entre A-B sacrifica 2 medialunas; entre B-C sacrifica 1 (ΔY/ΔX = −1); entre C-D sacrifica 1. Cada vez sacrifica menos → prefiere combinaciones balanceadas.</p></details>
+    </div>
+  </div>
+</div>
+
+<!-- Actividad 3: Inflación y sustitución -->
+<div class="section" data-topic="g3">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="arrow-left-right" style="width:18px;height:18px"></i> Actividad 3 · Cambio en precios (inflación y sustitución)</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <p style="font-size:.88em;color:var(--text2)">Contexto: aumenta el precio de la carne vacuna. Se pide analizar los efectos sobre carne vacuna y pollo (sustituto).</p>
+
+    <div class="q" data-val="sel" data-ans="disminuye">
+      <div class="q-stem"><strong>a)</strong> Según la ley de la demanda, ¿qué pasa con la cantidad demandada de carne vacuna?</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="disminuye">Disminuye / baja</option><option value="aumenta">Aumenta</option><option value="igual">No cambia</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>Disminuye.</strong> Según la ley de la demanda: ↑P → ↓Q.</p></details>
+    </div>
+
+    <div class="q" data-val="sel" data-ans="pollo">
+      <div class="q-stem"><strong>b)</strong> El efecto sustitución se da hacia qué bien:</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="pollo">El pollo (al subir el precio de la carne, los consumidores lo sustituyen por pollo)</option><option value="carne">Otros cortes de carne vacuna</option><option value="cerdo">Otro alimento no mencionado</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>Hacia el pollo.</strong> Al incrementar el precio de la carne, los consumidores la sustituyen por el pollo (bien sustituto).</p></details>
+    </div>
+
+    <div class="q" data-val="sel" data-ans="aumenta">
+      <div class="q-stem"><strong>c)</strong> ¿Qué pasa con la demanda de pollo?</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="aumenta">Aumenta</option><option value="disminuye">Disminuye</option><option value="igual">No cambia</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>Aumenta.</strong> Como es sustituto, al encarecerse la carne la gente compra más pollo.</p></details>
+    </div>
+  </div>
+</div>
+
+<!-- Actividad 4: Función de demanda cine -->
+<div class="section" data-topic="g4">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="film" style="width:18px;height:18px"></i> Actividad 4 · Función de demanda (entradas de cine)</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+
+    <div class="q" data-val="sel" data-ans="movimiento">
+      <div class="q-stem"><strong>a)</strong> Si AUMENTA el precio de las entradas de cine, la demanda disminuye. ¿Qué se produce en la curva?</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="movimiento">Un MOVIMIENTO a lo largo de la curva</option><option value="desplaza-der">Un DESPLAZAMIENTO a la derecha</option><option value="desplaza-izq">Un DESPLAZAMIENTO a la izquierda</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>MOVIMIENTO</strong> a lo largo de la curva. Los cambios en el PROPIO PRECIO del bien originan movimientos, no desplazamientos.</p></details>
+    </div>
+
+    <div class="q" data-val="sel" data-ans="desplaza-der">
+      <div class="q-stem"><strong>b)</strong> Si AUMENTA el ingreso de los estudiantes, ¿qué pasa con la curva de demanda de entradas de cine?</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="movimiento">Movimiento a lo largo</option><option value="desplaza-der">Desplazamiento a la DERECHA</option><option value="desplaza-izq">Desplazamiento a la izquierda</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>Desplazamiento a la derecha.</strong> El ingreso es una variable DISTINTA del precio del propio bien → desplaza la curva. Al aumentar el ingreso, la demanda aumenta a cada precio.</p></details>
+    </div>
+
+    <div class="q" data-val="sel" data-ans="desplaza-der">
+      <div class="q-stem"><strong>c)</strong> Si SUBE el precio de las plataformas de streaming (bien sustituto del cine), ¿qué pasa con la curva de demanda de entradas de cine?</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="movimiento">Movimiento a lo largo</option><option value="desplaza-der">Desplazamiento a la DERECHA</option><option value="desplaza-izq">Desplazamiento a la izquierda</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>Desplazamiento a la derecha.</strong> Al encarecerse el streaming, la gente sustituye hacia cine → la demanda de cine aumenta a cada precio (desplazamiento, no movimiento).</p></details>
+    </div>
+  </div>
+</div>
+
+<!-- Actividad 5: Movimiento vs desplazamiento café -->
+<div class="section" data-topic="g5">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="coffee" style="width:18px;height:18px"></i> Actividad 5 · Movimiento vs desplazamiento (café)</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+
+    <div class="q" data-val="sel" data-ans="movimiento">
+      <div class="q-stem"><strong>a)</strong> Si AUMENTA el precio del café, ¿qué se produce en la curva de demanda de café?</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="movimiento">Movimiento a lo largo de la curva</option><option value="desplaza-der">Desplazamiento a la derecha</option><option value="desplaza-izq">Desplazamiento a la izquierda</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>Movimiento a lo largo.</strong> Cambia el propio precio del bien.</p></details>
+    </div>
+
+    <div class="q" data-val="sel" data-ans="desplaza-der">
+      <div class="q-stem"><strong>b)</strong> Si AUMENTA el ingreso promedio de las familias, ¿qué se produce?</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="movimiento">Movimiento a lo largo</option><option value="desplaza-der">Desplazamiento a la DERECHA</option><option value="desplaza-izq">Desplazamiento a la izquierda</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>Desplazamiento a la DERECHA.</strong> El ingreso desplaza la curva, no la mueve.</p></details>
+    </div>
+
+    <div class="q" data-val="sel" data-ans="desplaza-der">
+      <div class="q-stem"><strong>c)</strong> Si se pone de moda tomar café de especialidad, ¿qué se produce?</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="movimiento">Movimiento a lo largo</option><option value="desplaza-der">Desplazamiento a la DERECHA</option><option value="desplaza-izq">Desplazamiento a la izquierda</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>Desplazamiento a la derecha.</strong> Los GUSTOS son una variable distinta al precio → desplazan la curva.</p></details>
+    </div>
+
+    <div class="q" data-val="sel" data-ans="movimiento">
+      <div class="q-stem"><strong>d)</strong> Si DISMINUYE el precio del café, ¿qué se produce?</div>
+      <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="movimiento">Movimiento a lo largo</option><option value="desplaza-der">Desplazamiento a la derecha</option><option value="desplaza-izq">Desplazamiento a la izquierda</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>Movimiento a lo largo.</strong> Cambia el propio precio del café.</p></details>
+    </div>
+  </div>
+</div>
+
+<!-- Actividad 6: Excedente del consumidor -->
+<div class="section" data-topic="g6">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="dollar-sign" style="width:18px;height:18px"></i> Actividad 6 · Excedente del consumidor (kg de carne)</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+    <div class="alert alert-info">
+      <div class="at"><i data-lucide="table" style="width:16px;height:16px"></i> Datos del ejercicio</div>
+      <p style="font-size:.88em;margin:4px 0">Precio de mercado: <strong>$9.000/kg</strong>. Disposición a pagar (DAP) del consumidor:</p>
+      <table style="font-size:.88em">
+        <tr><th>Kg</th><th>DAP</th><th>Precio mercado</th><th>Excedente por kg</th></tr>
+        <tr><td>1</td><td>$15.000</td><td>$9.000</td><td>$6.000</td></tr>
+        <tr><td>2</td><td>$13.000</td><td>$9.000</td><td>$4.000</td></tr>
+        <tr><td>3</td><td>$11.000</td><td>$9.000</td><td>$2.000</td></tr>
+        <tr><td>4</td><td>$9.000</td><td>$9.000</td><td>$0</td></tr>
+      </table>
+    </div>
+
+    <div class="q" data-val="num" data-ans="4">
+      <div class="q-stem"><strong>a)</strong> ¿Cuántos kilos compra el consumidor? (Regla: compra todas las unidades donde DAP ≥ precio de mercado.)</div>
+      <div class="q-in"><span class="q-label">Kg =</span><input class="vld" type="number" placeholder="kilos"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p>Kg 1: 15.000 ≥ 9.000 ✔ · Kg 2: 13.000 ≥ 9.000 ✔ · Kg 3: 11.000 ≥ 9.000 ✔ · Kg 4: 9.000 = 9.000 ✔ (compra porque es indiferente a ese precio). Compra <strong>4 kg</strong>.</p></details>
+    </div>
+
+    <div class="q" data-val="num" data-ans="12000">
+      <div class="q-stem"><strong>b)</strong> Calculá el excedente total del consumidor.</div>
+      <div class="q-in"><span class="q-label">EC =</span><input class="vld" type="number" placeholder="pesos"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p>EC = 6.000 + 4.000 + 2.000 + 0 = <strong>$12.000</strong>.</p></details>
+    </div>
+
+    <div class="q" data-val="sel" data-ans="beneficio">
+      <div class="q-stem"><strong>c)</strong> ¿Qué representa el excedente del consumidor?</div>
+      <div class="q-in"><select class="vld" style="min-width:260px"><option value="">-- elegir --</option><option value="beneficio">El beneficio o "ganancia" que obtiene el consumidor por pagar menos de lo que estaba dispuesto a pagar</option><option value="costo">El costo adicional que paga el consumidor por el bien</option><option value="gasto">El gasto total que realiza el consumidor en el mercado</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+      <details class="q-sol"><summary>Ver solución</summary><p><strong>Beneficio/ganancia</strong> por pagar menos de lo que estaba dispuesto a pagar (cita textual de la respuesta de clase).</p></details>
+    </div>
+  </div>
+</div>
+
+<!-- Actividad 7: Elasticidad-precio -->
+<div class="section" data-topic="g7">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="activity" style="width:18px;height:18px"></i> Actividad 7 · Elasticidad-precio (2 ejercicios de clase)</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+
+    <div class="q-group">
+      <div class="q-group-t"><span>Ejercicio 1 · Función Q = 200 − 4P</span></div>
+      <div class="alert alert-info">
+        <div class="at"><i data-lucide="info" style="width:16px;height:16px"></i> Datos</div>
+        <p style="font-size:.88em">P₀ = 30, Q₀ = 80 · P₁ = 40, Q₁ = 40</p>
+      </div>
+
+      <div class="q" data-val="num" data-ans="1.5" data-tol="0.05">
+        <div class="q-stem"><strong>a)</strong> Calculá |EpD| usando la fórmula %ΔQ / %ΔP.</div>
+        <div class="q-in"><span class="q-label">|EpD| =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>%ΔQ = (40−80)/80 = −0,5 = −50%<br>%ΔP = (40−30)/30 = 0,333 = 33,33%<br>EpD = −0,5 / 0,333 = <strong>−1,5</strong> → |EpD| = <strong>1,5</strong>.</p></details>
+      </div>
+
+      <div class="q" data-val="sel" data-ans="elastica">
+        <div class="q-stem"><strong>b)</strong> Clasificá la demanda.</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="elastica">Elástica (|Ep| &gt; 1)</option><option value="unitaria">Unitaria (|Ep| = 1)</option><option value="inelastica">Inelástica (|Ep| &lt; 1)</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Elástica.</strong> |EpD| = 1,5 &gt; 1. Un aumento porcentual del precio generó una reducción porcentual MAYOR en la cantidad demandada (cita de la respuesta de clase).</p></details>
+      </div>
+    </div>
+
+    <div class="q-group">
+      <div class="q-group-t"><span>Ejercicio 2 · Tabla de demanda</span></div>
+      <div class="alert alert-info">
+        <div class="at"><i data-lucide="info" style="width:16px;height:16px"></i> Datos</div>
+        <p style="font-size:.88em">P₀ = 30, Q₀ = 300 · P₁ = 45, Q₁ = 225</p>
+      </div>
+
+      <div class="q" data-val="num" data-ans="0.5" data-tol="0.05">
+        <div class="q-stem"><strong>a)</strong> Calculá |EpD|.</div>
+        <div class="q-in"><span class="q-label">|EpD| =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>%ΔQ = (225−300)/300 = −0,25 = −25%<br>%ΔP = (45−30)/30 = 0,5 = 50%<br>EpD = −0,25 / 0,5 = <strong>−0,5</strong> → |EpD| = <strong>0,5</strong>.</p></details>
+      </div>
+
+      <div class="q" data-val="sel" data-ans="inelastica">
+        <div class="q-stem"><strong>b)</strong> Clasificá la demanda.</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="elastica">Elástica (|Ep| &gt; 1)</option><option value="unitaria">Unitaria (|Ep| = 1)</option><option value="inelastica">Inelástica (|Ep| &lt; 1)</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Inelástica.</strong> |EpD| = 0,5 &lt; 1. Un aumento porcentual del precio generó una disminución porcentual MENOR en la cantidad demandada (cita de la respuesta de clase).</p></details>
       </div>
     </div>
   </div>
