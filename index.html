@@ -275,7 +275,7 @@ tr:hover td{background:var(--accent-l)}
 <nav class="topnav">
   <div class="logo"><i data-lucide="trending-up" style="width:20px;height:20px"></i> Economía I</div>
   <div class="nav-links">
-    <a href="#u1">U1</a><a href="#u2">U2</a><a href="#formulas">Fórmulas</a><a href="#excel" style="color:#16a34a;font-weight:700">Excel</a><a href="#interactivo" style="color:#db2777;font-weight:700">Juegos</a><a href="#parciales" style="color:var(--purple);font-weight:700">Parciales</a>
+    <a href="#u1">U1</a><a href="#u2">U2</a><a href="#formulas">Fórmulas</a><a href="#interactivo" style="color:#db2777;font-weight:700">Juegos</a><a href="#parciales" style="color:var(--purple);font-weight:700">Parciales</a>
   </div>
   <div class="controls">
     <button onclick="toggleAll()" title="Abrir/cerrar todo"><i data-lucide="layout-list" style="width:16px;height:16px"></i></button>
@@ -647,9 +647,9 @@ tr:hover td{background:var(--accent-l)}
     <div class="quiz-block">
       <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 1.4</div>
       <div class="q" data-val="sel" data-ans="normativa">
-        <div class="q-stem"><strong>1.</strong> "El gobierno debería aumentar el salario mínimo para mejorar la distribución del ingreso". Esta afirmación es:</div>
+        <div class="q-stem"><strong>1.</strong> "La Argentina debería cuidar más su desarrollo industrial generando una política comercial más proteccionista". Esta afirmación es:</div>
         <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="positiva">Economía positiva</option><option value="normativa">Economía normativa</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p><strong>Normativa.</strong> La palabra "debería" indica un juicio de valor sobre lo que corresponde hacer, típico de la economía normativa.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Normativa.</strong> La palabra "debería" indica un juicio de valor sobre lo que corresponde hacer.</p></details>
       </div>
       <div class="q" data-val="vf" data-ans="f">
         <div class="q-stem"><strong>2.</strong> La microeconomía estudia variables agregadas como el PBI nacional o la inflación general.</div>
@@ -702,13 +702,6 @@ tr:hover td{background:var(--accent-l)}
         <div class="input-g"><label>Importaciones (M)</label><input type="number" id="daM" value="60"></div>
       </div>
       <div class="result" id="daResult">DA = <strong>840</strong></div>
-    </div>
-
-    <div class="excel-card">
-      <h4><i data-lucide="file-spreadsheet" style="width:16px;height:16px"></i> Cómo hacerlo en Excel</h4>
-      <p style="font-size:.88em;margin:4px 0 8px">Si tenés C en A1, I en B1, G en C1, X en D1 y M en E1:</p>
-      <div class="excel-formula">A1+B1+C1+(D1-E1)</div>
-      <p class="excel-desc">Con referencias absolutas si lo copiás: <code>=$A$1+$B$1+$C$1+($D$1-$E$1)</code>.</p>
     </div>
     <ul>
       <li><strong>C</strong> = Consumo de las familias</li>
@@ -846,9 +839,9 @@ tr:hover td{background:var(--accent-l)}
         <details class="q-sol"><summary>Ver solución</summary><p><strong>VERDADERO.</strong> Supuesto de insaciabilidad: más cantidad de bienes = mayor utilidad.</p></details>
       </div>
       <div class="q" data-val="sel" data-ans="sustitucion">
-        <div class="q-stem"><strong>3.</strong> Cuando sube el precio del tren y la gente empieza a usar más el colectivo porque es relativamente más barato, estamos ante un efecto:</div>
+        <div class="q-stem"><strong>3.</strong> Cuando aumentan las tarifas aéreas y los consumidores usan más intensivamente el tren o el ómnibus, estamos ante un efecto:</div>
         <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="sustitucion">Efecto sustitución</option><option value="ingreso">Efecto ingreso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p><strong>Sustitución.</strong> Se reemplaza un bien más caro por otro más barato. El efecto ingreso se refiere a la reducción en el poder adquisitivo real.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Sustitución.</strong> Al encarecerse un bien, los consumidores reorientan su consumo hacia sustitutos más baratos para mantener la satisfacción al menor costo posible.</p></details>
       </div>
     </div>
   </div>
@@ -920,10 +913,10 @@ tr:hover td{background:var(--accent-l)}
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">Verdadero</option><option value="f">Falso</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
         <details class="q-sol"><summary>Ver solución</summary><p><strong>VERDADERO.</strong> El cambio en ingreso (manteniendo precios) desplaza paralelo porque la pendiente (cociente de precios) no cambia.</p></details>
       </div>
-      <div class="q" data-val="num" data-ans="8">
-        <div class="q-stem"><strong>2.</strong> Con ingreso=$200, P<sub>café</sub>=$25 y P<sub>té</sub>=$10: si el consumidor gasta todo en café, ¿cuántos puede comprar?</div>
+      <div class="q" data-val="num" data-ans="5">
+        <div class="q-stem"><strong>2.</strong> Ejemplo del apunte: con ingreso = $100, P<sub>jugo</sub> = $10 y P<sub>helado</sub> = $20. Si el consumidor gasta todo en helado, ¿cuántos helados puede comprar?</div>
         <div class="q-in"><span class="q-label">Q =</span><input class="vld" type="number" placeholder="unidades"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>Q<sub>max</sub> = Y/P = 200/25 = <strong>8 cafés</strong></p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>Q<sub>max</sub> = Y/P = 100/20 = <strong>5 helados</strong>. Si gasta todo en jugo: 100/10 = 10 jugos.</p></details>
       </div>
       <div class="q" data-val="sel" data-ans="tangencia">
         <div class="q-stem"><strong>3.</strong> Gráficamente, el equilibrio del consumidor se encuentra en el punto de ______ entre la recta presupuestaria y la curva de indiferencia.</div>
@@ -994,10 +987,10 @@ tr:hover td{background:var(--accent-l)}
 
     <div class="quiz-block">
       <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 2.3</div>
-      <div class="q" data-val="num" data-ans="30">
-        <div class="q-stem"><strong>1.</strong> Si la UT al consumir 3 alfajores es 150 y al consumir 4 es 180, ¿cuál es la UMg del 4to alfajor?</div>
+      <div class="q" data-val="num" data-ans="60">
+        <div class="q-stem"><strong>1.</strong> Según la tabla del apunte: UT(2 kilos helado) = 180, UT(3 kilos helado) = 240. ¿Cuál es la UMg del 3er kilo?</div>
         <div class="q-in"><span class="q-label">UMg =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>UMg = ΔUT/ΔQ = (180−150)/(4−3) = 30/1 = <strong>30</strong></p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>UMg = ΔUT/ΔQ = (240 − 180)/(3 − 2) = 60/1 = <strong>60 útiles</strong>.</p></details>
       </div>
       <div class="q" data-val="vf" data-ans="f">
         <div class="q-stem"><strong>2.</strong> Según la ley de utilidad marginal decreciente, la UTILIDAD TOTAL decrece al consumir más unidades.</div>
@@ -1225,21 +1218,12 @@ tr:hover td{background:var(--accent-l)}
       <p style="font-size:.82em;color:var(--text2);text-align:center;margin-top:8px">Movete los sliders y mirá cómo cambia la clasificación.</p>
     </div>
 
-    <div class="excel-card">
-      <h4><i data-lucide="file-spreadsheet" style="width:16px;height:16px"></i> Elasticidad-precio en Excel</h4>
-      <p style="font-size:.88em;margin:4px 0 8px">Con P₁ en A1, P₂ en B1, Q₁ en C1, Q₂ en D1:</p>
-      <div class="excel-formula">ABS((D1-C1)/(B1-A1)) * ((A1+B1)/(C1+D1))</div>
-      <p class="excel-desc">Fórmula de elasticidad en arco (punto medio). ABS devuelve el valor absoluto para trabajar siempre positivo.</p>
-      <div class="excel-formula">IF(G1&gt;1,"Elástica",IF(G1=1,"Unitaria","Inelástica"))</div>
-      <p class="excel-desc">Si en G1 tenés |Ep|, esta fórmula clasifica automáticamente.</p>
-    </div>
-
     <div class="quiz-block">
       <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 2.5 (elasticidad-precio)</div>
       <div class="q" data-val="num" data-ans="2" data-tol="0.05">
-        <div class="q-stem"><strong>1.</strong> Si el precio baja 5% y la cantidad demandada sube 10%, ¿cuánto vale la elasticidad-precio (valor absoluto)?</div>
+        <div class="q-stem"><strong>1.</strong> Ejemplo del apunte: el precio se reduce 40% y la cantidad demandada aumenta 80%. Calculá |Ep|.</div>
         <div class="q-in"><span class="q-label">|Ep| =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>|Ep| = 10% / 5% = <strong>2</strong>. La demanda es <em>elástica</em> (&gt;1).</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>|Ep| = 80% / 40% = <strong>2</strong>. Demanda <em>elástica</em>.</p></details>
       </div>
       <div class="q" data-val="sel" data-ans="inelastica">
         <div class="q-stem"><strong>2.</strong> La demanda de insulina (para diabéticos) es un ejemplo clásico de elasticidad:</div>
@@ -1327,9 +1311,9 @@ tr:hover td{background:var(--accent-l)}
     <div class="quiz-block">
       <div class="qh"><i data-lucide="check-square" style="width:16px;height:16px"></i> Mini-quiz 2.6</div>
       <div class="q" data-val="sel" data-ans="sustitutos">
-        <div class="q-stem"><strong>1.</strong> La elasticidad cruzada entre Coca-Cola y Pepsi sería POSITIVA. Eso indica que son bienes:</div>
+        <div class="q-stem"><strong>1.</strong> Ejemplo del apunte: al subir el precio del combustible, aumenta la demanda de motocicletas (en lugar de automóviles). La relación automóvil ↔ motocicleta es de bienes:</div>
         <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="sustitutos">sustitutos</option><option value="complementarios">complementarios</option><option value="independientes">independientes</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p><strong>Sustitutos.</strong> Si sube el precio de Coca, sube la demanda de Pepsi (signo +). Complementarios tendrían signo negativo (nafta-autos).</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Sustitutos.</strong> Elasticidad cruzada positiva: al subir el precio de uno, sube la demanda del otro.</p></details>
       </div>
       <div class="q" data-val="sel" data-ans="lujo">
         <div class="q-stem"><strong>2.</strong> Un bien cuya elasticidad-ingreso es 1.8 es clasificado como:</div>
@@ -1421,127 +1405,6 @@ tr:hover td{background:var(--accent-l)}
 </div>
 
 <!-- ============================================= -->
-<!-- EXCEL + VIDEOS -->
-<!-- ============================================= -->
-<div class="unit-hero" id="excel" style="background:linear-gradient(135deg,#15803d,#16a34a,#22c55e)">
-  <h2><i data-lucide="file-spreadsheet" style="width:20px;height:20px;display:inline"></i> Excel · Fórmulas + Tutoriales</h2>
-  <p>Todas las fórmulas listas para copiar/pegar en Excel o Google Sheets</p>
-</div>
-
-<div class="section" data-topic="t12">
-  <div class="section-header active" onclick="toggleSection(this)">
-    <h2><i data-lucide="table" style="width:18px;height:18px"></i> Fórmulas Excel del parcial</h2>
-    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
-  </div>
-  <div class="section-body open">
-
-    <div class="excel-card">
-      <h4>Demanda Agregada</h4>
-      <div class="excel-formula">A1+B1+C1+(D1-E1)</div>
-      <p class="excel-desc">Donde A1=C, B1=I, C1=G, D1=X, E1=M</p>
-    </div>
-
-    <div class="excel-card">
-      <h4>Ingreso Nacional</h4>
-      <div class="excel-formula">A1+B1-C1</div>
-      <p class="excel-desc">Donde A1=PIB, B1=RRN, C1=RRE</p>
-    </div>
-
-    <div class="excel-card">
-      <h4>Utilidad Marginal</h4>
-      <div class="excel-formula">(B2-B1)/(A2-A1)</div>
-      <p class="excel-desc">Donde A=cantidad consumida y B=utilidad total. Arrastrar hacia abajo para cada unidad.</p>
-    </div>
-
-    <div class="excel-card">
-      <h4>Elasticidad-precio (en el punto)</h4>
-      <div class="excel-formula">ABS(((C2-C1)/C1) / ((B2-B1)/B1))</div>
-      <p class="excel-desc">Donde B=precio y C=cantidad. ABS para trabajar en positivo.</p>
-    </div>
-
-    <div class="excel-card">
-      <h4>Elasticidad-precio (en arco / punto medio)</h4>
-      <div class="excel-formula">ABS((C2-C1)/(B2-B1)) * ((B1+B2)/(C1+C2))</div>
-      <p class="excel-desc">Usa promedio entre los dos puntos. Evita indeterminación A→B vs B→A.</p>
-    </div>
-
-    <div class="excel-card">
-      <h4>Ingreso Total</h4>
-      <div class="excel-formula">A1*B1</div>
-      <p class="excel-desc">Donde A1=precio y B1=cantidad. Para maximizar: probar distintos precios y ver dónde IT es máximo.</p>
-    </div>
-
-    <div class="excel-card">
-      <h4>Elasticidad cruzada</h4>
-      <div class="excel-formula">((D2-D1)/D1) / ((B2-B1)/B1)</div>
-      <p class="excel-desc">Sin ABS (el signo importa): B=precio bien j, D=cantidad bien i. Resultado positivo = sustitutos; negativo = complementarios.</p>
-    </div>
-
-    <div class="excel-card">
-      <h4>Elasticidad-ingreso</h4>
-      <div class="excel-formula">((C2-C1)/C1) / ((B2-B1)/B1)</div>
-      <p class="excel-desc">B=ingreso, C=cantidad. Positivo=normal; Negativo=inferior; &gt;1=lujo.</p>
-    </div>
-
-    <div class="excel-card">
-      <h4>Clasificador automático (IF anidado)</h4>
-      <div class="excel-formula">IF(ABS(A1)&gt;1,"Elástica",IF(ABS(A1)=1,"Unitaria","Inelástica"))</div>
-      <p class="excel-desc">Poné |Ep| en A1 y esta fórmula clasifica la demanda automáticamente.</p>
-    </div>
-
-  </div>
-</div>
-
-<div class="section" data-topic="t13">
-  <div class="section-header" onclick="toggleSection(this)">
-    <h2><i data-lucide="youtube" style="width:18px;height:18px"></i> Videos explicativos</h2>
-    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
-  </div>
-  <div class="section-body">
-    <p style="margin-bottom:10px">Tutoriales recomendados para reforzar los conceptos:</p>
-    <div class="video-row">
-      <div class="video-card">
-        <a class="video-link" href="https://www.youtube.com/results?search_query=frontera+posibilidades+produccion+FPP+economia" target="_blank" rel="noopener">
-          <strong>▶ FPP y Costo de Oportunidad</strong>
-          <span>Buscar en YouTube: "FPP economía explicación"</span>
-        </a>
-      </div>
-      <div class="video-card">
-        <a class="video-link" href="https://www.youtube.com/results?search_query=demanda+agregada+oferta+agregada+economia" target="_blank" rel="noopener">
-          <strong>▶ Demanda y Oferta Agregada</strong>
-          <span>Buscar: "demanda agregada macroeconomía"</span>
-        </a>
-      </div>
-      <div class="video-card">
-        <a class="video-link" href="https://www.youtube.com/results?search_query=curvas+de+indiferencia+microeconomia" target="_blank" rel="noopener">
-          <strong>▶ Curvas de indiferencia</strong>
-          <span>Buscar: "curvas de indiferencia ejemplos"</span>
-        </a>
-      </div>
-      <div class="video-card">
-        <a class="video-link" href="https://www.youtube.com/results?search_query=elasticidad+precio+demanda+ejercicios" target="_blank" rel="noopener">
-          <strong>▶ Elasticidad-precio</strong>
-          <span>Buscar: "elasticidad precio demanda ejercicios resueltos"</span>
-        </a>
-      </div>
-      <div class="video-card">
-        <a class="video-link" href="https://www.youtube.com/results?search_query=utilidad+total+marginal+microeconomia" target="_blank" rel="noopener">
-          <strong>▶ Utilidad total vs marginal</strong>
-          <span>Buscar: "utilidad marginal decreciente"</span>
-        </a>
-      </div>
-      <div class="video-card">
-        <a class="video-link" href="https://www.youtube.com/results?search_query=calcular+elasticidad+excel" target="_blank" rel="noopener">
-          <strong>▶ Calcular elasticidad en Excel</strong>
-          <span>Buscar: "elasticidad excel tutorial"</span>
-        </a>
-      </div>
-    </div>
-    <p style="font-size:.82em;color:var(--muted);margin-top:10px;font-style:italic">Los enlaces abren YouTube con una búsqueda pre-cargada. Elegí el que mejor te funcione para tu estilo de aprendizaje.</p>
-  </div>
-</div>
-
-<!-- ============================================= -->
 <!-- WIDGETS INTERACTIVOS -->
 <!-- ============================================= -->
 <div class="unit-hero" id="interactivo" style="background:linear-gradient(135deg,#db2777,#ec4899,#f472b6)">
@@ -1622,21 +1485,18 @@ tr:hover td{background:var(--accent-l)}
   </div>
   <div class="section-body">
     <div class="dnd-wrap" id="dnd1">
-      <p style="font-size:.88em;margin-bottom:8px">Arrastrá cada bien al recipiente correcto. Pensá en cómo reaccionaría su demanda al aumentar el ingreso del consumidor.</p>
+      <p style="font-size:.88em;margin-bottom:8px">Arrastrá cada afirmación al tipo correspondiente (ejemplos exactos del apunte U1).</p>
       <div class="dnd-items" id="dnd1Pool">
-        <div class="dnd-item" draggable="true" data-bin="normal">Ropa de marca reconocida</div>
-        <div class="dnd-item" draggable="true" data-bin="lujo">Auto deportivo de alta gama</div>
-        <div class="dnd-item" draggable="true" data-bin="inferior">Pan de molde barato</div>
-        <div class="dnd-item" draggable="true" data-bin="lujo">Vacaciones en el Caribe</div>
-        <div class="dnd-item" draggable="true" data-bin="normal">Cortes de carne habituales</div>
-        <div class="dnd-item" draggable="true" data-bin="inferior">Transporte público (colectivo)</div>
-        <div class="dnd-item" draggable="true" data-bin="lujo">Perfume importado</div>
-        <div class="dnd-item" draggable="true" data-bin="normal">Zapatillas comunes</div>
+        <div class="dnd-item" draggable="true" data-bin="positiva">"Si el Estado grava con un impuesto el consumo de telas, disminuirá la demanda"</div>
+        <div class="dnd-item" draggable="true" data-bin="normativa">"La Argentina debería tener plena libertad de comercio sin ningún tipo de restricción"</div>
+        <div class="dnd-item" draggable="true" data-bin="positiva">"Si las condiciones climáticas son favorables, aumentará la producción de granos"</div>
+        <div class="dnd-item" draggable="true" data-bin="normativa">"La Argentina debería cuidar más su desarrollo industrial generando una política comercial más proteccionista"</div>
+        <div class="dnd-item" draggable="true" data-bin="positiva">"Si el precio del arroz es muy alto, el próximo año aumentará el área sembrada"</div>
+        <div class="dnd-item" draggable="true" data-bin="normativa">"El tipo de cambio debería ser lo más elevado posible para garantizar la competitividad internacional"</div>
       </div>
       <div class="dnd-bins">
-        <div class="dnd-bin" data-bin="inferior"><h5>📉 Bien inferior (Ey &lt; 0)</h5><div class="bitems"></div></div>
-        <div class="dnd-bin" data-bin="normal"><h5>📊 Bien normal (0 &lt; Ey &lt; 1)</h5><div class="bitems"></div></div>
-        <div class="dnd-bin" data-bin="lujo">💎 <h5>Bien de lujo (Ey &gt; 1)</h5><div class="bitems"></div></div>
+        <div class="dnd-bin" data-bin="positiva"><h5>🔬 Economía Positiva (lo que ES)</h5><div class="bitems"></div></div>
+        <div class="dnd-bin" data-bin="normativa"><h5>⚖️ Economía Normativa (lo que DEBERÍA)</h5><div class="bitems"></div></div>
       </div>
       <button class="dnd-check" onclick="checkDnd('dnd1')"><i data-lucide="check" style="width:14px;height:14px"></i> Validar</button>
       <button class="dnd-check" style="background:var(--muted)" onclick="resetDnd('dnd1')"><i data-lucide="rotate-ccw" style="width:14px;height:14px"></i> Reiniciar</button>
@@ -1644,18 +1504,19 @@ tr:hover td{background:var(--accent-l)}
     </div>
 
     <div class="dnd-wrap" id="dnd2">
-      <p style="font-size:.88em;margin-bottom:8px">Arrastrá cada afirmación al tipo de economía correcto.</p>
+      <p style="font-size:.88em;margin-bottom:8px">Clasificá según el tipo de relación (ejemplos del apunte U2 - elasticidad cruzada y Engel).</p>
       <div class="dnd-items" id="dnd2Pool">
-        <div class="dnd-item" draggable="true" data-bin="positiva">"Si sube el precio del pan, baja su demanda"</div>
-        <div class="dnd-item" draggable="true" data-bin="normativa">"El Estado debería subir el salario mínimo"</div>
-        <div class="dnd-item" draggable="true" data-bin="positiva">"Argentina tuvo inflación del 120% el año pasado"</div>
-        <div class="dnd-item" draggable="true" data-bin="normativa">"Hay que reducir los impuestos a las PyMEs"</div>
-        <div class="dnd-item" draggable="true" data-bin="positiva">"Una sequía reduciría la producción agrícola"</div>
-        <div class="dnd-item" draggable="true" data-bin="normativa">"El comercio internacional debería ser libre"</div>
+        <div class="dnd-item" draggable="true" data-bin="sustitutos">Automóvil y motocicleta</div>
+        <div class="dnd-item" draggable="true" data-bin="complementarios">Automóvil y combustible</div>
+        <div class="dnd-item" draggable="true" data-bin="sustitutos">Avión, tren y ómnibus</div>
+        <div class="dnd-item" draggable="true" data-bin="normal">Carne de ternera (↑ingreso → ↑demanda)</div>
+        <div class="dnd-item" draggable="true" data-bin="inferior">Pan duro (↑ingreso → ↓demanda)</div>
       </div>
       <div class="dnd-bins">
-        <div class="dnd-bin" data-bin="positiva"><h5>🔬 Economía Positiva (lo que ES)</h5><div class="bitems"></div></div>
-        <div class="dnd-bin" data-bin="normativa"><h5>⚖️ Economía Normativa (lo que DEBERÍA)</h5><div class="bitems"></div></div>
+        <div class="dnd-bin" data-bin="sustitutos"><h5>↔️ Bienes sustitutos (E<sub>ij</sub> &gt; 0)</h5><div class="bitems"></div></div>
+        <div class="dnd-bin" data-bin="complementarios"><h5>🔗 Bienes complementarios (E<sub>ij</sub> &lt; 0)</h5><div class="bitems"></div></div>
+        <div class="dnd-bin" data-bin="normal"><h5>📈 Bien normal (E<sub>Y</sub> &gt; 0)</h5><div class="bitems"></div></div>
+        <div class="dnd-bin" data-bin="inferior"><h5>📉 Bien inferior (E<sub>Y</sub> &lt; 0)</h5><div class="bitems"></div></div>
       </div>
       <button class="dnd-check" onclick="checkDnd('dnd2')"><i data-lucide="check" style="width:14px;height:14px"></i> Validar</button>
       <button class="dnd-check" style="background:var(--muted)" onclick="resetDnd('dnd2')"><i data-lucide="rotate-ccw" style="width:14px;height:14px"></i> Reiniciar</button>
@@ -1682,7 +1543,7 @@ tr:hover td{background:var(--accent-l)}
 <!-- PARCIAL 1 -->
 <div class="section" data-topic="p1">
   <div class="section-header" onclick="toggleSection(this)">
-    <h2><i data-lucide="graduation-cap" style="width:18px;height:18px"></i> Parcial 1 · Conceptos base + FPP</h2>
+    <h2><i data-lucide="graduation-cap" style="width:18px;height:18px"></i> Parcial 1 · Unidad 1 (Introducción)</h2>
     <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
   </div>
   <div class="section-body">
@@ -1691,67 +1552,67 @@ tr:hover td{background:var(--accent-l)}
       <div class="q-group-t"><span>Sección A · Verdadero o Falso</span><span class="pts">5 pts</span></div>
 
       <div class="q" data-val="vf" data-ans="f">
-        <div class="q-stem"><strong>1.</strong> La escasez se debe únicamente a limitaciones tecnológicas de la producción.</div>
+        <div class="q-stem"><strong>1.</strong> La escasez es un problema tecnológico de la producción.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Es disparidad entre necesidades ilimitadas y recursos limitados, no un problema tecnológico.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. El apunte dice textual: "La escasez no es un problema tecnológico sino de disparidad entre deseos humanos y medios disponibles para satisfacerlos".</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="v">
-        <div class="q-stem"><strong>2.</strong> En la economía mixta, el Estado controla recursos estratégicos mientras que los privados se encargan de la mayor parte de la actividad.</div>
+        <div class="q-stem"><strong>2.</strong> En el sistema capitalista o economía de mercado, los precios se derivan de la oferta y la demanda; en el sistema de planificación centralizada, los precios son fijados mediante decretos.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Combina mercado con intervención estatal en sectores estratégicos (energía, petróleo).</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. En capitalismo los precios se derivan de oferta y demanda; en planificación centralizada se fijan por decreto.</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="f">
-        <div class="q-stem"><strong>3.</strong> "El Estado debería aumentar el salario mínimo" es un enunciado de economía positiva.</div>
+        <div class="q-stem"><strong>3.</strong> "Si el Estado grava con un impuesto el consumo de telas, disminuirá la demanda" es una afirmación de economía normativa.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. "Debería" implica juicio de valor → normativa, no positiva.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Es un ejemplo de economía POSITIVA (explica lo que pasará, no lo que "debería" pasar). El apunte la lista como afirmación positiva.</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="v">
-        <div class="q-stem"><strong>4.</strong> Un punto ubicado por fuera de la FPP representa combinaciones inalcanzables con los recursos y tecnología actuales.</div>
+        <div class="q-stem"><strong>4.</strong> El desplazamiento de la FPP hacia afuera (derecha) puede estar causado por avances en tecnología, más recursos, educación o cambios en la fuerza laboral.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Fuera = inalcanzable; sobre = eficiente; dentro = recursos ociosos.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. El apunte enumera exactamente estas causas de desplazamiento hacia afuera.</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="v">
-        <div class="q-stem"><strong>5.</strong> El flujo circular incluye un flujo real (bienes y factores) y un flujo nominal (dinero).</div>
+        <div class="q-stem"><strong>5.</strong> En el flujo circular de la economía coexisten el flujo real (bienes y factores) y el flujo monetario/nominal (ingresos y precios).</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Son los dos flujos opuestos que describen el funcionamiento del sistema económico.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. El apunte define el flujo real (circulación de bienes y factores) y el flujo monetario o nominal (circulación de ingresos y precios).</p></details>
       </div>
     </div>
 
     <div class="q-group">
-      <div class="q-group-t"><span>Sección B · Cálculos</span><span class="pts">5 pts</span></div>
+      <div class="q-group-t"><span>Sección B · Cálculos (valores de la Guía Práctica U1)</span><span class="pts">5 pts</span></div>
 
-      <div class="q" data-val="num" data-ans="620">
-        <div class="q-stem"><strong>6.</strong> Calcular la Demanda Agregada con: Consumo = 400, Inversión = 100, Gasto público = 150, Exportaciones = 50, Importaciones = 80.</div>
+      <div class="q" data-val="num" data-ans="840">
+        <div class="q-stem"><strong>6.</strong> Calculá la Demanda Agregada con: C = 500, I = 120, G = 200, X = 80, M = 60.</div>
         <div class="q-in"><span class="q-label">DA =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>DA = 400 + 100 + 150 + (50−80) = 650 − 30 = <strong>620</strong></p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>DA = C + I + G + (X − M) = 500 + 120 + 200 + (80 − 60) = 500 + 120 + 200 + 20 = <strong>840</strong>.</p></details>
       </div>
 
-      <div class="q" data-val="num" data-ans="1050">
-        <div class="q-stem"><strong>7.</strong> Si el PIB es 1000, RRN = 80 y RRE = 30, calcular el Ingreso Nacional.</div>
-        <div class="q-in"><span class="q-label">IN =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>IN = PIB + RRN − RRE = 1000 + 80 − 30 = <strong>1050</strong></p></details>
-      </div>
-
-      <div class="q" data-val="num" data-ans="3" data-tol="0.05">
-        <div class="q-stem"><strong>8.</strong> Una FPP tiene puntos A(0,30) y B(5,15). ¿Cuál es el costo de oportunidad promedio de 1 unidad del bien X en unidades de Y?</div>
-        <div class="q-in"><span class="q-label">CO =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>ΔX = 5, ΔY = 15 − 30 = −15. CO = 15 / 5 = <strong>3 unidades de Y por 1 de X</strong>.</p></details>
-      </div>
-
-      <div class="q" data-val="num" data-ans="710">
-        <div class="q-stem"><strong>9.</strong> Usando los valores del ejercicio 6, si la Inversión sube en 90 (nuevo I = 190), ¿cuál es la nueva DA?</div>
+      <div class="q" data-val="num" data-ans="890">
+        <div class="q-stem"><strong>7.</strong> Usando los valores del ejercicio 6, si el Gasto público G aumenta en 50 (nuevo G = 250), ¿cuál es la nueva DA?</div>
         <div class="q-in"><span class="q-label">DA' =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>DA' = 400 + 190 + 150 + (50−80) = 740 − 30 = <strong>710</strong>. DA subió en 90 por el aumento de I.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>DA' = 500 + 120 + 250 + 20 = <strong>890</strong>. La DA sube en 50, igual al aumento de G.</p></details>
       </div>
 
-      <div class="q" data-val="sel" data-ans="lujo">
-        <div class="q-stem"><strong>10.</strong> Un reloj de colección de $5000, cuya demanda baja mucho si sube su precio, se clasificaría como:</div>
-        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="necesidad">primera necesidad</option><option value="lujo">de lujo (demanda elástica)</option><option value="inferior">inferior</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>De lujo. Los bienes de lujo tienen demanda elástica: los consumidores pueden abstenerse al subir el precio.</p></details>
+      <div class="q" data-val="num" data-ans="820">
+        <div class="q-stem"><strong>8.</strong> Si PIB = 840, RRN (rentas de residentes nacionales en el extranjero) = 30 y RRE (rentas de residentes extranjeros en el país) = 50, calculá el Ingreso Nacional.</div>
+        <div class="q-in"><span class="q-label">IN =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>IN = PIB + RRN − RRE = 840 + 30 − 50 = <strong>820</strong>.</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="2" data-tol="0.05">
+        <div class="q-stem"><strong>9.</strong> Una FPP tiene los puntos B(10,90) y C(20,70). ¿Cuál es el costo de oportunidad de 1 unidad adicional del bien X (en unidades de Y)?</div>
+        <div class="q-in"><span class="q-label">CO =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>ΔX = 20 − 10 = 10. |ΔY| = |70 − 90| = 20. CO = 20 / 10 = <strong>2 unidades de Y por 1 de X</strong>.</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="420">
+        <div class="q-stem"><strong>10.</strong> En un modelo simplificado del flujo circular, las familias reciben: salarios = 300, alquileres = 40, intereses = 20 y beneficios = 60. Calculá el ingreso total de las familias.</div>
+        <div class="q-in"><span class="q-label">Ingreso total =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>Ingreso total = 300 + 40 + 20 + 60 = <strong>420</strong>. En el modelo simplificado, el ingreso total = Consumo + Ahorro (por ejemplo 350 + 70 = 420).</p></details>
       </div>
     </div>
 
@@ -1761,7 +1622,7 @@ tr:hover td{background:var(--accent-l)}
 <!-- PARCIAL 2 -->
 <div class="section" data-topic="p2">
   <div class="section-header" onclick="toggleSection(this)">
-    <h2><i data-lucide="graduation-cap" style="width:18px;height:18px"></i> Parcial 2 · Consumidor y Demanda</h2>
+    <h2><i data-lucide="graduation-cap" style="width:18px;height:18px"></i> Parcial 2 · Consumidor (curvas indif, presupuesto, utilidad, demanda)</h2>
     <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
   </div>
   <div class="section-body">
@@ -1772,65 +1633,65 @@ tr:hover td{background:var(--accent-l)}
       <div class="q" data-val="vf" data-ans="f">
         <div class="q-stem"><strong>1.</strong> Dos curvas de indiferencia pueden cortarse si representan el mismo nivel de utilidad.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Las curvas de indiferencia NUNCA se cortan; si lo hicieran sería una contradicción lógica en las preferencias.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. El apunte dice: "Las curvas de indiferencia no se cortan entre sí". Cortarse implicaría una contradicción en las preferencias.</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="v">
-        <div class="q-stem"><strong>2.</strong> La ley de utilidad marginal decreciente dice que cada unidad adicional consumida aporta MENOS satisfacción que la anterior.</div>
+        <div class="q-stem"><strong>2.</strong> La ley de utilidad marginal decreciente dice que, cuanto más se consume de un bien, menos satisfacción adicional reporta cada nueva unidad.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Es lo que justifica la forma convexa de las curvas de indiferencia y la diversificación del consumo.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. El apunte lo define textual así y lo usa para justificar la diversificación del consumo.</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="f">
-        <div class="q-stem"><strong>3.</strong> Un aumento en el precio del bien X origina un desplazamiento de la curva de demanda de X.</div>
+        <div class="q-stem"><strong>3.</strong> Un cambio en el precio del propio bien origina un DESPLAZAMIENTO de la curva de demanda.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Cambios en el propio precio originan MOVIMIENTOS a lo largo de la curva, no desplazamientos.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. El apunte dice: cambios en el precio del propio bien originan un MOVIMIENTO a lo largo de la curva. Los desplazamientos vienen de ingreso, precios relacionados, número de empresas, gustos o tamaño del mercado.</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="v">
-        <div class="q-stem"><strong>4.</strong> Si baja el precio del bien X y la recta presupuestaria gira sobre el eje de Y, el consumidor puede comprar más X sin renunciar a Y.</div>
+        <div class="q-stem"><strong>4.</strong> Un aumento del ingreso (con precios constantes) desplaza la recta de balance paralelamente.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. El giro expande el poder de compra de X (el eje de Y se mantiene fijo).</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. El apunte dice: "Un aumento (o disminución) del ingreso desplaza paralelamente la recta de balance".</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="f">
-        <div class="q-stem"><strong>5.</strong> El excedente del consumidor es la diferencia entre el ingreso total del consumidor y el gasto en el bien.</div>
+        <div class="q-stem"><strong>5.</strong> El excedente del consumidor es la cantidad total que paga el consumidor en el mercado por el bien.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Es la diferencia entre lo que estaría dispuesto a pagar (utilidad total) y lo que efectivamente paga en el mercado.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. El apunte lo define como "la diferencia entre la cantidad máxima que estaría dispuesto a pagar y la cantidad que realmente paga en el mercado".</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="v">
-        <div class="q-stem"><strong>6.</strong> El efecto ingreso y el efecto sustitución juntos explican por qué la curva de demanda tiene pendiente negativa.</div>
+        <div class="q-stem"><strong>6.</strong> La pendiente decreciente de la curva de demanda se explica por el efecto sustitución y el efecto ingreso.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Al subir el precio: 1) se sustituye por otros bienes (sustitución); 2) el ingreso real cae (ingreso). Ambos reducen Q.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. El apunte afirma que la relación inversa P-Q "puede explicarse por dos motivos: el efecto sustitución y el efecto ingreso".</p></details>
       </div>
     </div>
 
     <div class="q-group">
-      <div class="q-group-t"><span>Sección B · Cálculos</span><span class="pts">4 pts</span></div>
+      <div class="q-group-t"><span>Sección B · Cálculos (datos del apunte U2)</span><span class="pts">4 pts</span></div>
 
-      <div class="q" data-val="num" data-ans="50">
-        <div class="q-stem"><strong>7.</strong> Con ingreso = $500, P<sub>hamburguesa</sub> = $10, P<sub>pizza</sub> = $20. ¿Cuántas hamburguesas puede comprar si gasta todo en hamburguesas?</div>
-        <div class="q-in"><span class="q-label">Q<sub>h</sub> =</span><input class="vld" type="number" placeholder="unidades"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>Q = Y / P = 500/10 = <strong>50 hamburguesas</strong>.</p></details>
+      <div class="q" data-val="num" data-ans="10">
+        <div class="q-stem"><strong>7.</strong> Ejemplo del apunte: ingreso = $100, P<sub>jugo</sub> = $10, P<sub>helado</sub> = $20. Si el consumidor gasta todo en jugo, ¿cuántos jugos puede comprar?</div>
+        <div class="q-in"><span class="q-label">Q<sub>j</sub> =</span><input class="vld" type="number" placeholder="unidades"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>Q = Y / P<sub>j</sub> = 100 / 10 = <strong>10 jugos</strong>. (Si gastara todo en helado: 100/20 = 5 helados.)</p></details>
       </div>
 
-      <div class="q" data-val="num" data-ans="25">
-        <div class="q-stem"><strong>8.</strong> La UT para 2 alfajores es 50 y para 3 alfajores es 75. Calcular la UMg del 3er alfajor.</div>
+      <div class="q" data-val="num" data-ans="80">
+        <div class="q-stem"><strong>8.</strong> Tabla de utilidades del helado (apunte U2): UT(1 kilo) = 100, UT(2 kilos) = 180. Calculá la UMg del 2do kilo.</div>
         <div class="q-in"><span class="q-label">UMg =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>UMg = (75 − 50) / (3 − 2) = <strong>25</strong>.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>UMg = ΔUT / ΔQ = (180 − 100) / (2 − 1) = <strong>80 útiles</strong>. La UMg va decreciendo: 100, 80, 60, 40, 20 (tabla del apunte).</p></details>
       </div>
 
-      <div class="q" data-val="num" data-ans="3" data-tol="0.05">
-        <div class="q-stem"><strong>9.</strong> Si cuando el ingreso sube 20%, la demanda de un bien sube 60%: ¿cuál es la elasticidad-ingreso y cómo se clasifica?</div>
-        <div class="q-in"><span class="q-label">E<sub>Y</sub> =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>E<sub>Y</sub> = 60% / 20% = <strong>3</strong>. Como es &gt; 1, es un <em>bien de lujo</em>.</p></details>
+      <div class="q" data-val="num" data-ans="300">
+        <div class="q-stem"><strong>9.</strong> Usando la misma tabla del apunte, calculá la UT acumulada tras consumir 5 kilos de helado (UMg 1° a 5°: 100, 80, 60, 40, 20).</div>
+        <div class="q-in"><span class="q-label">UT(5) =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>UT(5) = 100 + 80 + 60 + 40 + 20 = <strong>300 útiles</strong>. Coincide con la tabla del apunte.</p></details>
       </div>
 
-      <div class="q" data-val="num" data-ans="240">
-        <div class="q-stem"><strong>10.</strong> En el mercado de un bien se venden 40 unidades a $6 c/u. ¿Cuál es el ingreso total (IT)?</div>
-        <div class="q-in"><span class="q-label">IT =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>IT = P · Q = 6 · 40 = <strong>$240</strong>.</p></details>
+      <div class="q" data-val="num" data-ans="21">
+        <div class="q-stem"><strong>10.</strong> Ejemplo del apunte: un consumidor valora cada kilo de helado en $7, $6, $5, $4, $3, $2 (del 1° al 6°). Si el precio de mercado es $1 y compra 6 kilos (valor total = 27, pago total = 6), calculá el excedente del consumidor.</div>
+        <div class="q-in"><span class="q-label">EC =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>EC = valor total − pagado = 27 − 6 = <strong>$21</strong>. Coincide con el ejemplo del apunte.</p></details>
       </div>
     </div>
 
@@ -1840,94 +1701,109 @@ tr:hover td{background:var(--accent-l)}
 <!-- PARCIAL 3 -->
 <div class="section" data-topic="p3">
   <div class="section-header" onclick="toggleSection(this)">
-    <h2><i data-lucide="award" style="width:18px;height:18px"></i> Parcial 3 · Integrador (elasticidad + microeconomía)</h2>
+    <h2><i data-lucide="award" style="width:18px;height:18px"></i> Parcial 3 · Integrador con elasticidades (tabla del teatro)</h2>
     <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
   </div>
   <div class="section-body">
+
+    <div class="alert alert-info">
+      <div class="at"><i data-lucide="table-2" style="width:16px;height:16px"></i> Tabla del apunte U2 (ejemplo del teatro)</div>
+      <p style="font-size:.88em">Los ejercicios 6 a 13 se apoyan en esta tabla de demanda del apunte:</p>
+      <table style="font-size:.82em">
+        <tr><th>Precio ($)</th><th>Cantidad</th><th>|Ep|</th><th>IT ($)</th></tr>
+        <tr><td>45</td><td>100</td><td>9.00</td><td>4.500</td></tr>
+        <tr><td>40</td><td>200</td><td>4.00</td><td>8.000</td></tr>
+        <tr><td>30</td><td>400</td><td>1.50</td><td>12.000</td></tr>
+        <tr><td>25</td><td>500</td><td>1.00</td><td><strong>12.500</strong></td></tr>
+        <tr><td>20</td><td>600</td><td>0.67</td><td>12.000</td></tr>
+        <tr><td>10</td><td>800</td><td>0.25</td><td>8.000</td></tr>
+        <tr><td>5</td><td>900</td><td>0.09</td><td>4.500</td></tr>
+      </table>
+    </div>
 
     <div class="q-group">
       <div class="q-group-t"><span>Sección A · V/F con justificación</span><span class="pts">5 pts</span></div>
 
       <div class="q" data-val="vf" data-ans="v">
-        <div class="q-stem"><strong>1.</strong> La demanda de un bien con muchos sustitutos suele ser más elástica que la de un bien sin sustitutos.</div>
+        <div class="q-stem"><strong>1.</strong> Los bienes de fácil sustitución tienden a tener una demanda más elástica que los de difícil sustitución.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Es uno de los factores condicionantes de la elasticidad-precio.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Es uno de los factores condicionantes que menciona el apunte: disponibilidad de sustitutos.</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="f">
-        <div class="q-stem"><strong>2.</strong> Si la demanda de un bien es INELÁSTICA, una baja del precio hace que el ingreso total AUMENTE.</div>
+        <div class="q-stem"><strong>2.</strong> Si la demanda es INELÁSTICA (|Ep| &lt; 1), al reducir el precio el ingreso total aumenta.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Con demanda inelástica, al bajar P el IT DISMINUYE porque Q no crece lo suficiente para compensar.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. El apunte lo dice explícito: si la demanda es inelástica, "el precio y el ingreso total varían en el mismo sentido" → al bajar P, baja IT.</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="v">
         <div class="q-stem"><strong>3.</strong> La curva de Engel de un bien inferior tiene pendiente negativa.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. Al aumentar el ingreso, el consumo de bienes inferiores DISMINUYE → pendiente negativa.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. El apunte explica: "Cuando el bien es inferior, la pendiente [de Engel] será negativa, puesto que al aumentar el ingreso, el consumidor preferirá reducir su demanda". Ejemplo: pan duro.</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="f">
-        <div class="q-stem"><strong>4.</strong> Si la elasticidad cruzada entre dos bienes es −0.8, significa que son sustitutos.</div>
+        <div class="q-stem"><strong>4.</strong> Si la elasticidad cruzada entre dos bienes es NEGATIVA, son bienes sustitutos.</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Signo negativo → COMPLEMENTARIOS. Los sustitutos tienen elasticidad cruzada POSITIVA.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>FALSO. Elasticidades cruzadas NEGATIVAS = bienes COMPLEMENTARIOS (ej: automóvil y combustible). Positivas = sustitutos.</p></details>
       </div>
 
       <div class="q" data-val="vf" data-ans="v">
-        <div class="q-stem"><strong>5.</strong> El ingreso total de una empresa se maximiza cuando la elasticidad-precio de la demanda es unitaria (|Ep|=1).</div>
+        <div class="q-stem"><strong>5.</strong> El ingreso total se maximiza en el punto donde la demanda tiene elasticidad unitaria (|Ep| = 1).</div>
         <div class="q-in"><span class="q-label">V/F:</span><select class="vld"><option value="">--</option><option value="v">V</option><option value="f">F</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. En ese punto cualquier cambio en P no modifica el IT → es el máximo.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>VERDADERO. El apunte dice textual: "el ingreso total de los vendedores… se maximiza en el punto en que la demanda tiene elasticidad unitaria". En el ejemplo del teatro: P=25, IT=12.500 (máximo).</p></details>
       </div>
     </div>
 
     <div class="q-group">
-      <div class="q-group-t"><span>Sección B · Ejercicios numéricos</span><span class="pts">8 pts</span></div>
+      <div class="q-group-t"><span>Sección B · Ejercicios numéricos (ejemplos del apunte)</span><span class="pts">8 pts</span></div>
 
       <div class="q" data-val="num" data-ans="0.5" data-tol="0.05">
-        <div class="q-stem"><strong>6.</strong> El precio de un producto sube 40% y la cantidad demandada baja 20%. Calcular |Ep| y clasificar la demanda.</div>
+        <div class="q-stem"><strong>6.</strong> Ejemplo del apunte: el precio se reduce 20% y la cantidad demandada aumenta 10%. Calculá |Ep| y clasificá.</div>
         <div class="q-in"><span class="q-label">|Ep| =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>|Ep| = 20% / 40% = <strong>0.5</strong>. Como es &lt; 1 → demanda <em>inelástica</em>.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>|Ep| = 10% / 20% = <strong>0.5</strong>. Como es &lt; 1 → demanda <em>inelástica</em>.</p></details>
       </div>
 
-      <div class="q" data-val="sel" data-ans="aumenta">
-        <div class="q-stem"><strong>7.</strong> Continuando con el ejercicio 6: al SUBIR el precio (con demanda inelástica), el ingreso total:</div>
-        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="aumenta">aumenta</option><option value="disminuye">disminuye</option><option value="igual">no cambia</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p><strong>Aumenta.</strong> Con demanda inelástica, P e IT varían en el MISMO sentido. Si sube P, Q cae menos que proporcionalmente → el efecto precio domina y IT sube.</p></details>
-      </div>
-
-      <div class="q" data-val="num" data-ans="1.14" data-tol="0.05">
-        <div class="q-stem"><strong>8.</strong> Entre puntos A(P=10, Q=100) y B(P=6, Q=180), calcular la elasticidad en el ARCO (punto medio).</div>
+      <div class="q" data-val="num" data-ans="1" data-tol="0.05">
+        <div class="q-stem"><strong>7.</strong> Ejemplo del apunte: el precio se reduce 33% y la cantidad aumenta 33%. Calculá |Ep|.</div>
         <div class="q-in"><span class="q-label">|Ep| =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>ΔQ = 80, |ΔP| = 4.<br>|Ep| = (ΔQ/ΔP) · (P₁+P₂)/(Q₁+Q₂) = (80/4) · (16/280) = 20 · 0.0571 ≈ <strong>1.14</strong>. Demanda elástica.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>|Ep| = 33% / 33% = <strong>1</strong>. Demanda de <em>elasticidad unitaria</em>.</p></details>
       </div>
 
-      <div class="q" data-val="num" data-ans="1500">
-        <div class="q-stem"><strong>9.</strong> Un cine vende 300 entradas a $5 c/u. Calcular el ingreso total (IT).</div>
+      <div class="q" data-val="num" data-ans="12500">
+        <div class="q-stem"><strong>8.</strong> Usando la tabla del teatro: calculá el IT cuando el precio es $25 y la cantidad es 500 entradas. (Este es el máximo IT posible según la tabla.)</div>
         <div class="q-in"><span class="q-label">IT =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>IT = 300 × 5 = <strong>$1.500</strong>.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>IT = P · Q = 25 × 500 = <strong>$12.500</strong>. Coincide con el máximo de la tabla, porque ahí |Ep| = 1.</p></details>
+      </div>
+
+      <div class="q" data-val="num" data-ans="8000">
+        <div class="q-stem"><strong>9.</strong> Usando la misma tabla: si el teatro cobra $40 y vende 200 entradas, ¿cuál es el IT? ¿Es mayor o menor que el IT del precio óptimo ($25)?</div>
+        <div class="q-in"><span class="q-label">IT =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p>IT = 40 × 200 = <strong>$8.000</strong>. Es menor que $12.500 (precio óptimo). Para maximizar IT el teatro debe bajar de $40 a $25.</p></details>
       </div>
 
       <div class="q" data-val="sel" data-ans="complementarios">
-        <div class="q-stem"><strong>10.</strong> Si cuando sube el precio de las impresoras, baja la demanda de cartuchos de tinta, estos bienes son:</div>
+        <div class="q-stem"><strong>10.</strong> Ejemplo del apunte: al subir el precio del combustible, la cantidad demandada de automóviles se reduce. Los automóviles y el combustible son bienes:</div>
         <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="sustitutos">sustitutos</option><option value="complementarios">complementarios</option><option value="independientes">independientes</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p><strong>Complementarios.</strong> Se usan juntos: sube el precio de uno → baja la demanda del otro (elasticidad cruzada negativa).</p></details>
-      </div>
-
-      <div class="q" data-val="num" data-ans="0.8" data-tol="0.05">
-        <div class="q-stem"><strong>11.</strong> Si sube el ingreso 10% y la demanda de un bien sube 8%, calcular E<sub>Y</sub> y clasificar.</div>
-        <div class="q-in"><span class="q-label">E<sub>Y</sub> =</span><input class="vld" type="number" step="0.01" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>E<sub>Y</sub> = 8% / 10% = <strong>0.8</strong>. Como es positiva y &lt; 1 → <em>bien normal de primera necesidad</em>.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Complementarios.</strong> Elasticidad cruzada negativa: "tienden a utilizarse conjuntamente" (cita textual del apunte).</p></details>
       </div>
 
       <div class="q" data-val="sel" data-ans="tangencia">
-        <div class="q-stem"><strong>12.</strong> El equilibrio del consumidor se encuentra donde la pendiente de la curva de indiferencia iguala a la pendiente de la recta presupuestaria, es decir, en el punto de:</div>
-        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="corte">corte</option><option value="tangencia">tangencia</option><option value="inflexion">inflexión</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p><strong>Tangencia.</strong> En ese punto TMS = P<sub>x</sub>/P<sub>y</sub>, maximizando la utilidad sujeta a la restricción presupuestaria.</p></details>
+        <div class="q-stem"><strong>11.</strong> El equilibrio del consumidor se alcanza gráficamente donde la recta de balance es ______ a la curva de indiferencia.</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="secante">secante</option><option value="tangencia">tangente</option><option value="perpendicular">perpendicular</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Tangente.</strong> El apunte dice: "el consumidor se mueve a lo largo de su recta presupuestaria hasta que alcanza el punto E. En esta combinación la línea de presupuesto es tangente a la curva de indiferencia".</p></details>
       </div>
 
-      <div class="q" data-val="num" data-ans="12">
-        <div class="q-stem"><strong>13.</strong> Un consumidor está dispuesto a pagar $10 por la 1ra unidad, $8 por la 2da, $6 por la 3ra y $4 por la 4ta. Si el precio de mercado es $4 y compra 4 unidades, calcular el excedente del consumidor.</div>
+      <div class="q" data-val="num" data-ans="21">
+        <div class="q-stem"><strong>12.</strong> Ejemplo del excedente del consumidor (apunte U2): un consumidor valora cada uno de 6 kilos de helado en $7, $6, $5, $4, $3, $2. Precio de mercado = $1. Calculá el excedente del consumidor.</div>
         <div class="q-in"><span class="q-label">EC =</span><input class="vld" type="number" placeholder="valor"><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
-        <details class="q-sol"><summary>Ver solución</summary><p>Disposición total a pagar: 10+8+6+4 = 28.<br>Total pagado: 4 × $4 = 16.<br>EC = 28 − 16 = <strong>$12</strong>.</p></details>
+        <details class="q-sol"><summary>Ver solución</summary><p>Valor total = 7+6+5+4+3+2 = 27. Pagado = 6×$1 = 6. EC = 27 − 6 = <strong>$21</strong>. Coincide con el ejemplo del apunte.</p></details>
+      </div>
+
+      <div class="q" data-val="sel" data-ans="aumenta">
+        <div class="q-stem"><strong>13.</strong> Un vendedor tiene demanda ELÁSTICA (|Ep| &gt; 1). Si reduce el precio del bien, su ingreso total:</div>
+        <div class="q-in"><select class="vld"><option value="">-- elegir --</option><option value="aumenta">aumenta</option><option value="disminuye">disminuye</option><option value="igual">queda igual</option></select><button class="q-btn" onclick="checkQ(this)">Validar</button><span class="q-fb"></span><button class="q-reset" onclick="resetQ(this)">×</button></div>
+        <details class="q-sol"><summary>Ver solución</summary><p><strong>Aumenta.</strong> Con demanda elástica, P e IT varían en SENTIDO CONTRARIO. Al bajar P, Q crece lo suficiente para compensar y aumenta IT (cita del apunte U2).</p></details>
       </div>
     </div>
 
