@@ -161,6 +161,13 @@ tr:hover td{background:var(--accent-l)}
 .quiz-block .qh{font-weight:700;color:var(--cyan);margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .quiz-block .qh-ct{font-size:.82em;color:var(--muted);margin-left:auto;font-weight:500}
 
+/* ===== GLOSARIO ===== */
+.glossary{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;margin:12px 0}
+.g-card{background:var(--bg);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start;transition:.2s}
+.g-card:hover{border-left-color:var(--purple);transform:translateX(2px)}
+.g-sym{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:1em;min-width:60px;background:var(--card);padding:3px 8px;border-radius:6px;border:1px solid var(--border);text-align:center;flex-shrink:0}
+.g-def{font-size:.88em;color:var(--text);line-height:1.45}
+
 /* ===== INTERACTIVE WIDGETS ===== */
 .calc-widget{background:linear-gradient(135deg,var(--accent-l),var(--card));border:2px solid var(--accent);border-radius:14px;padding:18px;margin:16px 0;box-shadow:var(--shadow)}
 .calc-widget h4{color:var(--accent-d);margin:0 0 12px;display:flex;align-items:center;gap:6px;font-size:1.05em}
@@ -275,7 +282,7 @@ tr:hover td{background:var(--accent-l)}
 <nav class="topnav">
   <div class="logo"><i data-lucide="trending-up" style="width:20px;height:20px"></i> Economía I</div>
   <div class="nav-links">
-    <a href="#u1">U1</a><a href="#u2">U2</a><a href="#formulas">Fórmulas</a><a href="#interactivo" style="color:#db2777;font-weight:700">Juegos</a><a href="#parciales" style="color:var(--purple);font-weight:700">Parciales</a>
+    <a href="#t0" style="color:#0891b2">Glosario</a><a href="#u1">U1</a><a href="#u2">U2</a><a href="#formulas">Fórmulas</a><a href="#excel" style="color:#16a34a">Excel</a><a href="#interactivo" style="color:#db2777;font-weight:700">Juegos</a><a href="#parciales" style="color:var(--purple);font-weight:700">Parciales</a>
   </div>
   <div class="controls">
     <button onclick="toggleAll()" title="Abrir/cerrar todo"><i data-lucide="layout-list" style="width:16px;height:16px"></i></button>
@@ -299,6 +306,68 @@ tr:hover td{background:var(--accent-l)}
   <div class="stat-card"><div class="num" id="stVF">0</div><div class="label">Respuestas OK</div></div>
   <div class="stat-card"><div class="num" id="stParciales">0/3</div><div class="label">Parciales aprobados</div></div>
   <div class="stat-card"><div class="num" id="stFormulas">13</div><div class="label">Fórmulas clave</div></div>
+</div>
+
+<!-- GLOSARIO -->
+<div class="section" data-topic="t0">
+  <div class="section-header active" onclick="toggleSection(this)">
+    <h2><i data-lucide="book-a" style="width:18px;height:18px"></i> Glosario · qué significa cada símbolo</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body open">
+    <p style="margin-bottom:10px">Todos los símbolos y abreviaturas que vas a encontrar, como aparecen en el apunte.</p>
+
+    <h3>Macroeconomía · Unidad 1</h3>
+    <div class="glossary">
+      <div class="g-card"><span class="g-sym">DA</span><span class="g-def">Demanda Agregada. Cantidad total que los sectores están dispuestos a gastar en la economía.</span></div>
+      <div class="g-card"><span class="g-sym">OA</span><span class="g-def">Oferta Agregada. Nivel de producción ofrecida a cada nivel general de precios.</span></div>
+      <div class="g-card"><span class="g-sym">C</span><span class="g-def">Consumo de las familias (alimentos, ropa, automóviles...).</span></div>
+      <div class="g-card"><span class="g-sym">I</span><span class="g-def">Inversión de las empresas (fábricas, equipos, maquinaria).</span></div>
+      <div class="g-card"><span class="g-sym">G</span><span class="g-def">Gasto público del Estado (trenes, computadoras, muebles, obra pública).</span></div>
+      <div class="g-card"><span class="g-sym">X</span><span class="g-def">Exportaciones (bienes y servicios vendidos al exterior).</span></div>
+      <div class="g-card"><span class="g-sym">M</span><span class="g-def">Importaciones (bienes y servicios comprados del exterior).</span></div>
+      <div class="g-card"><span class="g-sym">X − M</span><span class="g-def">Exportaciones netas. Si X &gt; M → superávit comercial; si X &lt; M → déficit.</span></div>
+      <div class="g-card"><span class="g-sym">PIB</span><span class="g-def">Producto Interno Bruto. Valor de bienes y servicios finales producidos DENTRO del territorio.</span></div>
+      <div class="g-card"><span class="g-sym">PNB</span><span class="g-def">Producto Nacional Bruto. Valor producido por factores de PROPIEDAD nacional, dentro o fuera del país.</span></div>
+      <div class="g-card"><span class="g-sym">IN</span><span class="g-def">Ingreso Nacional. Suma de salarios, beneficios, intereses y rentas percibidos por residentes nacionales.</span></div>
+      <div class="g-card"><span class="g-sym">RRN</span><span class="g-def">Rentas de Residentes Nacionales en el extranjero (suman al IN).</span></div>
+      <div class="g-card"><span class="g-sym">RRE</span><span class="g-def">Rentas de Residentes Extranjeros en el país (restan del IN).</span></div>
+      <div class="g-card"><span class="g-sym">FPP</span><span class="g-def">Frontera de Posibilidades de Producción. Combinaciones máximas posibles de dos bienes dados los recursos y la tecnología.</span></div>
+      <div class="g-card"><span class="g-sym">Pe</span><span class="g-def">Precio de equilibrio (macro): donde se cruzan OA y DA.</span></div>
+      <div class="g-card"><span class="g-sym">Ye</span><span class="g-def">PIB real de equilibrio (intersección de OA y DA).</span></div>
+      <div class="g-card"><span class="g-sym">FMI</span><span class="g-def">Fondo Monetario Internacional. Organismo que influye en políticas económicas.</span></div>
+    </div>
+
+    <h3>Microeconomía · Unidad 2</h3>
+    <div class="glossary">
+      <div class="g-card"><span class="g-sym">Y</span><span class="g-def">Ingreso (del consumidor). En la recta presupuestaria, lo que tenés disponible para gastar.</span></div>
+      <div class="g-card"><span class="g-sym">P<sub>x</sub>, P<sub>y</sub></span><span class="g-def">Precios de los bienes X e Y (por ej. P<sub>jugo</sub>, P<sub>helado</sub>).</span></div>
+      <div class="g-card"><span class="g-sym">Q<sub>x</sub>, Q<sub>y</sub></span><span class="g-def">Cantidades consumidas de los bienes X e Y.</span></div>
+      <div class="g-card"><span class="g-sym">UT</span><span class="g-def">Utilidad Total. Satisfacción total que reporta consumir una cierta cantidad de un bien.</span></div>
+      <div class="g-card"><span class="g-sym">UMg</span><span class="g-def">Utilidad Marginal. Satisfacción ADICIONAL al consumir una unidad más. Fórmula: UMg = ΔUT / ΔQ.</span></div>
+      <div class="g-card"><span class="g-sym">TMS</span><span class="g-def">Tasa Marginal de Sustitución. Cuántas unidades de Y se está dispuesto a ceder por 1 de X. Pendiente de la curva de indiferencia.</span></div>
+      <div class="g-card"><span class="g-sym">RMS</span><span class="g-def">Relación Marginal de Sustitución. Sinónimo de TMS (el apunte usa ambos términos).</span></div>
+      <div class="g-card"><span class="g-sym">I₁, I₂, I₃</span><span class="g-def">Curvas de indiferencia (del mapa). A mayor número, más alejada del origen y mayor utilidad.</span></div>
+      <div class="g-card"><span class="g-sym">E</span><span class="g-def">Punto de equilibrio del consumidor (tangencia entre recta presupuestaria y curva de indiferencia).</span></div>
+      <div class="g-card"><span class="g-sym">Ep</span><span class="g-def">Elasticidad-Precio de la demanda. Sensibilidad de Q ante cambios de P.</span></div>
+      <div class="g-card"><span class="g-sym">E<sub>Y</sub></span><span class="g-def">Elasticidad-Ingreso. Sensibilidad de Q ante cambios en el ingreso del consumidor.</span></div>
+      <div class="g-card"><span class="g-sym">E<sub>ij</sub></span><span class="g-def">Elasticidad cruzada. Sensibilidad de Q del bien <em>i</em> ante cambios en el precio del bien <em>j</em>.</span></div>
+      <div class="g-card"><span class="g-sym">IT</span><span class="g-def">Ingreso Total. IT = P × Q. Se maximiza donde |Ep| = 1.</span></div>
+      <div class="g-card"><span class="g-sym">DAP</span><span class="g-def">Disposición a Pagar. Máximo precio que un consumidor pagaría por cada unidad (usado en excedente del consumidor).</span></div>
+      <div class="g-card"><span class="g-sym">D</span><span class="g-def">Curva de demanda.</span></div>
+      <div class="g-card"><span class="g-sym">ΔP, ΔQ</span><span class="g-def">Variación (cambio) en el precio o en la cantidad. Se usa para calcular elasticidades.</span></div>
+      <div class="g-card"><span class="g-sym">%Δ</span><span class="g-def">Variación porcentual (por ej. %ΔQ = ΔQ/Q × 100).</span></div>
+    </div>
+
+    <div class="alert alert-info" style="margin-top:14px">
+      <div class="at"><i data-lucide="info" style="width:16px;height:16px"></i> Frases clave del apunte</div>
+      <ul style="margin:4px 0 0 20px">
+        <li><strong>Ceteris paribus</strong>: "todo lo demás constante". Supuesto para aislar el efecto de UNA variable.</li>
+        <li><strong>Ley de la demanda</strong>: relación INVERSA entre precio y cantidad demandada.</li>
+        <li><strong>Ley de utilidad marginal decreciente</strong>: cada nueva unidad consumida aporta menos satisfacción.</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <!-- ============================================= -->
@@ -549,21 +618,21 @@ tr:hover td{background:var(--accent-l)}
     <p>Representa las combinaciones <strong>máximas</strong> de dos bienes que una economía puede producir con sus recursos y tecnología dados.</p>
 
     <div class="graph-wrap">
-      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-        <line x1="50" y1="250" x2="370" y2="250" stroke="var(--graph-axis)" stroke-width="2"/>
-        <line x1="50" y1="250" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
-        <path d="M 50 40 Q 60 80 100 140 Q 160 200 230 230 Q 290 245 340 250" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
-        <circle cx="50" cy="40" r="4" fill="var(--graph-line)"/><text x="30" y="35" font-size="11" fill="var(--text)">A</text>
-        <circle cx="100" cy="140" r="4" fill="var(--graph-line)"/><text x="80" y="135" font-size="11" fill="var(--text)">B</text>
-        <circle cx="170" cy="195" r="4" fill="var(--graph-line)"/><text x="150" y="190" font-size="11" fill="var(--text)">C</text>
-        <circle cx="240" cy="232" r="4" fill="var(--graph-line)"/><text x="225" y="252" font-size="11" fill="var(--text)">D</text>
-        <circle cx="340" cy="250" r="4" fill="var(--graph-line)"/><text x="345" y="268" font-size="11" fill="var(--text)">E</text>
-        <circle cx="150" cy="230" r="5" fill="var(--amber)"/><text x="160" y="228" font-size="11" fill="var(--text)">F (ineficiente)</text>
-        <circle cx="300" cy="80" r="5" fill="var(--red)"/><text x="215" y="75" font-size="11" fill="var(--text)">G (inalcanzable)</text>
-        <text x="200" y="285" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Bien X (ej: computadoras)</text>
-        <text x="30" y="150" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 30 150)">Bien Y (ej: celulares)</text>
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <line x1="55" y1="260" x2="390" y2="260" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="55" y1="260" x2="55" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <path d="M 55 45 Q 65 85 105 145 Q 165 205 235 240 Q 295 255 355 260" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
+        <circle cx="55" cy="45" r="5" fill="var(--graph-line)"/><text x="30" y="42" font-size="12" fill="var(--text)" font-weight="600">A</text>
+        <circle cx="105" cy="145" r="5" fill="var(--graph-line)"/><text x="80" y="142" font-size="12" fill="var(--text)" font-weight="600">B</text>
+        <circle cx="175" cy="200" r="5" fill="var(--graph-line)"/><text x="155" y="197" font-size="12" fill="var(--text)" font-weight="600">C</text>
+        <circle cx="245" cy="240" r="5" fill="var(--graph-line)"/><text x="225" y="258" font-size="12" fill="var(--text)" font-weight="600">D</text>
+        <circle cx="350" cy="260" r="5" fill="var(--graph-line)"/><text x="355" y="258" font-size="12" fill="var(--text)" font-weight="600">E</text>
+        <circle cx="155" cy="235" r="6" fill="var(--amber)" stroke="var(--text)" stroke-width="1"/><text x="165" y="232" font-size="11" fill="var(--text)">F (ineficiente)</text>
+        <circle cx="305" cy="85" r="6" fill="var(--red)" stroke="var(--text)" stroke-width="1"/><text x="215" y="82" font-size="11" fill="var(--text)">G (inalcanzable)</text>
+        <text x="220" y="298" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600">Bien X (ej: computadoras personales)</text>
+        <text x="25" y="160" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600" transform="rotate(-90 25 160)">Bien Y (ej: teléfonos celulares)</text>
       </svg>
-      <div class="gcap">FPP cóncava: costo de oportunidad creciente. Puntos sobre la curva (A-E) = eficiencia; F = recursos ociosos; G = inalcanzable.</div>
+      <div class="gcap">FPP cóncava (ejemplo del apunte U1): costo de oportunidad creciente. Sobre la curva = eficiencia; dentro = recursos ociosos; fuera = inalcanzable.</div>
     </div>
 
     <div class="alert alert-info">
@@ -716,23 +785,23 @@ tr:hover td{background:var(--accent-l)}
 
     <h3>Equilibrio macroeconómico</h3>
     <div class="graph-wrap">
-      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
-        <line x1="50" y1="280" x2="370" y2="280" stroke="var(--graph-axis)" stroke-width="2"/>
+      <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="280" x2="390" y2="280" stroke="var(--graph-axis)" stroke-width="2"/>
         <line x1="50" y1="280" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
-        <line x1="50" y1="50" x2="370" y2="270" stroke="var(--graph-line2)" stroke-width="3"/>
-        <text x="340" y="265" font-size="11" fill="var(--graph-line2)" font-weight="600">DA</text>
-        <path d="M 70 270 Q 180 200 300 100 Q 340 65 360 50" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
-        <text x="340" y="90" font-size="11" fill="var(--graph-line)" font-weight="600">OA</text>
+        <line x1="50" y1="50" x2="380" y2="270" stroke="var(--graph-line2)" stroke-width="3"/>
+        <text x="355" y="265" font-size="12" fill="var(--graph-line2)" font-weight="700">DA</text>
+        <path d="M 70 270 Q 180 200 300 100 Q 340 65 370 50" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
+        <text x="355" y="90" font-size="12" fill="var(--graph-line)" font-weight="700">OA</text>
         <circle cx="200" cy="170" r="6" fill="var(--amber)"/>
-        <text x="210" y="165" font-size="12" fill="var(--text)" font-weight="700">E</text>
+        <text x="210" y="165" font-size="13" fill="var(--text)" font-weight="700">E</text>
         <line x1="50" y1="170" x2="200" y2="170" stroke="var(--muted)" stroke-dasharray="3 3"/>
         <line x1="200" y1="170" x2="200" y2="280" stroke="var(--muted)" stroke-dasharray="3 3"/>
-        <text x="25" y="175" font-size="11" fill="var(--text)">Pe</text>
-        <text x="195" y="297" font-size="11" fill="var(--text)">Ye</text>
-        <text x="200" y="315" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">PIB real (Y)</text>
-        <text x="25" y="155" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 25 155)">Nivel de precios (P)</text>
+        <text x="25" y="175" font-size="12" fill="var(--text)">Pe</text>
+        <text x="195" y="298" font-size="12" fill="var(--text)">Ye</text>
+        <text x="220" y="325" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600">PIB real (Y)</text>
+        <text x="25" y="155" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600" transform="rotate(-90 25 155)">Nivel de precios (P)</text>
       </svg>
-      <div class="gcap">Equilibrio macroeconómico: punto E donde DA = OA determina Pe (precio) e Ye (producción)</div>
+      <div class="gcap">Equilibrio macroeconómico: punto E donde DA = OA determina Pe (precio de equilibrio) e Ye (PIB de equilibrio)</div>
     </div>
 
     <div class="quiz-block">
@@ -782,22 +851,24 @@ tr:hover td{background:var(--accent-l)}
     <p>Conjunto de combinaciones de dos bienes que le reportan al consumidor <strong>el mismo nivel de utilidad</strong> (le es indiferente cuál elegir).</p>
 
     <div class="graph-wrap">
-      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-        <line x1="50" y1="260" x2="370" y2="260" stroke="var(--graph-axis)" stroke-width="2"/>
-        <line x1="50" y1="260" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
-        <path d="M 70 50 Q 85 130 150 180 Q 250 230 360 250" stroke="var(--graph-line)" fill="none" stroke-width="2.5"/>
-        <text x="320" y="245" font-size="11" fill="var(--graph-line)">I₁</text>
-        <path d="M 80 90 Q 105 160 180 210 Q 280 250 370 265" stroke="var(--purple)" fill="none" stroke-width="2.5" opacity=".4"/>
-        <path d="M 95 130 Q 130 190 220 235 Q 290 265 370 275" stroke="var(--purple)" fill="none" stroke-width="2.5" opacity=".3"/>
-        <text x="220" y="20" font-size="11" fill="var(--text)" font-style="italic">I₃ &gt; I₂ &gt; I₁</text>
-        <circle cx="90" cy="100" r="4" fill="var(--red)"/><text x="60" y="105" font-size="11" fill="var(--text)">a</text>
-        <circle cx="130" cy="170" r="4" fill="var(--red)"/><text x="110" y="190" font-size="11" fill="var(--text)">b</text>
-        <circle cx="200" cy="215" r="4" fill="var(--red)"/><text x="195" y="235" font-size="11" fill="var(--text)">c</text>
-        <circle cx="290" cy="245" r="4" fill="var(--red)"/><text x="290" y="258" font-size="11" fill="var(--text)">d</text>
-        <text x="200" y="290" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Jugo</text>
-        <text x="25" y="150" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 25 150)">Helado</text>
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <line x1="55" y1="270" x2="390" y2="270" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="55" y1="270" x2="55" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <path d="M 75 50 Q 90 135 155 185 Q 255 235 370 255" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
+        <text x="340" y="248" font-size="12" fill="var(--graph-line)" font-weight="700">I₁</text>
+        <path d="M 85 95 Q 110 165 185 215 Q 285 255 380 268" stroke="var(--purple)" fill="none" stroke-width="2.5" opacity=".6"/>
+        <text x="355" y="263" font-size="12" fill="var(--purple)" font-weight="700" opacity=".8">I₂</text>
+        <path d="M 100 135 Q 135 195 225 240 Q 295 268 380 278" stroke="var(--purple)" fill="none" stroke-width="2.5" opacity=".4"/>
+        <text x="365" y="275" font-size="12" fill="var(--purple)" font-weight="700" opacity=".55">I₃</text>
+        <text x="220" y="22" font-size="12" fill="var(--text)" font-style="italic" text-anchor="middle">Más alejada del origen = más utilidad (I₃ &gt; I₂ &gt; I₁)</text>
+        <circle cx="95" cy="105" r="5" fill="var(--red)"/><text x="65" y="110" font-size="12" fill="var(--text)" font-weight="600">a</text>
+        <circle cx="135" cy="175" r="5" fill="var(--red)"/><text x="115" y="197" font-size="12" fill="var(--text)" font-weight="600">b</text>
+        <circle cx="205" cy="220" r="5" fill="var(--red)"/><text x="200" y="240" font-size="12" fill="var(--text)" font-weight="600">c</text>
+        <circle cx="295" cy="250" r="5" fill="var(--red)"/><text x="295" y="268" font-size="12" fill="var(--text)" font-weight="600">d</text>
+        <text x="220" y="302" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600">Jugo (cantidad)</text>
+        <text x="25" y="160" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600" transform="rotate(-90 25 160)">Helado (cantidad)</text>
       </svg>
-      <div class="gcap">Mapa de curvas de indiferencia. Las más alejadas del origen representan mayor utilidad.</div>
+      <div class="gcap">Mapa de curvas de indiferencia. Ejemplo del apunte U2: bienes jugo y helado.</div>
     </div>
 
     <h3>Características</h3>
@@ -882,22 +953,23 @@ tr:hover td{background:var(--accent-l)}
     <p>Combinación donde el consumidor <strong>maximiza su utilidad</strong> dada su restricción presupuestaria. Gráficamente: punto de <strong>tangencia</strong> entre la recta presupuestaria y la curva de indiferencia más alta accesible.</p>
 
     <div class="graph-wrap">
-      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-        <line x1="50" y1="260" x2="370" y2="260" stroke="var(--graph-axis)" stroke-width="2"/>
-        <line x1="50" y1="260" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
-        <line x1="50" y1="60" x2="320" y2="260" stroke="var(--red)" stroke-width="2.5"/>
-        <text x="260" y="55" font-size="11" fill="var(--red)" font-weight="600">Recta presupuestaria</text>
-        <path d="M 70 50 Q 85 130 150 180 Q 250 230 360 250" stroke="var(--graph-line)" fill="none" stroke-width="2" opacity=".4"/>
-        <path d="M 80 90 Q 120 145 185 175 Q 260 220 370 250" stroke="var(--graph-line)" fill="none" stroke-width="2.5"/>
-        <text x="350" y="230" font-size="11" fill="var(--graph-line)">I₂</text>
-        <path d="M 90 180 Q 160 215 250 240 Q 320 255 370 268" stroke="var(--graph-line)" fill="none" stroke-width="2" opacity=".4"/>
-        <text x="355" y="250" font-size="11" fill="var(--graph-line)" opacity=".6">I₁</text>
-        <circle cx="185" cy="175" r="6" fill="var(--amber)"/>
-        <text x="195" y="170" font-size="13" fill="var(--text)" font-weight="700">E</text>
-        <text x="200" y="290" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Jugo</text>
-        <text x="25" y="150" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 25 150)">Helado</text>
+      <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+        <line x1="55" y1="270" x2="390" y2="270" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="55" y1="270" x2="55" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="55" y1="65" x2="340" y2="270" stroke="var(--red)" stroke-width="3"/>
+        <text x="240" y="58" font-size="12" fill="var(--red)" font-weight="700">Recta presupuestaria</text>
+        <path d="M 75 55 Q 90 135 155 185 Q 255 235 370 255" stroke="var(--graph-line)" fill="none" stroke-width="2" opacity=".35"/>
+        <text x="355" y="248" font-size="11" fill="var(--graph-line)" opacity=".55">I₃</text>
+        <path d="M 85 95 Q 130 150 195 180 Q 270 225 380 255" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
+        <text x="360" y="242" font-size="12" fill="var(--graph-line)" font-weight="700">I₂</text>
+        <path d="M 100 185 Q 170 220 260 245 Q 330 260 380 273" stroke="var(--graph-line)" fill="none" stroke-width="2" opacity=".4"/>
+        <text x="362" y="260" font-size="11" fill="var(--graph-line)" opacity=".6">I₁</text>
+        <circle cx="195" cy="180" r="7" fill="var(--amber)" stroke="var(--text)" stroke-width="1.5"/>
+        <text x="207" y="175" font-size="14" fill="var(--text)" font-weight="700">E</text>
+        <text x="220" y="302" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600">Jugo (cantidad)</text>
+        <text x="25" y="160" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600" transform="rotate(-90 25 160)">Helado (cantidad)</text>
       </svg>
-      <div class="gcap">Equilibrio en E: máxima utilidad alcanzable (I₂) dado el presupuesto</div>
+      <div class="gcap">Equilibrio en E (tangencia): máxima utilidad alcanzable dada la restricción presupuestaria</div>
     </div>
 
     <h3>Condición de equilibrio</h3>
@@ -966,23 +1038,25 @@ tr:hover td{background:var(--accent-l)}
     </div>
 
     <div class="graph-wrap">
-      <svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 520 280" xmlns="http://www.w3.org/2000/svg">
         <g>
-          <line x1="40" y1="210" x2="230" y2="210" stroke="var(--graph-axis)" stroke-width="2"/>
-          <line x1="40" y1="210" x2="40" y2="20" stroke="var(--graph-axis)" stroke-width="2"/>
-          <path d="M 40 210 Q 90 80 160 35 Q 200 25 225 22" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
-          <text x="135" y="15" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">UT (creciente y cóncava)</text>
-          <text x="135" y="240" text-anchor="middle" font-size="11" fill="var(--text)">Q consumido</text>
+          <line x1="40" y1="220" x2="240" y2="220" stroke="var(--graph-axis)" stroke-width="2"/>
+          <line x1="40" y1="220" x2="40" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+          <path d="M 40 220 Q 90 90 160 45 Q 200 35 230 32" stroke="var(--graph-line)" fill="none" stroke-width="3"/>
+          <text x="140" y="18" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="700">UT (creciente y cóncava)</text>
+          <text x="140" y="248" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Cantidad consumida (Q)</text>
+          <text x="20" y="125" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 20 125)">Útiles</text>
         </g>
-        <g transform="translate(260,0)">
-          <line x1="40" y1="210" x2="230" y2="210" stroke="var(--graph-axis)" stroke-width="2"/>
-          <line x1="40" y1="210" x2="40" y2="20" stroke="var(--graph-axis)" stroke-width="2"/>
-          <line x1="40" y1="30" x2="225" y2="200" stroke="var(--graph-line2)" stroke-width="3"/>
-          <text x="135" y="15" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">UMg (decreciente)</text>
-          <text x="135" y="240" text-anchor="middle" font-size="11" fill="var(--text)">Q consumido</text>
+        <g transform="translate(270,0)">
+          <line x1="40" y1="220" x2="240" y2="220" stroke="var(--graph-axis)" stroke-width="2"/>
+          <line x1="40" y1="220" x2="40" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+          <line x1="40" y1="40" x2="235" y2="215" stroke="var(--graph-line2)" stroke-width="3"/>
+          <text x="140" y="18" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="700">UMg (decreciente)</text>
+          <text x="140" y="248" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Cantidad consumida (Q)</text>
+          <text x="20" y="125" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 20 125)">Útiles</text>
         </g>
       </svg>
-      <div class="gcap">UT crece pero cada vez más lento; UMg es decreciente por la ley de utilidad marginal decreciente</div>
+      <div class="gcap">UT crece pero a ritmo decreciente; UMg disminuye por la ley de utilidad marginal decreciente</div>
     </div>
 
     <div class="quiz-block">
@@ -1025,20 +1099,20 @@ tr:hover td{background:var(--accent-l)}
 
     <h3>Curva de demanda</h3>
     <div class="graph-wrap">
-      <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
-        <line x1="50" y1="240" x2="370" y2="240" stroke="var(--graph-axis)" stroke-width="2"/>
-        <line x1="50" y1="240" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
-        <line x1="70" y1="50" x2="340" y2="230" stroke="var(--graph-line)" stroke-width="3"/>
-        <text x="345" y="235" font-size="11" fill="var(--graph-line)" font-weight="600">D</text>
-        <circle cx="150" cy="105" r="4" fill="var(--amber)"/>
-        <line x1="50" y1="105" x2="150" y2="105" stroke="var(--muted)" stroke-dasharray="3 3"/>
-        <line x1="150" y1="240" x2="150" y2="105" stroke="var(--muted)" stroke-dasharray="3 3"/>
-        <text x="25" y="110" font-size="11" fill="var(--text)">P₁</text>
-        <text x="145" y="258" font-size="11" fill="var(--text)">Q₁</text>
-        <text x="200" y="275" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Cantidad (Q)</text>
-        <text x="25" y="140" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 25 140)">Precio (P)</text>
+      <svg viewBox="0 0 420 310" xmlns="http://www.w3.org/2000/svg">
+        <line x1="55" y1="240" x2="390" y2="240" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="55" y1="240" x2="55" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="75" y1="50" x2="360" y2="235" stroke="var(--graph-line)" stroke-width="3"/>
+        <text x="365" y="240" font-size="13" fill="var(--graph-line)" font-weight="700">D</text>
+        <circle cx="160" cy="110" r="5" fill="var(--amber)" stroke="var(--text)" stroke-width="1"/>
+        <line x1="55" y1="110" x2="160" y2="110" stroke="var(--muted)" stroke-dasharray="3 3"/>
+        <line x1="160" y1="240" x2="160" y2="110" stroke="var(--muted)" stroke-dasharray="3 3"/>
+        <text x="30" y="115" font-size="12" fill="var(--text)" font-weight="600">P₁</text>
+        <text x="155" y="258" font-size="12" fill="var(--text)" font-weight="600">Q₁</text>
+        <text x="220" y="285" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600">Cantidad demandada (Q)</text>
+        <text x="25" y="145" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600" transform="rotate(-90 25 145)">Precio (P)</text>
       </svg>
-      <div class="gcap">Curva de demanda de pendiente negativa (ley de demanda)</div>
+      <div class="gcap">Curva de demanda de pendiente negativa (ley de demanda: ↓P → ↑Q)</div>
     </div>
 
     <h3>Movimiento vs Desplazamiento</h3>
@@ -1052,20 +1126,20 @@ tr:hover td{background:var(--accent-l)}
     <p>Diferencia entre lo que el consumidor <strong>estaría dispuesto a pagar</strong> (utilidad total) y lo que <strong>efectivamente paga</strong> en el mercado.</p>
 
     <div class="graph-wrap">
-      <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
-        <line x1="50" y1="240" x2="370" y2="240" stroke="var(--graph-axis)" stroke-width="2"/>
-        <line x1="50" y1="240" x2="50" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
-        <polygon points="50,50 50,170 200,170" fill="var(--accent-l)" stroke="none" opacity=".6"/>
-        <text x="110" y="130" font-size="11" fill="var(--accent-d)" font-weight="700">Excedente</text>
-        <text x="110" y="145" font-size="11" fill="var(--accent-d)" font-weight="700">del consumidor</text>
-        <line x1="70" y1="50" x2="340" y2="230" stroke="var(--graph-line)" stroke-width="3"/>
-        <line x1="50" y1="170" x2="340" y2="170" stroke="var(--red)" stroke-width="2" stroke-dasharray="4 3"/>
-        <text x="345" y="175" font-size="11" fill="var(--red)" font-weight="600">P₀</text>
-        <text x="345" y="235" font-size="11" fill="var(--graph-line)" font-weight="600">D</text>
-        <text x="200" y="272" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600">Cantidad</text>
-        <text x="25" y="140" text-anchor="middle" font-size="12" fill="var(--text)" font-weight="600" transform="rotate(-90 25 140)">Precio</text>
+      <svg viewBox="0 0 420 310" xmlns="http://www.w3.org/2000/svg">
+        <line x1="55" y1="240" x2="390" y2="240" stroke="var(--graph-axis)" stroke-width="2"/>
+        <line x1="55" y1="240" x2="55" y2="30" stroke="var(--graph-axis)" stroke-width="2"/>
+        <polygon points="55,50 55,170 205,170" fill="var(--accent-l)" stroke="none" opacity=".7"/>
+        <text x="110" y="125" font-size="12" fill="var(--accent-d)" font-weight="700">Excedente del</text>
+        <text x="110" y="142" font-size="12" fill="var(--accent-d)" font-weight="700">consumidor</text>
+        <line x1="75" y1="50" x2="360" y2="235" stroke="var(--graph-line)" stroke-width="3"/>
+        <line x1="55" y1="170" x2="360" y2="170" stroke="var(--red)" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="365" y="175" font-size="13" fill="var(--red)" font-weight="700">P₀</text>
+        <text x="365" y="240" font-size="13" fill="var(--graph-line)" font-weight="700">D</text>
+        <text x="220" y="285" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600">Cantidad</text>
+        <text x="25" y="145" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="600" transform="rotate(-90 25 145)">Precio</text>
       </svg>
-      <div class="gcap">Área entre la curva de demanda y el precio de mercado = excedente del consumidor</div>
+      <div class="gcap">Excedente = área entre la curva de demanda (DAP) y el precio de mercado. Ej. apunte: $27 − $6 = $21.</div>
     </div>
 
     <div class="quiz-block">
@@ -1133,41 +1207,54 @@ tr:hover td{background:var(--accent-l)}
     </div>
 
     <div class="graph-wrap">
-      <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
-        <!-- inelastica perfecta -->
-        <g transform="translate(0,10)">
-          <line x1="40" y1="180" x2="150" y2="180" stroke="var(--graph-axis)" stroke-width="1.5"/>
-          <line x1="40" y1="180" x2="40" y2="30" stroke="var(--graph-axis)" stroke-width="1.5"/>
-          <line x1="95" y1="35" x2="95" y2="180" stroke="var(--red)" stroke-width="3"/>
-          <text x="95" y="200" text-anchor="middle" font-size="10" fill="var(--text)">Ep=0</text>
-          <text x="95" y="215" text-anchor="middle" font-size="9" fill="var(--muted)">Rígida</text>
+      <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ep=0 perfectamente inelástica -->
+        <g transform="translate(10,10)">
+          <line x1="20" y1="170" x2="130" y2="170" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="20" y1="170" x2="20" y2="25" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="75" y1="30" x2="75" y2="170" stroke="var(--red)" stroke-width="3.5"/>
+          <text x="75" y="195" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="700">Ep = 0</text>
+          <text x="75" y="215" text-anchor="middle" font-size="11" fill="var(--muted)">Rígida</text>
+          <text x="75" y="232" text-anchor="middle" font-size="10" fill="var(--muted)">(insulina)</text>
         </g>
-        <!-- inelastica -->
-        <g transform="translate(155,10)">
-          <line x1="40" y1="180" x2="150" y2="180" stroke="var(--graph-axis)" stroke-width="1.5"/>
-          <line x1="40" y1="180" x2="40" y2="30" stroke="var(--graph-axis)" stroke-width="1.5"/>
-          <line x1="60" y1="35" x2="140" y2="180" stroke="var(--amber)" stroke-width="3"/>
-          <text x="95" y="200" text-anchor="middle" font-size="10" fill="var(--text)">Ep&lt;1</text>
-          <text x="95" y="215" text-anchor="middle" font-size="9" fill="var(--muted)">Inelástica</text>
+        <!-- Ep<1 inelástica -->
+        <g transform="translate(160,10)">
+          <line x1="20" y1="170" x2="130" y2="170" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="20" y1="170" x2="20" y2="25" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="40" y1="30" x2="125" y2="170" stroke="var(--amber)" stroke-width="3.5"/>
+          <text x="75" y="195" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="700">Ep &lt; 1</text>
+          <text x="75" y="215" text-anchor="middle" font-size="11" fill="var(--muted)">Inelástica</text>
+          <text x="75" y="232" text-anchor="middle" font-size="10" fill="var(--muted)">Ej: 20%/10%=0,5</text>
         </g>
-        <!-- unitaria -->
+        <!-- Ep=1 unitaria -->
         <g transform="translate(310,10)">
-          <line x1="40" y1="180" x2="150" y2="180" stroke="var(--graph-axis)" stroke-width="1.5"/>
-          <line x1="40" y1="180" x2="40" y2="30" stroke="var(--graph-axis)" stroke-width="1.5"/>
-          <path d="M 50 40 Q 70 80 140 175" stroke="var(--purple)" fill="none" stroke-width="3"/>
-          <text x="95" y="200" text-anchor="middle" font-size="10" fill="var(--text)">Ep=1</text>
-          <text x="95" y="215" text-anchor="middle" font-size="9" fill="var(--muted)">Unitaria</text>
+          <line x1="20" y1="170" x2="130" y2="170" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="20" y1="170" x2="20" y2="25" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <path d="M 30 35 Q 50 80 120 165" stroke="var(--purple)" fill="none" stroke-width="3.5"/>
+          <text x="75" y="195" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="700">Ep = 1</text>
+          <text x="75" y="215" text-anchor="middle" font-size="11" fill="var(--muted)">Unitaria</text>
+          <text x="75" y="232" text-anchor="middle" font-size="10" fill="var(--muted)">Ej: 33%/33%=1</text>
         </g>
-        <!-- elastica -->
-        <g transform="translate(465,10)">
-          <line x1="40" y1="180" x2="150" y2="180" stroke="var(--graph-axis)" stroke-width="1.5"/>
-          <line x1="40" y1="180" x2="40" y2="30" stroke="var(--graph-axis)" stroke-width="1.5"/>
-          <line x1="45" y1="40" x2="145" y2="100" stroke="var(--cyan)" stroke-width="3"/>
-          <text x="95" y="200" text-anchor="middle" font-size="10" fill="var(--text)">Ep&gt;1</text>
-          <text x="95" y="215" text-anchor="middle" font-size="9" fill="var(--muted)">Elástica</text>
+        <!-- Ep>1 elástica -->
+        <g transform="translate(460,10)">
+          <line x1="20" y1="170" x2="130" y2="170" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="20" y1="170" x2="20" y2="25" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="25" y1="30" x2="125" y2="100" stroke="var(--cyan)" stroke-width="3.5"/>
+          <text x="75" y="195" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="700">Ep &gt; 1</text>
+          <text x="75" y="215" text-anchor="middle" font-size="11" fill="var(--muted)">Elástica</text>
+          <text x="75" y="232" text-anchor="middle" font-size="10" fill="var(--muted)">Ej: 40%/80%=2</text>
+        </g>
+        <!-- Ep=∞ perfectamente elástica -->
+        <g transform="translate(610,10)">
+          <line x1="20" y1="170" x2="130" y2="170" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="20" y1="170" x2="20" y2="25" stroke="var(--graph-axis)" stroke-width="1.5"/>
+          <line x1="20" y1="80" x2="130" y2="80" stroke="var(--green)" stroke-width="3.5"/>
+          <text x="75" y="195" text-anchor="middle" font-size="13" fill="var(--text)" font-weight="700">Ep = ∞</text>
+          <text x="75" y="215" text-anchor="middle" font-size="11" fill="var(--muted)">Perf. elástica</text>
+          <text x="75" y="232" text-anchor="middle" font-size="10" fill="var(--muted)">Curva horizontal</text>
         </g>
       </svg>
-      <div class="gcap">Casos extremos y categorías intermedias de elasticidad-precio</div>
+      <div class="gcap">Los 5 casos de elasticidad-precio de la demanda (apunte U2)</div>
     </div>
 
     <h3>Factores condicionantes de la elasticidad</h3>
@@ -1401,6 +1488,86 @@ tr:hover td{background:var(--accent-l)}
     <h4>Elasticidad-ingreso</h4>
     <div class="f-eq">E<sub>Y</sub> = (ΔQ/Q) ÷ (ΔY/Y)</div>
     <div class="f-desc">&gt;0 normal · &lt;0 inferior · &gt;1 lujo</div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- EXCEL (solo fórmulas del material) -->
+<!-- ============================================= -->
+<div class="unit-hero" id="excel" style="background:linear-gradient(135deg,#15803d,#16a34a,#22c55e)">
+  <h2><i data-lucide="file-spreadsheet" style="width:20px;height:20px;display:inline"></i> Excel · Fórmulas del apunte traducidas</h2>
+  <p>Cada fórmula de Excel corresponde a una fórmula exacta del apunte U1 o U2</p>
+</div>
+
+<div class="section" data-topic="tX">
+  <div class="section-header" onclick="toggleSection(this)">
+    <h2><i data-lucide="table" style="width:18px;height:18px"></i> Cómo cargar las fórmulas del apunte en Excel</h2>
+    <i data-lucide="chevron-down" class="chevron" style="width:20px;height:20px"></i>
+  </div>
+  <div class="section-body">
+
+    <p style="margin-bottom:10px">Estas son las fórmulas que están <strong>literal en el apunte</strong>, listas para pegar en una celda de Excel o Google Sheets. Los nombres de celda (A1, B1...) son convencionales, cambialos según tu hoja.</p>
+
+    <div class="excel-card">
+      <h4><i data-lucide="circle-dollar-sign" style="width:14px;height:14px"></i> Demanda Agregada · apunte U1</h4>
+      <p style="font-size:.88em;margin:2px 0 6px"><em>Fórmula del apunte:</em> DA = C + I + G + (X − M)</p>
+      <p style="font-size:.82em;color:var(--muted);margin:2px 0 4px">Celdas: A1=C, B1=I, C1=G, D1=X, E1=M</p>
+      <div class="excel-formula">A1+B1+C1+(D1-E1)</div>
+    </div>
+
+    <div class="excel-card">
+      <h4><i data-lucide="landmark" style="width:14px;height:14px"></i> Ingreso Nacional · apunte U1</h4>
+      <p style="font-size:.88em;margin:2px 0 6px"><em>Fórmula del apunte:</em> IN = PIB + RRN − RRE</p>
+      <p style="font-size:.82em;color:var(--muted);margin:2px 0 4px">Celdas: A1=PIB, B1=RRN, C1=RRE</p>
+      <div class="excel-formula">A1+B1-C1</div>
+    </div>
+
+    <div class="excel-card">
+      <h4><i data-lucide="ice-cream" style="width:14px;height:14px"></i> Utilidad Marginal · apunte U2</h4>
+      <p style="font-size:.88em;margin:2px 0 6px"><em>Fórmula del apunte:</em> UMg = cambio en UT / cambio en Q</p>
+      <p style="font-size:.82em;color:var(--muted);margin:2px 0 4px">Columnas: A=cantidad consumida, B=utilidad total</p>
+      <div class="excel-formula">(B2-B1)/(A2-A1)</div>
+    </div>
+
+    <div class="excel-card">
+      <h4><i data-lucide="activity" style="width:14px;height:14px"></i> Elasticidad-precio (en el punto) · apunte U2</h4>
+      <p style="font-size:.88em;margin:2px 0 6px"><em>Fórmula del apunte:</em> Ep = (ΔQ/Q) / (ΔP/P)</p>
+      <p style="font-size:.82em;color:var(--muted);margin:2px 0 4px">Columnas: B=precio, C=cantidad</p>
+      <div class="excel-formula">ABS(((C2-C1)/C1) / ((B2-B1)/B1))</div>
+      <p class="excel-desc">ABS para ignorar el signo (el apunte dice: "todas las elasticidades se escriben como números positivos").</p>
+    </div>
+
+    <div class="excel-card">
+      <h4><i data-lucide="minimize-2" style="width:14px;height:14px"></i> Elasticidad en el arco · apunte U2</h4>
+      <p style="font-size:.88em;margin:2px 0 6px"><em>Fórmula del apunte:</em> Ep = (ΔQ/ΔP) · (P₁+P₂)/(Q₁+Q₂)</p>
+      <p style="font-size:.82em;color:var(--muted);margin:2px 0 4px">Celdas: A1=P₁, B1=P₂, C1=Q₁, D1=Q₂</p>
+      <div class="excel-formula">ABS((D1-C1)/(B1-A1)) * ((A1+B1)/(C1+D1))</div>
+    </div>
+
+    <div class="excel-card">
+      <h4><i data-lucide="dollar-sign" style="width:14px;height:14px"></i> Ingreso Total · apunte U2</h4>
+      <p style="font-size:.88em;margin:2px 0 6px"><em>Fórmula del apunte:</em> IT = P · Q</p>
+      <p style="font-size:.82em;color:var(--muted);margin:2px 0 4px">Celdas: A1=P, B1=Q</p>
+      <div class="excel-formula">A1*B1</div>
+      <p class="excel-desc">El IT se maximiza donde |Ep| = 1 (según el apunte: "el ingreso total… se maximiza en el punto en que la demanda tiene elasticidad unitaria").</p>
+    </div>
+
+    <div class="excel-card">
+      <h4><i data-lucide="git-compare" style="width:14px;height:14px"></i> Elasticidad cruzada · apunte U2</h4>
+      <p style="font-size:.88em;margin:2px 0 6px"><em>Fórmula del apunte:</em> E<sub>ij</sub> = (ΔQ<sub>i</sub>/Q<sub>i</sub>) / (ΔP<sub>j</sub>/P<sub>j</sub>)</p>
+      <p style="font-size:.82em;color:var(--muted);margin:2px 0 4px">Sin ABS (el signo importa): B=precio bien j, D=cantidad bien i</p>
+      <div class="excel-formula">((D2-D1)/D1) / ((B2-B1)/B1)</div>
+      <p class="excel-desc">Resultado positivo → sustitutos · negativo → complementarios · cero → independientes.</p>
+    </div>
+
+    <div class="excel-card">
+      <h4><i data-lucide="trending-up" style="width:14px;height:14px"></i> Elasticidad-ingreso · apunte U2</h4>
+      <p style="font-size:.88em;margin:2px 0 6px"><em>Fórmula del apunte:</em> E<sub>Y</sub> = variación porcentual de Q / variación porcentual del ingreso</p>
+      <p style="font-size:.82em;color:var(--muted);margin:2px 0 4px">Columnas: B=ingreso, C=cantidad</p>
+      <div class="excel-formula">((C2-C1)/C1) / ((B2-B1)/B1)</div>
+      <p class="excel-desc">Positiva → bien normal · negativa → bien inferior · &gt; 1 → bien de lujo · entre 0 y 1 → bien de primera necesidad.</p>
+    </div>
+
   </div>
 </div>
 
