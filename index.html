@@ -9,7 +9,7 @@
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-  background:#fafafa;color:#1a1a1a;line-height:1.65;font-size:16px;
+  background:#fafafa;color:#1a1a1a;line-height:1.7;font-size:16px;
   -webkit-font-smoothing:antialiased;
 }
 .nav{
@@ -22,37 +22,39 @@ body{
   display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
 .nav-title{font-weight:600;font-size:15px;white-space:nowrap}
-.nav-links{display:flex;gap:14px;overflow-x:auto;font-size:12.5px}
+.nav-links{display:flex;gap:16px;overflow-x:auto;font-size:12.5px}
 .nav-links a{color:#666;text-decoration:none;white-space:nowrap}
 .nav-links a:hover{color:#1a1a1a}
 
 .container{max-width:820px;margin:0 auto;padding:90px 32px 80px}
 
 h1{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;line-height:1.2}
-.subtitle{color:#666;font-size:14.5px;margin-bottom:28px}
+.subtitle{color:#666;font-size:14.5px;margin-bottom:32px}
 
 h2{
-  font-size:20px;font-weight:700;margin:48px 0 12px;line-height:1.3;
-  padding-top:20px;border-top:1px solid #e5e5e5;
+  font-size:21px;font-weight:700;margin:52px 0 14px;line-height:1.3;
+  padding-top:22px;border-top:1px solid #e5e5e5;
 }
 h2:first-of-type{border-top:none;padding-top:0;margin-top:0}
 .unit{
   text-transform:uppercase;font-size:13px;letter-spacing:.12em;
-  color:#888;margin:56px 0 0;border:none;padding:0;font-weight:600;
+  color:#888;margin:60px 0 0;border:none;padding:0;font-weight:600;
 }
+h3{font-size:16px;font-weight:600;margin:22px 0 8px}
 
 p{margin:8px 0;color:#333}
 strong{color:#1a1a1a;font-weight:600}
 ul,ol{margin:8px 0;padding-left:22px;color:#333}
 li{margin:3px 0}
 
-img.slide{
-  display:block;width:100%;max-width:100%;height:auto;
-  border:1px solid #e5e5e5;border-radius:2px;margin:12px 0;background:#fff;
+img.fig{
+  display:block;max-width:100%;height:auto;margin:14px auto;
+  border:1px solid #e5e5e5;background:#fff;padding:8px;border-radius:2px;
 }
+.fig-cap{font-size:12.5px;color:#888;text-align:center;margin:-8px 0 14px;font-style:italic}
 
 .box{
-  background:#f5f5f5;padding:12px 16px;margin:12px 0;
+  background:#f5f5f5;padding:12px 16px;margin:14px 0;
   border-left:2px solid #1a1a1a;border-radius:2px;
 }
 .box p:first-child{margin-top:0}.box p:last-child{margin-bottom:0}
@@ -65,6 +67,12 @@ img.slide{
   font-family:"SF Mono",Consolas,Menlo,monospace;
   background:#fff;border:1px solid #e5e5e5;padding:10px 14px;
   margin:10px 0;font-size:14px;border-radius:2px;overflow-x:auto;
+  white-space:nowrap;
+}
+.formula .fk{
+  display:block;font-family:-apple-system,"Segoe UI",sans-serif;
+  font-size:10.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.08em;color:#666;margin-bottom:4px;
 }
 
 table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;border:1px solid #e5e5e5;background:#fff}
@@ -76,6 +84,8 @@ tr:last-child td{border-bottom:none}
 .yt:hover{background:#f5f5f5;border-color:#1a1a1a}
 .yt::before{content:"▶ ";color:#c00;font-size:10px}
 
+blockquote{margin:12px 0;padding:4px 0 4px 14px;border-left:2px solid #999;color:#555;font-style:italic;font-size:14.5px}
+
 footer{margin-top:56px;padding-top:20px;border-top:1px solid #e5e5e5;color:#888;font-size:12.5px;text-align:center}
 
 @media(max-width:640px){
@@ -83,8 +93,9 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid #e5e5e5;color:#888;
   .container{padding:80px 18px 60px}
   .nav-inner{padding:0 16px;gap:10px}
   .nav-links{gap:10px;font-size:11.5px}
-  h1{font-size:24px}h2{font-size:18px;margin-top:40px}
+  h1{font-size:24px}h2{font-size:18px;margin-top:42px}
   table{font-size:12.5px}
+  .formula{font-size:13px}
 }
 </style>
 </head>
@@ -103,246 +114,545 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid #e5e5e5;color:#888;
 <div class="container">
 
 <h1>Economía I. Primer Parcial</h1>
-<p class="subtitle">UCES 2026 · Lic. Marisa Soledad Lagraña · Apunte visual según temario oficial</p>
+<p class="subtitle">UCES 2026 · Lic. Marisa Soledad Lagraña · Resumen del apunte de cátedra</p>
 
 <div class="box">
-<span class="label">Temario del 1° parcial</span>
-<p><strong>U1.</strong> Economía ciencia · Escasez · Necesidades · Bienes · Sistema económico · Flujo circular · FPP · Modelos · Positiva/Normativa · PIB vs IN · Equilibrio macro.</p>
-<p><strong>U2.</strong> Consumidor · Indiferencia · TMS decreciente · Equilibrio consumidor · Presupuesto · Demanda · Excedente · Elasticidad.</p>
+<span class="label">Temario oficial del 1° parcial</span>
+<p><strong>U1.</strong> Economía como ciencia · Escasez y necesidad de elegir · Necesidades · Clasificación de bienes · Sistema económico (tipos, preguntas, elementos) · Flujo circular · FPP (costo oportunidad, desplazamientos) · Modelos económicos · Positiva/Normativa · PIB vs IN · Equilibrio macro.</p>
+<p><strong>U2.</strong> Consumidor (supuestos) · Curva de indiferencia · TMS decreciente · Equilibrio consumidor · Restricción presupuestaria · Demanda (movs, desplaz, efectos) · Excedente · Elasticidad precio.</p>
 </div>
 
 
-<h2 class="unit" id="u1">Unidad 1</h2>
+<h2 class="unit" id="u1">Unidad 1. Introducción a la Economía</h2>
 
 
 <h2 id="u1-1">1. Economía como ciencia</h2>
-<img class="slide" src="img/u1/Diapositiva2.PNG" alt="Economía como ciencia">
-<p>Ciencia social que estudia cómo se administran <strong>recursos escasos</strong> para producir y distribuir bienes y servicios. También llamada "ciencia de la elección". Su objeto es el dilema entre necesidades ilimitadas y recursos escasos.</p>
+<p>La palabra "economía" viene del griego <em>oikonomia</em> (<em>oikos</em>: casa; <em>nomos</em>: ley). Se ocupa de las cuestiones que surgen en relación con la <strong>satisfacción de necesidades</strong> de individuos y sociedad, dadas la limitación de recursos. También se la llama "ciencia de la elección".</p>
+<p>El problema económico central surge porque las <strong>necesidades humanas son ilimitadas</strong> mientras que los <strong>recursos son limitados</strong>. La escasez no es un problema tecnológico sino la disparidad entre deseos y medios disponibles.</p>
+
+<h3>Por qué es ciencia</h3>
+<p>Toda disciplina científica necesita tres requisitos: <strong>objeto de estudio, método, esquema de validación</strong>. La economía cumple los tres: su objeto es el dilema necesidades/recursos escasos; sus métodos son hipotético-deductivo, inductivo y abductivo; valida sus teorías por descripción, explicación y predicción de hechos económicos.</p>
+
+<table>
+<tr><th>Tipo</th><th>Objeto</th><th>Ejemplos</th></tr>
+<tr><td><strong>Formales</strong></td><td>Objetos ideales creados por abstracción</td><td>Lógica, Matemática</td></tr>
+<tr><td><strong>Naturales</strong></td><td>Fenómenos de la naturaleza</td><td>Física, Química, Biología</td></tr>
+<tr><td><strong>Sociales</strong></td><td>Comportamiento humano en sociedad</td><td><strong>Economía</strong>, Derecho, Sociología</td></tr>
+</table>
+
 <p><a class="yt" href="https://www.youtube.com/results?search_query=econom%C3%ADa+como+ciencia+UCES" target="_blank" rel="noopener">YouTube</a></p>
 
 
 <h2 id="u1-2">2. Escasez y necesidad de elegir</h2>
-<img class="slide" src="img/u1/Diapositiva5.PNG" alt="Interrogantes básicos">
-<p>La escasez obliga a toda sociedad a responder tres preguntas básicas:</p>
+<p>Al ser escasos los recursos, toda sociedad debe <strong>elegir</strong>. Elegir implica renunciar: lo que se resigna se llama <strong>costo de oportunidad</strong> (ver tema 7). De esta limitación surgen tres interrogantes que todo sistema económico debe responder:</p>
 <ol>
-  <li><strong>¿Qué producir?</strong></li>
-  <li><strong>¿Cómo producir?</strong></li>
-  <li><strong>¿Para quién producir?</strong></li>
+  <li><strong>¿Qué producir?</strong> Qué bienes y en qué cantidades.</li>
+  <li><strong>¿Cómo producir?</strong> Con qué técnica y qué combinación de factores.</li>
+  <li><strong>¿Para quién producir?</strong> A quién se destina lo producido.</li>
 </ol>
-<p>Elegir implica renunciar: a eso se le llama <strong>costo de oportunidad</strong> (tema 7).</p>
+<p>Las sociedades eligen producir más de aquellos bienes para los que tienen <strong>ventajas comparativas</strong> (factores productivos apropiados). En economías de mercado estas decisiones se toman vía "votos monetarios" de los consumidores.</p>
 
 
 <h2 id="u1-3">3. Necesidades</h2>
-<img class="slide" src="img/u1/Diapositiva3.PNG" alt="Necesidades">
-<p><strong>Sensación de carencia</strong> junto al deseo de satisfacerla.</p>
-<p><strong>Características:</strong> ilimitadas · recurrentes · creables artificialmente (publicidad) · complementarias.</p>
-<p><strong>Clasificación:</strong> por urgencia (primarias/secundarias) · por asiduidad (regulares/ocasionales) · por tiempo (presentes/futuras) · por sujeto (individuales/colectivas).</p>
+<div class="box">
+<span class="label">Definición</span>
+<p><strong>Sensación física o psíquica de carencia de algo</strong>, junto al deseo de satisfacerla.</p>
+</div>
 
+<h3>Características</h3>
+<ul>
+  <li><strong>Ilimitadas:</strong> los individuos y las sociedades experimentan infinitas necesidades.</li>
+  <li><strong>Recurrentes:</strong> aunque se satisfagan, vuelven a aparecer (alimentarse, vestirse).</li>
+  <li><strong>Creables artificialmente:</strong> la publicidad y los mensajes sociales generan necesidades nuevas.</li>
+  <li><strong>Complementarias:</strong> una necesidad genera la necesidad de otros bienes.</li>
+</ul>
 
-<h2 id="u1-4">4. Bienes y servicios</h2>
-<img class="slide" src="img/u1/Diapositiva4.PNG" alt="Bienes económicos">
-<p>Medio apto para satisfacer una necesidad. Requisitos: <strong>capaz de satisfacer, escaso, accesible</strong>.</p>
+<h3>Clasificación</h3>
 <table>
-<tr><th>Criterio</th><th>Tipos</th></tr>
+<tr><th>Criterio</th><th>Tipos</th><th>Detalle</th></tr>
+<tr><td>Urgencia</td><td>Primarias / Secundarias</td><td>Esenciales vs. de segundo orden</td></tr>
+<tr><td>Asiduidad</td><td>Regulares / Ocasionales</td><td>Ritmo fijo vs. sin regularidad</td></tr>
+<tr><td>Tiempo</td><td>Presentes / Futuras</td><td>Resolverse ya vs. previsión (ahorro)</td></tr>
+<tr><td>Sujeto</td><td>Individuales / Colectivas</td><td>Del individuo vs. resueltas por el Estado</td></tr>
+</table>
+
+<div class="box">
+<span class="label">Sujeto económico</span>
+<p>Es quien está llamado a resolver los problemas económicos. No todas las personas físicas lo son (un niño no puede por sí mismo), y no sólo las personas físicas lo son (empresas y asociaciones también).</p>
+</div>
+
+
+<h2 id="u1-4">4. Clasificación de bienes y servicios</h2>
+<div class="box">
+<span class="label">Definición</span>
+<p>Un <strong>bien económico</strong> es todo medio apto para satisfacer una necesidad. Requisitos: <strong>capaz de satisfacer, escaso</strong> (requiere sacrificio)<strong>, accesible</strong>.</p>
+</div>
+
+<table>
+<tr><th>Criterio</th><th>Clasificación</th></tr>
 <tr><td>Naturaleza</td><td>Materiales (bienes) / Inmateriales (servicios)</td></tr>
-<tr><td>Abundancia</td><td>Libres / Económicos / Raros</td></tr>
-<tr><td>Destino</td><td>De consumo / De producción</td></tr>
-<tr><td>Durabilidad</td><td>Durables / No durables</td></tr>
-<tr><td>Propietario</td><td>Privados / Públicos</td></tr>
-<tr><td>Ingreso</td><td>Normales / Inferiores</td></tr>
+<tr><td>Abundancia</td><td>Libres (aire) / Económicos (reproducibles) / Raros (obras únicas)</td></tr>
+<tr><td>Destino</td><td>De consumo (directos) / De producción (indirectos, instrumentales)</td></tr>
+<tr><td>Durabilidad</td><td>No durables (se agotan en el primer uso) / Durables (satisfacen muchas veces)</td></tr>
+<tr><td>Disponibilidad</td><td>Presentes / Futuros</td></tr>
+<tr><td>Propiedad</td><td>Privados / Públicos (indivisibles entre toda la comunidad)</td></tr>
+<tr><td>Según ingreso</td><td>Normales (suben con el ingreso) / Inferiores (bajan con el ingreso)</td></tr>
 </table>
 
 
 <h2 id="u1-5">5. Sistema económico</h2>
-<img class="slide" src="img/u1/Diapositiva12.PNG" alt="Elementos del sistema">
-<p>Conjunto de relaciones con las que una sociedad organiza su economía. Resuelve las tres preguntas básicas.</p>
+<div class="box">
+<span class="label">Concepto</span>
+<p>Conjunto de <strong>relaciones básicas, técnicas e institucionales</strong> que caracterizan la organización económica de una sociedad. Es la forma en que cada sociedad decide administrar los recursos disponibles.</p>
+</div>
+
+<h3>Tipos y relación con las preguntas básicas</h3>
 <table>
-<tr><th>Tipo</th><th>Característica</th></tr>
-<tr><td><strong>Capitalista</strong></td><td>Propiedad privada, libre mercado, precios por oferta/demanda</td></tr>
-<tr><td><strong>Planificado</strong></td><td>Estado controla asignación y fija precios por decreto</td></tr>
-<tr><td><strong>Mixto</strong></td><td>Combina privado + Estado (caso argentino)</td></tr>
+<tr><th>Sistema</th><th>¿Qué?</th><th>¿Cómo?</th><th>¿Para quién?</th></tr>
+<tr><td><strong>Capitalista / de mercado</strong></td><td>Lo que demanda el mercado</td><td>Según eficiencia y competencia</td><td>Para quien pueda pagar</td></tr>
+<tr><td><strong>Planificación central</strong></td><td>Lo que decide el Estado</td><td>Planes estatales</td><td>Según criterio político</td></tr>
+<tr><td><strong>Mixto</strong></td><td>Mercado + Estado</td><td>Regulación + iniciativa privada</td><td>Mercado + redistribución</td></tr>
 </table>
-<p><strong>Elementos:</strong> bienes/servicios · agentes (familias, empresas, Estado) · factores (tierra, trabajo, capital) · sectores (primario, secundario, terciario) · mercados (bienes y factores).</p>
+
+<p><strong>Capitalista:</strong> propiedad privada y libre mercado. Los precios surgen de la interacción oferta/demanda. Riesgo: monopolios y concentración de poder económico.</p>
+<p><strong>Planificación central:</strong> el Estado asigna recursos y fija precios por decreto (ex URSS). Buscaba asegurar bienestar social pero resultó poco flexible.</p>
+<p><strong>Mixto:</strong> el privado hace la mayor parte y el Estado se reserva sectores estratégicos (energía, petróleo), regula con leyes, política fiscal y pactos. Es el modelo dominante hoy, incluyendo Argentina.</p>
+
+<h3>Elementos del sistema económico</h3>
+<ul>
+  <li><strong>Bienes y servicios.</strong></li>
+  <li><strong>Agentes económicos:</strong> consumidores (familias), empresas, Estado.</li>
+  <li><strong>Factores productivos:</strong> tierra, trabajo, capital (y, para algunos autores, tecnología y capacidad empresarial).</li>
+  <li><strong>Sectores:</strong> primario (agropecuario, pesca, minería) · secundario (industrial) · terciario (servicios).</li>
+  <li><strong>Mercados:</strong> de bienes y servicios · de factores (trabajo, capital).</li>
+</ul>
+
+<div class="box">
+<span class="label">Política económica vs. economía política</span>
+<p><strong>Política económica:</strong> acciones del gobierno para gestionar la economía (fiscal, monetaria). Objetivos corto plazo: pleno empleo, estabilidad de precios, balanza de pagos. Largo plazo: crecimiento, distribución, desarrollo regional.</p>
+<p><strong>Economía política:</strong> disciplina que estudia cómo los gobiernos influyen en la producción y distribución de recursos. Incluye variables sociológicas y políticas.</p>
+</div>
 
 
 <h2 id="u1-6">6. Flujo circular de la economía</h2>
-<img class="slide" src="img/u1/Diapositiva17.PNG" alt="Flujo circular">
-<p>Representa cómo circulan bienes, factores y dinero entre familias y empresas:</p>
+<p>Representa cómo circulan bienes, factores y dinero entre los agentes de la economía. Hay <strong>dos flujos</strong> superpuestos en sentido contrario:</p>
 <ul>
-  <li><strong>Flujo real:</strong> familias aportan factores, reciben bienes y servicios.</li>
-  <li><strong>Flujo monetario:</strong> empresas pagan salarios/rentas/intereses, familias pagan precios.</li>
+  <li><strong>Flujo real:</strong> circulación de bienes y factores.</li>
+  <li><strong>Flujo monetario o nominal:</strong> circulación de los ingresos que perciben los dueños de factores y los pagos que hacen los consumidores por los bienes.</li>
 </ul>
-<p><strong>Retribuciones:</strong> trabajo → salario · capital → interés · tierra → renta · tecnología → regalía · capacidad empresarial → beneficio.</p>
+
+<img class="fig" src="img/u1/image45.png" alt="Flujo circular de la economía con Estado">
+<div class="fig-cap">Flujo circular con los tres agentes: familias, empresas y Estado, y los mercados de productos y factores.</div>
+
+<h3>Retribución de los factores productivos</h3>
+<ul>
+  <li>Trabajo → <strong>salarios</strong></li>
+  <li>Capital → <strong>intereses</strong></li>
+  <li>Recursos naturales / tierra → <strong>rentas</strong></li>
+  <li>Tecnología → <strong>regalías</strong></li>
+  <li>Capacidad empresarial → <strong>beneficios</strong></li>
+</ul>
 <p><a class="yt" href="https://www.youtube.com/results?search_query=flujo+circular+econom%C3%ADa+explicado" target="_blank" rel="noopener">YouTube</a></p>
 
 
 <h2 id="u1-7">7. Frontera de Posibilidades de Producción (FPP)</h2>
-<img class="slide" src="img/u1/Diapositiva18.PNG" alt="FPP">
-<p>Muestra la <strong>cantidad máxima posible</strong> de bienes que una economía puede producir con sus recursos y tecnología actuales. Es cóncava al origen por el <strong>costo de oportunidad creciente</strong>.</p>
-<div class="formula">Costo de oportunidad = ΔY sacrificado / ΔX ganado</div>
-<p><strong>Desplazamientos:</strong> hacia afuera (crecimiento) por avances tecnológicos, aumento de recursos, más capital humano o más fuerza laboral. Hacia adentro (recesión): lo contrario.</p>
-<img class="slide" src="img/u1/Diapositiva20.PNG" alt="Cambios en la FPP">
+<div class="box">
+<span class="label">Definición</span>
+<p>La <strong>FPP</strong> o curva de transformación muestra la <strong>cantidad máxima posible</strong> de bienes y servicios que una economía puede producir con los recursos y la tecnología disponibles, y dadas las cantidades de otros bienes que también produce.</p>
+</div>
+
+<img class="fig" src="img/u1/image46.png" alt="Tabla de combinaciones de la FPP">
+<div class="fig-cap">Tabla de opciones: computadoras personales y teléfonos celulares. La columna 4 muestra el costo de oportunidad.</div>
+
+<img class="fig" src="img/u1/image47.png" alt="Gráfico de la FPP cóncava">
+<div class="fig-cap">FPP cóncava al origen. Los puntos A, B, C, D, E están sobre la frontera (producción eficiente).</div>
+
+<h3>Costo de oportunidad</h3>
+<div class="box">
+<p>El costo de oportunidad de una cosa es <strong>aquello a lo que se renuncia para obtenerla</strong>. En la FPP, producir más de un bien tiene un costo en términos del otro bien que deja de producirse.</p>
+</div>
+<p>La FPP es <strong>cóncava al origen</strong> porque los recursos no son igual de productivos en todos los bienes: a medida que se reasignan más recursos a un bien, cada unidad adicional cuesta más unidades sacrificadas del otro (costo de oportunidad creciente).</p>
+
+<h3>Desplazamientos de la FPP</h3>
+<p>Si la capacidad productiva aumenta, la frontera se desplaza <strong>hacia afuera</strong> (crecimiento). Si disminuye, hacia adentro. Causas:</p>
+<ul>
+  <li>Avances tecnológicos</li>
+  <li>Cambios en los recursos</li>
+  <li>Más educación o capacitación (capital humano)</li>
+  <li>Cambios en la fuerza laboral</li>
+</ul>
+<p><a class="yt" href="https://www.youtube.com/results?search_query=frontera+posibilidades+producci%C3%B3n+FPP" target="_blank" rel="noopener">YouTube</a></p>
 
 
 <h2 id="u1-8">8. Modelos económicos</h2>
-<img class="slide" src="img/u1/Diapositiva23.PNG" alt="Modelos económicos">
-<p>Simplificación de la realidad con supuestos, argumentos y conclusiones. Se evalúa por la <strong>validez de sus predicciones</strong>, no por lo realista de sus supuestos. Usan la cláusula <strong>ceteris paribus</strong> (todo lo demás constante).</p>
+<div class="box">
+<span class="label">Definición</span>
+<p>Un modelo económico es una <strong>simplificación y abstracción de la realidad</strong> que, mediante supuestos, argumentos y conclusiones, explica una determinada proposición o aspecto de un fenómeno más amplio.</p>
+</div>
+
+<p>Los modelos suponen que los agentes son <strong>racionales</strong>: toman decisiones coherentes con sus preferencias y buscan maximizar alguna magnitud. Las teorías <strong>no se evalúan por lo realista de sus supuestos</strong>, sino por la <strong>validez de sus predicciones</strong>.</p>
+
+<div class="box">
+<span class="label">Ceteris paribus</span>
+<p>Cláusula que consiste en suponer todas las demás variables constantes. Si estudio el efecto del precio del auto sobre su demanda, supongo que ingresos, gustos y precios de otros bienes no cambian.</p>
+</div>
+
+<h3>Categorías</h3>
 <table>
-<tr><th>Tipo</th><th>Alcance</th></tr>
-<tr><td><strong>Microeconómico</strong></td><td>Mercados específicos, agentes individuales</td></tr>
-<tr><td><strong>Macroeconómico</strong></td><td>Variables agregadas (PIB, inflación, consumo)</td></tr>
+<tr><th>Tipo</th><th>Estudia</th></tr>
+<tr><td><strong>Microeconómicos</strong></td><td>Mercados específicos y agentes individuales (yerba, autos, una familia).</td></tr>
+<tr><td><strong>Macroeconómicos</strong></td><td>Variables agregadas (PIB, inflación, consumo agregado, exportaciones).</td></tr>
 </table>
+
+<h3>Fases de la investigación en economía</h3>
+<ol>
+  <li>Se observa un fenómeno y se analiza por qué podría existir una determinada relación.</li>
+  <li>Se formula una serie de hipótesis y se desarrolla una teoría.</li>
+  <li>Se constatan las predicciones de la teoría contrastándolas con los datos.</li>
+</ol>
 
 
 <h2 id="u1-9">9. Economía positiva y normativa</h2>
-<img class="slide" src="img/u1/Diapositiva25.PNG" alt="Ramas de la economía">
+<p>Para estudiar e interpretar los hechos, la economía se divide en dos ramas:</p>
+
 <table>
 <tr><th></th><th>Positiva</th><th>Normativa</th></tr>
-<tr><td><strong>Pregunta</strong></td><td>¿Qué <em>es</em>?</td><td>¿Qué <em>debería ser</em>?</td></tr>
-<tr><td><strong>Base</strong></td><td>Observación, datos</td><td>Juicios de valor</td></tr>
+<tr><td><strong>Pregunta</strong></td><td>¿Qué <em>es</em> o <em>podría ser</em>?</td><td>¿Qué <em>debería ser</em>?</td></tr>
+<tr><td><strong>Enfoque</strong></td><td>Descripción objetiva y relaciones de causalidad</td><td>Juicios de valor, recomendaciones</td></tr>
+<tr><td><strong>Comprende</strong></td><td>Economía descriptiva + Teoría económica (micro y macro)</td><td>Política económica</td></tr>
 </table>
-<p><strong>Ejemplo positiva:</strong> "Si sube el impuesto a las telas, baja la demanda".</p>
-<p><strong>Ejemplo normativa:</strong> "La Argentina debería cuidar su desarrollo industrial con política proteccionista".</p>
 
+<h3>Ejemplos</h3>
+<p><strong>Positiva:</strong></p>
+<ul>
+  <li>Si el Estado grava con un impuesto el consumo de telas, disminuirá la demanda.</li>
+  <li>Si las condiciones climáticas son favorables, aumentará la producción de granos.</li>
+  <li>Si el precio del arroz es muy alto, el próximo año aumentará el área sembrada.</li>
+</ul>
 
-<h2 id="u1-10">10. Diferencia entre PIB e Ingreso Nacional</h2>
-<img class="slide" src="img/u1/Diapositiva29.PNG" alt="PIB vs IN">
+<p><strong>Normativa:</strong></p>
+<ul>
+  <li>La Argentina debería tener plena libertad de comercio sin restricciones.</li>
+  <li>La Argentina debería cuidar más su desarrollo industrial con política proteccionista.</li>
+  <li>El tipo de cambio debería ser lo más elevado posible para garantizar competitividad.</li>
+</ul>
+
 <div class="box">
-<p><strong>PIB:</strong> lo que se produce dentro del <strong>territorio</strong> (no importa la nacionalidad).<br><strong>Ingreso Nacional:</strong> lo que ganan los <strong>factores nacionales</strong> (no importa dónde).</p>
+<p>Los campos positivo y normativo se mezclan: cualquier recomendación de política económica se apoya en un análisis positivo pero lo interpreta según un marco de valores.</p>
 </div>
-<div class="formula">Ingreso Nacional = PIB + RRN − RRE</div>
-<p>RRN: rentas de nacionales en el extranjero. RRE: rentas de extranjeros en el país.</p>
+
+
+<h2 id="u1-10">10. Diferencia entre Ingreso Nacional y PIB</h2>
+<div class="box">
+<span class="label">La clave</span>
+<p>El <strong>PIB</strong> se fija en <strong>dónde se produce</strong> (territorio). El <strong>Ingreso Nacional</strong> se fija en <strong>quién lo genera</strong> (nacionalidad del factor).</p>
+</div>
+
+<h3>Producto Interno Bruto</h3>
+<p>Valor monetario de todos los bienes y servicios finales producidos dentro del territorio de un país en un período. Es un indicador del tamaño de la economía. No incluye la producción para consumo propio ni la economía sumergida.</p>
+
+<h3>Ingreso Nacional</h3>
+<p>Suma de todos los ingresos que perciben los factores productivos nacionales en un período: salarios + ganancias + intereses + rentas.</p>
+
+<div class="formula">
+<span class="fk">Relación</span>
+Ingreso Nacional = PIB + RRN − RRE
+</div>
+<ul>
+  <li><strong>RRN:</strong> rentas de residentes nacionales en el extranjero (se suman).</li>
+  <li><strong>RRE:</strong> rentas de residentes extranjeros en el país (se restan).</li>
+</ul>
+
 <table>
-<tr><th>Caso</th><th>PIB arg.</th><th>IN arg.</th></tr>
+<tr><th>Caso</th><th>PIB argentino</th><th>IN argentino</th></tr>
 <tr><td>Argentino trabajando en Chile</td><td>No</td><td>Sí</td></tr>
 <tr><td>Chileno trabajando en Argentina</td><td>Sí</td><td>No</td></tr>
 </table>
 
 
 <h2 id="u1-11">11. Equilibrio macroeconómico (OA y DA)</h2>
-<img class="slide" src="img/u1/Diapositiva30.PNG" alt="Demanda Agregada">
-<p><strong>DA:</strong> gasto total de la economía a cada nivel de precios. Pendiente negativa.</p>
-<div class="formula">DA = C + I + G + (X − M)</div>
+
+<h3>Demanda Agregada (DA)</h3>
+<p>Cantidad total que los sectores de la economía están dispuestos a gastar a cada nivel de precios. La curva tiene <strong>pendiente negativa</strong>: si los precios bajan, los agentes compran más.</p>
+
+<div class="formula">
+<span class="fk">Componentes de la DA</span>
+DA = C + I + G + (X − M)
+</div>
 <ul>
-  <li><strong>C:</strong> consumo de familias · <strong>I:</strong> inversión · <strong>G:</strong> gasto público · <strong>X − M:</strong> exportaciones netas.</li>
+  <li><strong>C:</strong> consumo de las familias · <strong>I:</strong> inversión · <strong>G:</strong> gasto público · <strong>X − M:</strong> exportaciones netas.</li>
 </ul>
-<img class="slide" src="img/u1/Diapositiva33.PNG" alt="Oferta Agregada">
-<p><strong>OA:</strong> producción total vs. nivel de precios. Pendiente positiva: al aumentar la producción suben costos unitarios y precios.</p>
-<img class="slide" src="img/u1/Diapositiva37.PNG" alt="Equilibrio macroeconómico">
-<p><strong>Equilibrio:</strong> punto de intersección entre OA y DA. Ahí las empresas producen y venden lo que los consumidores compran.</p>
+
+<img class="fig" src="img/u1/image78.png" alt="Curva de Demanda Agregada">
+<div class="fig-cap">Curva de DA con pendiente negativa: cuando bajan los precios, sube la cantidad demandada.</div>
+
+<h3>Oferta Agregada (OA)</h3>
+<p>Relación entre el nivel general de precios y la cantidad total producida. Curva con <strong>pendiente positiva</strong>: al aumentar la producción, suben los costos unitarios (más trabajadores menos experimentados, equipos menos adecuados, factores más caros, salarios nominales) y con ellos el nivel general de precios.</p>
+
+<img class="fig" src="img/u1/image80.png" alt="Curva de Oferta Agregada">
+<div class="fig-cap">Curva de OA. A medida que la producción se acerca a la plena utilización, la curva se vuelve más empinada.</div>
+
+<h3>Equilibrio macroeconómico</h3>
+<div class="box">
+<p>Combinación de PIB real y nivel general de precios que <strong>satisface a demandantes y vendedores</strong>. Es el <strong>punto de intersección</strong> entre OA y DA.</p>
+</div>
+
+<img class="fig" src="img/u1/image83.png" alt="Equilibrio macroeconómico">
+<div class="fig-cap">Equilibrio en el cruce de OA y DA. Fuera de ese punto no se cumple la condición de equilibrio.</div>
+
 <p><a class="yt" href="https://www.youtube.com/results?search_query=equilibrio+macroecon%C3%B3mico+OA+DA" target="_blank" rel="noopener">YouTube</a></p>
 
 
-<h2 class="unit" id="u2">Unidad 2</h2>
+<h2 class="unit" id="u2">Unidad 2. Conducta del consumidor</h2>
 
 
 <h2 id="u2-1">1. Análisis económico del consumidor</h2>
-<img class="slide" src="img/u2/slide02.png" alt="Análisis conducta consumidor">
-<p>Persona que adquiere bienes/servicios para satisfacer necesidades. <strong>Tres supuestos:</strong></p>
+<div class="box">
+<span class="label">Definición</span>
+<p>El <strong>consumidor</strong> es una persona u organización que adquiere bienes y servicios de los productores para satisfacer sus necesidades. El análisis económico estudia cómo toma sus decisiones de compra.</p>
+</div>
+
+<h3>Los tres supuestos</h3>
 <ol>
-  <li><strong>Preferencias coherentes</strong> (estables y transitivas).</li>
-  <li><strong>Maximización de utilidad.</strong></li>
-  <li><strong>Restricción presupuestaria</strong> (ingreso + precios).</li>
+  <li><strong>Preferencias coherentes:</strong> tiene preferencias estables y transitivas que pueden representarse matemáticamente.</li>
+  <li><strong>Maximización de la utilidad:</strong> busca maximizar su satisfacción eligiendo la mejor combinación de bienes y servicios.</li>
+  <li><strong>Restricción presupuestaria:</strong> enfrenta limitaciones por su ingreso disponible y los precios de los bienes.</li>
 </ol>
+
+<div class="box">
+<span class="label">Supuesto de insaciabilidad</span>
+<p>Dadas dos canastas, el consumidor siempre prefiere la que contiene <strong>más de algún bien y no menos de ningún otro</strong>. Garantiza que va a gastar todo su ingreso.</p>
+</div>
 
 
 <h2 id="u2-2">2. Curva de indiferencia</h2>
-<img class="slide" src="img/u2/slide03.png" alt="Curva de indiferencia">
-<p>Combinaciones de dos bienes ante las cuales el consumidor es <strong>indiferente</strong>: cada una le reporta la misma utilidad.</p>
-<p><strong>Características:</strong> convexas al origen · pendiente negativa · no se cruzan · más alejada del origen = más utilidad.</p>
-<img class="slide" src="img/u2/slide05.png" alt="Mapa de indiferencia">
-<p>El <strong>mapa de indiferencia</strong> es el conjunto infinito de curvas que representa las preferencias de un consumidor.</p>
+<div class="box">
+<span class="label">Definición</span>
+<p>Muestra el <strong>conjunto de combinaciones</strong> de dos bienes ante las cuales el consumidor es <strong>indiferente</strong>, porque cada una le reporta el <strong>mismo nivel de utilidad</strong>.</p>
+</div>
+
+<img class="fig" src="img/u2/p04_3.jpeg" alt="Mapa de curvas de indiferencia I1, I2, I3">
+<div class="fig-cap">Mapa de indiferencia: I₃ &gt; I₂ &gt; I₁. Cuanto más alejada del origen, mayor la utilidad.</div>
+
+<h3>Características</h3>
+<ul>
+  <li><strong>Forma convexa al origen:</strong> las personas prefieren combinaciones <em>balanceadas</em> de bienes.</li>
+  <li><strong>Pendiente negativa:</strong> para mantener la utilidad, si aumento un bien tengo que reducir el otro.</li>
+  <li><strong>No se cortan entre sí:</strong> hacerlo implicaría una contradicción en las preferencias.</li>
+  <li><strong>Más alejadas = mayor utilidad</strong> (supuesto de insaciabilidad).</li>
+</ul>
+
+<h3>Mapa de indiferencia</h3>
+<p>Conjunto de <strong>infinitas curvas de indiferencia</strong> que representan las preferencias de un consumidor. Los mapas de dos consumidores distintos no tienen por qué ser iguales: cada uno tiene sus propios gustos.</p>
+
+<img class="fig" src="img/u2/p05_2.png" alt="Tabla ejemplo de combinaciones indiferentes jugo y helado">
+<div class="fig-cap">Ejemplo: combinaciones indiferentes de jugo y helado con ingreso del consumidor.</div>
 
 
 <h2 id="u2-3">3. Tasa Marginal de Sustitución (TMS) decreciente</h2>
-<img class="slide" src="img/u2/slide04.png" alt="TMS y tabla ejemplo">
-<p>Cantidad de un bien que el consumidor <strong>sacrifica para obtener una unidad adicional del otro</strong>, manteniendo la misma utilidad. Es la <strong>pendiente</strong> de la curva de indiferencia.</p>
-<div class="formula">TMS<sub>xy</sub> = −ΔY / ΔX = UMg<sub>x</sub> / UMg<sub>y</sub></div>
-<p><strong>Ley de TMS decreciente:</strong> al moverse por la curva consumiendo más X y menos Y, la TMS baja, porque la UMg<sub>x</sub> disminuye y la UMg<sub>y</sub> aumenta. Por eso las CI son convexas al origen.</p>
+<div class="box">
+<span class="label">Definición</span>
+<p>La <strong>TMS</strong> mide cuánto de un bien está dispuesto el consumidor a <strong>sacrificar por una unidad adicional del otro</strong>, manteniendo constante la utilidad. Es la <strong>pendiente</strong> de la curva de indiferencia (en valor absoluto).</p>
+</div>
+
+<div class="formula">
+<span class="fk">Fórmula de la TMS</span>
+TMS<sub>xy</sub> = −ΔY / ΔX = UMg<sub>x</sub> / UMg<sub>y</sub>
+</div>
+
+<p>TMS<sub>xy</sub> y TMS<sub>yx</sub> no son lo mismo: son recíprocos entre sí.</p>
+
+<h3>Por qué es decreciente</h3>
+<p>A medida que el consumidor se mueve por la curva de izquierda a derecha (consume más X y menos Y), la TMS disminuye. La explicación surge de la <strong>utilidad marginal decreciente</strong>:</p>
+<ul>
+  <li>Consumir más X hace que <strong>UMg<sub>x</sub> baje</strong>.</li>
+  <li>Consumir menos Y hace que <strong>UMg<sub>y</sub> suba</strong>.</li>
+  <li>El cociente UMg<sub>x</sub>/UMg<sub>y</sub> cae: cada vez se necesita sacrificar menos Y para conseguir una X más.</li>
+</ul>
+<p>Esta "ley del decrecimiento de la relación marginal de sustitución" es la razón por la cual las curvas de indiferencia son <strong>convexas al origen</strong>. Refleja la idea intuitiva de que la diversidad en el consumo se considera preferible a la concentración extrema.</p>
 
 
 <h2 id="u2-4">4. Equilibrio del consumidor</h2>
-<img class="slide" src="img/u2/slide09.png" alt="Equilibrio consumidor">
-<p>Punto óptimo donde el consumidor <strong>maximiza su utilidad</strong> dada su restricción. Gráficamente: <strong>tangencia</strong> entre la recta presupuestaria y la curva de indiferencia más alta alcanzable.</p>
-<div class="formula">Condición: TMS<sub>xy</sub> = P<sub>x</sub> / P<sub>y</sub></div>
-<div class="formula">Ley de UMg ponderadas: UMg<sub>x</sub> / P<sub>x</sub> = UMg<sub>y</sub> / P<sub>y</sub></div>
-<p>El último peso gastado en X da la misma utilidad que el último peso gastado en Y.</p>
+<div class="box">
+<span class="label">Concepto</span>
+<p>Es el <strong>punto óptimo</strong> donde el consumidor <strong>maximiza su utilidad</strong> dada su restricción presupuestaria. Gráficamente, es el <strong>punto de tangencia</strong> entre la recta presupuestaria y la curva de indiferencia más alta alcanzable.</p>
+</div>
+
+<img class="fig" src="img/u2/p07_2.jpeg" alt="Equilibrio del consumidor: tangencia recta presup con curva indiferencia">
+<div class="fig-cap">El equilibrio es el punto E donde la recta AC es tangente a I₂. En D o B el consumidor está en una curva más baja; en F no puede llegar con su ingreso.</div>
+
+<h3>Condición de equilibrio: igualdad de pendientes</h3>
+<p>En el punto de tangencia, la pendiente de la curva de indiferencia (la TMS) se iguala a la pendiente de la recta presupuestaria (la razón de precios):</p>
+
+<div class="formula">
+<span class="fk">Condición de equilibrio (enfoque ordinal)</span>
+TMS<sub>xy</sub> = P<sub>x</sub> / P<sub>y</sub>
+</div>
+
+<p>De ahí se obtiene la <strong>Ley de igualdad de las utilidades marginales ponderadas</strong>:</p>
+
+<div class="formula">
+<span class="fk">Ley de UMg ponderadas</span>
+UMg<sub>x</sub> / P<sub>x</sub> = UMg<sub>y</sub> / P<sub>y</sub>
+</div>
+
+<p>Significa que <strong>el último peso gastado en X da la misma utilidad adicional que el último peso gastado en Y</strong>. Si no fuera así, el consumidor podría reasignar gasto y mejorar su utilidad, así que no estaría en equilibrio.</p>
 
 
 <h2 id="u2-5">5. Restricción presupuestaria</h2>
-<img class="slide" src="img/u2/slide06.png" alt="Restricción presupuestaria">
-<p>Combinaciones máximas de bienes que el consumidor puede comprar con su ingreso y los precios del mercado.</p>
-<div class="formula">M = P<sub>x</sub> · Q<sub>x</sub> + P<sub>y</sub> · Q<sub>y</sub></div>
-<p><strong>Pendiente = −P<sub>x</sub>/P<sub>y</sub></strong>: es el <strong>precio relativo</strong>. Muestra cuánta Y hay que sacrificar para conseguir una X más.</p>
-<img class="slide" src="img/u2/slide08.png" alt="Desplazamiento recta presupuestaria">
-<p><strong>Desplazamientos:</strong></p>
+<div class="box">
+<span class="label">Concepto</span>
+<p>La <strong>recta de balance</strong> (o línea de presupuesto) muestra las <strong>combinaciones máximas</strong> de dos bienes que el consumidor puede comprar, dados su ingreso y los precios del mercado.</p>
+</div>
+
+<div class="formula">
+<span class="fk">Ecuación</span>
+Y = P<sub>j</sub> · Q<sub>j</sub> + P<sub>h</sub> · Q<sub>h</sub>
+</div>
+
+<img class="fig" src="img/u2/p06_2.jpeg" alt="Recta presupuestaria a, b, c con desplazamientos">
+<div class="fig-cap">a) Recta original. b) Aumento del ingreso desplaza la recta paralelamente. c) Variación del precio de un solo bien hace rotar la recta sobre el eje del otro.</div>
+
+<h3>Pendiente: ¿qué muestra?</h3>
+<p>La pendiente es igual al <strong>precio relativo</strong> <strong>−P<sub>x</sub>/P<sub>y</sub></strong>: indica cuántas unidades de Y hay que sacrificar para obtener una unidad adicional de X. Cuanto más caro sea X respecto a Y, más Y hay que resignar. Es constante a lo largo de toda la recta porque los precios los fija el mercado.</p>
+
+<h3>Desplazamientos</h3>
 <ul>
-  <li>Cambia <strong>M</strong>: la recta se mueve paralela.</li>
-  <li>Cambia <strong>un solo precio</strong>: la recta gira (pivote).</li>
-  <li>Ambos precios proporcionales: mueve paralela (equivale a cambiar M).</li>
+  <li><strong>Cambio en el ingreso:</strong> la recta se <strong>desplaza paralelamente</strong>.</li>
+  <li><strong>Cambio en un solo precio:</strong> la recta <strong>gira</strong> alrededor de la ordenada al origen del bien cuyo precio no cambió.</li>
+  <li><strong>Ambos precios cambian proporcionalmente:</strong> efecto idéntico a cambiar el ingreso (desplazamiento paralelo).</li>
 </ul>
 
 
 <h2 id="u2-6">6. Demanda</h2>
-<img class="slide" src="img/u2/slide12.png" alt="Curva de demanda">
-<p>Cantidad de un bien que los consumidores <strong>desean y pueden comprar</strong> a cada precio. <strong>Ley de la demanda:</strong> relación inversa entre precio y cantidad demandada.</p>
-<img class="slide" src="img/u2/slide13.png" alt="Función de demanda">
-<div class="formula">Q<sub>A</sub> = D ( P<sub>A</sub>, Y, P<sub>B</sub>, G, N )</div>
-<p>Precio propio · ingreso · precios de otros bienes · gustos · tamaño del mercado.</p>
-<img class="slide" src="img/u2/slide14.png" alt="Desplazamiento de la demanda">
-<table>
-<tr><th></th><th>Movimiento sobre la curva</th><th>Desplazamiento</th></tr>
-<tr><td>Qué cambia</td><td>Precio del propio bien</td><td>Cualquier otro factor</td></tr>
-<tr><td>Lenguaje</td><td>"Cambia la cantidad demandada"</td><td>"Cambia la demanda"</td></tr>
-</table>
 <div class="box">
-<span class="label">Efectos que explican la pendiente negativa</span>
-<p><strong>Sustitución:</strong> al subir P, se reemplaza por otros bienes más baratos. <strong>Ingreso:</strong> al subir P cae el ingreso real, se compra menos de todo. Se refuerzan.</p>
+<span class="label">Definición</span>
+<p>La <strong>demanda</strong> es la cantidad de un bien que los consumidores <strong>desean y pueden comprar</strong> a cada precio. Demandar es <em>estar dispuesto a comprar</em>; comprar es <em>efectuar la adquisición</em>.</p>
 </div>
+
+<p><strong>Ley de la demanda:</strong> relación <strong>inversa</strong> entre el precio de un bien y la cantidad demandada. Si el precio sube, la cantidad baja, y viceversa.</p>
+
+<img class="fig" src="img/u2/p12_2.jpeg" alt="Demanda individual y demanda de mercado">
+<div class="fig-cap">La demanda del mercado es la suma horizontal de las demandas individuales.</div>
+
+<img class="fig" src="img/u2/p13_2.jpeg" alt="Curva de demanda decreciente">
+<div class="fig-cap">Curva de demanda con pendiente negativa. A cada P le corresponde una Q demandada.</div>
+
+<h3>Función de demanda. Parámetros</h3>
+<div class="formula">
+<span class="fk">Forma general</span>
+Q<sub>A</sub> = D ( P<sub>A</sub>, Y, P<sub>B</sub>, G, N )
+</div>
+<ul>
+  <li><strong>P<sub>A</sub>:</strong> precio del propio bien.</li>
+  <li><strong>Y:</strong> ingreso del consumidor.</li>
+  <li><strong>P<sub>B</sub>:</strong> precios de otros bienes (sustitutos y complementarios).</li>
+  <li><strong>G:</strong> gustos y preferencias.</li>
+  <li><strong>N:</strong> tamaño del mercado.</li>
+</ul>
+
+<h3>Movimiento vs. desplazamiento de la curva</h3>
+<img class="fig" src="img/u2/p14_3.jpeg" alt="Tabla movimiento vs desplazamiento">
+<div class="fig-cap">Un cambio en el precio genera un movimiento a lo largo de la curva. Un cambio en cualquier otro factor desplaza toda la curva.</div>
+
+<h3>Efecto sustitución y efecto ingreso</h3>
+<p>Los dos efectos explican la pendiente negativa de la curva de demanda y se refuerzan entre sí:</p>
+<ul>
+  <li><strong>Efecto sustitución:</strong> cuando el precio de un bien sube, el consumidor lo <strong>reemplaza por otros más baratos</strong> para satisfacer su necesidad al menor costo. Si suben las tarifas aéreas, la gente viaja más en colectivo o tren.</li>
+  <li><strong>Efecto ingreso:</strong> al subir el precio, con el mismo ingreso monetario el consumidor <strong>puede comprar menos de todos los bienes</strong>, incluido aquel que subió. Cae su ingreso real aunque su ingreso nominal no cambie.</li>
+</ul>
 
 
 <h2 id="u2-7">7. Excedente del consumidor</h2>
-<img class="slide" src="img/u2/slide15.png" alt="Excedente del consumidor">
-<p>Diferencia entre lo máximo que el consumidor estaba dispuesto a pagar y lo que efectivamente pagó. Existe por la <strong>utilidad marginal decreciente</strong>: las primeras unidades valen más que las últimas, pero en el mercado paga un precio único por todas.</p>
-<p><strong>Ejemplo:</strong> dispuesto a pagar 7+6+5+4+3+2 = 27 pesos por 6 kilos. Precio de mercado: 1 peso/kilo. Gasto real: 6 pesos. <strong>Excedente = 21 pesos.</strong></p>
+<div class="box">
+<span class="label">Definición</span>
+<p>Diferencia entre la <strong>utilidad total de un bien y su valor total de mercado</strong>. Surge porque el consumidor recibe más de lo que paga por el bien, y tiene origen en el <strong>decrecimiento de la utilidad marginal</strong>.</p>
+</div>
+
+<p>Otra forma: es la diferencia entre la <strong>disposición a pagar</strong> (máximo que estaría dispuesto a entregar) y el <strong>precio efectivamente pagado</strong> en el mercado.</p>
+
+<img class="fig" src="img/u2/p15_2.jpeg" alt="Área del excedente del consumidor">
+<div class="fig-cap">Área sombreada = excedente. La curva es escalonada, cada escalón corresponde a un kilo de helado.</div>
+
+<div class="box">
+<span class="label">Ejemplo del apunte</span>
+<p>Si el consumidor pagaría 7, 6, 5, 4, 3, 2 pesos por el primer, segundo... sexto kilo de helado y el precio de mercado es 1 peso/kilo:</p>
+<p>Valor total = 7+6+5+4+3+2 = 27 pesos. Gasto efectivo = 6 kilos × 1 = 6 pesos. <strong>Excedente = 27 − 6 = 21 pesos</strong>.</p>
+</div>
 
 
 <h2 id="u2-8">8. Elasticidad precio de la demanda</h2>
-<img class="slide" src="img/u2/slide16.png" alt="Elasticidad definición">
-<div class="formula">E<sub>p</sub> = %ΔQ<sub>d</sub> / %ΔP</div>
-<p>Mide cuánto responde la cantidad demandada ante un cambio en el precio. Se toma en valor absoluto.</p>
-
-<h3 style="font-size:15px;font-weight:600;margin:16px 0 8px">Clasificación</h3>
-<img class="slide" src="img/u2/slide17.png" alt="Elasticidad elástica y unitaria">
-<img class="slide" src="img/u2/slide18.png" alt="Elasticidad inelástica">
-<img class="slide" src="img/u2/slide19.png" alt="Elasticidad perfectamente elástica">
-<table>
-<tr><th>Tipo</th><th>Valor</th><th>Ejemplo</th></tr>
-<tr><td>Elástica</td><td>E &gt; 1</td><td>Lujo, viajes, autos</td></tr>
-<tr><td>Unitaria</td><td>E = 1</td><td>Caso teórico</td></tr>
-<tr><td>Inelástica</td><td>E &lt; 1</td><td>Primera necesidad: leche, pan</td></tr>
-<tr><td>Perf. inelástica</td><td>E = 0</td><td>Insulina, sal, medicamentos vitales</td></tr>
-<tr><td>Perf. elástica</td><td>E = ∞</td><td>Sustitutos perfectos</td></tr>
-</table>
-
-<h3 style="font-size:15px;font-weight:600;margin:16px 0 8px">Elasticidad e ingreso total</h3>
-<img class="slide" src="img/u2/slide22.png" alt="Elasticidad e ingreso total">
-<div class="formula">IT = P · Q</div>
-<table>
-<tr><th>Si P baja y la demanda es…</th><th>El IT…</th></tr>
-<tr><td>Elástica (E &gt; 1)</td><td>Aumenta</td></tr>
-<tr><td>Unitaria (E = 1)</td><td>No cambia (IT máximo)</td></tr>
-<tr><td>Inelástica (E &lt; 1)</td><td>Disminuye</td></tr>
-</table>
-
 <div class="box">
-<span class="label">Importancia para el licenciado en marketing</span>
-<p>Con demanda <strong>inelástica</strong>: podés subir precio y sube el IT. Con demanda <strong>elástica</strong>: subir precio te hace perder clientes rápido; conviene bajar o diferenciarte por marca para volverla más inelástica. Por eso Apple, Rolex y las marcas premium trabajan el branding: buscan que la demanda sea menos sensible al precio.</p>
+<span class="label">Definición</span>
+<p>Mide el <strong>grado en que la cantidad demandada responde</strong> a una variación del precio. Una elasticidad alta indica alta sensibilidad; una baja, poca sensibilidad.</p>
 </div>
 
-<h3 style="font-size:15px;font-weight:600;margin:16px 0 8px">Elasticidad cruzada</h3>
-<img class="slide" src="img/u2/slide24.png" alt="Elasticidad cruzada">
-<div class="formula">E<sub>ij</sub> = %ΔQ<sub>i</sub> / %ΔP<sub>j</sub></div>
+<div class="formula">
+<span class="fk">Fórmula</span>
+E<sub>p</sub> = %ΔQ<sub>d</sub> / %ΔP
+</div>
+
+<p>Por la ley de demanda, numerador y denominador tienen signo opuesto. Por convención se <strong>toma el valor absoluto</strong> para trabajar con números positivos.</p>
+
+<h3>Clasificación: 3 categorías y 2 casos extremos</h3>
+<img class="fig" src="img/u2/p17_2.jpeg" alt="Cinco casos de elasticidad con gráficos">
+<div class="fig-cap">a) Elástica (E&gt;1). b) Unitaria (E=1). c) Inelástica (E&lt;1). d) Perfectamente inelástica (E=0). e) Perfectamente elástica (E=∞).</div>
+
+<table>
+<tr><th>Tipo</th><th>Valor</th><th>Ejemplo</th></tr>
+<tr><td><strong>Elástica</strong></td><td>E<sub>p</sub> &gt; 1</td><td>Bienes de lujo, viajes, autos</td></tr>
+<tr><td><strong>Unitaria</strong></td><td>E<sub>p</sub> = 1</td><td>Caso teórico</td></tr>
+<tr><td><strong>Inelástica</strong></td><td>E<sub>p</sub> &lt; 1</td><td>Primera necesidad: pan, leche</td></tr>
+<tr><td><strong>Perf. inelástica</strong></td><td>E<sub>p</sub> = 0</td><td>Insulina, sal, medicamentos vitales</td></tr>
+<tr><td><strong>Perf. elástica</strong></td><td>E<sub>p</sub> = ∞</td><td>Sustitutos perfectos en competencia</td></tr>
+</table>
+
+<h3>Factores que condicionan la elasticidad</h3>
+<ol>
+  <li><strong>Tipo de necesidad que satisface.</strong> Primera necesidad: inelástica. Lujo: elástica.</li>
+  <li><strong>Disponibilidad de sustitutos.</strong> Con muchos sustitutos cercanos, más elástica.</li>
+  <li><strong>Proporción del ingreso gastada en el bien.</strong> Los que pesan mucho en el presupuesto son más elásticos.</li>
+  <li><strong>Período considerado.</strong> A largo plazo la demanda es más elástica porque el consumidor adapta sus hábitos.</li>
+</ol>
+
+<h3>Elasticidad precio en el arco (punto medio)</h3>
+<p>Cuando los cambios no son pequeños, la elasticidad varía según el punto inicial. Se usa el <strong>método del punto medio</strong>:</p>
+<div class="formula">
+E<sub>arco</sub> = [(Q₂ − Q₁) / ((Q₁+Q₂)/2)] / [(P₂ − P₁) / ((P₁+P₂)/2)]
+</div>
+
+<h3>Elasticidad precio en el punto</h3>
+<div class="formula">
+E<sub>p</sub> = (ΔQ/ΔP) · (P/Q)
+</div>
+<p>En una demanda lineal, la pendiente ΔQ/ΔP es constante, así que la elasticidad varía a lo largo de la curva según P/Q: es alta con precios altos y baja con precios bajos.</p>
+
+<h3>Elasticidad e ingreso total</h3>
+<p>El <strong>ingreso total</strong> del vendedor es <strong>IT = P · Q</strong>. Cuando cambia el precio, la elasticidad determina qué pasa con el IT:</p>
+
+<img class="fig" src="img/u2/p20_5.jpeg" alt="Tabla caso 1 y caso 2 ingreso total">
+<div class="fig-cap">Mismo cambio de precio, distinta respuesta de Q. En el caso 1 cae el IT (demanda inelástica); en el caso 2 sube (demanda elástica).</div>
+
+<table>
+<tr><th>Si el precio baja y la demanda es…</th><th>El IT…</th></tr>
+<tr><td>Elástica (E &gt; 1)</td><td><strong>Aumenta</strong></td></tr>
+<tr><td>Unitaria (E = 1)</td><td><strong>No cambia</strong> (IT máximo)</td></tr>
+<tr><td>Inelástica (E &lt; 1)</td><td><strong>Disminuye</strong></td></tr>
+</table>
+
+<img class="fig" src="img/u2/p21_3.jpeg" alt="Tabla maximización IT ejemplo teatro">
+<div class="fig-cap">Ejemplo del teatro: el IT se maximiza justo donde la elasticidad es unitaria (precio 25, cantidad 500, IT 12.500).</div>
+
+<div class="box">
+<span class="label">Importancia para un licenciado en marketing</span>
+<p>Conocer la elasticidad es clave para <strong>decidir precios</strong>. Con demanda <strong>inelástica</strong> (pocos sustitutos, primera necesidad): subir el precio aumenta el IT. Con demanda <strong>elástica</strong> (lujo, muchos sustitutos): subir el precio hace perder clientes más rápido que lo que se gana; conviene bajar o <strong>diferenciarse por marca</strong> para volver la demanda más inelástica. Por eso las marcas premium (Apple, Rolex) trabajan el branding: buscan que la demanda sea menos sensible al precio.</p>
+</div>
+
+<h3>Elasticidad cruzada</h3>
+<p>Mide la influencia de una variación del precio de un bien sobre la cantidad demandada de otro.</p>
+<div class="formula">
+E<sub>ij</sub> = %ΔQ<sub>i</sub> / %ΔP<sub>j</sub>
+</div>
 <table>
 <tr><th>Signo</th><th>Relación</th><th>Ejemplo</th></tr>
 <tr><td>Positiva</td><td>Sustitutos</td><td>Coca/Pepsi, Uber/taxi</td></tr>
@@ -350,24 +660,30 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid #e5e5e5;color:#888;
 <tr><td>Nula</td><td>Independientes</td><td>Pan/zapatillas</td></tr>
 </table>
 
-<h3 style="font-size:15px;font-weight:600;margin:16px 0 8px">Elasticidad ingreso y curva de Engel</h3>
-<img class="slide" src="img/u2/slide25.png" alt="Elasticidad ingreso">
-<div class="formula">E<sub>y</sub> = %ΔQ<sub>d</sub> / %ΔY</div>
+<h3>Elasticidad ingreso y curva de Engel</h3>
+<div class="formula">
+E<sub>y</sub> = %ΔQ<sub>d</sub> / %ΔY
+</div>
 <table>
-<tr><th>Valor</th><th>Tipo</th></tr>
-<tr><td>E<sub>y</sub> &gt; 1</td><td>Bien de lujo</td></tr>
-<tr><td>0 &lt; E<sub>y</sub> &lt; 1</td><td>Bien normal necesario</td></tr>
-<tr><td>E<sub>y</sub> &lt; 0</td><td>Bien inferior</td></tr>
+<tr><th>Valor</th><th>Tipo de bien</th></tr>
+<tr><td>E<sub>y</sub> &gt; 1</td><td><strong>Lujo</strong> (sube más que proporcional con el ingreso)</td></tr>
+<tr><td>0 &lt; E<sub>y</sub> &lt; 1</td><td><strong>Normal necesario</strong></td></tr>
+<tr><td>E<sub>y</sub> &lt; 0</td><td><strong>Inferior</strong> (baja con el ingreso)</td></tr>
 </table>
-<img class="slide" src="img/u2/slide26.png" alt="Curva de Engel">
-<p><strong>Curva de Engel</strong> (Ernst Engel, siglo XIX): muestra cómo varía la demanda al cambiar el ingreso. Pendiente positiva en bienes normales, negativa en inferiores. Se usa para segmentar mercados.</p>
 
-<p><a class="yt" href="https://www.youtube.com/results?search_query=elasticidad+precio+demanda+tipos" target="_blank" rel="noopener">YouTube elasticidad</a>
-<a class="yt" href="https://www.youtube.com/results?search_query=elasticidad+cruzada+ingreso+Engel" target="_blank" rel="noopener">Cruzada e ingreso</a></p>
+<img class="fig" src="img/u2/p23_3.jpeg" alt="Curvas de Engel: lujo, normal, primera necesidad, inferior">
+<div class="fig-cap">Curvas de Engel por tipo de bien. Los inferiores tienen pendiente negativa a partir de cierto nivel de ingreso.</div>
+
+<p><strong>Curva de Engel</strong> (Ernst Engel, siglo XIX): revela patrones de consumo según el ingreso. Las empresas la usan para segmentar mercados y adaptar estrategias de precios.</p>
+
+<p>
+<a class="yt" href="https://www.youtube.com/results?search_query=elasticidad+precio+demanda+tipos" target="_blank" rel="noopener">YouTube elasticidad</a>
+<a class="yt" href="https://www.youtube.com/results?search_query=elasticidad+cruzada+ingreso+Engel" target="_blank" rel="noopener">Cruzada, ingreso, Engel</a>
+</p>
 
 
 <footer>
-Fundamentos de Economía I · UCES 2026 · Apunte visual basado en el material de la Lic. Marisa Soledad Lagraña
+Resumen del apunte de Fundamentos de Economía I · UCES 2026 · Material de la Lic. Marisa Soledad Lagraña
 </footer>
 
 </div>
