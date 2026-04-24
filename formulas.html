@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taller de fórmulas - Economía I | UCES 2026</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  background:#fafafa;color:#1a1a1a;line-height:1.7;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(250,250,250,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid #e5e5e5;padding:12px 0;
+}
+.nav-inner{
+  max-width:820px;margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.nav-title{font-weight:600;font-size:15px}
+.nav-links{display:flex;gap:14px;overflow-x:auto;font-size:12.5px}
+.nav-links a{color:#666;text-decoration:none;white-space:nowrap}
+.nav-links a:hover{color:#1a1a1a}
+
+.container{max-width:820px;margin:0 auto;padding:90px 32px 80px}
+
+h1{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;line-height:1.2}
+.subtitle{color:#666;font-size:14.5px;margin-bottom:28px}
+
+h2{font-size:22px;font-weight:700;margin:56px 0 14px;padding-top:26px;border-top:2px solid #1a1a1a;line-height:1.3}
+h2:first-of-type{border-top:none;padding-top:0;margin-top:0}
+h3{font-size:16px;font-weight:600;margin:22px 0 8px;color:#333}
+.step-h{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#1a1a1a;margin:16px 0 6px}
+
+p{margin:8px 0;color:#333}
+strong{color:#1a1a1a;font-weight:600}
+em{color:#333}
+
+ul,ol{margin:8px 0;padding-left:22px;color:#333}
+li{margin:5px 0}
+
+.big-formula{
+  font-family:"SF Mono",Consolas,Menlo,monospace;
+  background:#1a1a1a;color:#fff;padding:20px 24px;
+  margin:16px 0;font-size:18px;border-radius:4px;
+  text-align:center;overflow-x:auto;
+}
+.big-formula .lbl{display:block;font-family:-apple-system,"Segoe UI",sans-serif;font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;font-weight:500}
+
+.vars{background:#f5f5f5;padding:14px 18px;margin:12px 0;border-radius:2px;border-left:2px solid #1a1a1a}
+.vars .lbl{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#666;display:block;margin-bottom:8px}
+.vars dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14.5px}
+.vars dt{font-family:"SF Mono",Consolas,monospace;color:#1a1a1a;font-weight:600}
+.vars dd{color:#333}
+
+.worked{background:#fff;border:1px solid #e5e5e5;padding:16px 20px;margin:16px 0;border-radius:2px}
+.worked .lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#666;display:block;margin-bottom:10px}
+.worked .step{margin:10px 0;padding:10px 12px;background:#fafafa;border-left:2px solid #9ca3af;border-radius:2px}
+.worked .step .n{display:inline-block;background:#1a1a1a;color:#fff;width:22px;height:22px;border-radius:50%;text-align:center;font-size:12px;font-weight:600;line-height:22px;margin-right:8px;vertical-align:middle}
+.worked .step .body{display:inline;font-size:14.5px}
+.worked .calc{font-family:"SF Mono",Consolas,monospace;background:#fff;padding:6px 10px;margin:6px 0;border:1px solid #e5e5e5;border-radius:2px;font-size:13.5px;display:inline-block}
+.worked .final{margin-top:12px;padding:10px 14px;background:#f0f9f4;border-left:2px solid #16a34a;border-radius:2px;font-weight:600;color:#14532d}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;border:1px solid #e5e5e5;background:#fff}
+th{background:#f5f5f5;text-align:left;padding:8px 10px;font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e5e5e5}
+td{padding:8px 10px;border-bottom:1px solid #f0f0f0;vertical-align:top;color:#333}
+tr:last-child td{border-bottom:none}
+
+.graph{background:#fff;border:1px solid #e5e5e5;padding:14px;margin:14px 0;border-radius:2px;text-align:center}
+.graph svg{max-width:100%;height:auto}
+.graph .caption{font-size:12.5px;color:#888;margin-top:8px;font-style:italic}
+
+.exercises{margin:20px 0}
+.ex{background:#fff;border:1px solid #e5e5e5;padding:0;margin:12px 0;border-radius:2px}
+.ex>.head{padding:12px 16px;font-weight:600;font-size:14.5px;background:#f5f5f5;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;gap:8px}
+.ex>.head .num{background:#1a1a1a;color:#fff;width:24px;height:24px;border-radius:50%;text-align:center;font-size:12px;line-height:24px;flex-shrink:0}
+.ex>.body{padding:14px 16px;font-size:14.5px}
+.ex>.body p{margin:4px 0}
+
+details{margin-top:12px;border-top:1px dashed #e5e5e5;padding-top:10px}
+details summary{cursor:pointer;font-size:13px;color:#1a1a1a;font-weight:600;padding:6px 10px;background:#fafafa;border:1px solid #e5e5e5;border-radius:2px;list-style:none;display:inline-flex;align-items:center;gap:6px;user-select:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"▶";font-size:9px;color:#666;transition:transform .2s}
+details[open] summary::before{transform:rotate(90deg)}
+details[open] summary{background:#f0f9f4;border-color:#16a34a;color:#14532d}
+details .sol{padding:12px 14px;margin-top:10px;background:#fafafa;border:1px solid #e5e5e5;border-radius:2px;font-size:14px}
+details .sol .step{margin:8px 0;padding:8px 12px;background:#fff;border-left:2px solid #9ca3af;border-radius:2px}
+details .sol .step strong{color:#1a1a1a}
+details .sol .final{margin-top:10px;padding:8px 12px;background:#f0f9f4;border-left:2px solid #16a34a;font-weight:600;color:#14532d}
+details .sol .just{margin-top:8px;padding:10px 14px;background:#eff6ff;border-left:2px solid #3b82f6;font-size:13.5px;color:#1e3a8a;border-radius:2px}
+details .sol .just::before{content:"💭 Justificación · ";font-weight:700;font-style:normal}
+details .sol .calc{font-family:"SF Mono",Consolas,monospace;background:#fff;padding:3px 8px;border:1px solid #e5e5e5;border-radius:2px;font-size:13px;display:inline-block;margin:2px 0}
+
+.tip{background:#fef9e7;border:1px solid #fcd34d;padding:12px 16px;margin:14px 0;border-radius:2px;font-size:14px}
+.tip .lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#92400e;display:block;margin-bottom:4px}
+.tip p{margin:4px 0;color:#78350f}
+
+footer{margin-top:60px;padding-top:20px;border-top:1px solid #e5e5e5;color:#888;font-size:12.5px;text-align:center}
+
+@media(max-width:640px){
+  body{font-size:15px}
+  .container{padding:80px 18px 60px}
+  .nav-inner{padding:0 16px;gap:10px}
+  .nav-links{gap:10px;font-size:11.5px}
+  h1{font-size:22px}h2{font-size:18px;margin-top:40px}
+  .big-formula{font-size:16px;padding:16px 18px}
+  table{font-size:13px}
+  .vars dl{grid-template-columns:1fr;gap:2px 0}
+  .vars dt{margin-top:6px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-title">Taller de fórmulas</div>
+    <div class="nav-links">
+      <a href="index.html">← Resumen</a>
+      <a href="#co">FPP</a>
+      <a href="#in">IN</a>
+      <a href="#da">DA</a>
+      <a href="#presup">Presup.</a>
+      <a href="#eq">Equilibrio</a>
+      <a href="#ep">Elast. P</a>
+      <a href="#earco">Arco</a>
+      <a href="#it">IT</a>
+      <a href="#ec">E. cruz.</a>
+      <a href="#ey">E. ing.</a>
+      <a href="#exc">Excedente</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<h1>Taller de fórmulas con ejercicios</h1>
+<p class="subtitle">Cada fórmula explicada paso a paso, con ejemplo resuelto + 3 ejercicios para practicar. Las respuestas se despliegan al final de cada uno.</p>
+
+<div class="tip">
+<span class="lbl">📐 Cómo usar esta página</span>
+<p>Para cada tema: (1) leé la fórmula y qué significa cada letra, (2) mirá el ejemplo resuelto, (3) intentá los ejercicios solo y recién después abrí la respuesta. Si fallás uno, volvé al ejemplo resuelto y encontrá en qué paso te trabaste.</p>
+<p style="margin-top:8px">Cada ejercicio incluye el <strong>cálculo paso a paso</strong>, el <strong>resultado final</strong> (verde) y una <strong>justificación</strong> (azul) que explica por qué el resultado tiene sentido en términos económicos, no sólo matemáticos.</p>
+</div>
+
+
+<h2 id="co">1. Costo de oportunidad (FPP)</h2>
+
+<div class="big-formula">
+<span class="lbl">Fórmula</span>
+CO = | ΔY / ΔX |
+</div>
+
+<div class="vars">
+<span class="lbl">Qué significa cada letra</span>
+<dl>
+  <dt>ΔY</dt><dd>"Delta Y" = cambio en la cantidad del bien Y (lo que pierdo / sacrifico)</dd>
+  <dt>ΔX</dt><dd>"Delta X" = cambio en la cantidad del bien X (lo que gano)</dd>
+  <dt>| ... |</dt><dd>Valor absoluto: siempre positivo (cuánto resigno)</dd>
+</dl>
+</div>
+
+<p><strong>Lo que te está diciendo:</strong> "Cuántas unidades de Y tengo que dejar de producir para ganar una unidad más de X". Es el <em>precio</em> en términos reales de producir más de un bien.</p>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto paso a paso</span>
+<p>Una economía produce sólo pan y vino. Pasa de la opción B (2 panes, 18 vinos) a la opción C (3 panes, 12 vinos). ¿Cuál es el costo de oportunidad de producir un pan adicional?</p>
+
+<div class="step"><span class="n">1</span><span class="body">Identifico qué cambia. ΔX (pan) = 3 − 2 = <strong>+1 pan</strong>. ΔY (vino) = 12 − 18 = <strong>−6 vinos</strong>.</span></div>
+<div class="step"><span class="n">2</span><span class="body">Aplico la fórmula: <span class="calc">CO = |ΔY / ΔX| = |−6 / 1| = |−6| = 6</span></span></div>
+<div class="step"><span class="n">3</span><span class="body">Interpreto: para producir 1 pan adicional tuve que sacrificar 6 vinos.</span></div>
+<div class="final">✓ Resultado: CO = 6 vinos por pan</div>
+</div>
+
+<div class="graph">
+<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <line x1="50" y1="20" x2="50" y2="220" stroke="#1a1a1a" stroke-width="1.5"/>
+  <line x1="50" y1="220" x2="370" y2="220" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="40" y="20" text-anchor="end" font-size="11" fill="#333">Vino (Y)</text>
+  <text x="365" y="240" text-anchor="end" font-size="11" fill="#333">Pan (X)</text>
+  <path d="M 50 40 Q 70 200 340 220" stroke="#1a1a1a" stroke-width="2" fill="none"/>
+  <circle cx="130" cy="85" r="4" fill="#1a1a1a"/>
+  <text x="138" y="80" font-size="11" font-weight="600">B (2,18)</text>
+  <circle cx="175" cy="145" r="4" fill="#1a1a1a"/>
+  <text x="183" y="144" font-size="11" font-weight="600">C (3,12)</text>
+  <line x1="130" y1="85" x2="130" y2="145" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="130" y1="145" x2="175" y2="145" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="110" y="120" font-size="10" fill="#666">ΔY=−6</text>
+  <text x="140" y="158" font-size="10" fill="#666">ΔX=+1</text>
+</svg>
+<div class="caption">Moverse de B a C: se ganan 1 pan y se resignan 6 vinos. El CO es la "inclinación" del tramo de curva.</div>
+</div>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>Pasaje de A (0 pan, 20 vinos) a B (1 pan, 18 vinos)</div>
+<div class="body">
+<p>Calculá el CO de pasar de A a B.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">ΔX = 1 − 0 = <strong>+1</strong>. ΔY = 18 − 20 = <strong>−2</strong>.</div>
+<div class="step"><span class="calc">CO = |−2/1| = 2</span></div>
+<div class="final">✓ CO = 2 vinos por pan</div>
+<div class="just">Al arrancar con 0 panes, los recursos disponibles son los <em>más aptos</em> para producir pan. Entonces el primer pan cuesta poco en términos de vino resignado (solo 2). A medida que se producen más panes, el CO va a ir subiendo porque se usan recursos cada vez menos eficientes para pan.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Pasaje de D (5 horas estudio, 10 horas ocio) a E (8 horas estudio, 4 horas ocio)</div>
+<div class="body">
+<p>Calculá el CO de cada hora adicional de estudio en términos de ocio.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">ΔX (estudio) = 8 − 5 = <strong>+3</strong>. ΔY (ocio) = 4 − 10 = <strong>−6</strong>.</div>
+<div class="step"><span class="calc">CO = |−6/3| = 2</span></div>
+<div class="final">✓ CO = 2 horas de ocio por cada hora de estudio</div>
+<div class="just">Estudiar no es "gratis": cada hora más de estudio implica resignar 2 horas de ocio. Ese <em>precio en términos reales</em> es el costo de oportunidad. En una decisión diaria, tenés que comparar si lo que ganás estudiando (mejor nota, conocimiento) compensa lo que perdés (descanso, socializar).</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Costo de oportunidad creciente</div>
+<div class="body">
+<p>Una economía tiene estas combinaciones: A(0,30), B(1,28), C(2,24), D(3,18), E(4,10). Calculá el CO de cada paso (A→B, B→C, C→D, D→E). ¿Qué comportamiento tiene?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">A→B: <span class="calc">|28−30|/|1−0| = 2</span></div>
+<div class="step">B→C: <span class="calc">|24−28|/|2−1| = 4</span></div>
+<div class="step">C→D: <span class="calc">|18−24|/|3−2| = 6</span></div>
+<div class="step">D→E: <span class="calc">|10−18|/|4−3| = 8</span></div>
+<div class="final">✓ CO creciente (2, 4, 6, 8). Por eso la FPP es cóncava al origen.</div>
+<div class="just">El costo sube porque los recursos no son igual de productivos en todo. Los primeros panes se producen con los recursos más aptos para pan (costo bajo). Los últimos panes se producen forzando recursos que eran mejores para vino (costo alto). Esto genera la curva cóncava que ves siempre en el gráfico de FPP.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<h2 id="in">2. Ingreso Nacional</h2>
+
+<div class="big-formula">
+<span class="lbl">Fórmula</span>
+IN = PIB + RRN − RRE
+</div>
+
+<div class="vars">
+<span class="lbl">Qué significa cada letra</span>
+<dl>
+  <dt>IN</dt><dd>Ingreso Nacional: lo que ganan los factores nacionales (sin importar dónde estén)</dd>
+  <dt>PIB</dt><dd>Producto Interno Bruto: lo producido dentro del territorio (sin importar la nacionalidad)</dd>
+  <dt>RRN</dt><dd>Rentas de Residentes Nacionales en el extranjero → <strong>se suma</strong> (son nacionales ganando afuera)</dd>
+  <dt>RRE</dt><dd>Rentas de Residentes Extranjeros en el país → <strong>se resta</strong> (son extranjeros ganando acá)</dd>
+</dl>
+</div>
+
+<p><strong>Truco para recordar:</strong> PIB piensa en <em>territorio</em>. IN piensa en <em>nacionalidad</em>. Para pasar de uno al otro, sumás lo que hacen los "míos afuera" y restás lo que hacen los "de afuera adentro".</p>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto</span>
+<p>Un país tiene PIB = $800.000M. Los nacionales afuera ganaron $50.000M. Los extranjeros dentro del país ganaron $70.000M. ¿Cuánto es el IN?</p>
+<div class="step"><span class="n">1</span><span class="body">Identifico los datos: PIB = 800.000, RRN = 50.000, RRE = 70.000.</span></div>
+<div class="step"><span class="n">2</span><span class="body">Aplico la fórmula: <span class="calc">IN = 800.000 + 50.000 − 70.000</span></span></div>
+<div class="step"><span class="n">3</span><span class="body">Calculo: <span class="calc">IN = 780.000</span></span></div>
+<div class="final">✓ IN = $780.000M. Como IN &lt; PIB, es un país receptor de inversión extranjera.</div>
+</div>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>País con inversión en el exterior</div>
+<div class="body">
+<p>PIB = $1.200.000M · RRN = $180.000M · RRE = $40.000M. Calculá el IN y decí qué tipo de país es.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step"><span class="calc">IN = 1.200.000 + 180.000 − 40.000 = 1.340.000</span></div>
+<div class="final">✓ IN = $1.340.000M. Como IN &gt; PIB, es un país exportador de factores (tiene muchos nacionales generando ingresos afuera).</div>
+<div class="just">RRN ($180k) es bastante mayor que RRE ($40k), así que los nacionales afuera ganan mucho más de lo que los extranjeros acá. Este tipo de economías suelen tener una diáspora productiva grande (ej: trabajadores migrando a países con mejores salarios y remitiendo plata).</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Caso con flujos equilibrados</div>
+<div class="body">
+<p>PIB = $500.000M · RRN = $30.000M · RRE = $30.000M. Calculá el IN.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step"><span class="calc">IN = 500.000 + 30.000 − 30.000 = 500.000</span></div>
+<div class="final">✓ IN = PIB = $500.000M. Los flujos se cancelan.</div>
+<div class="just">Cuando RRN = RRE, los ingresos que los nacionales generan afuera se compensan exactamente con los que los extranjeros generan adentro. Es un escenario raro en la práctica pero posible. También pasa en economías más cerradas, donde apenas hay flujos de factores internacionales.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Argentina 2024 (datos inventados para practicar)</div>
+<div class="body">
+<p>PIB = $640.000M USD · RRN = $12.000M · RRE = $55.000M. Calculá el IN y explicá qué significa la diferencia.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step"><span class="calc">IN = 640.000 + 12.000 − 55.000 = 597.000</span></div>
+<div class="final">✓ IN = $597.000M USD. El IN es $43.000M menor que el PIB.</div>
+<div class="just">RRE ($55k) supera a RRN ($12k): los extranjeros (multinacionales, inversores, tenedores de bonos) se llevan más plata del país que los nacionales que ganan afuera. Eso es típico de economías con alta dependencia de inversión extranjera o con estructura de deuda significativa hacia afuera. Por eso el ingreso real de los argentinos es menor de lo que aparenta el PIB.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<h2 id="da">3. Demanda Agregada</h2>
+
+<div class="big-formula">
+<span class="lbl">Fórmula</span>
+DA = C + I + G + (X − M)
+</div>
+
+<div class="vars">
+<span class="lbl">Qué significa cada letra</span>
+<dl>
+  <dt>DA</dt><dd>Demanda Agregada (lo que gasta toda la economía)</dd>
+  <dt>C</dt><dd>Consumo de las familias (comida, ropa, auto, servicios)</dd>
+  <dt>I</dt><dd>Inversión de empresas (fábricas, máquinas, equipos)</dd>
+  <dt>G</dt><dd>Gasto público (trenes, escuelas, salarios estatales)</dd>
+  <dt>X</dt><dd>Exportaciones (lo que vendemos al exterior → suma)</dd>
+  <dt>M</dt><dd>Importaciones (lo que compramos al exterior → resta)</dd>
+  <dt>X − M</dt><dd>Exportaciones netas o saldo de balanza comercial</dd>
+</dl>
+</div>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto</span>
+<p>Datos: C = 400, I = 150, G = 100, X = 80, M = 110 (en millones).</p>
+<div class="step"><span class="n">1</span><span class="body">Calculo las exportaciones netas primero: <span class="calc">X − M = 80 − 110 = −30</span></span></div>
+<div class="step"><span class="n">2</span><span class="body">Sumo todo: <span class="calc">DA = 400 + 150 + 100 + (−30)</span></span></div>
+<div class="step"><span class="n">3</span><span class="body"><span class="calc">DA = 650 − 30 = 620</span></span></div>
+<div class="final">✓ DA = $620M. Como X − M &lt; 0, hay déficit comercial.</div>
+</div>
+
+<div class="tip">
+<span class="lbl">⚠ Errores comunes</span>
+<p>1) Olvidar los paréntesis y restar mal: si X = 80 y M = 110, no escribas "+80 − 110" sueltos, sino "+(80 − 110)" para acordarte del grupo. 2) Las importaciones se <strong>restan</strong>: si pones M positivo en la fórmula completa te va a dar mal.</p>
+</div>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>Economía con superávit</div>
+<div class="body">
+<p>C = 500 · I = 200 · G = 150 · X = 180 · M = 120. Calculá DA.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step"><span class="calc">X − M = 180 − 120 = +60</span></div>
+<div class="step"><span class="calc">DA = 500 + 200 + 150 + 60 = 910</span></div>
+<div class="final">✓ DA = $910M. Hay superávit comercial ($60M de exportaciones netas).</div>
+<div class="just">Al vender al exterior más de lo que se compra, entra más plata de la que sale por la vía comercial. Eso fortalece la moneda local (porque aumenta la demanda de esa moneda para pagar exportaciones) y mejora la balanza. Es un signo positivo para la estabilidad macroeconómica.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Sube el consumo 20%</div>
+<div class="body">
+<p>Datos base: C = 300, I = 100, G = 80, X = 50, M = 70. Si el consumo sube un 20%, ¿cuánto vale la nueva DA?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">DA original: <span class="calc">300 + 100 + 80 + (50−70) = 460</span></div>
+<div class="step">Nuevo C: <span class="calc">300 × 1,20 = 360</span></div>
+<div class="step">DA nueva: <span class="calc">360 + 100 + 80 + (−20) = 520</span></div>
+<div class="final">✓ DA nueva = $520M (aumentó $60M).</div>
+<div class="just">Cuando sube el consumo, la DA sube en la misma magnitud absoluta. En este caso C subió $60M y la DA subió $60M. En macroeconomía, el consumo es el componente más grande de la DA (usualmente 60-70%), así que políticas que lo estimulen (bajar impuestos, más empleo, transferencias) mueven mucho la DA.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Encontrar el gasto público desconocido</div>
+<div class="body">
+<p>Sabés que DA = 1.000 · C = 550 · I = 200 · X = 120 · M = 100. ¿Cuánto vale G?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Despejo G de la fórmula: <span class="calc">G = DA − C − I − (X − M)</span></div>
+<div class="step"><span class="calc">G = 1.000 − 550 − 200 − (120 − 100) = 1.000 − 550 − 200 − 20</span></div>
+<div class="step"><span class="calc">G = 230</span></div>
+<div class="final">✓ G = $230M</div>
+<div class="just">Cuando te dan la DA y todos los componentes menos uno, siempre podés <em>despejar</em> el que falta. El truco es pasar todo al otro lado del igual invirtiendo el signo. Esto también sirve para calcular C, I o X-M si te los piden en lugar de G.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<h2 id="presup">4. Recta presupuestaria</h2>
+
+<div class="big-formula">
+<span class="lbl">Fórmulas clave</span>
+M = Px·Qx + Py·Qy<br>
+Qy = M/Py − (Px/Py)·Qx
+</div>
+
+<div class="vars">
+<span class="lbl">Qué significa cada letra</span>
+<dl>
+  <dt>M</dt><dd>Ingreso (cuánta plata tenés para gastar)</dd>
+  <dt>Px, Py</dt><dd>Precios de cada bien</dd>
+  <dt>Qx, Qy</dt><dd>Cantidades de cada bien</dd>
+  <dt>M/Px</dt><dd>Cuánto X máximo podés comprar (si gastás todo en X)</dd>
+  <dt>M/Py</dt><dd>Cuánto Y máximo podés comprar (si gastás todo en Y)</dd>
+  <dt>−Px/Py</dt><dd>Pendiente: cuánto Y tenés que resignar para una X más</dd>
+</dl>
+</div>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto</span>
+<p>Juan tiene $1.000. Quiere comprar remeras (Px = $200) y libros (Py = $100).</p>
+<div class="step"><span class="n">1</span><span class="body">Máximo de remeras si gasta todo en remeras: <span class="calc">M/Px = 1000/200 = 5 remeras</span></span></div>
+<div class="step"><span class="n">2</span><span class="body">Máximo de libros si gasta todo en libros: <span class="calc">M/Py = 1000/100 = 10 libros</span></span></div>
+<div class="step"><span class="n">3</span><span class="body">Pendiente: <span class="calc">−Px/Py = −200/100 = −2</span>. Por cada remera renuncia a 2 libros.</span></div>
+<div class="step"><span class="n">4</span><span class="body">Combinación intermedia: si compra 3 remeras, ¿cuántos libros le quedan? <span class="calc">Qy = 1000/100 − (200/100)·3 = 10 − 6 = 4 libros</span></span></div>
+<div class="final">✓ Puede comprar 5R/0L, 4R/2L, 3R/4L, 2R/6L, 1R/8L, o 0R/10L.</div>
+</div>
+
+<div class="graph">
+<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <line x1="50" y1="20" x2="50" y2="220" stroke="#1a1a1a" stroke-width="1.5"/>
+  <line x1="50" y1="220" x2="370" y2="220" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="40" y="20" text-anchor="end" font-size="11" fill="#333">Libros (Y)</text>
+  <text x="365" y="240" text-anchor="end" font-size="11" fill="#333">Remeras (X)</text>
+  <line x1="50" y1="30" x2="300" y2="220" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="50" cy="30" r="4" fill="#1a1a1a"/>
+  <text x="30" y="30" font-size="11" font-weight="600">10</text>
+  <circle cx="300" cy="220" r="4" fill="#1a1a1a"/>
+  <text x="300" y="240" font-size="11" font-weight="600" text-anchor="middle">5</text>
+  <circle cx="200" cy="145" r="4" fill="#16a34a"/>
+  <text x="210" y="142" font-size="11" fill="#16a34a">3R,4L</text>
+</svg>
+<div class="caption">Recta presupuestaria con ingreso $1.000, Px=$200, Py=$100.</div>
+</div>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>Comida y bebida</div>
+<div class="body">
+<p>Ingreso $600. Precio comida = $30. Precio bebida = $20. Encontrá: máximo comidas, máximo bebidas, y pendiente.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Máx comidas: <span class="calc">600/30 = 20</span></div>
+<div class="step">Máx bebidas: <span class="calc">600/20 = 30</span></div>
+<div class="step">Pendiente: <span class="calc">−30/20 = −1,5</span> (por cada comida renuncia a 1,5 bebidas)</div>
+<div class="final">✓ 20 comidas o 30 bebidas; pendiente −1,5</div>
+<div class="just">La pendiente −1,5 te dice: por cada comida que querés, tenés que resignar 1,5 bebidas (porque cada comida cuesta 1,5 veces más que cada bebida). Es el "precio relativo" entre los dos bienes. Este precio es fijo mientras los precios del mercado no cambien.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Desplazamiento por cambio de ingreso</div>
+<div class="body">
+<p>Tenías M = $1.000, Px = $200, Py = $100. Tu ingreso sube a $1.500. ¿Cuáles son los nuevos máximos de X e Y? ¿La pendiente cambia?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Máx X nuevo: <span class="calc">1500/200 = 7,5</span></div>
+<div class="step">Máx Y nuevo: <span class="calc">1500/100 = 15</span></div>
+<div class="step">Pendiente nueva: <span class="calc">−200/100 = −2</span> (igual que antes)</div>
+<div class="final">✓ La recta se desplaza paralela hacia afuera. Los precios relativos no cambiaron, sólo el poder de compra.</div>
+<div class="just">Cambió el ingreso, no los precios. Por eso la pendiente se mantiene (−2) pero todo el set de canastas accesibles se expande. Si ahora Juan quiere, puede comprar más de ambos bienes: es una clásica "subida de poder adquisitivo". Gráficamente, se ve como una línea paralela a la original pero más alejada del origen.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Desplazamiento por cambio de un precio</div>
+<div class="body">
+<p>Tenías M = $1.200, Px = $100, Py = $300. El precio de X baja a $60. ¿Cuáles son los nuevos máximos? ¿Cómo cambia la pendiente?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Máx X antes: 12. Máx Y antes: 4. Pendiente antes: <span class="calc">−100/300 = −0,33</span></div>
+<div class="step">Máx X después: <span class="calc">1200/60 = 20</span>. Máx Y igual: <span class="calc">1200/300 = 4</span></div>
+<div class="step">Pendiente después: <span class="calc">−60/300 = −0,20</span> (menos inclinada)</div>
+<div class="final">✓ La recta gira pivotando sobre el punto (0, 4) del eje Y hacia afuera. Pendiente más chica.</div>
+<div class="just">Sólo cambió el precio de X (no el ingreso ni el precio de Y). Por eso el máximo de Y queda igual: si gasta todo en Y, la plata le alcanza para lo mismo. Pero ahora X está más barato, así que puede comprar más X por el mismo ingreso. La recta "rota" alrededor del eje del bien cuyo precio no cambió.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<h2 id="eq">5. Equilibrio del consumidor (UMg ponderadas)</h2>
+
+<div class="big-formula">
+<span class="lbl">Condición de equilibrio</span>
+UMgx / Px = UMgy / Py
+</div>
+
+<div class="vars">
+<span class="lbl">Qué significa cada letra</span>
+<dl>
+  <dt>UMgx</dt><dd>Utilidad marginal de X (cuántos "útiles" te da una unidad más de X)</dd>
+  <dt>UMgy</dt><dd>Utilidad marginal de Y</dd>
+  <dt>Px, Py</dt><dd>Precios de cada bien</dd>
+  <dt>UMgx/Px</dt><dd>Cuántos útiles te da <strong>cada peso</strong> gastado en X</dd>
+</dl>
+</div>
+
+<p><strong>Lo que está diciendo:</strong> estás en equilibrio cuando <em>cada peso</em> gastado en X te da la misma satisfacción que <em>cada peso</em> gastado en Y. Si no es así, podés reasignar y ganar más utilidad.</p>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto</span>
+<p>UMgx = 60 útiles, Px = $12. UMgy = 40 útiles, Py = $10. ¿Está en equilibrio?</p>
+<div class="step"><span class="n">1</span><span class="body">UMg ponderada de X: <span class="calc">60/12 = 5 útiles por peso</span></span></div>
+<div class="step"><span class="n">2</span><span class="body">UMg ponderada de Y: <span class="calc">40/10 = 4 útiles por peso</span></span></div>
+<div class="step"><span class="n">3</span><span class="body">Comparo: 5 ≠ 4 → <strong>no está en equilibrio</strong></span></div>
+<div class="step"><span class="n">4</span><span class="body">¿Qué hacer? Cada peso en X rinde más (5 vs 4). Conviene <strong>consumir más X y menos Y</strong>.</span></div>
+<div class="final">✓ Al consumir más X, la UMgx baja (utilidad marginal decreciente). Al consumir menos Y, la UMgy sube. Se igualan en algún punto → equilibrio.</div>
+</div>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>Verificar equilibrio</div>
+<div class="body">
+<p>UMga = 50, Pa = $10. UMgb = 30, Pb = $6. ¿Está en equilibrio?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Ponderada A: <span class="calc">50/10 = 5</span></div>
+<div class="step">Ponderada B: <span class="calc">30/6 = 5</span></div>
+<div class="final">✓ Sí, está en equilibrio (5 = 5).</div>
+<div class="just">Cada peso gastado en A le rinde 5 útiles, y cada peso gastado en B también le rinde 5 útiles. No hay manera de reasignar gasto y ganar más utilidad. El consumidor ya está maximizando.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Decidir qué hacer</div>
+<div class="body">
+<p>UMgx = 24, Px = $8. UMgy = 45, Py = $9. ¿En equilibrio? Si no, ¿qué hacer?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Ponderada X: <span class="calc">24/8 = 3</span></div>
+<div class="step">Ponderada Y: <span class="calc">45/9 = 5</span></div>
+<div class="step">3 &lt; 5: cada peso en Y rinde más</div>
+<div class="final">✓ No está en equilibrio. Conviene <strong>consumir más Y y menos X</strong>.</div>
+<div class="just">Cada peso en Y rinde 5 útiles, contra 3 útiles por peso en X. Al reasignar gasto hacia Y: por la utilidad marginal decreciente, al comer más Y su UMgy va a bajar, y al consumir menos X su UMgx va a subir. Va a seguir reasignando hasta que las dos utilidades ponderadas se igualen, alcanzando el equilibrio.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Encontrar un precio</div>
+<div class="body">
+<p>Un consumidor está en equilibrio. UMgx = 80, Px = $16, UMgy = 25. ¿Cuánto tiene que valer Py?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Si está en equilibrio: <span class="calc">UMgx/Px = UMgy/Py</span></div>
+<div class="step"><span class="calc">80/16 = 25/Py → 5 = 25/Py</span></div>
+<div class="step">Despejo: <span class="calc">Py = 25/5 = 5</span></div>
+<div class="final">✓ Py = $5</div>
+<div class="just">Si el consumidor está en equilibrio, las UMg ponderadas deben ser iguales. UMgx/Px te da 5 útiles por peso. Para que Y tenga la misma rentabilidad por peso, su precio tiene que ser 25/5 = $5. Si fuera distinto, el consumidor no estaría maximizando y podría reasignar.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<h2 id="ep">6. Elasticidad precio (fórmula básica)</h2>
+
+<div class="big-formula">
+<span class="lbl">Fórmula básica</span>
+Ep = | %ΔQ / %ΔP |
+</div>
+
+<div class="vars">
+<span class="lbl">Qué significa cada letra</span>
+<dl>
+  <dt>%ΔQ</dt><dd>Variación porcentual de la cantidad: (Q2 − Q1) / Q1</dd>
+  <dt>%ΔP</dt><dd>Variación porcentual del precio: (P2 − P1) / P1</dd>
+  <dt>| ... |</dt><dd>Valor absoluto (siempre positivo)</dd>
+</dl>
+</div>
+
+<p><strong>Pasos para calcularla:</strong></p>
+<ol>
+  <li>Sacás el %ΔQ = (Q2 − Q1) / Q1 × 100</li>
+  <li>Sacás el %ΔP = (P2 − P1) / P1 × 100</li>
+  <li>Dividís %ΔQ ÷ %ΔP</li>
+  <li>Tomás valor absoluto</li>
+  <li>Clasificás según si el resultado es &gt;1, =1 o &lt;1</li>
+</ol>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto</span>
+<p>El precio de un producto pasa de $20 a $25. La cantidad demandada cae de 100 a 80 unidades. ¿Cuál es la elasticidad y cómo se clasifica?</p>
+<div class="step"><span class="n">1</span><span class="body">%ΔQ = <span class="calc">(80 − 100)/100 = −20/100 = −20%</span></span></div>
+<div class="step"><span class="n">2</span><span class="body">%ΔP = <span class="calc">(25 − 20)/20 = 5/20 = +25%</span></span></div>
+<div class="step"><span class="n">3</span><span class="body">Ep = <span class="calc">|−20% / 25%| = |−0,8| = 0,8</span></span></div>
+<div class="step"><span class="n">4</span><span class="body">Clasificación: 0,8 &lt; 1 → <strong>inelástica</strong></span></div>
+<div class="final">✓ Ep = 0,8 (inelástica). La cantidad reacciona menos que proporcionalmente al precio.</div>
+</div>
+
+<table>
+<tr><th>Valor</th><th>Tipo</th></tr>
+<tr><td>Ep &gt; 1</td><td>Elástica (cantidad reacciona más)</td></tr>
+<tr><td>Ep = 1</td><td>Unitaria</td></tr>
+<tr><td>Ep &lt; 1</td><td>Inelástica (cantidad reacciona menos)</td></tr>
+<tr><td>Ep = 0</td><td>Perfectamente inelástica</td></tr>
+<tr><td>Ep = ∞</td><td>Perfectamente elástica</td></tr>
+</table>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>Elasticidad unitaria</div>
+<div class="body">
+<p>P pasa de $10 a $12. Q pasa de 500 a 400. Calculá Ep y clasificá.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">%ΔQ: <span class="calc">(400−500)/500 = −0,20 = −20%</span></div>
+<div class="step">%ΔP: <span class="calc">(12−10)/10 = +0,20 = +20%</span></div>
+<div class="step">Ep: <span class="calc">|−20%/20%| = 1</span></div>
+<div class="final">✓ Ep = 1 (unitaria). El IT se mantiene constante.</div>
+<div class="just">La cantidad cayó 20% y el precio subió 20%: los cambios se cancelan exactamente. En términos de IT: P×Q pasó de 10×500 = 5.000 a 12×400 = 4.800 (casi igual, la pequeña diferencia viene del cálculo discreto). La unitaria es el punto donde el IT está en su máximo.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Demanda elástica (bien de lujo)</div>
+<div class="body">
+<p>Un perfume pasa de $500 a $600. La Q cae de 200 a 120 unidades. ¿Es elástica?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">%ΔQ: <span class="calc">(120−200)/200 = −0,40 = −40%</span></div>
+<div class="step">%ΔP: <span class="calc">(600−500)/500 = +0,20 = +20%</span></div>
+<div class="step">Ep: <span class="calc">|−40%/20%| = 2</span></div>
+<div class="final">✓ Ep = 2 (elástica).</div>
+<div class="just">Un perfume es un bien de lujo con muchos sustitutos (otras marcas, otros tipos de regalo). Cuando sube el precio, la gente se va a alternativas o directamente no compra. Por eso la cantidad cae mucho más que proporcionalmente al precio. Resultado para la marca: subir precio es mala idea, pierde más clientes que lo que gana por unidad.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Demanda de medicamento (inelástica)</div>
+<div class="body">
+<p>La insulina pasa de $1.000 a $1.500. La cantidad demandada pasa de 10.000 a 9.500 unidades. ¿Cuánto vale Ep?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">%ΔQ: <span class="calc">(9500−10000)/10000 = −0,05 = −5%</span></div>
+<div class="step">%ΔP: <span class="calc">(1500−1000)/1000 = +0,50 = +50%</span></div>
+<div class="step">Ep: <span class="calc">|−5%/50%| = 0,1</span></div>
+<div class="final">✓ Ep = 0,1 (muy inelástica).</div>
+<div class="just">La insulina es un medicamento vital sin sustitutos reales: los pacientes diabéticos la necesitan sí o sí para vivir. Por eso aunque el precio suba 50%, la cantidad cae apenas 5%. Este tipo de bienes tiende a perfectamente inelásticos (Ep = 0). Por eso es un mercado eticamente sensible: regular precios suele ser necesario para que no se abuse del poder de fijación del laboratorio.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<h2 id="earco">7. Elasticidad arco (punto medio)</h2>
+
+<div class="big-formula">
+<span class="lbl">Fórmula arco</span>
+Ep arco = | (Q2−Q1)/((Q1+Q2)/2) ÷ (P2−P1)/((P1+P2)/2) |
+</div>
+
+<div class="vars">
+<span class="lbl">Por qué usar este método</span>
+<dl>
+  <dt>Problema básica</dt><dd>La fórmula básica te da distinto resultado si arrancás del punto 1 o del 2</dd>
+  <dt>Solución arco</dt><dd>En vez de dividir por Q1 o P1, divide por el <strong>promedio</strong> de ambos puntos</dd>
+  <dt>Cuándo usarla</dt><dd>Cuando el cambio de precio es grande (más del 10-15%)</dd>
+</dl>
+</div>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto</span>
+<p>Precio pasa de $10 a $20. Cantidad pasa de 100 a 60. Calculá Ep arco.</p>
+<div class="step"><span class="n">1</span><span class="body">Numerador: <span class="calc">(60−100)/((100+60)/2) = −40/80 = −0,50</span></span></div>
+<div class="step"><span class="n">2</span><span class="body">Denominador: <span class="calc">(20−10)/((10+20)/2) = 10/15 = 0,667</span></span></div>
+<div class="step"><span class="n">3</span><span class="body">Ep arco: <span class="calc">|−0,50 / 0,667| = 0,75</span></span></div>
+<div class="final">✓ Ep arco = 0,75 (inelástica)</div>
+</div>
+
+<div class="tip">
+<span class="lbl">🔑 Truco</span>
+<p>Cada "trozo" de la fórmula tiene <strong>un promedio en el denominador</strong>. Arriba: promedio de cantidades. Abajo: promedio de precios. Lo demás es igual.</p>
+</div>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>Arco básico</div>
+<div class="body">
+<p>P1=$8, P2=$12, Q1=400, Q2=200. Calculá Ep arco.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Prom Q: <span class="calc">(400+200)/2 = 300</span>. Num: <span class="calc">(200−400)/300 = −0,667</span></div>
+<div class="step">Prom P: <span class="calc">(8+12)/2 = 10</span>. Den: <span class="calc">(12−8)/10 = 0,40</span></div>
+<div class="step">Ep arco: <span class="calc">|−0,667/0,40| = 1,67</span></div>
+<div class="final">✓ Ep arco = 1,67 (elástica)</div>
+<div class="just">El precio subió un 50% en relación al promedio y la cantidad cayó un 67% en relación al promedio. Con una caída tan fuerte de Q, la demanda es claramente elástica. Usar arco es correcto acá porque el cambio es grande: si usaras la básica desde P1 y desde P2 te darían elasticidades distintas.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Comparar básica vs arco</div>
+<div class="body">
+<p>P1=$50, P2=$70. Q1=1000, Q2=700. Calculá Ep básica (desde P1, Q1) y Ep arco. ¿Cuál es la diferencia?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step"><strong>Básica:</strong> %ΔQ = <span class="calc">−300/1000 = −30%</span>. %ΔP = <span class="calc">20/50 = 40%</span>. Ep = <span class="calc">|−30/40| = 0,75</span></div>
+<div class="step"><strong>Arco:</strong> Num = <span class="calc">−300/850 = −0,353</span>. Den = <span class="calc">20/60 = 0,333</span>. Ep arco = <span class="calc">|−0,353/0,333| = 1,06</span></div>
+<div class="final">✓ Básica: 0,75 (inelástica). Arco: 1,06 (elástica).</div>
+<div class="just">Cuando usás la básica desde el punto 1 (precios bajos, cantidades altas), el denominador P/Q es chico, así que la elasticidad sale baja. Cuando usás la básica desde el punto 2, sale distinto. El arco evita esa ambigüedad porque toma el <strong>promedio</strong> como referencia. Por eso, cuando los cambios son grandes, la arco es el método más honesto y es el que la profe va a pedir.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Ejercicio del apunte: teatro</div>
+<div class="body">
+<p>El precio de la entrada pasa de $500 a $400 y la cantidad vendida pasa de 1.000 a 1.400. Calculá Ep arco y decí si conviene bajar el precio.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Num: <span class="calc">(1400−1000)/1200 = 0,333</span></div>
+<div class="step">Den: <span class="calc">(400−500)/450 = −0,222</span></div>
+<div class="step">Ep arco: <span class="calc">|0,333/−0,222| = 1,5</span></div>
+<div class="step">IT antes: <span class="calc">500×1000 = 500.000</span>. IT después: <span class="calc">400×1400 = 560.000</span></div>
+<div class="final">✓ Ep = 1,5 (elástica). Sí conviene: IT sube $60.000.</div>
+<div class="just">La demanda del teatro es elástica (muchas alternativas de ocio: Netflix, bares, cine, quedarse en casa). Al bajar el precio, se ganan muchos más espectadores que lo que se pierde por cobrar menos por entrada. Regla general: con demanda elástica siempre conviene <strong>bajar</strong> el precio para maximizar IT.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<h2 id="it">8. Ingreso Total y elasticidad</h2>
+
+<div class="big-formula">
+<span class="lbl">Fórmula</span>
+IT = P · Q
+</div>
+
+<table>
+<tr><th>Si P baja y Ep es…</th><th>El IT…</th><th>Por qué</th></tr>
+<tr><td>Elástica (Ep &gt; 1)</td><td><strong>Aumenta</strong></td><td>La Q crece más que lo que cae P</td></tr>
+<tr><td>Unitaria (Ep = 1)</td><td><strong>No cambia</strong></td><td>La Q crece exactamente lo que cae P</td></tr>
+<tr><td>Inelástica (Ep &lt; 1)</td><td><strong>Disminuye</strong></td><td>La Q crece menos que lo que cae P</td></tr>
+</table>
+
+<div class="tip">
+<span class="lbl">💡 Regla mnemotécnica</span>
+<p>Para <strong>bajar el precio</strong>: conviene sólo si la demanda es <strong>elástica</strong>. Para <strong>subir el precio</strong>: conviene sólo si la demanda es <strong>inelástica</strong>. El IT máximo está donde Ep = 1.</p>
+</div>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto</span>
+<p>Un producto se vende a $50 y se venden 200 unidades. Si bajás el precio a $40, se venden 300 unidades. ¿Qué pasó con el IT? ¿Qué Ep tiene?</p>
+<div class="step"><span class="n">1</span><span class="body">IT antes: <span class="calc">50 × 200 = 10.000</span></span></div>
+<div class="step"><span class="n">2</span><span class="body">IT después: <span class="calc">40 × 300 = 12.000</span></span></div>
+<div class="step"><span class="n">3</span><span class="body">El IT aumentó $2.000 → la demanda es <strong>elástica</strong></span></div>
+<div class="step"><span class="n">4</span><span class="body">Verificación: %ΔQ = <span class="calc">100/200 = +50%</span>. %ΔP = <span class="calc">−10/50 = −20%</span>. Ep = <span class="calc">|50%/−20%| = 2,5</span> ✓</span></div>
+<div class="final">✓ IT ↑ a $12.000. Ep = 2,5 (elástica). Bajar el precio fue una buena decisión.</div>
+</div>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>IT con demanda inelástica</div>
+<div class="body">
+<p>El pan se vende a $100 y se venden 500 unidades. Subís el precio a $120 y se venden 480. Calculá IT antes y después.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">IT antes: <span class="calc">100×500 = 50.000</span></div>
+<div class="step">IT después: <span class="calc">120×480 = 57.600</span></div>
+<div class="final">✓ IT sube → demanda inelástica. Buena decisión subir el precio.</div>
+<div class="just">El pan es bien de primera necesidad: la gente no deja de comprarlo aunque suba el precio (Ep bajo). Al subir el precio de $100 a $120 (+20%), la cantidad cayó sólo de 500 a 480 (−4%), es decir Ep ≈ 0,2 (muy inelástica). Por eso el IT creció. Regla: con demanda inelástica, <strong>subir</strong> el precio sube el IT.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Elasticidad unitaria</div>
+<div class="body">
+<p>Ep = 1. IT actual = $5.000. Si cambiás el precio 10%, ¿cuánto pasa a valer el IT?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Con Ep = 1, el IT no varía ante cambios de precio</div>
+<div class="final">✓ IT queda en $5.000 (sin cambios). Estás en el máximo del IT.</div>
+<div class="just">Con elasticidad unitaria, cada cambio % en el precio se compensa exactamente con el cambio % en la cantidad. En este punto, ni bajar ni subir el precio te va a aumentar el IT. Es el famoso "punto óptimo": P × Q es máximo. Moverte para cualquier lado va a bajar el IT (a la zona elástica conviene bajar, a la inelástica conviene subir).</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Decidir subir o bajar</div>
+<div class="body">
+<p>Tu producto tiene Ep = 0,4. Actualmente P = $200 y Q = 1.000. ¿Te conviene subir o bajar el precio?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Ep = 0,4 &lt; 1 → inelástica</div>
+<div class="step">IT actual: <span class="calc">200×1000 = 200.000</span></div>
+<div class="step">Regla: con demanda inelástica, subir el precio aumenta el IT</div>
+<div class="final">✓ Te conviene <strong>subir</strong> el precio.</div>
+<div class="just">Ep = 0,4 significa que por cada 10% que subís el precio, la cantidad cae sólo 4%. Ejemplo concreto: si subís de $200 a $220 (+10%), Q pasa de 1.000 a 960 (−4%). Nuevo IT: 220 × 960 = $211.200 (subió $11.200). Ganás más por unidad (+$20) y perdés sólo 40 clientes. El neto positivo lo confirma: con inelástica, siempre subir precio.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<h2 id="ec">9. Elasticidad cruzada</h2>
+
+<div class="big-formula">
+<span class="lbl">Fórmula (SIN valor absoluto)</span>
+Eij = %ΔQi / %ΔPj
+</div>
+
+<div class="vars">
+<span class="lbl">Clave: acá el signo importa</span>
+<dl>
+  <dt>Qi</dt><dd>Cantidad demandada del bien i (el que analizamos)</dd>
+  <dt>Pj</dt><dd>Precio del bien j (el <em>otro</em> bien)</dd>
+  <dt>Eij &gt; 0</dt><dd><strong>Sustitutos</strong> (cuando sube el precio de j, se compra más de i)</dd>
+  <dt>Eij &lt; 0</dt><dd><strong>Complementarios</strong> (cuando sube el precio de j, se compra menos de i)</dd>
+  <dt>Eij = 0</dt><dd><strong>Independientes</strong></dd>
+</dl>
+</div>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto</span>
+<p>El precio del té sube un 20%. La cantidad demandada de café aumenta un 10%. ¿Qué relación tienen?</p>
+<div class="step"><span class="n">1</span><span class="body">El "otro bien" (j) es el té. El bien "que analizamos" (i) es el café.</span></div>
+<div class="step"><span class="n">2</span><span class="body">Eij = <span class="calc">+10% / +20% = +0,5</span></span></div>
+<div class="step"><span class="n">3</span><span class="body">Signo positivo → <strong>sustitutos</strong></span></div>
+<div class="final">✓ Café y té son sustitutos. Tiene sentido: cuando sube el té, la gente se pasa a café.</div>
+</div>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>Auto y nafta</div>
+<div class="body">
+<p>El precio de la nafta sube 30%. La cantidad demandada de autos cae 15%. ¿Qué relación tienen?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Ec = <span class="calc">−15% / +30% = −0,5</span></div>
+<div class="step">Signo negativo → <strong>complementarios</strong></div>
+<div class="final">✓ Son complementarios (Ec = −0,5).</div>
+<div class="just">El signo negativo revela la relación complementaria: se consumen <em>juntos</em>. Cuando la nafta sube, el costo total de usar un auto aumenta (nafta + mantenimiento), entonces la gente decide no cambiar el auto o postergar la compra. Por eso cae la demanda de autos. El mismo efecto pasa con impresoras/cartuchos, PS5/juegos, yerba/termos.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Coca y Pepsi</div>
+<div class="body">
+<p>El precio de Pepsi baja 10% (−10%). La cantidad demandada de Coca cae 8%. ¿Qué relación tienen? ¿Qué valor tiene Ec?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Ec = <span class="calc">−8% / −10% = +0,8</span></div>
+<div class="step">Signo positivo → <strong>sustitutos</strong></div>
+<div class="final">✓ Coca y Pepsi son sustitutos (Ec = +0,8).</div>
+<div class="just">Atento al truco matemático: "ambas" variaciones son negativas (precio Pepsi baja, cantidad Coca también baja). Negativo sobre negativo = positivo. El signo positivo final revela que son sustitutos. Interpretación: al bajar Pepsi la gente la prefiere por precio, abandona Coca. Es lo que Coca estudia obsesivamente cuando Pepsi hace una promoción agresiva.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Independientes</div>
+<div class="body">
+<p>El precio de los libros sube 25%. La cantidad demandada de zapatillas deportivas no cambia. ¿Qué relación?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Ec = <span class="calc">0% / 25% = 0</span></div>
+<div class="final">✓ Son <strong>independientes</strong> (Ec = 0).</div>
+<div class="just">Que no cambie la cantidad demandada de zapatillas cuando sube el precio de libros te dice que son mercados sin relación económica: no compiten entre sí (no son sustitutos) ni se consumen juntos (no son complementarios). La mayoría de pares de bienes en una economía son independientes: sólo los pares relacionados muestran elasticidad cruzada no nula.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<h2 id="ey">10. Elasticidad ingreso</h2>
+
+<div class="big-formula">
+<span class="lbl">Fórmula (SIN valor absoluto)</span>
+Ey = %ΔQ / %ΔY
+</div>
+
+<div class="vars">
+<span class="lbl">Clasificación</span>
+<dl>
+  <dt>Ey &gt; 1</dt><dd>Bien <strong>de lujo</strong> (la demanda crece más que proporcional al ingreso)</dd>
+  <dt>0 &lt; Ey &lt; 1</dt><dd>Bien <strong>normal necesario</strong></dd>
+  <dt>Ey = 0</dt><dd>Independiente del ingreso</dd>
+  <dt>Ey &lt; 0</dt><dd>Bien <strong>inferior</strong> (al subir el ingreso, baja la demanda)</dd>
+</dl>
+</div>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto</span>
+<p>Tu ingreso sube 20%. La cantidad que consumís de fine dining sube 40%. ¿Qué tipo de bien es?</p>
+<div class="step"><span class="n">1</span><span class="body">Ey = <span class="calc">+40% / +20% = +2</span></span></div>
+<div class="step"><span class="n">2</span><span class="body">Ey = 2 &gt; 1 → <strong>bien de lujo</strong></span></div>
+<div class="final">✓ Fine dining es un bien de lujo. Tiene sentido: cuando la gente gana más, se da ese tipo de gustos con más intensidad.</div>
+</div>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>Carne (bien normal)</div>
+<div class="body">
+<p>Ingreso sube 30%. Demanda de carne sube 15%. ¿Qué tipo de bien?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Ey = <span class="calc">15%/30% = 0,5</span></div>
+<div class="step">0 &lt; 0,5 &lt; 1 → <strong>bien normal necesario</strong></div>
+<div class="final">✓ Carne: bien normal necesario (Ey = 0,5).</div>
+<div class="just">La demanda crece con el ingreso (signo positivo) pero menos que proporcionalmente (valor entre 0 y 1). Es lo típico de los bienes "de base": cuando ganás más, comés un poquito más de carne o mejor calidad, pero no duplicás tu consumo de carne. Diferencia con un lujo: en el lujo (Ey &gt; 1) sí duplicás o más. Por eso los almacenes y supermercados no son cíclicos: la demanda de alimentos básicos es estable.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Pan duro (bien inferior)</div>
+<div class="body">
+<p>Ingreso sube 50%. La cantidad demandada de pan duro cae 10%. ¿Qué tipo de bien?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Ey = <span class="calc">−10%/+50% = −0,2</span></div>
+<div class="step">Ey &lt; 0 → <strong>bien inferior</strong></div>
+<div class="final">✓ Pan duro: bien inferior (Ey = −0,2).</div>
+<div class="just">El signo negativo de Ey marca al bien inferior: al subir el ingreso, la demanda <em>cae</em>. Esto pasa porque la gente reemplaza el bien por una versión mejor que antes no podía pagar (pan duro → pan fresco). En crisis y recesiones, los bienes inferiores crecen (la gente baja de categoría). Por eso marcas segundas y productos "low cost" crecen cuando la economía cae.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Caso para marketing</div>
+<div class="body">
+<p>Tu café de especialidad tiene Ey = 2,5. Viene una recesión y el ingreso promedio cae 20%. ¿Qué pasa con tu demanda? ¿Qué estrategia sugerís?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">%ΔQ = <span class="calc">Ey × %ΔY = 2,5 × (−20%) = −50%</span></div>
+<div class="step">La demanda cae 50% (por ser un bien de lujo, es muy sensible al ingreso)</div>
+<div class="final">✓ La demanda cae 50%. Estrategia: línea económica paralela.</div>
+<div class="just">Ey alta (2,5) = muy sensible al ingreso. En épocas buenas crece explosivamente, en recesión cae con la misma fuerza. Esto convierte al negocio en <strong>cíclico</strong> (pisa fuerte y cae fuerte). La estrategia de lanzar una línea low-cost (sub-marca o marca paraguas separada) es clave: capturás al cliente que baja de gama sin devaluar tu marca premium. Ejemplo real: Grupo Arcos lanza "McCafé" barato, Starbucks mantiene precios altos. LVMH tiene Louis Vuitton (lujo) y segundas marcas más accesibles.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<h2 id="exc">11. Excedente del consumidor</h2>
+
+<div class="big-formula">
+<span class="lbl">Fórmula (caso discreto)</span>
+Excedente = Σ (Disp. pagar) − (Precio × Q comprada)
+</div>
+
+<div class="vars">
+<span class="lbl">Qué significa cada letra</span>
+<dl>
+  <dt>Disp. pagar</dt><dd>Lo máximo que estabas dispuesto a pagar por cada unidad</dd>
+  <dt>Precio</dt><dd>Lo que efectivamente pagás en el mercado (el mismo para todas las unidades)</dd>
+  <dt>Q comprada</dt><dd>Cantidad de unidades donde la disposición ≥ precio</dd>
+  <dt>Σ</dt><dd>"Suma de todas las..."</dd>
+</dl>
+</div>
+
+<p><strong>Pasos:</strong></p>
+<ol>
+  <li>Comparás la disposición a pagar de cada unidad con el precio de mercado.</li>
+  <li>Contás cuántas unidades cumplen disposición ≥ precio → esa es la Q comprada.</li>
+  <li>Sumás las disposiciones de esas unidades → valor total.</li>
+  <li>Calculás gasto efectivo = precio × Q comprada.</li>
+  <li>Excedente = valor total − gasto efectivo.</li>
+</ol>
+
+<div class="worked">
+<span class="lbl">Ejemplo resuelto</span>
+<p>Disposiciones a pagar por cada entrada al cine: $4.000, $3.200, $2.500, $1.800, $1.000. Precio de mercado: $2.000.</p>
+<div class="step"><span class="n">1</span><span class="body">Comparo con $2.000: compra las 1°, 2° y 3° (4000, 3200, 2500 ≥ 2000). La 4° (1800) y 5° (1000) no.</span></div>
+<div class="step"><span class="n">2</span><span class="body">Q comprada = 3 entradas.</span></div>
+<div class="step"><span class="n">3</span><span class="body">Valor total: <span class="calc">4000 + 3200 + 2500 = 9.700</span></span></div>
+<div class="step"><span class="n">4</span><span class="body">Gasto efectivo: <span class="calc">3 × 2000 = 6.000</span></span></div>
+<div class="step"><span class="n">5</span><span class="body">Excedente: <span class="calc">9.700 − 6.000 = 3.700</span></span></div>
+<div class="final">✓ Excedente = $3.700. La persona pagó $6.000 pero obtuvo un valor subjetivo de $9.700.</div>
+</div>
+
+<div class="graph">
+<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+  <line x1="50" y1="20" x2="50" y2="220" stroke="#1a1a1a" stroke-width="1.5"/>
+  <line x1="50" y1="220" x2="370" y2="220" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="40" y="20" text-anchor="end" font-size="11" fill="#333">Precio ($)</text>
+  <text x="365" y="240" text-anchor="end" font-size="11" fill="#333">Q entradas</text>
+  <rect x="70" y="30" width="50" height="190" fill="#f0f9f4" stroke="#16a34a" stroke-width="1"/>
+  <text x="95" y="25" text-anchor="middle" font-size="11" font-weight="600">4000</text>
+  <rect x="120" y="65" width="50" height="155" fill="#f0f9f4" stroke="#16a34a" stroke-width="1"/>
+  <text x="145" y="60" text-anchor="middle" font-size="11" font-weight="600">3200</text>
+  <rect x="170" y="105" width="50" height="115" fill="#f0f9f4" stroke="#16a34a" stroke-width="1"/>
+  <text x="195" y="100" text-anchor="middle" font-size="11" font-weight="600">2500</text>
+  <rect x="220" y="145" width="50" height="75" fill="#f5f5f5" stroke="#9ca3af" stroke-width="1"/>
+  <text x="245" y="140" text-anchor="middle" font-size="11" fill="#666">1800</text>
+  <rect x="270" y="180" width="50" height="40" fill="#f5f5f5" stroke="#9ca3af" stroke-width="1"/>
+  <text x="295" y="175" text-anchor="middle" font-size="11" fill="#666">1000</text>
+  <line x1="50" y1="155" x2="340" y2="155" stroke="#c00" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="344" y="158" font-size="11" fill="#c00" font-weight="600">P=2000</text>
+</svg>
+<div class="caption">Barras verdes: unidades compradas (disposición &gt; $2.000). Área arriba de la línea roja dentro de las barras verdes = excedente.</div>
+</div>
+
+<div class="exercises">
+<h3>Ejercicios</h3>
+
+<div class="ex">
+<div class="head"><span class="num">1</span>Recital</div>
+<div class="body">
+<p>Disposiciones: $10.000, $8.000, $6.000, $4.000. Precio: $5.000. Calculá excedente.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Compra las 3 primeras (10k, 8k, 6k ≥ 5k). La 4° no (4k &lt; 5k).</div>
+<div class="step">Valor total: <span class="calc">10.000+8.000+6.000 = 24.000</span></div>
+<div class="step">Gasto: <span class="calc">3×5.000 = 15.000</span></div>
+<div class="step">Excedente: <span class="calc">24.000−15.000 = 9.000</span></div>
+<div class="final">✓ Excedente = $9.000</div>
+<div class="just">Las primeras unidades valen mucho más que el precio ($10k, $8k, $6k vs $5k), entonces "compra barato" para lo que valía para él. La 4° unidad ($4k) ya no le conviene: vale menos que el precio. El excedente es la suma de esos "excedentes individuales" de cada unidad que sí compra. Nace de la utilidad marginal decreciente: las primeras unidades son las más valoradas.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">2</span>Helados en verano</div>
+<div class="body">
+<p>Disposiciones: $500, $400, $350, $250, $150, $50. Precio: $300.</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Compra los 3 primeros (500, 400, 350 ≥ 300). Desde el 4° (250) ya no.</div>
+<div class="step">Valor total: <span class="calc">500+400+350 = 1.250</span></div>
+<div class="step">Gasto: <span class="calc">3×300 = 900</span></div>
+<div class="step">Excedente: <span class="calc">1.250−900 = 350</span></div>
+<div class="final">✓ Excedente = $350</div>
+<div class="just">El precio del helado corta exactamente entre la 3° y la 4° unidad. Las unidades 1, 2 y 3 (valoradas en $500, $400, $350) se compran, pero se pagan todas al precio del mercado ($300). El "regalo" son los $200 + $100 + $50 = $350 que el consumidor valora de más que lo que paga. Es el beneficio invisible del intercambio voluntario.</div>
+</div>
+</details>
+</div>
+</div>
+
+<div class="ex">
+<div class="head"><span class="num">3</span>Precio tan alto que no compra</div>
+<div class="body">
+<p>Disposiciones: $80, $60, $40. Precio: $100. ¿Cuántas compra? ¿Excedente?</p>
+<details><summary>Ver respuesta</summary>
+<div class="sol">
+<div class="step">Ninguna disposición llega al precio ($100): no compra nada.</div>
+<div class="step">Q = 0, gasto = 0, valor total = 0.</div>
+<div class="final">✓ Excedente = 0. El precio está por encima de su máxima disposición a pagar.</div>
+<div class="just">Si ni siquiera la primera unidad "le vale" el precio, no compra nada. No hay transacción → no hay excedente. Esto te muestra algo importante: el excedente existe sólo cuando hay <em>disposición a pagar más alta que el precio</em> en al menos la primera unidad. Si el precio es igual a la disposición por la primera unidad, compra esa única y el excedente es 0 de todos modos.</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+
+<footer>
+Taller de fórmulas · Fundamentos de Economía I · UCES 2026
+</footer>
+
+</div>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+
+</body>
+</html>
