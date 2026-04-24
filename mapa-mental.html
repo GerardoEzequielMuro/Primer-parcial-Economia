@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa mental - Economía I | UCES 2026</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  background:#fafafa;color:#1a1a1a;
+  -webkit-font-smoothing:antialiased;
+  display:flex;flex-direction:column;
+}
+.nav{
+  background:rgba(250,250,250,.95);backdrop-filter:blur(10px);
+  border-bottom:1px solid #e5e5e5;padding:12px 0;flex-shrink:0;
+}
+.nav-inner{
+  max-width:1280px;margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.nav-title{font-weight:600;font-size:15px}
+.nav-sub{color:#888;font-size:12.5px;margin-left:8px}
+.nav-links{display:flex;gap:16px;font-size:12.5px}
+.nav-links a{color:#666;text-decoration:none}
+.nav-links a:hover{color:#1a1a1a}
+
+.hint{
+  background:#f5f5f5;border-bottom:1px solid #e5e5e5;
+  padding:8px 24px;font-size:12px;color:#666;text-align:center;
+}
+.hint strong{color:#1a1a1a;font-weight:600}
+
+.mm-wrap{flex:1;position:relative;background:#fff}
+.markmap{width:100%;height:100%;display:block}
+
+@media(max-width:640px){
+  .nav-inner{padding:0 16px}
+  .nav-sub{display:none}
+  .hint{font-size:11px;padding:6px 12px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div>
+      <span class="nav-title">Mapa mental</span>
+      <span class="nav-sub">Economía I · Parcial 1</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">← Resumen</a>
+      <a href="parciales.html">Parciales</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hint">
+<strong>Interactivo:</strong> click en un nodo para expandir/colapsar · scroll para zoom · arrastrar para mover
+</div>
+
+<div class="mm-wrap">
+<svg class="markmap" id="mindmap"></svg>
+</div>
+
+<script>
+const mm_md = `
+# Economía I · Parcial 1
+
+## Unidad 1: Introducción
+
+### 1. Economía como ciencia
+- Del griego *oikonomia* (casa + ley)
+- Ciencia social · "de la elección"
+- Objeto: necesidades ilimitadas vs recursos escasos
+- Requisitos de ciencia
+  - Objeto de estudio
+  - Método
+  - Validación
+- Tipos de ciencias
+  - Formales: Lógica, Matemática
+  - Naturales: Física, Química
+  - Sociales: Economía, Derecho
+- Métodos
+  - Hipotético-deductivo
+  - Inductivo
+  - Abductivo
+
+### 2. Escasez y elegir
+- Necesidades ilimitadas vs recursos limitados
+- Elegir implica renunciar → **costo de oportunidad**
+- 3 interrogantes básicos
+  - ¿Qué producir?
+  - ¿Cómo producir?
+  - ¿Para quién producir?
+- Ventajas comparativas
+- Votos monetarios del consumidor
+
+### 3. Necesidades
+- Definición: sensación de carencia + deseo de satisfacerla
+- Características
+  - Ilimitadas
+  - Recurrentes
+  - Creables artificialmente (publicidad)
+  - Complementarias
+- Clasificación
+  - Por urgencia: primarias / secundarias
+  - Por asiduidad: regulares / ocasionales
+  - Por tiempo: presentes / futuras
+  - Por sujeto: individuales / colectivas
+- Sujeto económico: quien resuelve problemas económicos
+
+### 4. Bienes y servicios
+- Requisitos
+  - Satisfacer una necesidad
+  - Ser escaso
+  - Ser accesible
+- Por naturaleza
+  - Materiales (bienes)
+  - Inmateriales (servicios)
+- Por abundancia
+  - Libres (aire)
+  - Económicos (reproducibles)
+  - Raros (obras únicas)
+- Por destino
+  - Consumo / directos
+  - Producción / indirectos
+- Por durabilidad
+  - Durables
+  - No durables
+- Por disponibilidad
+  - Presentes
+  - Futuros
+- Por propietario
+  - Privados
+  - Públicos
+- Por ingreso
+  - Normales
+  - Inferiores
+
+### 5. Sistema económico
+- Concepto: relaciones básicas, técnicas e institucionales
+- Tipos
+  - Capitalista / mercado
+    - Propiedad privada
+    - Libre mercado
+    - Precios = oferta/demanda
+    - Ej: EE.UU.
+  - Planificación centralizada
+    - Estado asigna recursos
+    - Precios por decreto
+    - Ej: ex URSS
+  - Mixto
+    - Privado + Estado
+    - Regulación fuerte
+    - Ej: Argentina
+- Elementos
+  - Bienes y servicios
+  - Agentes
+    - Consumidores / familias
+    - Empresas
+    - Estado
+  - Factores productivos
+    - Tierra
+    - Trabajo
+    - Capital
+    - Tecnología
+    - Capacidad empresarial
+  - Sectores
+    - Primario: agropecuario, pesca, minería
+    - Secundario: industrial
+    - Terciario: servicios
+  - Mercados
+    - De bienes y servicios
+    - De factores
+- Política económica
+  - Fiscal (gasto, impuestos)
+    - Expansiva / restrictiva
+  - Monetaria (masa, tasa)
+    - Expansiva / restrictiva
+- Objetivos corto plazo
+  - Pleno empleo
+  - Estabilidad de precios
+  - Balanza de pagos
+- Objetivos largo plazo
+  - Expansión producción
+  - Necesidades colectivas
+  - Distribución de la renta
+
+### 6. Flujo circular
+- 2 flujos superpuestos en sentido contrario
+  - Real: bienes y factores
+  - Monetario: ingresos y precios
+- Retribuciones
+  - Trabajo → salarios
+  - Capital → intereses
+  - Tierra → rentas
+  - Tecnología → regalías
+  - Capacidad empresarial → beneficios
+- Mercados
+  - De productos
+  - De factores
+- Rol del Estado
+  - Recauda impuestos
+  - Transfiere y gasta
+
+### 7. FPP
+- Cantidad máxima posible con recursos y tecnología dados
+- Forma: **cóncava al origen**
+- Costo de oportunidad
+  - Aquello a lo que se renuncia
+  - Creciente (por eso es cóncava)
+- Puntos
+  - Sobre la curva: eficiente
+  - Interior: ineficiente (recursos ociosos)
+  - Exterior: inalcanzable
+- Desplazamientos hacia afuera
+  - Avances tecnológicos
+  - Más recursos
+  - Más educación (capital humano)
+  - Cambios en fuerza laboral
+
+### 8. Modelos económicos
+- Simplificación y abstracción de la realidad
+- Supuestos
+  - Racionalidad de agentes
+  - Maximización
+  - Ceteris paribus
+- Se evalúa por predicciones, no por realismo
+- Categorías
+  - Microeconómicos
+    - Mercados específicos
+    - Agentes individuales
+  - Macroeconómicos
+    - Variables agregadas
+    - PIB, inflación
+- Fases de investigación
+  - Observar
+  - Formular hipótesis
+  - Contrastar con datos
+
+### 9. Positiva vs Normativa
+- Positiva: qué ES o podría ser
+  - Descriptiva (recolección de datos)
+  - Teoría económica
+    - Microeconomía
+    - Macroeconomía
+  - Ejemplos
+    - "Si sube impuesto al tabaco, baja consumo"
+    - "Si mejora el clima, sube producción"
+- Normativa: qué DEBERÍA ser
+  - Política económica
+  - Basada en juicios de valor
+  - Ejemplos
+    - "Debería liberalizarse el comercio"
+    - "El Estado debería proteger industrias"
+
+### 10. PIB vs Ingreso Nacional
+- PIB
+  - Enfocado en TERRITORIO
+  - Todo lo producido dentro del país
+  - Valor monetario de bienes y servicios finales
+- Ingreso Nacional
+  - Enfocado en NACIONALIDAD del factor
+  - Salarios + ganancias + intereses + rentas
+- Fórmula: **IN = PIB + RRN − RRE**
+  - RRN: rentas de nacionales afuera
+  - RRE: rentas de extranjeros adentro
+- Ejemplo
+  - Argentino en Chile: IN sí, PIB no
+  - Chileno en Argentina: PIB sí, IN no
+
+### 11. Equilibrio macro
+- Demanda Agregada (DA)
+  - Pendiente negativa
+  - Fórmula: **DA = C + I + G + (X − M)**
+  - Componentes
+    - C: consumo familias
+    - I: inversión empresas
+    - G: gasto público
+    - X − M: exportaciones netas
+- Oferta Agregada (OA)
+  - Pendiente positiva
+  - Al subir Q, suben costos unitarios y precios
+  - Más empinada cerca de plena capacidad
+- Equilibrio
+  - Cruce OA y DA
+  - PIB real y nivel de precios que satisface a todos
+
+## Unidad 2: Conducta del consumidor
+
+### 1. Análisis del consumidor
+- Consumidor: persona que adquiere bienes para satisfacer necesidades
+- 3 supuestos
+  - Preferencias coherentes
+    - Estables
+    - Transitivas
+  - Maximización de utilidad
+  - Restricción presupuestaria
+- Supuesto de insaciabilidad
+  - Prefiere más de algún bien
+  - Gasta todo su ingreso
+
+### 2. Curva de indiferencia
+- Combinaciones con MISMA utilidad
+- Características
+  - Convexa al origen
+  - Pendiente negativa
+  - No se cortan entre sí
+  - Más alejadas = más utilidad
+- Mapa de indiferencia
+  - Conjunto infinito de curvas
+  - Distinto para cada consumidor
+
+### 3. TMS decreciente
+- Tasa Marginal de Sustitución
+- Cuánto resigno de Y por 1 X más
+- Pendiente de la curva de indiferencia
+- Fórmula: **TMS = −ΔY/ΔX = UMgx/UMgy**
+- Ley de TMS decreciente
+  - Más X → UMgx baja
+  - Menos Y → UMgy sube
+  - Cociente cae
+- Justifica convexidad
+
+### 4. Equilibrio del consumidor
+- Punto óptimo: maximiza utilidad
+- Gráficamente: TANGENCIA
+  - Recta presupuestaria
+  - Curva de indiferencia más alta alcanzable
+- Condición: **TMS = Px/Py**
+- Ley de UMg ponderadas
+  - **UMgx/Px = UMgy/Py**
+  - Último peso gastado en X = mismo rendimiento que en Y
+
+### 5. Restricción presupuestaria
+- Combinaciones máximas compra-ables
+- Ecuación: **M = Px·Qx + Py·Qy**
+- Pendiente: **−Px/Py**
+  - Precio relativo
+  - Cuánta Y sacrifico por 1 X
+- Desplazamientos
+  - ΔIngreso → paralelo
+  - ΔUn precio → rotación (pivote)
+  - ΔAmbos precios proporcionales → paralelo
+
+### 6. Demanda
+- Definición: cantidad que desean Y pueden comprar
+- Ley de demanda: relación inversa P-Q
+- Función: **Q = D(P, Y, PB, G, N)**
+  - P: precio propio
+  - Y: ingreso
+  - PB: precios otros bienes
+  - G: gustos
+  - N: tamaño mercado
+- Movimiento vs desplazamiento
+  - Movimiento: cambia P propio
+  - Desplazamiento: cambia otro factor
+- Factores que desplazan
+  - Ingreso (normal/inferior)
+  - Precios de relacionados (sust/compl)
+  - Gustos y modas
+  - Tamaño del mercado
+  - Expectativas
+- Explicación pendiente negativa
+  - Efecto sustitución: reemplazo por más baratos
+  - Efecto ingreso: cae ingreso real
+  - Se refuerzan entre sí
+
+### 7. Excedente del consumidor
+- Diferencia: disposición a pagar − precio pagado
+- Origen: utilidad marginal decreciente
+- Primeras unidades valen más que las últimas
+- Paga un único precio por todas
+- Ejemplo clásico (apunte)
+  - Dispuesto: 7+6+5+4+3+2 = 27
+  - Pagado: 6×1 = 6
+  - Excedente = 21
+
+### 8. Elasticidad precio
+- Definición: %ΔQ / %ΔP
+- Signo: absoluto (positivo)
+- Clasificación
+  - Elástica: Ep > 1
+    - Ej: lujo, viajes, autos
+  - Unitaria: Ep = 1
+    - IT se maximiza
+  - Inelástica: Ep < 1
+    - Ej: primera necesidad
+  - Perfectamente inelástica: Ep = 0
+    - Ej: insulina, sal, medicamentos
+  - Perfectamente elástica: Ep = ∞
+    - Ej: sustitutos perfectos
+- Factores condicionantes
+  - Tipo de necesidad
+  - Disponibilidad de sustitutos
+  - % ingreso gastado
+  - Período (largo plazo más elástica)
+- Métodos de cálculo
+  - Básica: (ΔQ/Q) / (ΔP/P)
+  - Arco / punto medio
+  - En el punto: (ΔQ/ΔP) · (P/Q)
+- Elasticidad e ingreso total
+  - IT = P · Q
+  - Elástica + ↓P = IT sube
+  - Unitaria + ΔP = IT constante (máximo)
+  - Inelástica + ↓P = IT baja
+- Elasticidad cruzada
+  - Fórmula: %ΔQi / %ΔPj
+  - Positiva → sustitutos (Coca/Pepsi)
+  - Negativa → complementarios (auto/nafta)
+  - Nula → independientes
+- Elasticidad ingreso
+  - Fórmula: %ΔQ / %ΔY
+  - Ey > 1: bien de lujo
+  - 0 < Ey < 1: normal necesario
+  - Ey < 0: inferior
+- Curva de Engel
+  - Demanda vs ingreso
+  - Pendiente positiva: normal
+  - Pendiente negativa: inferior
+  - Uso: segmentar mercado
+- Importancia para marketing
+  - Inelástica → subir precio aumenta IT
+  - Elástica → bajar precio o diferenciar
+  - Branding para volver demanda menos elástica
+  - Ej: Apple, Rolex, Nike
+`;
+
+(function() {
+  function load(cb) {
+    const pending = [
+      'https://cdn.jsdelivr.net/npm/d3@7',
+      'https://cdn.jsdelivr.net/npm/markmap-view@0.18',
+      'https://cdn.jsdelivr.net/npm/markmap-lib@0.18/dist/browser/index.js',
+    ];
+    let i = 0;
+    function next() {
+      if (i >= pending.length) return cb();
+      const s = document.createElement('script');
+      s.src = pending[i++];
+      s.onload = next;
+      s.onerror = () => {
+        document.getElementById('mindmap').outerHTML =
+          '<div style="padding:40px;text-align:center;color:#666">No se pudo cargar el mapa mental. Revisá tu conexión y recargá.</div>';
+      };
+      document.head.appendChild(s);
+    }
+    next();
+  }
+  load(function() {
+    const { Transformer } = window.markmap;
+    const { Markmap } = window.markmap;
+    const transformer = new Transformer();
+    const { root } = transformer.transform(mm_md);
+    Markmap.create('#mindmap', {
+      color: (node) => {
+        const colors = ['#1a1a1a', '#4b5563', '#6b7280', '#9ca3af'];
+        return colors[Math.min(node.depth, colors.length - 1)];
+      },
+      duration: 300,
+      initialExpandLevel: 3,
+      maxWidth: 320,
+      paddingX: 12,
+    }, root);
+  });
+})();
+</script>
+</body>
+</html>
