@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parciales simulados - Economía I | UCES 2026</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  background:#fafafa;color:#1a1a1a;line-height:1.7;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(250,250,250,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid #e5e5e5;padding:12px 0;
+}
+.nav-inner{
+  max-width:820px;margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.nav-title{font-weight:600;font-size:15px}
+.nav-links{display:flex;gap:16px;font-size:12.5px}
+.nav-links a{color:#666;text-decoration:none}
+.nav-links a:hover{color:#1a1a1a}
+
+.container{max-width:820px;margin:0 auto;padding:90px 32px 80px}
+
+h1{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;line-height:1.2}
+.subtitle{color:#666;font-size:14.5px;margin-bottom:28px}
+
+h2{font-size:20px;font-weight:700;margin:48px 0 10px;padding-top:22px;border-top:1px solid #e5e5e5;line-height:1.3}
+h2:first-of-type{border-top:none;padding-top:0;margin-top:0}
+h3{font-size:15px;font-weight:600;margin:22px 0 8px;color:#333}
+
+.exam-meta{color:#888;font-size:13px;margin-bottom:16px}
+
+p{margin:8px 0;color:#333}
+strong{color:#1a1a1a;font-weight:600}
+ol{margin:10px 0;padding-left:24px}
+ul{margin:6px 0;padding-left:22px}
+li{margin:6px 0}
+li li{margin:2px 0}
+
+.box{background:#f5f5f5;padding:12px 16px;margin:14px 0;border-left:2px solid #1a1a1a;border-radius:2px}
+.box p:first-child{margin-top:0}.box p:last-child{margin-bottom:0}
+.box .label{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#666;display:block;margin-bottom:4px}
+
+.formula{font-family:"SF Mono",Consolas,Menlo,monospace;background:#fff;border:1px solid #e5e5e5;padding:8px 12px;margin:8px 0;font-size:13.5px;border-radius:2px;display:inline-block}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;border:1px solid #e5e5e5;background:#fff}
+th{background:#f5f5f5;text-align:left;padding:8px 10px;font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e5e5e5}
+td{padding:8px 10px;border-bottom:1px solid #f0f0f0;vertical-align:top;color:#333}
+tr:last-child td{border-bottom:none}
+
+details{background:#fff;border:1px solid #e5e5e5;border-radius:2px;margin:24px 0;padding:0}
+details[open]{background:#fafafa}
+details summary{padding:12px 16px;cursor:pointer;font-weight:600;font-size:14.5px;color:#1a1a1a;list-style:none;display:flex;align-items:center;justify-content:space-between;user-select:none}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font-size:20px;color:#666;font-weight:400}
+details[open] summary::after{content:"−"}
+details[open] summary{border-bottom:1px solid #e5e5e5;background:#f5f5f5}
+details .ans{padding:14px 18px;font-size:14.5px}
+details .ans h4{font-size:14px;font-weight:600;margin:14px 0 4px;color:#1a1a1a}
+details .ans h4:first-child{margin-top:0}
+details .ans p{margin:4px 0 8px;color:#333}
+details .ans .why{color:#555;font-size:13.5px;font-style:italic;margin-top:2px}
+
+.q{margin:18px 0;padding:14px 16px;background:#fff;border:1px solid #e5e5e5;border-radius:2px}
+.q .num{font-weight:700;color:#1a1a1a;margin-right:6px}
+.q p{margin:4px 0}
+.q-sub{margin-left:16px;margin-top:6px}
+.q-sub li{margin:4px 0}
+.opts{margin:6px 0 4px 16px;list-style-type:lower-alpha}
+.opts li{margin:2px 0}
+
+.pill{display:inline-block;background:#1a1a1a;color:#fff;padding:2px 8px;border-radius:10px;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-right:6px;vertical-align:middle}
+.pill.int{background:#666}
+.pill.avd{background:#c00}
+
+footer{margin-top:60px;padding-top:20px;border-top:1px solid #e5e5e5;color:#888;font-size:12.5px;text-align:center}
+
+@media(max-width:640px){
+  body{font-size:15px}
+  .container{padding:80px 18px 60px}
+  .nav-inner{padding:0 16px}
+  h1{font-size:22px}h2{font-size:18px;margin-top:40px}
+  table{font-size:12.5px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-title">Parciales simulados</div>
+    <div class="nav-links">
+      <a href="index.html">← Resumen</a>
+      <a href="#p1">P1</a>
+      <a href="#p2">P2</a>
+      <a href="#p3">P3</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<h1>Parciales simulados</h1>
+<p class="subtitle">Economía I · UCES 2026 · 3 modelos de práctica para el 1° parcial. Cada parcial incluye V/F, ejercicios numéricos y preguntas conceptuales, con clave de respuestas desplegable al final.</p>
+
+<div class="box">
+<span class="label">Cómo usarlo</span>
+<p>Resolvé cada parcial sin mirar el solucionario. Tomate entre <strong>60 y 75 minutos</strong> por modelo. Después expandí "Ver respuestas" al final para corregir y leer la justificación. Si tenés más de 2 errores conceptuales, volvé al tema correspondiente del <a href="index.html">resumen</a>.</p>
+</div>
+
+
+<h2 id="p1">Parcial 1 <span class="pill">Básico</span></h2>
+<p class="exam-meta">11 consignas · conceptos fundamentales de U1 y U2</p>
+
+<h3>A. Verdadero / Falso (justificá en una línea)</h3>
+
+<div class="q"><span class="num">1.</span> El problema económico central es la escasez de dinero en la sociedad.</div>
+<div class="q"><span class="num">2.</span> Un bien libre es aquel que la naturaleza provee en tal abundancia relativa que se obtiene sin esfuerzo (ej: aire, luz solar).</div>
+<div class="q"><span class="num">3.</span> La curva de demanda tiene pendiente positiva porque al subir el precio, los consumidores compran más.</div>
+<div class="q"><span class="num">4.</span> La FPP se desplaza hacia afuera cuando mejora la tecnología o aumenta la fuerza laboral.</div>
+<div class="q"><span class="num">5.</span> Un bien inferior es aquel cuya demanda aumenta cuando aumenta el ingreso del consumidor.</div>
+
+<h3>B. Definiciones (3 a 5 líneas)</h3>
+<div class="q"><span class="num">6.</span> Definí <strong>costo de oportunidad</strong> y dá un ejemplo aplicado a tu vida cotidiana.</div>
+<div class="q"><span class="num">7.</span> Explicá la diferencia entre <strong>economía positiva</strong> y <strong>economía normativa</strong>. Dá un ejemplo de cada una.</div>
+
+<h3>C. Ejercicio numérico — FPP</h3>
+<div class="q"><span class="num">8.</span>
+<p>Una economía produce sólo <strong>pan</strong> y <strong>vino</strong>. Las combinaciones posibles son:</p>
+<table>
+<tr><th>Opción</th><th>Pan (unid.)</th><th>Vino (unid.)</th></tr>
+<tr><td>A</td><td>0</td><td>20</td></tr>
+<tr><td>B</td><td>1</td><td>18</td></tr>
+<tr><td>C</td><td>2</td><td>14</td></tr>
+<tr><td>D</td><td>3</td><td>8</td></tr>
+<tr><td>E</td><td>4</td><td>0</td></tr>
+</table>
+<p class="q-sub"><strong>a)</strong> Calculá el <strong>costo de oportunidad</strong> de pasar de B a C y de D a E. <br><strong>b)</strong> ¿Cómo llamás a este comportamiento del costo de oportunidad? <br><strong>c)</strong> ¿Qué forma tiene la FPP?</p>
+</div>
+
+<h3>D. Ejercicio numérico — PIB e IN</h3>
+<div class="q"><span class="num">9.</span>
+<p>País X en 2025:</p>
+<ul>
+<li>PIB = $500.000 millones</li>
+<li>Rentas de nacionales de X en el exterior (RRN) = $40.000 millones</li>
+<li>Rentas de extranjeros dentro de X (RRE) = $70.000 millones</li>
+</ul>
+<p class="q-sub"><strong>a)</strong> Calculá el <strong>Ingreso Nacional</strong>. <br><strong>b)</strong> ¿En este caso, el IN es mayor o menor que el PIB? ¿Qué te dice eso del país?</p>
+</div>
+
+<h3>E. Opción múltiple</h3>
+<div class="q"><span class="num">10.</span>
+<p>En el flujo circular, las familias <strong>reciben</strong> de las empresas:</p>
+<ol class="opts">
+<li>Bienes y servicios y pagan con factores productivos.</li>
+<li>Salarios, rentas e intereses a cambio de factores productivos.</li>
+<li>Impuestos a cambio de servicios públicos.</li>
+<li>Nada, sólo transferencias del Estado.</li>
+</ol>
+</div>
+
+<div class="q"><span class="num">11.</span>
+<p>El equilibrio macroeconómico se alcanza cuando:</p>
+<ol class="opts">
+<li>La OA es igual a la FPP.</li>
+<li>El consumo iguala a la inversión.</li>
+<li>Las curvas de OA y DA se intersectan.</li>
+<li>El PIB iguala al Ingreso Nacional.</li>
+</ol>
+</div>
+
+<details>
+<summary>Ver respuestas — Parcial 1</summary>
+<div class="ans">
+<h4>A. Verdadero / Falso</h4>
+<p><strong>1. FALSO.</strong> <span class="why">El problema económico central es la escasez de <strong>recursos</strong> frente a necesidades ilimitadas, no de dinero. El dinero es sólo un medio de intercambio.</span></p>
+<p><strong>2. VERDADERO.</strong> <span class="why">Los bienes libres son abundantes y no requieren sacrificio para obtenerse. Por eso no entran en el análisis económico, salvo cuando se vuelven escasos.</span></p>
+<p><strong>3. FALSO.</strong> <span class="why">La curva de demanda tiene pendiente <strong>negativa</strong> por la ley de la demanda: al subir el precio cae la cantidad demandada (por efecto sustitución y efecto ingreso).</span></p>
+<p><strong>4. VERDADERO.</strong> <span class="why">Avances tecnológicos, más recursos, más capital humano o más fuerza laboral desplazan la FPP hacia afuera (crecimiento).</span></p>
+<p><strong>5. FALSO.</strong> <span class="why">Es al revés: un bien <strong>normal</strong> aumenta su demanda con el ingreso. El bien <strong>inferior</strong> baja la demanda cuando sube el ingreso (ej: pan duro, segunda marca).</span></p>
+
+<h4>B. Definiciones</h4>
+<p><strong>6.</strong> Costo de oportunidad es <strong>aquello a lo que se renuncia para obtener otra cosa</strong>. Surge porque los recursos son escasos, entonces toda elección implica dejar de lado una alternativa. Ejemplo: si estudio en vez de trabajar, mi costo de oportunidad es el salario que dejé de ganar.</p>
+<p><strong>7.</strong> La <strong>positiva</strong> describe lo que <em>es</em> o <em>podría ser</em> sobre la base de hechos y datos ("si sube el impuesto al tabaco, baja su consumo"). La <strong>normativa</strong> dice lo que <em>debería ser</em> basándose en juicios de valor ("el Estado debería subir el impuesto al tabaco"). La positiva es objetiva, la normativa es valorativa.</p>
+
+<h4>C. FPP</h4>
+<p><strong>8a.</strong> De B a C: se ganan 1 pan y se pierden 4 vinos → <strong>CO = 4 vinos por pan</strong>. De D a E: se ganan 1 pan y se pierden 8 vinos → <strong>CO = 8 vinos por pan</strong>.</p>
+<p><strong>8b.</strong> Es un <strong>costo de oportunidad creciente</strong>: cada unidad adicional de pan cuesta más unidades de vino resignadas.</p>
+<p><strong>8c.</strong> La FPP es <strong>cóncava al origen</strong>, justamente por el costo de oportunidad creciente.</p>
+
+<h4>D. PIB / IN</h4>
+<p><strong>9a.</strong> IN = PIB + RRN − RRE = 500.000 + 40.000 − 70.000 = <strong>$470.000 millones</strong>.</p>
+<p><strong>9b.</strong> El IN es <strong>menor</strong> que el PIB, lo que indica que los extranjeros ganaron más dentro del país que lo que los nacionales ganaron afuera. Es típico de un país <strong>receptor de inversión extranjera</strong>.</p>
+
+<h4>E. Opción múltiple</h4>
+<p><strong>10.</strong> Correcta: <strong>b)</strong>. Las familias aportan factores productivos (trabajo, tierra, capital) y reciben salarios, rentas e intereses. Los bienes y servicios se pagan con precios, no con factores.</p>
+<p><strong>11.</strong> Correcta: <strong>c)</strong>. El equilibrio macro es el cruce de OA y DA.</p>
+</div>
+</details>
+
+
+<h2 id="p2">Parcial 2 <span class="pill int">Intermedio</span></h2>
+<p class="exam-meta">10 consignas · énfasis en consumidor y demanda</p>
+
+<h3>A. Verdadero / Falso</h3>
+<div class="q"><span class="num">1.</span> Dos curvas de indiferencia pueden cortarse si representan preferencias de dos consumidores distintos.</div>
+<div class="q"><span class="num">2.</span> La TMS decreciente implica que las curvas de indiferencia son convexas al origen.</div>
+<div class="q"><span class="num">3.</span> Un aumento del ingreso del consumidor desplaza la recta presupuestaria paralelamente hacia la derecha.</div>
+<div class="q"><span class="num">4.</span> Si baja el precio de la nafta, la curva de demanda de autos se desplaza a la izquierda (los bienes son complementarios).</div>
+<div class="q"><span class="num">5.</span> En el punto de equilibrio del consumidor, la TMS es igual al cociente de precios.</div>
+
+<h3>B. Ejercicio — Equilibrio del consumidor</h3>
+<div class="q"><span class="num">6.</span>
+<p>Un consumidor consume dos bienes: <strong>X</strong> y <strong>Y</strong>.</p>
+<ul>
+<li>P<sub>x</sub> = $4, P<sub>y</sub> = $2</li>
+<li>En la canasta actual: UMg<sub>x</sub> = 20 útiles, UMg<sub>y</sub> = 8 útiles</li>
+</ul>
+<p class="q-sub"><strong>a)</strong> Calculá la utilidad marginal ponderada de cada bien. <br><strong>b)</strong> ¿El consumidor está en equilibrio? Justificá. <br><strong>c)</strong> Si no está en equilibrio, ¿debería consumir más X o más Y? ¿Por qué?</p>
+</div>
+
+<h3>C. Ejercicio — Recta presupuestaria</h3>
+<div class="q"><span class="num">7.</span>
+<p>Lucía tiene <strong>$1.200</strong> de ingreso mensual para gastar en libros y películas. P<sub>libros</sub> = $300 · P<sub>películas</sub> = $100.</p>
+<p class="q-sub"><strong>a)</strong> Escribí la ecuación de la recta presupuestaria. <br><strong>b)</strong> ¿Cuál es la pendiente y qué representa? <br><strong>c)</strong> Si el precio del libro baja a $200, ¿cómo se modifica la recta? Describí el giro. <br><strong>d)</strong> Si el ingreso sube a $1.800 (precios originales), ¿qué pasa con la recta?</p>
+</div>
+
+<h3>D. Ejercicio — Elasticidad precio</h3>
+<div class="q"><span class="num">8.</span>
+<p>El precio de un producto pasa de $10 a $12. La cantidad demandada cae de 200 a 160 unidades.</p>
+<p class="q-sub"><strong>a)</strong> Calculá la <strong>elasticidad precio</strong> usando la fórmula básica (a partir del punto inicial). <br><strong>b)</strong> Clasificá la demanda: ¿elástica, unitaria, inelástica? <br><strong>c)</strong> ¿Qué pasa con el ingreso total al subir el precio? Verificá con IT = P · Q.</p>
+</div>
+
+<h3>E. Conceptuales</h3>
+<div class="q"><span class="num">9.</span> Explicá con tus palabras la diferencia entre <strong>movimiento a lo largo de la curva de demanda</strong> y <strong>desplazamiento de la curva</strong>. Dá un ejemplo de cada uno.</div>
+
+<div class="q"><span class="num">10.</span> ¿Qué es el <strong>efecto sustitución</strong> y qué es el <strong>efecto ingreso</strong>? ¿Por qué juntos explican la pendiente negativa de la curva de demanda?</div>
+
+<details>
+<summary>Ver respuestas — Parcial 2</summary>
+<div class="ans">
+<h4>A. Verdadero / Falso</h4>
+<p><strong>1. FALSO.</strong> <span class="why">Dentro del mapa de <strong>un mismo consumidor</strong>, las curvas de indiferencia nunca se cortan (sería una contradicción en sus preferencias). El trampa de la pregunta es que aunque sean de dos consumidores distintos, normalmente trabajamos con un único sujeto por análisis.</span></p>
+<p><strong>2. VERDADERO.</strong> <span class="why">La TMS decreciente (cada vez se resigna menos Y por una X más) es exactamente lo que hace que la curva se "achate" a medida que avanza, generando la forma convexa.</span></p>
+<p><strong>3. VERDADERO.</strong> <span class="why">El ingreso cambia la posición pero no la pendiente (los precios no cambian), así que la recta se desplaza paralela.</span></p>
+<p><strong>4. FALSO.</strong> <span class="why">Son complementarios, pero si baja el precio de la nafta se desplaza a la <strong>derecha</strong> la demanda de autos (se vuelve más barato usar auto, quiero más autos).</span></p>
+<p><strong>5. VERDADERO.</strong> <span class="why">Condición de equilibrio del consumidor: TMS<sub>xy</sub> = P<sub>x</sub>/P<sub>y</sub> (pendiente de la CI = pendiente de la recta presup).</span></p>
+
+<h4>B. Equilibrio del consumidor</h4>
+<p><strong>6a.</strong> UMg<sub>x</sub>/P<sub>x</sub> = 20/4 = <strong>5 útiles por peso en X</strong>. UMg<sub>y</sub>/P<sub>y</sub> = 8/2 = <strong>4 útiles por peso en Y</strong>.</p>
+<p><strong>6b.</strong> <strong>No está en equilibrio</strong> porque las utilidades marginales ponderadas son distintas (5 ≠ 4). En equilibrio debería cumplirse UMg<sub>x</sub>/P<sub>x</sub> = UMg<sub>y</sub>/P<sub>y</sub>.</p>
+<p><strong>6c.</strong> Debería consumir <strong>más X</strong>. Cada peso gastado en X le da 5 útiles, mientras que en Y sólo le da 4. Al aumentar X, por la ley de UMg decreciente, UMg<sub>x</sub> baja, y al bajar Y, UMg<sub>y</sub> sube, hasta que se igualen.</p>
+
+<h4>C. Recta presupuestaria</h4>
+<p><strong>7a.</strong> <span class="formula">1200 = 300·L + 100·P</span> donde L = libros, P = películas.</p>
+<p><strong>7b.</strong> Pendiente = −P<sub>L</sub>/P<sub>P</sub> = −300/100 = <strong>−3</strong>. Representa que por cada libro adicional tengo que resignar 3 películas (precio relativo).</p>
+<p><strong>7c.</strong> Cuando baja P<sub>L</sub> a $200, la recta <strong>rota</strong> alrededor del punto sobre el eje de películas (12 películas, el mismo porque P<sub>P</sub> no cambió). Ahora puede comprar más libros: 1200/200 = 6 libros máximos (antes 4). La pendiente cambia a −2.</p>
+<p><strong>7d.</strong> Un aumento del ingreso a $1.800 desplaza la recta <strong>paralelamente hacia la derecha</strong>. Ahora puede comprar 6 libros máximos o 18 películas máximas. Pendiente no cambia.</p>
+
+<h4>D. Elasticidad precio</h4>
+<p><strong>8a.</strong> %ΔQ = (160−200)/200 = −20%. %ΔP = (12−10)/10 = +20%. E<sub>p</sub> = |−20%/20%| = <strong>1</strong>.</p>
+<p><strong>8b.</strong> Demanda <strong>unitaria</strong> (E<sub>p</sub> = 1).</p>
+<p><strong>8c.</strong> IT inicial = 10·200 = $2.000. IT final = 12·160 = $1.920. El IT prácticamente <strong>no cambia</strong> (la diferencia mínima se debe al redondeo de la elasticidad). Coherente con la teoría: cuando E<sub>p</sub> = 1, el IT se mantiene constante ante cambios de precio.</p>
+
+<h4>E. Conceptuales</h4>
+<p><strong>9.</strong> <strong>Movimiento a lo largo:</strong> pasa cuando cambia el precio del propio bien. Me muevo de un punto a otro <em>sobre la misma curva</em>. Ejemplo: sube el precio del café, bajo mi consumo pero sigo en la curva de demanda del café. <strong>Desplazamiento:</strong> toda la curva se mueve a derecha o izquierda porque cambió un factor distinto del precio (ingreso, precio de sustitutos, gustos, tamaño del mercado). Ejemplo: se pone de moda el café, entonces a cualquier precio la gente compra más → la curva entera se corre a la derecha.</p>
+<p><strong>10.</strong> Cuando sube el precio de un bien: el <strong>efecto sustitución</strong> lleva al consumidor a reemplazarlo por otros más baratos (consumir menos del bien encarecido). El <strong>efecto ingreso</strong> es que al ser más caro, con el mismo dinero puede comprar menos de todos los bienes, incluido el que subió. Los dos efectos se <strong>refuerzan</strong>: ambos hacen caer la cantidad demandada cuando sube el precio, lo que genera la pendiente negativa de la curva de demanda.</p>
+</div>
+</details>
+
+
+<h2 id="p3">Parcial 3 <span class="pill avd">Integrador</span></h2>
+<p class="exam-meta">10 consignas · integra macro, micro y elasticidades avanzadas</p>
+
+<h3>A. Verdadero / Falso</h3>
+<div class="q"><span class="num">1.</span> Si la elasticidad precio de la demanda de un bien es 0.3, es un bien de lujo.</div>
+<div class="q"><span class="num">2.</span> Cuando la elasticidad precio es unitaria, el ingreso total se maximiza.</div>
+<div class="q"><span class="num">3.</span> La elasticidad cruzada entre pan y manteca es positiva porque son sustitutos.</div>
+<div class="q"><span class="num">4.</span> El excedente del consumidor desaparece si la curva de demanda es perfectamente elástica.</div>
+<div class="q"><span class="num">5.</span> La curva de Engel de un bien inferior tiene pendiente negativa a partir de cierto nivel de ingreso.</div>
+
+<h3>B. Ejercicio — DA y componentes</h3>
+<div class="q"><span class="num">6.</span>
+<p>País Y tiene los siguientes datos (en millones):</p>
+<ul>
+<li>Consumo de las familias (C) = 380</li>
+<li>Inversión de empresas (I) = 120</li>
+<li>Gasto público (G) = 90</li>
+<li>Exportaciones (X) = 60</li>
+<li>Importaciones (M) = 85</li>
+</ul>
+<p class="q-sub"><strong>a)</strong> Calculá la <strong>Demanda Agregada</strong>. <br><strong>b)</strong> ¿Qué signo tienen las exportaciones netas? ¿Qué te dice eso de la balanza comercial del país? <br><strong>c)</strong> Si sube el consumo en un 10%, ¿cuánto pasa a valer la DA?</p>
+</div>
+
+<h3>C. Ejercicio — Elasticidad arco + IT</h3>
+<div class="q"><span class="num">7.</span>
+<p>Una empresa vende entradas de cine. Los datos son:</p>
+<table>
+<tr><th>Situación</th><th>Precio</th><th>Q vendida</th></tr>
+<tr><td>Actual</td><td>$500</td><td>1.000</td></tr>
+<tr><td>Propuesta</td><td>$400</td><td>1.400</td></tr>
+</table>
+<p class="q-sub"><strong>a)</strong> Calculá la <strong>elasticidad precio arco</strong> (método del punto medio). <br><strong>b)</strong> Clasificá la demanda. <br><strong>c)</strong> Comparando el ingreso total actual vs. la propuesta, ¿le conviene a la empresa bajar el precio?</p>
+</div>
+
+<h3>D. Ejercicio — Excedente del consumidor</h3>
+<div class="q"><span class="num">8.</span>
+<p>Un consumidor está dispuesto a pagar los siguientes montos por las primeras 5 entradas a un recital:</p>
+<table>
+<tr><th>Entrada</th><th>1°</th><th>2°</th><th>3°</th><th>4°</th><th>5°</th></tr>
+<tr><th>Disposición a pagar</th><td>$8.000</td><td>$6.500</td><td>$5.000</td><td>$3.500</td><td>$2.000</td></tr>
+</table>
+<p>El precio de mercado es <strong>$3.000</strong> por entrada.</p>
+<p class="q-sub"><strong>a)</strong> ¿Cuántas entradas compra? Justificá. <br><strong>b)</strong> ¿Cuál es su excedente del consumidor? <br><strong>c)</strong> Explicá por qué existe el excedente (relación con la utilidad marginal).</p>
+</div>
+
+<h3>E. Ejercicio — Elasticidad cruzada e ingreso</h3>
+<div class="q"><span class="num">9.</span>
+<p>Cuando el precio del té sube un 20%, la cantidad demandada de café aumenta un 10%. Cuando el ingreso del consumidor sube un 25%, la cantidad demandada de café aumenta un 5%.</p>
+<p class="q-sub"><strong>a)</strong> Calculá la elasticidad <strong>cruzada</strong> entre café y té. ¿Qué tipo de bienes son? <br><strong>b)</strong> Calculá la elasticidad <strong>ingreso</strong> del café. ¿Qué tipo de bien es? <br><strong>c)</strong> Si un licenciado en marketing maneja la marca del café, ¿qué estrategia de precio le recomendás dado el valor de la elasticidad ingreso?</p>
+</div>
+
+<h3>F. Conceptual integrador</h3>
+<div class="q"><span class="num">10.</span> Una empresa vende un producto con demanda <strong>inelástica</strong>. ¿Qué le conviene hacer con el precio para maximizar el ingreso total? ¿Por qué? Si con una campaña de branding logra que la demanda sea <strong>más inelástica todavía</strong>, ¿qué efecto tiene sobre su poder de fijación de precios? Relacioná con el concepto de <strong>importancia de la elasticidad para un licenciado en marketing</strong>.</div>
+
+<details>
+<summary>Ver respuestas — Parcial 3</summary>
+<div class="ans">
+<h4>A. Verdadero / Falso</h4>
+<p><strong>1. FALSO.</strong> <span class="why">E<sub>p</sub> = 0.3 &lt; 1 significa que es <strong>inelástico</strong>, típico de bienes de primera necesidad. Los bienes de lujo son elásticos (E &gt; 1).</span></p>
+<p><strong>2. VERDADERO.</strong> <span class="why">Es la propiedad clave: el IT se maximiza donde E<sub>p</sub> = 1. A la izquierda (E &gt; 1) conviene bajar precio; a la derecha (E &lt; 1) conviene subirlo.</span></p>
+<p><strong>3. FALSO.</strong> <span class="why">Pan y manteca son <strong>complementarios</strong> (se consumen juntos), entonces la elasticidad cruzada es <strong>negativa</strong>: si sube el precio del pan, baja la demanda de manteca.</span></p>
+<p><strong>4. VERDADERO.</strong> <span class="why">Si la demanda es perfectamente elástica (línea horizontal al precio de mercado), no hay área entre la curva y el precio: no hay excedente del consumidor.</span></p>
+<p><strong>5. VERDADERO.</strong> <span class="why">En un bien inferior, a partir de cierto ingreso el consumidor reduce su demanda (lo reemplaza por bienes mejores), por eso la curva de Engel cae.</span></p>
+
+<h4>B. DA</h4>
+<p><strong>6a.</strong> DA = C + I + G + (X − M) = 380 + 120 + 90 + (60 − 85) = 380 + 120 + 90 − 25 = <strong>565 millones</strong>.</p>
+<p><strong>6b.</strong> Exportaciones netas = 60 − 85 = <strong>−25</strong>. Es <strong>negativo</strong>: el país importa más de lo que exporta, tiene <strong>déficit comercial</strong>.</p>
+<p><strong>6c.</strong> Si C sube 10%: nuevo C = 418. DA nueva = 418 + 120 + 90 − 25 = <strong>603 millones</strong>.</p>
+
+<h4>C. Elasticidad arco</h4>
+<p><strong>7a.</strong> ΔQ = 400. Promedio Q = (1000+1400)/2 = 1200 → %ΔQ = 400/1200 = 33,33%. ΔP = −100. Promedio P = (500+400)/2 = 450 → %ΔP = −100/450 = −22,22%. E<sub>arco</sub> = |33,33/−22,22| = <strong>1,5</strong>.</p>
+<p><strong>7b.</strong> Demanda <strong>elástica</strong> (E &gt; 1).</p>
+<p><strong>7c.</strong> IT actual = 500 · 1000 = $500.000. IT propuesta = 400 · 1400 = $560.000. <strong>Sí le conviene bajar</strong> el precio: el IT aumenta $60.000. Es coherente: con demanda elástica, bajar precio aumenta el IT.</p>
+
+<h4>D. Excedente</h4>
+<p><strong>8a.</strong> Compra mientras la disposición a pagar sea ≥ precio de mercado. Al precio $3.000 compra las primeras <strong>4 entradas</strong> (8000, 6500, 5000, 3500 ≥ 3000). La 5° no (2000 &lt; 3000).</p>
+<p><strong>8b.</strong> Valor total = 8000 + 6500 + 5000 + 3500 = $23.000. Gasto efectivo = 4 × 3000 = $12.000. <strong>Excedente = 23.000 − 12.000 = $11.000</strong>.</p>
+<p><strong>8c.</strong> Existe porque la <strong>utilidad marginal es decreciente</strong>: la primera entrada le da mucha satisfacción ($8.000), la cuarta mucho menos ($3.500). Pero en el mercado paga el mismo precio por todas ($3.000). La diferencia entre lo que valoraba cada unidad y lo que pagó es el excedente acumulado.</p>
+
+<h4>E. Cruzada e ingreso</h4>
+<p><strong>9a.</strong> E<sub>cruzada</sub> = %ΔQ<sub>café</sub> / %ΔP<sub>té</sub> = +10% / +20% = <strong>+0,5</strong>. Signo positivo → son <strong>sustitutos</strong> (cuando sube el té, la gente toma más café).</p>
+<p><strong>9b.</strong> E<sub>ingreso</sub> = %ΔQ<sub>café</sub> / %ΔY = +5% / +25% = <strong>+0,2</strong>. Es positivo pero menor a 1: el café es un <strong>bien normal necesario</strong> (no de lujo, no inferior).</p>
+<p><strong>9c.</strong> Como la demanda no crece mucho con el ingreso (0,2 &lt; 1), no conviene apuntar a segmento premium basado sólo en subir precios por mejoras. Estrategias sugeridas: <strong>ampliar el mercado</strong> (más consumidores vía publicidad), <strong>diferenciar por marca</strong> para volverlo menos elástico al precio, o lanzar una línea premium separada (ej: café de especialidad) con identidad propia para capturar el segmento de mayor ingreso sin canibalizar la marca base.</p>
+
+<h4>F. Conceptual integrador</h4>
+<p><strong>10.</strong> Con demanda <strong>inelástica</strong> le conviene <strong>subir el precio</strong>: la cantidad demandada cae menos que lo que sube el precio, entonces el IT = P·Q aumenta. Si con branding logra que la demanda sea todavía más inelástica, su <strong>poder de fijación de precios aumenta</strong>: los consumidores se vuelven menos sensibles a cambios de precio, lo que le permite subir aún más sin perder tantos clientes.</p>
+<p>Esto es <strong>la clave para un licenciado en marketing</strong>: el branding no es sólo comunicación, es una herramienta para <strong>reducir la elasticidad</strong>. Por eso marcas como Apple, Rolex o Nike invierten tanto en construir marca: generan lealtad y percepción de valor único que hace que sus consumidores paguen primas altas sin reemplazar por sustitutos. La elasticidad es el termómetro del poder de la marca en el mercado.</p>
+</div>
+</details>
+
+
+<footer>
+3 parciales simulados · Fundamentos de Economía I · UCES 2026 · Basados en el apunte de la Lic. Marisa Soledad Lagraña
+</footer>
+
+</div>
+</body>
+</html>
