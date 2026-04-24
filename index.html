@@ -85,6 +85,21 @@ video.vid{
   letter-spacing:.08em;color:#666;margin-bottom:4px;
 }
 
+.xlsx{
+  font-family:"SF Mono",Consolas,Menlo,monospace;
+  background:#f0f9f4;border:1px solid #bbf7d0;padding:10px 14px;
+  margin:10px 0;font-size:13.5px;border-radius:2px;overflow-x:auto;
+  color:#14532d;
+}
+.xlsx .xk{
+  display:block;font-family:-apple-system,"Segoe UI",sans-serif;
+  font-size:10.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.08em;color:#166534;margin-bottom:4px;
+}
+.xlsx pre{
+  font-family:inherit;white-space:pre;margin:0;
+}
+
 table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;border:1px solid #e5e5e5;background:#fff}
 th{background:#f5f5f5;text-align:left;padding:8px 10px;font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e5e5e5}
 td{padding:8px 10px;border-bottom:1px solid #f0f0f0;vertical-align:top;color:#333}
@@ -118,6 +133,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid #e5e5e5;color:#888;
       <a href="#u1">U1</a>
       <a href="#u2">U2</a>
       <a href="#formulario">Fórmulas</a>
+      <a href="#excel">Excel</a>
       <a href="mapa-mental.html">Mapa</a>
       <a href="parciales.html">Parciales</a>
     </div>
@@ -1088,6 +1104,200 @@ E<sub>y</sub> = %ΔQ<sub>d</sub> / %ΔY
 <span class="label">Aplicación para marketing</span>
 <p>Conocer la <strong>elasticidad ingreso</strong> del producto te dice a qué segmento apuntar y cómo reaccionará el negocio ante ciclos económicos. <strong>E<sub>y</sub> &gt; 1:</strong> producto de lujo, sensible a recesiones (si la economía cae, cae la demanda con fuerza). <strong>0 &lt; E<sub>y</sub> &lt; 1:</strong> bien normal necesario, demanda más estable. <strong>E<sub>y</sub> &lt; 0:</strong> bien inferior, en recesión <em>aumenta</em> la demanda (la gente baja de categoría). Ejemplo práctico: Coca-Cola es E<sub>y</sub> chico y casi estable; Louis Vuitton es E<sub>y</sub> alto y volátil; segunda marca de supermercado es E<sub>y</sub> negativa y crece en crisis.</p>
 </div>
+
+
+<h2 class="unit" id="excel">Fórmulas en Excel</h2>
+<p style="color:#666;font-size:14px;margin-bottom:16px">Todas las fórmulas listas para copiar en una planilla. Las celdas de ejemplo (A2, B3, etc.) son genéricas. Reemplazalas por las coordenadas reales de tu Excel. Punto y coma (<code>;</code>) separador funciona en la mayoría de Excel en español; si tu versión usa coma, cambialo por <code>,</code>.</p>
+
+<div class="box">
+<span class="label">Formato de Excel</span>
+<p>Para que Excel interprete el signo <code>=</code> como fórmula, la celda debe empezar exactamente con ese carácter. Si copiás y pegás y no calcula, seleccioná la celda, tocá F2 y Enter, o cambiá el formato de la celda a "General".</p>
+</div>
+
+
+<h3>A. FPP y costo de oportunidad</h3>
+<p>Setup sugerido:</p>
+<table>
+<tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+<tr><th>1</th><td>Opción</td><td>Bien X</td><td>Bien Y</td><td>CO de X</td></tr>
+<tr><th>2</th><td>A</td><td>0</td><td>20</td><td>—</td></tr>
+<tr><th>3</th><td>B</td><td>1</td><td>18</td><td><code>fórmula ↓</code></td></tr>
+<tr><th>4</th><td>C</td><td>2</td><td>14</td><td>...</td></tr>
+</table>
+<div class="xlsx">
+<span class="xk">Costo de oportunidad de una unidad más de X (en D3)</span>
+=ABS((C3-C2)/(B3-B2))
+</div>
+<p>Copiás esa fórmula hacia abajo (arrastrás del cuadradito en la esquina inferior derecha de la celda) y Excel calcula el CO para cada fila automáticamente.</p>
+
+
+<h3>B. Ingreso Nacional</h3>
+<div class="xlsx">
+<span class="xk">Datos en A2=PIB · A3=RRN · A4=RRE · Resultado en A5</span>
+=A2+A3-A4
+</div>
+<div class="xlsx">
+<span class="xk">Interpretación automática en A6</span>
+=SI(A5&gt;A2;"País exportador de factores (IN &gt; PIB)";SI(A5&lt;A2;"País receptor de inversión (IN &lt; PIB)";"Flujos equilibrados (IN = PIB)"))
+</div>
+
+
+<h3>C. Demanda Agregada y balanza comercial</h3>
+<p>Setup: B2=C, B3=I, B4=G, B5=X, B6=M.</p>
+<div class="xlsx">
+<span class="xk">Demanda Agregada</span>
+=B2+B3+B4+(B5-B6)
+</div>
+<div class="xlsx">
+<span class="xk">Exportaciones netas</span>
+=B5-B6
+</div>
+<div class="xlsx">
+<span class="xk">Clasificación de la balanza comercial</span>
+=SI(B5-B6&gt;0;"Superávit comercial";SI(B5-B6&lt;0;"Déficit comercial";"Balanza equilibrada"))
+</div>
+
+
+<h3>D. Tasa Marginal de Sustitución (TMS)</h3>
+<p>Setup: B2=X1, C2=Y1, B3=X2, C3=Y2 (dos puntos sobre la misma curva de indiferencia).</p>
+<div class="xlsx">
+<span class="xk">TMS entre dos puntos</span>
+=ABS((C3-C2)/(B3-B2))
+</div>
+<p>O bien, si tenés las utilidades marginales directamente:</p>
+<div class="xlsx">
+<span class="xk">TMS a partir de UMg (B2=UMgX, B3=UMgY)</span>
+=B2/B3
+</div>
+
+
+<h3>E. Equilibrio del consumidor</h3>
+<p>Setup: B2=UMgX, B3=Px, B4=UMgY, B5=Py.</p>
+<div class="xlsx">
+<span class="xk">Utilidad marginal ponderada de X</span>
+=B2/B3
+</div>
+<div class="xlsx">
+<span class="xk">Utilidad marginal ponderada de Y</span>
+=B4/B5
+</div>
+<div class="xlsx">
+<span class="xk">Verificación del equilibrio (con tolerancia)</span>
+=SI(REDONDEAR(B2/B3;2)=REDONDEAR(B4/B5;2);"En equilibrio";SI(B2/B3&gt;B4/B5;"Aumentar consumo de X";"Aumentar consumo de Y"))
+</div>
+
+
+<h3>F. Recta presupuestaria</h3>
+<p>Setup: B2=M (ingreso), B3=Px, B4=Py.</p>
+<div class="xlsx">
+<span class="xk">Cantidad máxima de X (todo el ingreso en X)</span>
+=B2/B3
+</div>
+<div class="xlsx">
+<span class="xk">Cantidad máxima de Y (todo el ingreso en Y)</span>
+=B2/B4
+</div>
+<div class="xlsx">
+<span class="xk">Pendiente (precio relativo)</span>
+=-B3/B4
+</div>
+<div class="xlsx">
+<span class="xk">Cantidad de Y para una cantidad Qx dada (B5=Qx)</span>
+=(B2-B3*B5)/B4
+</div>
+<div class="xlsx">
+<span class="xk">Verificar si una canasta (B5=Qx, B6=Qy) cabe en el presupuesto</span>
+=SI(B3*B5+B4*B6&lt;=B2;"Dentro del presupuesto";"Fuera del presupuesto")
+</div>
+
+
+<h3>G. Elasticidad precio de la demanda</h3>
+<p>Setup: B2=P1, C2=Q1, B3=P2, C3=Q2 (dos puntos de la curva de demanda).</p>
+<div class="xlsx">
+<span class="xk">Elasticidad básica (desde el punto inicial)</span>
+=ABS(((C3-C2)/C2)/((B3-B2)/B2))
+</div>
+<div class="xlsx">
+<span class="xk">Elasticidad arco (método del punto medio)</span>
+=ABS(((C3-C2)/((C2+C3)/2))/((B3-B2)/((B2+B3)/2)))
+</div>
+<div class="xlsx">
+<span class="xk">Elasticidad en el punto (B4=P actual, C4=Q actual)</span>
+=ABS(((C3-C2)/(B3-B2))*(B4/C4))
+</div>
+<div class="xlsx">
+<span class="xk">Clasificación automática (poné la elasticidad en B5)</span>
+=SI(B5=0;"Perfectamente inelástica";SI(B5&lt;1;"Inelástica";SI(B5=1;"Unitaria";SI(B5&gt;99999;"Perfectamente elástica";"Elástica"))))
+</div>
+
+
+<h3>H. Ingreso Total y decisión de precio</h3>
+<p>Setup: B2=P, C2=Q, B3=Elasticidad precio.</p>
+<div class="xlsx">
+<span class="xk">Ingreso total</span>
+=B2*C2
+</div>
+<div class="xlsx">
+<span class="xk">Recomendación según elasticidad</span>
+=SI(B3&gt;1;"BAJAR precio (IT aumenta)";SI(B3=1;"IT máximo ya - no mover";"SUBIR precio (IT aumenta)"))
+</div>
+
+
+<h3>I. Elasticidad cruzada</h3>
+<p>Setup: B2=Pj1, C2=Qi1, B3=Pj2, C3=Qi2 (precio del bien J y cantidad del bien I).</p>
+<div class="xlsx">
+<span class="xk">Elasticidad cruzada SIN valor absoluto (el signo importa)</span>
+=((C3-C2)/C2)/((B3-B2)/B2)
+</div>
+<div class="xlsx">
+<span class="xk">Clasificación de la relación entre bienes (B4 = Ecruzada)</span>
+=SI(B4&gt;0;"Sustitutos";SI(B4&lt;0;"Complementarios";"Independientes"))
+</div>
+
+
+<h3>J. Elasticidad ingreso y tipo de bien</h3>
+<p>Setup: B2=Y1, C2=Q1, B3=Y2, C3=Q2 (ingreso del consumidor y cantidad demandada).</p>
+<div class="xlsx">
+<span class="xk">Elasticidad ingreso (sin absoluto, el signo importa)</span>
+=((C3-C2)/C2)/((B3-B2)/B2)
+</div>
+<div class="xlsx">
+<span class="xk">Clasificación del bien (B4 = Eingreso)</span>
+=SI(B4&gt;1;"Bien de lujo";SI(B4&gt;0;"Bien normal necesario";SI(B4=0;"Independiente del ingreso";"Bien inferior")))
+</div>
+
+
+<h3>K. Excedente del consumidor</h3>
+<p>Setup: columna A = disposición a pagar por cada unidad (A2:A10). B2 = precio de mercado.</p>
+<div class="xlsx">
+<span class="xk">Cantidad comprada (unidades donde disposición ≥ precio)</span>
+=CONTAR.SI(A2:A10;"&gt;="&amp;B2)
+</div>
+<div class="xlsx">
+<span class="xk">Valor total del consumo (suma de disposiciones de las unidades compradas)</span>
+=SUMAR.SI(A2:A10;"&gt;="&amp;B2)
+</div>
+<div class="xlsx">
+<span class="xk">Gasto efectivo</span>
+=CONTAR.SI(A2:A10;"&gt;="&amp;B2)*B2
+</div>
+<div class="xlsx">
+<span class="xk">Excedente del consumidor (B3 = valor total, B4 = gasto efectivo)</span>
+=B3-B4
+</div>
+
+
+<h3>L. Armado de una calculadora de parcial completa</h3>
+<p>Sugerencia de estructura para una sola hoja que te sirva como calculadora durante la práctica:</p>
+<table>
+<tr><th>Hoja</th><th>Contenido</th></tr>
+<tr><td><strong>FPP</strong></td><td>Tabla de opciones con bienes X e Y + columna de costo de oportunidad con fórmulas relativas</td></tr>
+<tr><td><strong>Macro</strong></td><td>Celdas para PIB, RRN, RRE, C, I, G, X, M. Fórmulas que calculen IN, DA, exportaciones netas y la interpretación</td></tr>
+<tr><td><strong>Consumidor</strong></td><td>Bloque con M, Px, Py, UMgx, UMgy. Calculo de UMg ponderadas, verificación de equilibrio, máximos de la recta presupuestaria</td></tr>
+<tr><td><strong>Elasticidad</strong></td><td>Bloques con P1, Q1, P2, Q2. Cálculo de Ep básica, arco, punto. Clasificación automática. IT y recomendación de precio</td></tr>
+<tr><td><strong>Excedente</strong></td><td>Columna de disposiciones a pagar + celda de precio de mercado. Q comprada, valor total, gasto, excedente</td></tr>
+</table>
+<p>Con esto podés meter los datos de cualquier ejercicio del parcial y Excel te devuelve todos los resultados y clasificaciones automáticamente.</p>
 
 
 <footer>
