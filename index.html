@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Economía I - Parcial 1 | UCES 2026</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Economía I">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
@@ -137,6 +142,11 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid #e5e5e5;color:#888;
   <a href="mapa-mental.html" style="color:#1a1a1a;font-weight:600;margin-right:14px">→ Mapa mental interactivo</a>
   <a href="parciales.html" style="color:#1a1a1a;font-weight:600">→ 3 parciales simulados</a>
 </p>
+</div>
+
+<div class="box" style="background:#f0f9f4;border-left-color:#16a34a">
+<span class="label" style="color:#16a34a">📱 Funciona sin internet</span>
+<p style="margin:0">Esta página se puede instalar como app. En <strong>Chrome/Edge (PC)</strong>: ícono de instalación en la barra de direcciones. En <strong>Android</strong>: menú → "Instalar app". En <strong>iPhone</strong>: botón compartir → "Añadir a pantalla de inicio". Una vez cargada la primera vez con internet, queda disponible offline (texto, imágenes, video y mapa mental).</p>
 </div>
 
 
@@ -704,5 +714,14 @@ Resumen del apunte de Fundamentos de Economía I · UCES 2026 · Material de la 
 </footer>
 
 </div>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+
 </body>
 </html>

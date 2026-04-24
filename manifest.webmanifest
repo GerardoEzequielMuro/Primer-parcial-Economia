@@ -1,0 +1,20 @@
+{
+  "name": "Economía I - Parcial 1 UCES",
+  "short_name": "Economía I",
+  "description": "Resumen, mapa mental y parciales simulados de Fundamentos de Economía I (UCES 2026)",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fafafa",
+  "theme_color": "#1a1a1a",
+  "lang": "es-AR",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
