@@ -1,7 +1,7 @@
 // Service Worker - Economía I Parcial 1
 // Permite usar toda la pagina sin internet despues de la primera visita.
 
-const CACHE = 'economia-i-v2';
+const CACHE = 'economia-i-v3';
 
 // Rutas relativas al scope del SW (la raiz del sitio)
 const ASSETS = [
@@ -10,6 +10,7 @@ const ASSETS = [
   './parciales.html',
   './mapa-mental.html',
   './formulas.html',
+  './practica.html',
 
   // Imagenes U1 (embedded graphics del PPTX)
   './img/u1/image45.png',

@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parte Práctica - Economía I | UCES 2026</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  background:#fafafa;color:#1a1a1a;line-height:1.7;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(250,250,250,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid #e5e5e5;padding:12px 0;
+}
+.nav-inner{
+  max-width:820px;margin:0 auto;padding:0 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.nav-title{font-weight:600;font-size:15px;white-space:nowrap}
+.nav-links{display:flex;gap:16px;overflow-x:auto;font-size:12.5px}
+.nav-links a{color:#666;text-decoration:none;white-space:nowrap}
+.nav-links a:hover{color:#1a1a1a}
+.nav-links a.active{color:#1a1a1a;font-weight:600}
+
+.container{max-width:820px;margin:0 auto;padding:90px 32px 80px}
+
+h1{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;line-height:1.2}
+.subtitle{color:#666;font-size:14.5px;margin-bottom:28px}
+
+h2.unit{
+  text-transform:uppercase;font-size:13px;letter-spacing:.12em;
+  color:#888;margin:60px 0 6px;border:none;padding:0;font-weight:600;
+}
+h2{font-size:20px;font-weight:700;margin:40px 0 10px;line-height:1.3}
+h3{font-size:15.5px;font-weight:600;margin:18px 0 6px;color:#1a1a1a}
+h4{font-size:13.5px;font-weight:600;margin:12px 0 4px;color:#1a1a1a;text-transform:uppercase;letter-spacing:.05em}
+
+p{margin:8px 0;color:#333}
+strong{color:#1a1a1a;font-weight:600}
+ol,ul{margin:8px 0;padding-left:22px;color:#333}
+li{margin:3px 0}
+
+.box{background:#f5f5f5;padding:12px 16px;margin:14px 0;border-left:2px solid #1a1a1a;border-radius:2px}
+.box p:first-child{margin-top:0}.box p:last-child{margin-bottom:0}
+.box .label{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#666;display:block;margin-bottom:4px}
+
+.formula{
+  font-family:"SF Mono",Consolas,Menlo,monospace;
+  background:#fff;border:1px solid #e5e5e5;padding:8px 12px;
+  margin:8px 0;font-size:13.5px;border-radius:2px;overflow-x:auto;white-space:nowrap;
+}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;border:1px solid #e5e5e5;background:#fff}
+th{background:#f5f5f5;text-align:left;padding:8px 10px;font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e5e5e5}
+td{padding:8px 10px;border-bottom:1px solid #f0f0f0;vertical-align:top;color:#333}
+tr:last-child td{border-bottom:none}
+td.num{font-family:"SF Mono",Consolas,Menlo,monospace;font-size:13px;text-align:right;color:#1a1a1a}
+
+/* Ejercicio del parcial: bloque resuelto completo */
+.ej{
+  background:#fff;border:1px solid #e5e5e5;border-radius:4px;
+  padding:18px 20px;margin:24px 0;
+}
+.ej-num{
+  display:inline-block;background:#1a1a1a;color:#fff;
+  padding:3px 10px;border-radius:10px;font-size:11px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;
+}
+.ej h3{font-size:17px;margin:0 0 6px;font-weight:700}
+.ej .enunciado{
+  background:#f5f5f5;border-left:2px solid #1a1a1a;
+  padding:10px 14px;margin:8px 0 12px;font-size:14.5px;
+}
+.paso{
+  border-top:1px dashed #e5e5e5;padding-top:14px;margin-top:14px;
+}
+.paso:first-of-type{border-top:none;padding-top:0;margin-top:8px}
+.paso-label{
+  display:inline-block;background:#f0f9f4;color:#166534;
+  padding:2px 8px;border-radius:3px;font-size:10.5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;
+}
+.calc{
+  font-family:"SF Mono",Consolas,Menlo,monospace;
+  background:#fafafa;border:1px solid #eee;padding:8px 12px;
+  margin:6px 0;font-size:13px;border-radius:2px;line-height:1.6;
+  white-space:pre-wrap;
+}
+.respuesta{
+  background:#fff7ed;border:1px solid #fed7aa;border-left:3px solid #ea580c;
+  padding:10px 14px;margin:10px 0;font-size:14px;border-radius:2px;
+}
+.respuesta strong{color:#9a3412}
+
+/* Gráficos SVG */
+.grafico{
+  background:#fff;border:1px solid #e5e5e5;border-radius:2px;
+  padding:8px;margin:12px 0;text-align:center;
+}
+.grafico svg{max-width:100%;height:auto}
+.grafico .cap{font-size:12px;color:#888;margin-top:4px;font-style:italic}
+
+/* Práctica adicional con details */
+.practice{
+  background:#fff;border:1px solid #e5e5e5;border-radius:4px;
+  padding:14px 16px;margin:16px 0;
+}
+.practice .topic{
+  display:inline-block;background:#1a1a1a;color:#fff;
+  padding:2px 8px;border-radius:3px;font-size:10.5px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;
+}
+.practice .prompt{font-size:14.5px;margin-bottom:6px}
+.practice .prompt strong{color:#1a1a1a}
+
+details{background:#fafafa;border:1px solid #e5e5e5;border-radius:2px;margin:8px 0 0;padding:0}
+details[open]{background:#fff}
+details summary{
+  padding:8px 12px;cursor:pointer;font-weight:600;font-size:13px;color:#1a1a1a;
+  list-style:none;display:flex;align-items:center;justify-content:space-between;user-select:none;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"Ver resolución +";font-size:11.5px;color:#666;font-weight:400}
+details[open] summary::after{content:"Ocultar −"}
+details[open] summary{border-bottom:1px solid #e5e5e5;background:#f5f5f5}
+details .sol{padding:12px 14px;font-size:13.5px}
+details .sol h4{font-size:11.5px;margin:8px 0 2px}
+details .sol h4:first-child{margin-top:0}
+
+.checkbox{
+  background:#f0f9f4;border:1px solid #bbf7d0;
+  padding:10px 14px;margin:10px 0;font-size:13.5px;border-radius:2px;
+}
+.checkbox input{
+  font-family:"SF Mono",Consolas,Menlo,monospace;font-size:14px;
+  border:1px solid #cbd5e1;border-radius:3px;padding:4px 8px;width:100px;
+  margin:0 6px;
+}
+.checkbox button{
+  background:#16a34a;color:#fff;border:0;border-radius:3px;
+  padding:5px 12px;font-size:12.5px;font-weight:600;cursor:pointer;
+}
+.checkbox button:hover{background:#15803d}
+.checkbox .feedback{
+  display:inline-block;margin-left:10px;font-size:12.5px;font-weight:600;
+}
+.checkbox .feedback.ok{color:#15803d}
+.checkbox .feedback.bad{color:#b91c1c}
+
+footer{margin-top:60px;padding-top:20px;border-top:1px solid #e5e5e5;color:#888;font-size:12.5px;text-align:center}
+
+@media(max-width:640px){
+  body{font-size:15px}
+  .container{padding:80px 18px 60px}
+  .nav-inner{padding:0 16px;gap:10px}
+  .nav-links{gap:10px;font-size:11.5px}
+  h1{font-size:22px}h2{font-size:18px;margin-top:36px}
+  .ej{padding:14px}
+  table{font-size:12.5px}
+  .calc{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-title">Economía I · Práctica</div>
+    <div class="nav-links">
+      <a href="index.html">Teoría</a>
+      <a href="formulas.html">Taller</a>
+      <a href="mapa-mental.html">Mapa</a>
+      <a href="parciales.html">Parciales</a>
+      <a href="practica.html" class="active">Práctica</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+<h1>Parte Práctica</h1>
+<p class="subtitle">Ejercicios numéricos del parcial resueltos paso a paso + práctica adicional con la guía de cátedra</p>
+
+<div class="box">
+<span class="label">Cómo usar esta página</span>
+<p><strong>Bloque 1:</strong> los 5 ejercicios del parcial grupal resueltos con todos los pasos, fórmulas y gráficos. Estudialos hasta que entiendas cada paso.</p>
+<p><strong>Bloque 2:</strong> ejercicios de la guía oficial agrupados por tema. Hacelos en papel primero y después tocá "Ver resolución" para chequear. Los más parecidos al parcial son los marcados con <strong style="color:#c00">★</strong>.</p>
+</div>
+
+
+<h2 class="unit" id="parcial">Bloque 1. Tu parcial resuelto</h2>
+
+
+<!-- ============ EJERCICIO 1 ============ -->
+<div class="ej" id="ej1">
+<span class="ej-num">Ejercicio 1 · FPP</span>
+<h3>Frontera de Posibilidades de Producción</h3>
+
+<div class="enunciado">
+<p>Considerando que en una economía se produce solo Servicios de streaming "S" y Dispositivos electrónicos "D". Las combinaciones factibles son: A(0; 50), B(5; 45), C(10; 35), D(15; 20), E(20; 0).</p>
+<p><strong>Consignas:</strong></p>
+<p>a) Armar la tabla con los datos y graficar la FPP.<br>
+b) Calcular el costo de oportunidad y explicar qué es.</p>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 1 · Datos</span>
+<p>Eje horizontal: Servicios de streaming (S). Eje vertical: Dispositivos electrónicos (D). Cada punto es una combinación factible que usa todos los recursos.</p>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 2 · Costo de oportunidad</span>
+<p>Fórmula: cuántos D se sacrifican por cada S adicional.</p>
+<div class="formula">CO = ΔD / ΔS  (en valor absoluto)</div>
+
+<table>
+<tr><th>Combinación</th><th>S</th><th>D</th><th>Cálculo</th><th>CO (D por 1 S)</th></tr>
+<tr><td>A</td><td class="num">0</td><td class="num">50</td><td class="num">—</td><td class="num">—</td></tr>
+<tr><td>B</td><td class="num">5</td><td class="num">45</td><td class="num">(45−50) / (5−0) = −5/5</td><td class="num"><strong>1</strong></td></tr>
+<tr><td>C</td><td class="num">10</td><td class="num">35</td><td class="num">(35−45) / (10−5) = −10/5</td><td class="num"><strong>2</strong></td></tr>
+<tr><td>D</td><td class="num">15</td><td class="num">20</td><td class="num">(20−35) / (15−10) = −15/5</td><td class="num"><strong>3</strong></td></tr>
+<tr><td>E</td><td class="num">20</td><td class="num">0</td><td class="num">(0−20) / (20−15) = −20/5</td><td class="num"><strong>4</strong></td></tr>
+</table>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 3 · Gráfico</span>
+<div class="grafico">
+<svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Frontera de posibilidades de producción cóncava">
+  <!-- ejes -->
+  <line x1="60" y1="40" x2="60" y2="320" stroke="#333" stroke-width="1.5"/>
+  <line x1="60" y1="320" x2="560" y2="320" stroke="#333" stroke-width="1.5"/>
+  <!-- flechas -->
+  <polygon points="60,32 56,42 64,42" fill="#333"/>
+  <polygon points="568,320 558,316 558,324" fill="#333"/>
+  <!-- grilla -->
+  <line x1="180" y1="40" x2="180" y2="320" stroke="#f0f0f0"/>
+  <line x1="300" y1="40" x2="300" y2="320" stroke="#f0f0f0"/>
+  <line x1="420" y1="40" x2="420" y2="320" stroke="#f0f0f0"/>
+  <line x1="540" y1="40" x2="540" y2="320" stroke="#f0f0f0"/>
+  <line x1="60" y1="68" x2="540" y2="68" stroke="#f0f0f0"/>
+  <line x1="60" y1="124" x2="540" y2="124" stroke="#f0f0f0"/>
+  <line x1="60" y1="208" x2="540" y2="208" stroke="#f0f0f0"/>
+  <!-- curva FPP cóncava (uso path con curvas) -->
+  <path d="M 60 40 Q 120 50 180 68 Q 240 90 300 124 Q 360 165 420 208 Q 480 260 540 320"
+        fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- puntos -->
+  <circle cx="60"  cy="40"  r="5" fill="#c00"/>
+  <circle cx="180" cy="68"  r="5" fill="#c00"/>
+  <circle cx="300" cy="124" r="5" fill="#c00"/>
+  <circle cx="420" cy="208" r="5" fill="#c00"/>
+  <circle cx="540" cy="320" r="5" fill="#c00"/>
+  <!-- etiquetas puntos -->
+  <text x="68"  y="38"  font-size="13" font-weight="600">A (0; 50)</text>
+  <text x="188" y="62"  font-size="13" font-weight="600">B (5; 45)</text>
+  <text x="308" y="120" font-size="13" font-weight="600">C (10; 35)</text>
+  <text x="428" y="206" font-size="13" font-weight="600">D (15; 20)</text>
+  <text x="476" y="338" font-size="13" font-weight="600">E (20; 0)</text>
+  <!-- ticks X -->
+  <text x="60"  y="340" font-size="11" text-anchor="middle">0</text>
+  <text x="180" y="340" font-size="11" text-anchor="middle">5</text>
+  <text x="300" y="340" font-size="11" text-anchor="middle">10</text>
+  <text x="420" y="340" font-size="11" text-anchor="middle">15</text>
+  <text x="540" y="340" font-size="11" text-anchor="middle">20</text>
+  <!-- ticks Y -->
+  <text x="52" y="44"  font-size="11" text-anchor="end">50</text>
+  <text x="52" y="128" font-size="11" text-anchor="end">35</text>
+  <text x="52" y="212" font-size="11" text-anchor="end">20</text>
+  <text x="52" y="324" font-size="11" text-anchor="end">0</text>
+  <!-- etiquetas ejes -->
+  <text x="300" y="370" font-size="13" text-anchor="middle" font-weight="600">Servicios de streaming (S)</text>
+  <text x="20" y="180" font-size="13" text-anchor="middle" font-weight="600" transform="rotate(-90 20 180)">Dispositivos electrónicos (D)</text>
+</svg>
+<div class="cap">FPP cóncava al origen: el costo de oportunidad crece a medida que se produce más S</div>
+</div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 4 · Respuesta a la consigna b</span>
+<div class="respuesta">
+<p><strong>Costo de oportunidad:</strong> es la cantidad de un bien que se debe dejar de producir para obtener una unidad adicional de otro bien. Geométricamente es la pendiente de la FPP.</p>
+<p>En este ejercicio, el CO representa la cantidad de Dispositivos electrónicos que se dejan de producir para obtener una unidad adicional de Servicios de streaming.</p>
+<p><strong>Es creciente</strong> (1 → 2 → 3 → 4): por eso la FPP es cóncava al origen. Los recursos no son perfectamente sustituibles entre los dos sectores.</p>
+</div>
+</div>
+</div>
+
+
+<!-- ============ EJERCICIO 2 ============ -->
+<div class="ej" id="ej2">
+<span class="ej-num">Ejercicio 2 · Restricción presupuestaria</span>
+<h3>Restricción presupuestaria del consumidor</h3>
+
+<div class="enunciado">
+<p>Un joven profesional de Resistencia dispone de un presupuesto mensual de $180.000 para gastos de ocio. Los precios promedio son: Entrada al cine $9.000 · Cena en restaurante económico $18.000.</p>
+<p><strong>Consignas:</strong></p>
+<p>a) ¿Cuántas entradas de cine podría consumir si destinara todo su ingreso a ese bien? ¿Y cuántas cenas si gastara todo en ese consumo?<br>
+b) Escribir la ecuación de la restricción presupuestaria y graficar la recta.</p>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 1 · Datos</span>
+<table>
+<tr><th>Variable</th><th>Valor</th></tr>
+<tr><td>Presupuesto (M)</td><td class="num">$180.000</td></tr>
+<tr><td>Precio entrada cine (Pe)</td><td class="num">$9.000</td></tr>
+<tr><td>Precio cena (Pc)</td><td class="num">$18.000</td></tr>
+</table>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 2 · Resolución consigna a</span>
+<p>Si gasta todo en entradas:</p>
+<div class="calc">E_max = M / Pe = 180.000 / 9.000 = <strong>20 entradas</strong></div>
+<p>Si gasta todo en cenas:</p>
+<div class="calc">C_max = M / Pc = 180.000 / 18.000 = <strong>10 cenas</strong></div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 3 · Ecuación de la recta</span>
+<p>Forma general: <strong>M = Pe · E + Pc · C</strong></p>
+<div class="formula">180.000 = 9.000·E + 18.000·C</div>
+<p>Despejando E: <strong>E = 20 − 2C</strong> (o C = 10 − 0,5E)</p>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 4 · Gráfico</span>
+<div class="grafico">
+<svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recta presupuestaria">
+  <!-- ejes -->
+  <line x1="60" y1="40" x2="60" y2="320" stroke="#333" stroke-width="1.5"/>
+  <line x1="60" y1="320" x2="560" y2="320" stroke="#333" stroke-width="1.5"/>
+  <polygon points="60,32 56,42 64,42" fill="#333"/>
+  <polygon points="568,320 558,316 558,324" fill="#333"/>
+  <!-- recta presupuestaria de (0,10) a (20,0) -->
+  <!-- mapeo: x: 0..20 → 60..540 (24px/unidad); y: 0..10 → 320..40 (28px/unidad) -->
+  <line x1="60" y1="40" x2="540" y2="320" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- región alcanzable -->
+  <polygon points="60,40 60,320 540,320" fill="#1a1a1a" opacity="0.05"/>
+  <!-- puntos extremos -->
+  <circle cx="60" cy="40" r="5" fill="#c00"/>
+  <circle cx="540" cy="320" r="5" fill="#c00"/>
+  <text x="68" y="38" font-size="13" font-weight="600">(0; 10) cenas</text>
+  <text x="450" y="338" font-size="13" font-weight="600">(20; 0) entradas</text>
+  <!-- ticks X -->
+  <text x="60" y="340" font-size="11" text-anchor="middle">0</text>
+  <text x="180" y="340" font-size="11" text-anchor="middle">5</text>
+  <text x="300" y="340" font-size="11" text-anchor="middle">10</text>
+  <text x="420" y="340" font-size="11" text-anchor="middle">15</text>
+  <text x="540" y="340" font-size="11" text-anchor="middle">20</text>
+  <!-- ticks Y -->
+  <text x="52" y="44" font-size="11" text-anchor="end">10</text>
+  <text x="52" y="184" font-size="11" text-anchor="end">5</text>
+  <text x="52" y="324" font-size="11" text-anchor="end">0</text>
+  <!-- etiqueta de la recta -->
+  <text x="320" y="170" font-size="13" font-style="italic" fill="#1a1a1a">M = 9.000E + 18.000C</text>
+  <!-- etiquetas ejes -->
+  <text x="300" y="370" font-size="13" text-anchor="middle" font-weight="600">Entradas de cine (E)</text>
+  <text x="20" y="180" font-size="13" text-anchor="middle" font-weight="600" transform="rotate(-90 20 180)">Cenas (C)</text>
+  <!-- región alcanzable label -->
+  <text x="180" y="260" font-size="12" fill="#666">Combinaciones</text>
+  <text x="180" y="278" font-size="12" fill="#666">alcanzables</text>
+</svg>
+<div class="cap">Recta presupuestaria. La pendiente es −Pe/Pc = −9.000/18.000 = −0,5</div>
+</div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Respuesta final</span>
+<div class="respuesta">
+<p><strong>a)</strong> Hasta <strong>20 entradas de cine</strong> o hasta <strong>10 cenas</strong> si gastara todo el ingreso en uno solo de los bienes.</p>
+<p><strong>b)</strong> Ecuación: <strong>180.000 = 9.000·E + 18.000·C</strong>. La recta une los puntos (20; 0) y (0; 10). Cualquier punto sobre la recta usa todo el presupuesto; el área debajo es alcanzable pero deja parte del ingreso sin gastar.</p>
+</div>
+</div>
+</div>
+
+
+<!-- ============ EJERCICIO 3 ============ -->
+<div class="ej" id="ej3">
+<span class="ej-num">Ejercicio 3 · Curva de indiferencia</span>
+<h3>TMS entre dos puntos de una curva de indiferencia</h3>
+
+<div class="enunciado">
+<p>Un consumidor es indiferente entre distintas combinaciones de viajes en aplicaciones de transporte (V) y suscripciones mensuales a plataformas digitales (S):</p>
+<table>
+<tr><th>Punto</th><th>Viajes (V)</th><th>Suscripciones (S)</th></tr>
+<tr><td>A</td><td class="num">2</td><td class="num">10</td></tr>
+<tr><td>B</td><td class="num">4</td><td class="num">7</td></tr>
+<tr><td>C</td><td class="num">6</td><td class="num">5</td></tr>
+<tr><td>D</td><td class="num">8</td><td class="num">4</td></tr>
+</table>
+<p><strong>Consignas:</strong></p>
+<p>a) Graficar la curva de indiferencia.<br>
+b) Calcular la TMS entre B y C e interpretarla.</p>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 1 · Gráfico</span>
+<div class="grafico">
+<svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curva de indiferencia">
+  <!-- ejes -->
+  <line x1="60" y1="40" x2="60" y2="320" stroke="#333" stroke-width="1.5"/>
+  <line x1="60" y1="320" x2="560" y2="320" stroke="#333" stroke-width="1.5"/>
+  <polygon points="60,32 56,42 64,42" fill="#333"/>
+  <polygon points="568,320 558,316 558,324" fill="#333"/>
+  <!-- mapeo: V: 0..10 → 60..540 (48px/unidad); S: 0..12 → 320..40 (~23.3px/unidad) -->
+  <!-- A(2,10) -> (156, 86.6) ≈ (156, 87) -->
+  <!-- B(4,7)  -> (252, 156.3) ≈ (252, 156) -->
+  <!-- C(6,5)  -> (348, 203) -->
+  <!-- D(8,4)  -> (444, 226) -->
+  <!-- curva suave por los 4 puntos -->
+  <path d="M 156 87 Q 200 110 252 156 Q 300 195 348 203 Q 396 215 444 226 Q 490 240 530 260"
+        fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- puntos -->
+  <circle cx="156" cy="87"  r="5" fill="#c00"/>
+  <circle cx="252" cy="156" r="5" fill="#c00"/>
+  <circle cx="348" cy="203" r="5" fill="#c00"/>
+  <circle cx="444" cy="226" r="5" fill="#c00"/>
+  <text x="164" y="82"  font-size="13" font-weight="600">A (2; 10)</text>
+  <text x="260" y="151" font-size="13" font-weight="600">B (4; 7)</text>
+  <text x="356" y="198" font-size="13" font-weight="600">C (6; 5)</text>
+  <text x="452" y="221" font-size="13" font-weight="600">D (8; 4)</text>
+  <!-- ticks X -->
+  <text x="60" y="340" font-size="11" text-anchor="middle">0</text>
+  <text x="156" y="340" font-size="11" text-anchor="middle">2</text>
+  <text x="252" y="340" font-size="11" text-anchor="middle">4</text>
+  <text x="348" y="340" font-size="11" text-anchor="middle">6</text>
+  <text x="444" y="340" font-size="11" text-anchor="middle">8</text>
+  <text x="540" y="340" font-size="11" text-anchor="middle">10</text>
+  <!-- ticks Y -->
+  <text x="52" y="44"  font-size="11" text-anchor="end">12</text>
+  <text x="52" y="87"  font-size="11" text-anchor="end">10</text>
+  <text x="52" y="156" font-size="11" text-anchor="end">7</text>
+  <text x="52" y="203" font-size="11" text-anchor="end">5</text>
+  <text x="52" y="324" font-size="11" text-anchor="end">0</text>
+  <!-- etiquetas ejes -->
+  <text x="300" y="370" font-size="13" text-anchor="middle" font-weight="600">Viajes en app (V)</text>
+  <text x="20" y="180" font-size="13" text-anchor="middle" font-weight="600" transform="rotate(-90 20 180)">Suscripciones (S)</text>
+  <!-- línea curva U -->
+  <text x="500" y="290" font-size="12" font-style="italic" fill="#666">U = constante</text>
+</svg>
+<div class="cap">Curva de indiferencia: convexa al origen, refleja preferencias del consumidor</div>
+</div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 2 · Cálculo de la TMS entre B y C</span>
+<p>Fórmula:</p>
+<div class="formula">TMS = ΔS / ΔV  (en valor absoluto)</div>
+<p>Datos: B(4; 7) → C(6; 5)</p>
+<div class="calc">ΔS = 5 − 7 = −2
+ΔV = 6 − 4 = 2
+TMS = |−2 / 2| = <strong>1</strong></div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Respuesta final</span>
+<div class="respuesta">
+<p><strong>TMS (B–C) = 1</strong></p>
+<p><strong>Interpretación económica:</strong> al pasar del punto B al C, el consumidor está dispuesto a sacrificar 1 unidad de Suscripciones a cambio de 1 unidad adicional de Viajes en app, manteniéndose en el mismo nivel de utilidad.</p>
+<p>La TMS decreciente (compará con A→B donde TMS = 1,5) explica por qué la curva es convexa al origen: cuanto más V tenés, menos S estás dispuesto a resignar por una unidad más de V.</p>
+</div>
+</div>
+</div>
+
+
+<!-- ============ EJERCICIO 4 ============ -->
+<div class="ej" id="ej4">
+<span class="ej-num">Ejercicio 4 · Elasticidad precio (punto)</span>
+<h3>Demanda inelástica</h3>
+
+<div class="enunciado">
+<p>La demanda de suscripciones mensuales a una plataforma de música está dada por:</p>
+<div class="formula">Q = 500 − 10P</div>
+<p><strong>Consignas:</strong></p>
+<p>a) Calcular la elasticidad-precio de la demanda sabiendo que el precio inicial es $20 y luego aumenta a $25.<br>
+b) Interpretar el resultado.</p>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 1 · Calcular cantidades</span>
+<div class="calc">Q₀ = 500 − 10·(20) = 500 − 200 = <strong>300</strong>
+Q₁ = 500 − 10·(25) = 500 − 250 = <strong>250</strong></div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 2 · Variaciones porcentuales</span>
+<div class="calc">%ΔQ = (Q₁ − Q₀) / Q₀ = (250 − 300) / 300 = −0,1667 = <strong>−16,67%</strong>
+%ΔP = (P₁ − P₀) / P₀ = (25 − 20) / 20  = 0,25    = <strong>+25%</strong></div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 3 · Elasticidad punto</span>
+<div class="formula">EpD = %ΔQ / %ΔP</div>
+<div class="calc">EpD = −16,67% / 25% = −0,667
+|EpD| = 0,667</div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 4 · Gráfico</span>
+<div class="grafico">
+<svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curva de demanda Q=500-10P">
+  <!-- ejes -->
+  <line x1="70" y1="40" x2="70" y2="320" stroke="#333" stroke-width="1.5"/>
+  <line x1="70" y1="320" x2="560" y2="320" stroke="#333" stroke-width="1.5"/>
+  <polygon points="70,32 66,42 74,42" fill="#333"/>
+  <polygon points="568,320 558,316 558,324" fill="#333"/>
+  <!-- Q en eje X (0..500), P en eje Y (0..50). Mapeo: x: 70..540 (94px por 100Q); y: 320..40 (5.6px por unidad P) -->
+  <!-- Recta de Q=500 a Q=0 cuando P=0 a P=50 -->
+  <!-- (Q=500, P=0) -> (540, 320); (Q=0, P=50) -> (70, 40) -->
+  <line x1="70" y1="40" x2="540" y2="320" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Punto P=20, Q=300 -> (70+300*0.94, 320-20*5.6) = (352, 208) -->
+  <!-- Punto P=25, Q=250 -> (70+250*0.94, 320-25*5.6) = (305, 180) -->
+  <line x1="352" y1="208" x2="352" y2="320" stroke="#999" stroke-dasharray="3,3"/>
+  <line x1="70" y1="208" x2="352" y2="208" stroke="#999" stroke-dasharray="3,3"/>
+  <line x1="305" y1="180" x2="305" y2="320" stroke="#999" stroke-dasharray="3,3"/>
+  <line x1="70" y1="180" x2="305" y2="180" stroke="#999" stroke-dasharray="3,3"/>
+  <circle cx="352" cy="208" r="5" fill="#c00"/>
+  <circle cx="305" cy="180" r="5" fill="#c00"/>
+  <text x="360" y="204" font-size="13" font-weight="600">A (Q=300; P=$20)</text>
+  <text x="155" y="170" font-size="13" font-weight="600">B (Q=250; P=$25)</text>
+  <!-- ticks X -->
+  <text x="70" y="340" font-size="11" text-anchor="middle">0</text>
+  <text x="164" y="340" font-size="11" text-anchor="middle">100</text>
+  <text x="305" y="340" font-size="11" text-anchor="middle">250</text>
+  <text x="352" y="340" font-size="11" text-anchor="middle">300</text>
+  <text x="540" y="340" font-size="11" text-anchor="middle">500</text>
+  <!-- ticks Y -->
+  <text x="62" y="44"  font-size="11" text-anchor="end">50</text>
+  <text x="62" y="180" font-size="11" text-anchor="end">25</text>
+  <text x="62" y="212" font-size="11" text-anchor="end">20</text>
+  <text x="62" y="324" font-size="11" text-anchor="end">0</text>
+  <!-- etiquetas ejes -->
+  <text x="300" y="370" font-size="13" text-anchor="middle" font-weight="600">Cantidad (Q)</text>
+  <text x="22" y="180" font-size="13" text-anchor="middle" font-weight="600" transform="rotate(-90 22 180)">Precio (P)</text>
+  <text x="450" y="100" font-size="12" font-style="italic" fill="#666">Q = 500 − 10P</text>
+</svg>
+<div class="cap">Aumento del precio del 25% provoca una baja del 16,67% en la cantidad. Demanda inelástica.</div>
+</div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Respuesta final</span>
+<div class="respuesta">
+<p><strong>EpD ≈ 0,67 (en valor absoluto, &lt; 1) → demanda INELÁSTICA</strong></p>
+<p><strong>Interpretación:</strong> un aumento porcentual del precio generó una disminución porcentual menor en la cantidad demandada. Los consumidores reaccionan poco al cambio de precio. Para la plataforma significa que <strong>subir el precio aumenta el ingreso total</strong>.</p>
+</div>
+</div>
+</div>
+
+
+<!-- ============ EJERCICIO 5 ============ -->
+<div class="ej" id="ej5">
+<span class="ej-num">Ejercicio 5 · Elasticidad precio (punto)</span>
+<h3>Demanda elástica</h3>
+
+<div class="enunciado">
+<p>La demanda de entradas para recitales está dada por:</p>
+<div class="formula">Q = 800 − 50P</div>
+<p><strong>Consignas:</strong></p>
+<p>a) Calcular la elasticidad-precio de la demanda si el precio pasa de $10 a $12.<br>
+b) Interpretar el resultado.</p>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 1 · Calcular cantidades</span>
+<div class="calc">Q₀ = 800 − 50·(10) = 800 − 500 = <strong>300</strong>
+Q₁ = 800 − 50·(12) = 800 − 600 = <strong>200</strong></div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 2 · Variaciones porcentuales</span>
+<div class="calc">%ΔQ = (200 − 300) / 300 = −0,3333 = <strong>−33,33%</strong>
+%ΔP = (12 − 10) / 10     = 0,20    = <strong>+20%</strong></div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 3 · Elasticidad punto</span>
+<div class="formula">EpD = %ΔQ / %ΔP</div>
+<div class="calc">EpD = −33,33% / 20% = −1,667
+|EpD| = 1,667</div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Paso 4 · Gráfico</span>
+<div class="grafico">
+<svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Curva de demanda Q=800-50P">
+  <line x1="70" y1="40" x2="70" y2="320" stroke="#333" stroke-width="1.5"/>
+  <line x1="70" y1="320" x2="560" y2="320" stroke="#333" stroke-width="1.5"/>
+  <polygon points="70,32 66,42 74,42" fill="#333"/>
+  <polygon points="568,320 558,316 558,324" fill="#333"/>
+  <!-- Q max=800, P max=16. x: 70..540 (470/800=0.5875 px/unidad); y: 320..40 (280/16=17.5 px/unidad) -->
+  <!-- (Q=800, P=0) -> (540, 320); (Q=0, P=16) -> (70, 40) -->
+  <line x1="70" y1="40" x2="540" y2="320" stroke="#1a1a1a" stroke-width="2.5"/>
+  <!-- Punto P=10, Q=300 -> (70+300*0.5875, 320-10*17.5) = (246, 145) -->
+  <!-- Punto P=12, Q=200 -> (70+200*0.5875, 320-12*17.5) = (188, 110) -->
+  <line x1="246" y1="145" x2="246" y2="320" stroke="#999" stroke-dasharray="3,3"/>
+  <line x1="70" y1="145" x2="246" y2="145" stroke="#999" stroke-dasharray="3,3"/>
+  <line x1="188" y1="110" x2="188" y2="320" stroke="#999" stroke-dasharray="3,3"/>
+  <line x1="70" y1="110" x2="188" y2="110" stroke="#999" stroke-dasharray="3,3"/>
+  <circle cx="246" cy="145" r="5" fill="#c00"/>
+  <circle cx="188" cy="110" r="5" fill="#c00"/>
+  <text x="254" y="141" font-size="13" font-weight="600">A (Q=300; P=$10)</text>
+  <text x="196" y="100" font-size="13" font-weight="600">B (Q=200; P=$12)</text>
+  <!-- ticks X -->
+  <text x="70" y="340" font-size="11" text-anchor="middle">0</text>
+  <text x="188" y="340" font-size="11" text-anchor="middle">200</text>
+  <text x="246" y="340" font-size="11" text-anchor="middle">300</text>
+  <text x="540" y="340" font-size="11" text-anchor="middle">800</text>
+  <!-- ticks Y -->
+  <text x="62" y="44"  font-size="11" text-anchor="end">16</text>
+  <text x="62" y="110" font-size="11" text-anchor="end">12</text>
+  <text x="62" y="145" font-size="11" text-anchor="end">10</text>
+  <text x="62" y="324" font-size="11" text-anchor="end">0</text>
+  <text x="300" y="370" font-size="13" text-anchor="middle" font-weight="600">Cantidad (Q)</text>
+  <text x="22" y="180" font-size="13" text-anchor="middle" font-weight="600" transform="rotate(-90 22 180)">Precio (P)</text>
+  <text x="450" y="100" font-size="12" font-style="italic" fill="#666">Q = 800 − 50P</text>
+</svg>
+<div class="cap">Aumento del precio del 20% provoca una baja del 33,33% en la cantidad. Demanda elástica.</div>
+</div>
+</div>
+
+<div class="paso">
+<span class="paso-label">Respuesta final</span>
+<div class="respuesta">
+<p><strong>EpD ≈ 1,67 (en valor absoluto, &gt; 1) → demanda ELÁSTICA</strong></p>
+<p><strong>Interpretación:</strong> un aumento porcentual del precio generó una disminución porcentual mayor en la cantidad demandada. Los consumidores reaccionan fuertemente al precio (hay sustitutos: streaming, Spotify, otros recitales). <strong>Subir el precio reduce el ingreso total</strong>; conviene bajarlo para vender más entradas.</p>
+</div>
+</div>
+</div>
+
+
+<div class="box" style="background:#fff7ed;border-left-color:#ea580c">
+<span class="label" style="color:#9a3412">Lo que tenés que recordar de los 5 ejercicios</span>
+<ul>
+<li><strong>FPP:</strong> CO = ΔY/ΔX en valor absoluto. Si crece, la FPP es cóncava.</li>
+<li><strong>Restricción presupuestaria:</strong> M = Px·X + Py·Y. Los extremos son M/Px y M/Py.</li>
+<li><strong>TMS:</strong> ΔY/ΔX en valor absoluto sobre la curva de indiferencia. Decreciente porque la curva es convexa.</li>
+<li><strong>Elasticidad punto:</strong> EpD = %ΔQ / %ΔP. Si |EpD| &lt; 1 → inelástica (subir P aumenta IT). Si &gt; 1 → elástica (subir P baja IT). Si = 1 → unitaria (IT no cambia).</li>
+</ul>
+</div>
+
+
+<h2 class="unit" id="practica">Bloque 2. Más práctica de la guía</h2>
+<p style="color:#666;font-size:14px;margin-bottom:16px">Ejercicios de la guía oficial agrupados por tema. Resolvelos en papel y desplegá la solución para chequear.</p>
+
+
+<h2 id="p-fpp">A. FPP <span style="color:#c00;font-size:14px">★ tipo parcial</span></h2>
+
+<div class="practice">
+<span class="topic">FPP</span>
+<div class="prompt"><strong>Guía U1 · Ej 8.</strong> Economía que produce solo Comida (C) y Ropa (R). Puntos factibles: A(0; 100), B(10; 90), C(20; 70), D(30; 40), E(40; 0). Calcular el costo de oportunidad de pasar de B a C en unidades de Ropa por 1 unidad adicional de Comida y decir si la FPP es lineal o cóncava.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>Cálculo</h4>
+<div class="calc">CO (B→C) = (R_C − R_B) / (C_C − C_B)
+         = (70 − 90) / (20 − 10)
+         = −20 / 10 = −2
+|CO| = <strong>2 unidades de Ropa por 1 de Comida</strong></div>
+<h4>Costo de oportunidad para todos los tramos</h4>
+<table>
+<tr><th>Tramo</th><th>ΔR</th><th>ΔC</th><th>CO</th></tr>
+<tr><td>A→B</td><td>−10</td><td>10</td><td class="num">1</td></tr>
+<tr><td>B→C</td><td>−20</td><td>10</td><td class="num">2</td></tr>
+<tr><td>C→D</td><td>−30</td><td>10</td><td class="num">3</td></tr>
+<tr><td>D→E</td><td>−40</td><td>10</td><td class="num">4</td></tr>
+</table>
+<h4>Conclusión</h4>
+<p>El CO es <strong>creciente</strong> (1 → 2 → 3 → 4), por lo tanto la FPP es <strong>cóncava al origen</strong>, no lineal. Refleja que los recursos no son perfectamente sustituibles.</p>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-presup">B. Restricción presupuestaria <span style="color:#c00;font-size:14px">★ tipo parcial</span></h2>
+
+<div class="practice">
+<span class="topic">Recta presupuestaria</span>
+<div class="prompt"><strong>Guía U2 · Ej 1.</strong> Estudiante con presupuesto $120.000. Combo hamburguesa $12.000 · Abono streaming $6.000.<br>
+a) Ecuación de la restricción presupuestaria.<br>
+b) Cuántos combos si gasta todo en hamburguesas.<br>
+c) Cuántos abonos si gasta todo en streaming.<br>
+d) Si compra 5 combos, cuántos abonos puede pagar.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>a) Ecuación</h4>
+<div class="formula">120.000 = 12.000·H + 6.000·S</div>
+<h4>b) Solo hamburguesas</h4>
+<div class="calc">H_max = 120.000 / 12.000 = <strong>10 combos</strong></div>
+<h4>c) Solo streaming</h4>
+<div class="calc">S_max = 120.000 / 6.000 = <strong>20 abonos</strong></div>
+<h4>d) Con 5 combos</h4>
+<div class="calc">Gasto en combos = 5 · 12.000 = 60.000
+Disponible para streaming = 120.000 − 60.000 = 60.000
+S = 60.000 / 6.000 = <strong>10 abonos</strong></div>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-indif">C. Curva de indiferencia y TMS <span style="color:#c00;font-size:14px">★ tipo parcial</span></h2>
+
+<div class="practice">
+<span class="topic">Indiferencia</span>
+<div class="prompt"><strong>Guía U2 · Ej 2.</strong> Tabla de combinaciones café (C) y medialunas (M):<br>
+A(1; 8), B(2; 6), C(3; 5), D(4; 4).<br>
+a) Calcular la TMS entre A y B.<br>
+b) Interpretar el resultado.<br>
+c) Por qué la curva es convexa al origen.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>a) TMS A→B</h4>
+<div class="calc">TMS = ΔM / ΔC = (6 − 8) / (2 − 1) = −2 / 1 = −2
+|TMS| = <strong>2</strong></div>
+<h4>b) Interpretación</h4>
+<p>Para mantener el mismo nivel de utilidad, al pasar de A a B el consumidor sacrifica <strong>2 medialunas</strong> a cambio de <strong>1 café adicional</strong>.</p>
+<h4>TMS en todos los tramos</h4>
+<table>
+<tr><th>Tramo</th><th>TMS</th></tr>
+<tr><td>A→B</td><td class="num">2</td></tr>
+<tr><td>B→C</td><td class="num">1</td></tr>
+<tr><td>C→D</td><td class="num">1</td></tr>
+</table>
+<h4>c) Convexidad</h4>
+<p>La TMS es <strong>decreciente</strong> (2 → 1 → 1). A medida que el consumidor tiene más café, está dispuesto a sacrificar menos medialunas por un café adicional. Esa preferencia por la diversidad genera la curvatura cóncava hacia el origen (convexa al origen).</p>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-elast-punto">D. Elasticidad precio (punto) <span style="color:#c00;font-size:14px">★ tipo parcial</span></h2>
+
+<div class="practice">
+<span class="topic">Elasticidad punto</span>
+<div class="prompt"><strong>Guía U2 · 7 · Ej 1.</strong> Q = 200 − 4P. Calcular la elasticidad-precio de la demanda cuando P = $30 y aumenta a $40. Interpretar.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>Cantidades</h4>
+<div class="calc">Q₀ = 200 − 4·30 = 200 − 120 = 80
+Q₁ = 200 − 4·40 = 200 − 160 = 40</div>
+<h4>Variaciones porcentuales</h4>
+<div class="calc">%ΔQ = (40 − 80) / 80 = −0,50 = −50%
+%ΔP = (40 − 30) / 30 = 0,3333 = +33,33%</div>
+<h4>Elasticidad</h4>
+<div class="calc">EpD = −50% / 33,33% = −1,5
+|EpD| = <strong>1,5 → ELÁSTICA</strong></div>
+<h4>Interpretación</h4>
+<p>Un aumento del 33,33% en el precio generó una caída del 50% en la cantidad. La demanda reacciona más que proporcionalmente: subir el precio reduce el ingreso total.</p>
+</div>
+</details>
+</div>
+
+<div class="practice">
+<span class="topic">Elasticidad punto</span>
+<div class="prompt"><strong>Guía U2 · 7 · Ej 2.</strong> A P = $30 se demandan 300 unidades. Si el precio sube a $45, la cantidad cae a 225. Calcular EpD e interpretar.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>Cálculo</h4>
+<div class="calc">%ΔQ = (225 − 300) / 300 = −0,25 = −25%
+%ΔP = (45 − 30) / 30 = 0,50 = +50%
+EpD = −25% / 50% = −0,5
+|EpD| = <strong>0,5 → INELÁSTICA</strong></div>
+<h4>Interpretación</h4>
+<p>El precio subió 50% pero la cantidad solo bajó 25%. Subir el precio aumenta el ingreso total porque los consumidores reaccionan poco.</p>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-elast-arco">E. Elasticidad precio (arco / promedio)</h2>
+
+<div class="practice">
+<span class="topic">Elasticidad arco</span>
+<div class="prompt"><strong>Guía U2 · 8 · Ej 4.</strong> Una pizzería vende 200 pizzas/semana a $8.000. Al subir el precio a $10.000, las ventas caen a 150. Calcular la elasticidad por método del arco. Decir si es elástica, inelástica o unitaria. ¿Le conviene subir el precio?</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>Fórmula del arco</h4>
+<div class="formula">EpD = [ΔQ / ((Q₀+Q₁)/2)] / [ΔP / ((P₀+P₁)/2)]</div>
+<h4>Cálculo</h4>
+<div class="calc">ΔQ = 150 − 200 = −50
+Q_prom = (200 + 150) / 2 = 175
+%ΔQ = −50 / 175 = −0,2857 = −28,57%
+
+ΔP = 10.000 − 8.000 = 2.000
+P_prom = (8.000 + 10.000) / 2 = 9.000
+%ΔP = 2.000 / 9.000 = 0,2222 = +22,22%
+
+EpD = −28,57% / 22,22% = −1,286
+|EpD| ≈ <strong>1,29 → ELÁSTICA</strong></div>
+<h4>¿Conviene subir el precio?</h4>
+<div class="calc">IT₀ = 200 · 8.000  = 1.600.000
+IT₁ = 150 · 10.000 = 1.500.000
+ΔIT = −100.000  → <strong>NO conviene subir</strong></div>
+<p>Como la demanda es elástica, al subir el precio el ingreso total cae. Para aumentar ingreso conviene mantener o bajar el precio.</p>
+</div>
+</details>
+</div>
+
+<div class="practice">
+<span class="topic">Elasticidad arco</span>
+<div class="prompt"><strong>Guía U2 · 8 · Ej 2.</strong> Plataforma de streaming: precio sube de $10 a $14/mes; los suscriptores caen de 6.000 a 4.200. Calcular la elasticidad arco e interpretar.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<div class="calc">ΔQ = 4.200 − 6.000 = −1.800
+Q_prom = (6.000 + 4.200) / 2 = 5.100
+%ΔQ = −1.800 / 5.100 = −35,29%
+
+ΔP = 14 − 10 = 4
+P_prom = (10 + 14) / 2 = 12
+%ΔP = 4 / 12 = 33,33%
+
+EpD = −35,29 / 33,33 = −1,059
+|EpD| ≈ <strong>1,06 → ELÁSTICA (apenas)</strong></div>
+<p>La demanda es ligeramente elástica: una suba del 33% en el precio genera una caída del 35% en suscriptores. Subir más el precio reduce el ingreso.</p>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-excedente">F. Excedente del consumidor</h2>
+
+<div class="practice">
+<span class="topic">Excedente</span>
+<div class="prompt"><strong>Guía U2 · Ej 6.</strong> Disposición a pagar por kg de helado:<br>
+1 kg = $15.000 · 2 kg = $13.000 · 3 kg = $11.000 · 4 kg = $9.000.<br>
+Precio de mercado = $9.000.<br>
+a) ¿Cuántos kg compra? b) Excedente del consumidor. c) Qué representa.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>a) Cantidad comprada</h4>
+<p>Compra mientras la disposición a pagar sea ≥ precio de mercado. A $9.000 está dispuesto por las 4 unidades. <strong>Compra 4 kg</strong>.</p>
+<h4>b) Excedente</h4>
+<div class="formula">Excedente = Σ (disposición a pagar − precio pagado)</div>
+<table>
+<tr><th>kg</th><th>Disposición</th><th>Precio</th><th>Excedente</th></tr>
+<tr><td>1</td><td class="num">$15.000</td><td class="num">$9.000</td><td class="num">$6.000</td></tr>
+<tr><td>2</td><td class="num">$13.000</td><td class="num">$9.000</td><td class="num">$4.000</td></tr>
+<tr><td>3</td><td class="num">$11.000</td><td class="num">$9.000</td><td class="num">$2.000</td></tr>
+<tr><td>4</td><td class="num">$9.000</td><td class="num">$9.000</td><td class="num">$0</td></tr>
+<tr><td colspan="3"><strong>Excedente total</strong></td><td class="num"><strong>$12.000</strong></td></tr>
+</table>
+<h4>c) Qué representa</h4>
+<p>El excedente del consumidor es la <strong>ganancia neta de bienestar</strong>: la diferencia entre lo que el consumidor estaba dispuesto a pagar y lo que efectivamente pagó. Geométricamente, es el área entre la curva de demanda y la línea horizontal del precio de mercado.</p>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-it">G. Ingreso total y elasticidad</h2>
+
+<div class="practice">
+<span class="topic">IT y elasticidad</span>
+<div class="prompt"><strong>Guía U2 · 9 · Ej 1.</strong> Q = 1.000 − 50P.<br>
+a) Calcular el ingreso total a P = 10 y P = 12.<br>
+b) Determinar la elasticidad en ambos puntos y explicar cómo afecta al ingreso.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>a) Cantidades e ingreso total</h4>
+<div class="calc">A P = 10:  Q = 1.000 − 50·10 = 500    IT = 10 · 500 = <strong>5.000</strong>
+A P = 12:  Q = 1.000 − 50·12 = 400    IT = 12 · 400 = <strong>4.800</strong></div>
+<p>El IT bajó de 5.000 a 4.800 cuando subió el precio.</p>
+<h4>b) Elasticidad punto entre los dos</h4>
+<div class="calc">%ΔQ = (400 − 500) / 500 = −20%
+%ΔP = (12 − 10) / 10     = +20%
+EpD = −20% / 20% = −1
+|EpD| = <strong>1 → UNITARIA</strong> (frontera, casi exactamente)</div>
+<p>En realidad, sobre una demanda lineal la elasticidad cambia en cada punto. Al precio P=10 la elasticidad es <strong>−1</strong> (justo el punto medio donde el IT es máximo: IT = 10·500 = 5.000). Subir más allá te lleva al tramo elástico, donde el IT cae. Eso explica por qué subir el precio de 10 a 12 reduce el ingreso total.</p>
+<h4>Regla general</h4>
+<table>
+<tr><th>Si EpD es...</th><th>Subir P</th><th>Bajar P</th></tr>
+<tr><td>Elástica (&gt;1)</td><td>IT baja</td><td>IT sube</td></tr>
+<tr><td>Unitaria (=1)</td><td>IT no cambia</td><td>IT no cambia</td></tr>
+<tr><td>Inelástica (&lt;1)</td><td>IT sube</td><td>IT baja</td></tr>
+</table>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-cruzada">H. Elasticidad cruzada</h2>
+
+<div class="practice">
+<span class="topic">Cruzada</span>
+<div class="prompt"><strong>Guía U2 · 10 · Ej 3.</strong> El precio del café aumenta 10%; la demanda de té aumenta 6%.<br>
+a) Calcular la elasticidad cruzada.<br>
+b) ¿Sustitutos, complementarios o independientes?</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>Fórmula</h4>
+<div class="formula">E_cruzada = %ΔQ_X / %ΔP_Y</div>
+<h4>Cálculo</h4>
+<div class="calc">E_cruzada = +6% / +10% = <strong>+0,6</strong></div>
+<h4>Clasificación</h4>
+<table>
+<tr><th>Signo</th><th>Tipo de bien</th></tr>
+<tr><td>Positivo (+)</td><td><strong>Sustitutos</strong></td></tr>
+<tr><td>Negativo (−)</td><td>Complementarios</td></tr>
+<tr><td>Cero (0)</td><td>Independientes</td></tr>
+</table>
+<p>Como E_cruzada &gt; 0, café y té son <strong>sustitutos</strong>. Cuando sube el café, los consumidores compran más té.</p>
+</div>
+</details>
+</div>
+
+<div class="practice">
+<span class="topic">Cruzada</span>
+<div class="prompt"><strong>Guía U2 · 10 · Ej 2.</strong> Cuando P_Y = $400 se demandan 50 unidades de X. Cuando P_Y = $450 la demanda de X sube a 60. Determinar la elasticidad cruzada y el tipo de bienes.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<div class="calc">%ΔQ_X = (60 − 50) / 50 = +20%
+%ΔP_Y = (450 − 400) / 400 = +12,5%
+E_cruzada = +20% / +12,5% = <strong>+1,6</strong></div>
+<p>E_cruzada &gt; 0 → X e Y son <strong>sustitutos</strong>. Al subir el precio de Y, el consumidor sustituye y compra más X.</p>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-ingreso">I. Elasticidad ingreso y curva de Engel</h2>
+
+<div class="practice">
+<span class="topic">Elasticidad ingreso</span>
+<div class="prompt"><strong>Guía U2 · 11 · Ej 1.</strong> La demanda de bebidas sube de 800 a 1.040 cuando el ingreso pasa de $20.000 a $25.000. Calcular la elasticidad ingreso e interpretar.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>Fórmula</h4>
+<div class="formula">E_y = %ΔQ / %ΔY</div>
+<h4>Cálculo</h4>
+<div class="calc">%ΔQ = (1.040 − 800) / 800 = +30%
+%ΔY = (25.000 − 20.000) / 20.000 = +25%
+E_y = +30% / +25% = <strong>+1,2</strong></div>
+<h4>Clasificación</h4>
+<table>
+<tr><th>Valor</th><th>Tipo de bien</th></tr>
+<tr><td>E_y &gt; 1</td><td><strong>Lujo</strong> (sube más que proporcional con el ingreso)</td></tr>
+<tr><td>0 &lt; E_y &lt; 1</td><td>Normal necesario</td></tr>
+<tr><td>E_y &lt; 0</td><td>Inferior</td></tr>
+</table>
+<p>E_y = 1,2 → la bebida se comporta como <strong>bien de lujo</strong>: el consumo crece más que proporcional al ingreso.</p>
+</div>
+</details>
+</div>
+
+<div class="practice">
+<span class="topic">Elasticidad ingreso</span>
+<div class="prompt"><strong>Guía U2 · 11 · Ej 3.</strong> El ingreso aumenta 10%. La demanda de delivery de sushi sube 15% y la de arroz sube 3%. Clasificar cada bien.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<div class="calc">E_y (sushi) = +15% / +10% = <strong>+1,5</strong> → bien de lujo
+E_y (arroz) = +3%  / +10% = <strong>+0,3</strong> → bien normal de primera necesidad</div>
+<p>El sushi es de lujo: cuando el ingreso sube, la familia destina una proporción mayor a sushi. El arroz es básico: aunque el consumo sube, sube menos que proporcional al ingreso (es necesario pero su demanda se satura).</p>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-mov-desp">J. Movimiento vs desplazamiento de la demanda</h2>
+
+<div class="practice">
+<span class="topic">Movimiento / desplazamiento</span>
+<div class="prompt"><strong>Guía U2 · Ej 5.</strong> Indicar si cada situación causa un movimiento sobre la curva o un desplazamiento de toda la curva. Justificar.<br>
+a) Aumenta el precio del café.<br>
+b) Aumenta el ingreso promedio de las familias.<br>
+c) Se pone de moda tomar café de especialidad.<br>
+d) Disminuye el precio del café.</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>Regla clave</h4>
+<p>Si lo que cambia es <strong>el precio del propio bien</strong> → movimiento sobre la curva. Si cambia <strong>cualquier otro factor</strong> (ingreso, gustos, precios de otros bienes, expectativas, número de consumidores) → desplazamiento de toda la curva.</p>
+<h4>Análisis</h4>
+<table>
+<tr><th>Situación</th><th>Tipo</th><th>Dirección</th></tr>
+<tr><td>a) ↑ precio del café</td><td>Movimiento</td><td>Sobre la curva, hacia arriba a la izquierda (cae Q demandada)</td></tr>
+<tr><td>b) ↑ ingreso familias</td><td>Desplazamiento</td><td>Curva se mueve a la derecha (más demanda a cada precio)</td></tr>
+<tr><td>c) Café de especialidad de moda</td><td>Desplazamiento</td><td>Curva a la derecha (cambio en gustos)</td></tr>
+<tr><td>d) ↓ precio del café</td><td>Movimiento</td><td>Sobre la curva, hacia abajo a la derecha (sube Q demandada)</td></tr>
+</table>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-engel">K. Curva de Engel</h2>
+
+<div class="practice">
+<span class="topic">Engel</span>
+<div class="prompt"><strong>Guía U2 · 12 · Ej 1.</strong> Hogar:<br>
+Ingreso ($): 1.000 · 2.000 · 3.000 · 4.000 · 5.000<br>
+Gasto en alimentos ($): 400 · 700 · 950 · 1.150 · 1.300<br>
+a) Graficar la curva de Engel. b) ¿Es bien normal o inferior?</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>Análisis del comportamiento</h4>
+<table>
+<tr><th>Ingreso</th><th>Gasto</th><th>Proporción del ingreso</th></tr>
+<tr><td class="num">$1.000</td><td class="num">$400</td><td class="num">40,0%</td></tr>
+<tr><td class="num">$2.000</td><td class="num">$700</td><td class="num">35,0%</td></tr>
+<tr><td class="num">$3.000</td><td class="num">$950</td><td class="num">31,7%</td></tr>
+<tr><td class="num">$4.000</td><td class="num">$1.150</td><td class="num">28,8%</td></tr>
+<tr><td class="num">$5.000</td><td class="num">$1.300</td><td class="num">26,0%</td></tr>
+</table>
+<h4>b) Conclusión</h4>
+<p>El gasto en alimentos <strong>aumenta cuando aumenta el ingreso</strong> (curva de Engel con pendiente positiva), por lo tanto es un <strong>bien normal</strong>. Pero la <strong>proporción del ingreso destinada a alimentos cae</strong> (40% → 26%): es una <strong>ley de Engel</strong> clásica de bien de primera necesidad. Su elasticidad ingreso es positiva pero menor a 1.</p>
+<div class="calc">Elasticidad ingreso entre el primer y último ingreso:
+%ΔQ = (1.300 − 400) / 400 = +225%
+%ΔY = (5.000 − 1.000) / 1.000 = +400%
+E_y = 225% / 400% = <strong>0,56 → bien normal de primera necesidad</strong></div>
+</div>
+</details>
+</div>
+
+
+<h2 id="p-integrador">L. Integrador (tipo cierre de parcial)</h2>
+
+<div class="practice">
+<span class="topic">Aplicado</span>
+<div class="prompt"><strong>Guía U2 · Ej 13.</strong> Familia argentina decide entre boleto colectivo ($1.200) y viaje en app ($6.000).<br>
+a) ¿Cuál tiene mayor proporción del ingreso familiar?<br>
+b) ¿Cuál tendrá mayor elasticidad precio? Justificar.<br>
+c) ¿Qué pasaría si el boleto sube a $2.000?</div>
+<details>
+<summary></summary>
+<div class="sol">
+<h4>a) Proporción del ingreso</h4>
+<p>El <strong>viaje en app</strong> tiene mucho mayor peso por viaje ($6.000 vs $1.200 = 5x más caro). Pero hay que mirar la frecuencia: el colectivo se usa muchas más veces por mes, así que el gasto mensual total puede ser comparable. Si lo medimos por viaje, la app tiene mayor proporción.</p>
+<h4>b) Elasticidad precio</h4>
+<p>La <strong>app tendrá mayor elasticidad precio</strong> porque:</p>
+<ul>
+<li>Tiene <strong>sustituto cercano</strong> (el colectivo, mucho más barato).</li>
+<li>Es un bien <strong>menos necesario</strong> (es un sustituto premium del transporte público).</li>
+<li>Si subió mucho su precio, el usuario puede dejar de usarlo y elegir colectivo.</li>
+</ul>
+<p>El colectivo es <strong>más inelástico</strong>: es un servicio esencial para ir al trabajo o estudiar y muchas familias no tienen alternativa.</p>
+<h4>c) Si el boleto sube a $2.000</h4>
+<p>Aumento del 67% en el precio. Como la demanda es inelástica, la cantidad demandada caerá proporcionalmente menos: la mayoría sigue usando colectivo (es esencial). El gasto mensual de las familias en transporte sube. Posible efecto sustitución para los que pueden: bici, caminar tramos cortos, app combinada. Para hogares de bajos ingresos es una pérdida de bienestar significativa porque el transporte es un costo no postergable.</p>
+</div>
+</details>
+</div>
+
+
+<div class="box" style="background:#f0f9f4;border-left-color:#16a34a">
+<span class="label" style="color:#16a34a">Plan de estudio recomendado</span>
+<ol>
+<li><strong>Día 1:</strong> Bloque 1 completo. Releer cada paso del parcial hasta entender por qué cada cuenta.</li>
+<li><strong>Día 2:</strong> Práctica de FPP y restricción presupuestaria (A y B). Hacer en papel sin mirar.</li>
+<li><strong>Día 3:</strong> Curva de indiferencia y los dos ejercicios de elasticidad punto (C y D).</li>
+<li><strong>Día 4:</strong> Elasticidad arco, excedente, ingreso total (E, F, G).</li>
+<li><strong>Día 5:</strong> Cruzada, ingreso, Engel, integrador (H, I, J, K, L).</li>
+<li><strong>Día 6:</strong> Cerrar con los <a href="parciales.html">3 parciales simulados</a>.</li>
+</ol>
+</div>
+
+
+<footer>
+Parte práctica · Fundamentos de Economía I · UCES 2026 · Material de la Lic. Marisa Soledad Lagraña
+</footer>
+
+</div>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+
+</body>
+</html>
